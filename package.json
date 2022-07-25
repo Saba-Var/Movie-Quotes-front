@@ -12,6 +12,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "next": "12.2.3",
+    "next-i18next": "^11.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
