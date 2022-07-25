@@ -78,7 +78,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 
           {page === 'home' && (
             <>
-              {' '}
               <button className='bg-orange hidden md:block  text-white text-base px-6 py-2 rounded-md'>
                 {t('common:SignUp')}
               </button>
