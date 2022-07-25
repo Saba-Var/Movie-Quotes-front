@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
             {showSelector && (
               <div
-                className={`absolute border border-white py-3 rounded-md gap-1 flex flex-col w-28 justify-center -left-5 top-7 items-center ${
+                className={`absolute border bg-background border-white py-3 rounded-md gap-1 flex flex-col w-28 justify-center -left-5 top-7 items-center ${
                   language === 'Eng' && '-left-5 !w-16 !py-3'
                 }`}
               >

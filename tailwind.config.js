@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],
         'Helvetica-Neue-Geo': ['Helvetica Neue Geo'],
+        Montserrat: ['Montserrat'],
       },
     },
   },
