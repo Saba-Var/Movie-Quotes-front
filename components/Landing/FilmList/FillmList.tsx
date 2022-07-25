@@ -9,7 +9,7 @@ function FilmList() {
 
   return (
     <div className='flex flex-col overflow-x-hidden'>
-      <div className='bg-background w-full h-[65vh]'>
+      <div className='bg-background w-full h-[75vh]'>
         <div className='flex flex-col gap-8 pt-28 md:pt-32 lg:pt-[14%]'>
           <div className='flex justify-center'>
             <p

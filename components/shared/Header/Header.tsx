@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   }, [locale, t])
 
   return (
-    <div className='bg-background py-8 px-9'>
+    <div className='bg-background py-5 px-9 fixed w-screen z-[99]'>
       {showSelector && (
         <div
           onClick={() => setShowSelector(false)}

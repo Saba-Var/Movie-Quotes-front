@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Home = () => {
   return (
-    <div>
+    <div className='animate-fade-in'>
       <Header page='home' />
       <FilmList />
     </div>
