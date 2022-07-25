@@ -1,4 +1,4 @@
-import { HeaderProps, SelectorArrow } from 'components'
+import { HeaderProps, Button, SelectorArrow } from 'components'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -78,19 +78,16 @@ const Header: React.FC<HeaderProps> = (props) => {
 
           {page === 'home' && (
             <>
-              <button className='bg-orange hidden md:block  text-white text-base px-6 py-2 rounded-md'>
-                {t('common:SignUp')}
-              </button>
-              <button className='text-white text-base px-6 py-2 border rounded-md border-white'>
-                {t('common:Log-in')}
-              </button>
+              <Button
+                styles='bg-orange hidden md:block '
+                title={t('common:SignUp')}
+              />
+              <Button styles='border border-white' title={t('common:Log-in')} />
             </>
           )}
 
           {page !== 'home' && (
-            <button className='text-white text-base px-6 py-2 border rounded-md border-white'>
-              {t('common:Log-out')}
-            </button>
+            <Button styles='border border-white' title={t('common:Log-out')} />
           )}
         </div>
       </div>
