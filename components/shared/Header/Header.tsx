@@ -35,14 +35,14 @@ const Header: React.FC<HeaderProps> = (props) => {
       )}
 
       <div className='flex justify-between items-center'>
-        <p className='text-lightGold text-base font-Helvetica-Neue'>
+        <p className='text-lightGold animate-fade-in text-base font-Helvetica-Neue'>
           MOVIE QUOTES
         </p>
 
         <div className='flex gap-4 items-center'>
           <div className='hidden md:block relative z-[9999] mr-5'>
             <div
-              className='flex justify-center items-center gap-2 cursor-pointer '
+              className='flex justify-center animate-fade-in items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
             >
               <p className='text-base text-white cursor-pointer'>{language}</p>
@@ -55,19 +55,19 @@ const Header: React.FC<HeaderProps> = (props) => {
                   language === 'Eng' && '-left-10'
                 }`}
               >
-                <Link href={'/'} locale={'en'}>
+                <Link scroll={false} href={'/'} locale={'en'}>
                   <a
                     onClick={() => languageChangeHandler(t('common:Eng'))}
-                    className='text-base text-white'
+                    className='text-base text-white hover:scale-110 transition-transform'
                   >
                     {t('common:English')}
                   </a>
                 </Link>
 
-                <Link href={'/'} locale={'ge'}>
+                <Link scroll={false} href={'/'} locale={'ge'}>
                   <a
                     onClick={() => languageChangeHandler(t('common:Geo'))}
-                    className='text-base text-white'
+                    className='text-base text-white hover:scale-110 transition-transform'
                   >
                     {t('common:Georgian')}
                   </a>
