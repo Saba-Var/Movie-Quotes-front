@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <div className='flex gap-4 items-center'>
           <div className='hidden md:block relative z-[9999] mr-5'>
             <div
-              className='flex justify-center items-center gap-2'
+              className='flex justify-center items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
             >
               <p className='text-base text-white cursor-pointer'>{language}</p>
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             {showSelector && (
               <div
                 className={`absolute border bg-background border-white py-3 rounded-md gap-1 flex flex-col w-28 justify-center -left-5 top-7 items-center ${
-                  language === 'Eng' && '-left-5 !w-16 !py-3'
+                  language === 'Eng' && '-left-10'
                 }`}
               >
                 <Link href={'/'} locale={'en'}>
@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     onClick={() => languageChangeHandler(t('common:Eng'))}
                     className='text-base text-white'
                   >
-                    {t('common:Eng')}
+                    {t('common:English')}
                   </a>
                 </Link>
 
@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     onClick={() => languageChangeHandler(t('common:Geo'))}
                     className='text-base text-white'
                   >
-                    {t('common:Geo')}
+                    {t('common:Georgian')}
                   </a>
                 </Link>
               </div>
@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page === 'home' && (
             <>
               <Button
-                styles='bg-orange hidden md:block '
+                styles='bg-orange hidden md:block'
                 title={t('common:SignUp')}
               />
               <Button styles='border border-white' title={t('common:Log-in')} />
