@@ -19,6 +19,9 @@ module.exports = {
         'Helvetica-Neue-Geo': ['Helvetica Neue Geo'],
         Montserrat: ['Montserrat'],
       },
+      backgroundPosition: {
+        'bottom-left-center': 'bottom right -14rem',
+      },
       keyframes: {
         'fade-in': {
           '0%': {

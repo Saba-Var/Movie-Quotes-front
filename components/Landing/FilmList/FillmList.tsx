@@ -44,6 +44,7 @@ function FilmList() {
         <FilmCover
           info={`${t('landing:the-lord-of-the-rings')}, 2003`}
           quote={t('landing:the-lord-of-the-rings-quote')}
+          positionRight={true}
           src={lord.src}
         />
       </div>
