@@ -35,7 +35,15 @@ const Header: React.FC<HeaderProps> = (props) => {
       )}
 
       <div className='flex justify-between items-center'>
-        <p className='text-lightGold animate-fade-in text-base font-Helvetica-Neue'>
+        <p
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            })
+          }
+          className='text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue'
+        >
           MOVIE QUOTES
         </p>
 

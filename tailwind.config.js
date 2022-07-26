@@ -12,6 +12,7 @@ module.exports = {
         lightGold: '#DDCCAA',
         background: '#11101A',
         orange: '#E31221',
+        lightGray: '#D9D9D9',
       },
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],
