@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   const languageChangeHandler = (lan: string) => {
     setShowSelector(false)
-    setLanguage(lan)
+    localStorage.setItem('language', lan)
   }
 
   useEffect(() => {
