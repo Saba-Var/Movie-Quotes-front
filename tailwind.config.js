@@ -8,7 +8,7 @@ module.exports = {
       animation: {
         'fade-in': 'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         dropdown:
-          'dropdown 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both',
+          'dropdown 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both',
       },
       colors: {
         lightGold: '#DDCCAA',
@@ -35,7 +35,7 @@ module.exports = {
         },
         dropdown: {
           '0%': {
-            transform: 'scaleY(.4)',
+            transform: 'scaleY(.3)',
             'transform-origin': '100% 0%',
           },
           to: {
