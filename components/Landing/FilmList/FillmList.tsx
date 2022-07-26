@@ -14,7 +14,8 @@ function FilmList() {
           <div className='flex justify-center'>
             <p
               className={`text-lightGold animate-fade-in hover:scale-105 transition-transform !leading-[150%] w-72 md:w-[450px] lg:w-[720px] text-center text-2xl font-Montserrat font-bold md:text-4xl lg:text-6xl ${
-                locale === 'ge' && 'text-xl md:text-3xl lg:text-5xl'
+                locale === 'ge' &&
+                'w-96 text-xl md:w-[600px] md:text-3xl lg:text-5xl'
               }`}
             >
               {t('landing:find-quote')}
