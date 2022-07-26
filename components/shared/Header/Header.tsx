@@ -1,29 +1,11 @@
-import { HeaderProps, Button, SelectorArrow } from 'components'
-import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { HeaderProps, Button, SelectorArrow, useHeader } from 'components'
 import Link from 'next/link'
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { page } = props
-  const locale = useRouter().locale
 
-  const [showSelector, setShowSelector] = useState(false)
-  const [language, setLanguage] = useState('')
-
-  const { t } = useTranslation()
-
-  const languageChangeHandler = (lan: string) => {
-    setShowSelector(false)
-    localStorage.setItem('language', lan)
-  }
-
-  useEffect(() => {
-    if (locale === 'en') {
-      return setLanguage(t('common:Eng'))
-    }
-    setLanguage(t('common:Geo'))
-  }, [locale, t])
+  const { setShowSelector, t, showSelector, language, languageChangeHandler } =
+    useHeader()
 
   return (
     <div className='bg-background py-5 px-9 fixed w-screen z-[99]'>
