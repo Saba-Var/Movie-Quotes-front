@@ -1,11 +1,8 @@
+import { Button, FilmCover, useFilmList } from 'components'
 import { interstellar, lord, tenenbaums } from 'public'
-import { Button, FilmCover } from 'components'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 
 function FilmList() {
-  const { t } = useTranslation()
-  const locale = useRouter().locale
+  const { t, locale } = useFilmList()
 
   return (
     <div className='flex flex-col overflow-x-hidden'>
