@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Header: React.FC<HeaderProps> = (props) => {
   const { page } = props
 
-  const { setShowSelector, t, showSelector, language, languageChangeHandler } =
+  const { t, showSelector, language, languageChangeHandler, setShowSelector } =
     useHeader()
 
   return (
