@@ -1,4 +1,4 @@
-import { ButtonType } from 'components/shared'
+import { ButtonType } from 'components'
 
 const Button: React.FC<ButtonType> = (props) => {
   const { title, styles } = props

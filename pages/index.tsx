@@ -1,6 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import type { GetStaticProps } from 'next'
 import { Header, FilmList } from 'components'
+import type { GetStaticProps } from 'next'
 import { useEffect } from 'react'
 import Router from 'next/router'
 

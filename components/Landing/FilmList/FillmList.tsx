@@ -1,4 +1,4 @@
-import { interstellar, lord, tenenbaums } from 'public/assets/images/'
+import { interstellar, lord, tenenbaums } from 'public'
 import { Button, FilmCover } from 'components'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
