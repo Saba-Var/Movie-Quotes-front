@@ -13,7 +13,7 @@ const FilmCover: React.FC<FilmCoverProps> = (props) => {
       }`}
     >
       <div className='h-[950px] lg:h-[1200px] w-full gradient absolute top-0 md:opacity-50 left-0 lg:opacity-0'></div>
-      <div className='absolute left-9 top-1/2 -translate-y-1/2 flex gap-2 hover:scale-105 transition-transform'>
+      <div className='absolute left-9 md:left-14 lg:left-32 xl:left-40 top-1/2 -translate-y-1/2 flex gap-2 hover:scale-105 transition-transform'>
         <div className='text-white animate-fade-in md:pt-2 lg:pt-3 xl:pt-4 md:text-2xl lg:text-4xl'>
           ──
         </div>
