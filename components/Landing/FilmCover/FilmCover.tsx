@@ -1,16 +1,14 @@
 import { FilmCoverProps } from 'components'
 
 const FilmCover: React.FC<FilmCoverProps> = (props) => {
-  const { src, isAttached, info, quote } = props
+  const { src, info, quote } = props
 
   return (
     <div
       style={{
         backgroundImage: `url(${src})`,
       }}
-      className={`w-screen h-[1200px] bg-no-repeat bg-center bg-cover ${
-        isAttached && 'bg-fixed'
-      } relative`}
+      className={`w-screen h-[1200px] bg-no-repeat bg-center bg-cover bg-fixed relative`}
     >
       <div className='absolute left-9 top-1/2 -translate-y-1/2 flex gap-2 hover:scale-105 transition-transform'>
         <div className='text-white animate-fade-in'>──</div>

@@ -9,7 +9,7 @@ function FilmList() {
 
   return (
     <div className='flex flex-col overflow-x-hidden'>
-      <div className='bg-background w-full h-[80vh]'>
+      <div className='bg-background w-full h-screen'>
         <div className='flex flex-col gap-8 pt-72 lg:pt-[20%]'>
           <div className='flex justify-center'>
             <p
@@ -38,13 +38,11 @@ function FilmList() {
           info={`${t('landing:the-royal-tenenbaums')}, 2001`}
           quote={t('landing:the-royal-tenenbaums-quote')}
           src={tenenbaums.src}
-          isAttached={true}
         />
 
         <FilmCover
           info={`${t('landing:the-lord-of-the-rings')}, 2003`}
           quote={t('landing:the-lord-of-the-rings-quote')}
-          isAttached={true}
           src={lord.src}
         />
       </div>
