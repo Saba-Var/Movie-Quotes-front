@@ -1,4 +1,4 @@
-import { SelectorArrowProps } from 'components'
+import { SelectorArrowProps } from './types.d'
 
 const SelectorArrow: React.FC<SelectorArrowProps> = (props) => {
   const { isSelected } = props

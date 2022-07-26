@@ -1,4 +1,4 @@
-import { ButtonType } from 'components'
+import { ButtonType } from './types.d'
 
 const Button: React.FC<ButtonType> = (props) => {
   const { title, styles } = props

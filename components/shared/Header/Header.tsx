@@ -1,4 +1,5 @@
-import { HeaderProps, Button, SelectorArrow } from 'components'
+import { Button, SelectorArrow } from 'components'
+import { HeaderProps } from './types.d'
 import { useHeader } from './useHeader'
 import Link from 'next/link'
 
