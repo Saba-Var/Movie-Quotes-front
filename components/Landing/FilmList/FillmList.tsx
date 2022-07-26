@@ -47,7 +47,7 @@ function FilmList() {
         />
       </div>
       <footer className='bg-background text-lightGold pl-8 h-12 text-xs font-Helvetica-Neue flex items-center'>
-        © 2022 movie quotes. All rights reserved.
+        © 2022 movie quotes. {t('landing:rights')}
       </footer>
     </div>
   )
