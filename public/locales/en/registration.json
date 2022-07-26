@@ -1,0 +1,9 @@
+{
+  "create": "Create an account",
+  "instruction": "Start your journey!",
+  "have-account": "Already have an account?",
+  "name": "Name",
+  "confirm-password": "Confirm password",
+  "name-req": "At least 3 & max.15 lower case characters",
+  "password-req": "At least 8 & max.15 lower case characters"
+}

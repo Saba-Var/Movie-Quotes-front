@@ -4,7 +4,7 @@ import { useHeader } from './useHeader'
 import Link from 'next/link'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page } = props
+  const { page, setRegistrationModal } = props
 
   const { t, showSelector, language, languageChangeHandler, setShowSelector } =
     useHeader()
@@ -71,6 +71,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page === 'home' && (
             <>
               <Button
+                onClick={() => setRegistrationModal(true)}
                 styles='bg-orange hidden md:block'
                 title={t('common:SignUp')}
               />

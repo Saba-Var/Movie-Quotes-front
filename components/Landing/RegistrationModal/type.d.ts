@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
 
-export type HeaderProps = {
+export type RegistrationModalProps = {
   setRegistrationModal: Dispatch<SetStateAction<boolean>>
-  page: string
 }
