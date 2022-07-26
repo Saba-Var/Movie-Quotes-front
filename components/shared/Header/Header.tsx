@@ -1,4 +1,5 @@
-import { HeaderProps, Button, SelectorArrow, useHeader } from 'components'
+import { HeaderProps, Button, SelectorArrow } from 'components'
+import { useHeader } from './useHeader'
 import Link from 'next/link'
 
 const Header: React.FC<HeaderProps> = (props) => {

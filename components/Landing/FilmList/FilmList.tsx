@@ -1,5 +1,6 @@
-import { Button, FilmCover, useFilmList } from 'components'
 import { interstellar, lord, tenenbaums } from 'public'
+import { Button, FilmCover } from 'components'
+import { useFilmList } from './useFilmList'
 
 function FilmList() {
   const { t, locale } = useFilmList()
