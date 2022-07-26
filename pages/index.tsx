@@ -2,14 +2,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Header, FilmList } from 'components'
 import type { GetStaticProps } from 'next'
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale!, ['common', 'landing'])),
-    },
-  }
-}
-
 const Home = () => {
   return (
     <div>
@@ -20,3 +12,11 @@ const Home = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ['common', 'landing'])),
+    },
+  }
+}
