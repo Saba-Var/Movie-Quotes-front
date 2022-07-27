@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     >
       {() => {
         return (
-          <Form className='mt-6 flex flex-col justify-center items-center animate-fade-in'>
+          <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
             <div className='flex flex-col gap-4 mb-8'>
               <AuthInputField type='text' name='name' />
               <AuthInputField type='text' name='email' />

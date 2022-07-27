@@ -27,6 +27,10 @@ module.exports = {
         darkGray: 'rgba(0, 0, 0, 0.54)',
         errorRed: '#DC3545',
         green: '#198754',
+        blue: '#0D6EFD',
+      },
+      screens: {
+        '2.5xl': '1600px',
       },
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],

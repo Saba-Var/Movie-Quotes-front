@@ -12,6 +12,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
       instruction={t('registration:instruction')}
       setCloseModal={setRegistrationModal}
       title={t('registration:create')}
+      modalName='registration'
+      onClick={() => {}}
     >
       <div>
         <RegistrationForm />
