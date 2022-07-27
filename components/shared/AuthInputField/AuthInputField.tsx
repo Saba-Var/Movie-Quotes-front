@@ -21,7 +21,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         <input
           {...field}
           {...props}
-          className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue rounded w-[360px] border ${
+          className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] border ${
             error && touched && 'border-errorRed'
           } ${isValid && 'border-green'} h-[38px] outline-none`}
           autoComplete='off'

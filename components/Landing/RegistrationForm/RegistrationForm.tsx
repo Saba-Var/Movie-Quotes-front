@@ -1,21 +1,16 @@
+import { useRegistrationForm } from './useRegistrationForm'
 import { registrationFormValidationSchema } from 'schemas'
 import { AuthInputField, Button } from 'components'
-import { useTranslation } from 'next-i18next'
 import { Formik, Form } from 'formik'
 
 const RegistrationForm = () => {
-  const { t } = useTranslation()
+  const { t, initialValues } = useRegistrationForm()
 
   return (
     <Formik
       validationSchema={registrationFormValidationSchema}
+      initialValues={initialValues}
       onSubmit={() => {}}
-      initialValues={{
-        confirmPassword: '',
-        password: '',
-        email: '',
-        name: '',
-      }}
     >
       {() => {
         return (
@@ -26,6 +21,7 @@ const RegistrationForm = () => {
               <AuthInputField type='password' name='password' />
               <AuthInputField name='confirmPassword' type='password' />
             </div>
+
             <div>
               <Button
                 styles={'bg-orange mx-auto block w-[360px]'}
