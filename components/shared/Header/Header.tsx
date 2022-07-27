@@ -74,13 +74,22 @@ const Header: React.FC<HeaderProps> = (props) => {
                 onClick={() => setRegistrationModal(true)}
                 styles='bg-orange hidden md:block'
                 title={t('common:SignUp')}
+                type='button'
               />
-              <Button styles='border border-white' title={t('common:Log-in')} />
+              <Button
+                styles='border border-white'
+                title={t('common:Log-in')}
+                type='button'
+              />
             </>
           )}
 
           {page !== 'home' && (
-            <Button styles='border border-white' title={t('common:Log-out')} />
+            <Button
+              styles='border border-white'
+              title={t('common:Log-out')}
+              type='button'
+            />
           )}
         </div>
       </div>

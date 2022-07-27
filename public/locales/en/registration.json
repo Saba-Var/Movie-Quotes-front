@@ -3,7 +3,24 @@
   "instruction": "Start your journey!",
   "have-account": "Already have an account?",
   "name": "Name",
-  "confirm-password": "Confirm password",
-  "name-req": "At least 3 & max.15 lower case characters",
-  "password-req": "At least 8 & max.15 lower case characters"
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "name-reqs": "At least 3 & max.15 lower case characters",
+  "password-reqs": "At least 8 & max.15 lower case characters",
+
+  "lower-required": "Enter numbers and lower case characters",
+  "max-char": "Enter maximum 15 characters",
+
+  "name-required": "Name field is required",
+  "name-min": "Enter at least 3 characters",
+
+  "email-required": "Email field is required",
+  "valid-email": "Please provide a valid email",
+
+  "password-required": "Password field is required",
+  "password-min": "Enter at least 8 characters",
+
+  "password-match": "Password don't match",
+  "confirmPassword-required": "Confirm password field is required"
 }

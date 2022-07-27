@@ -1,5 +1,6 @@
 export type ButtonType = {
   onClick?: () => void
-  styles: string
+  styles?: string
   title: string
+  type: string
 }

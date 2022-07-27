@@ -20,7 +20,11 @@ module.exports = {
         orange: '#E31221',
         lightGray: '#D9D9D9',
         medGray: '#6C757D',
+        inputGray: '#CED4DA',
+        inputBlack: '#212529 ',
         darkGray: 'rgba(0, 0, 0, 0.54)',
+        errorRed: '#DC3545',
+        green: '#198754',
       },
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],

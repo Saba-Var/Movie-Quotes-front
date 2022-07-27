@@ -1,6 +1,6 @@
+import { AuthFormWrapper, RegistrationForm } from 'components'
 import { useRegistrationModal } from './useRegistrationModal'
 import { RegistrationModalProps } from './type.d'
-import { AuthFormWrapper } from 'components'
 
 const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
   const { setRegistrationModal } = props
@@ -13,7 +13,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
       setCloseModal={setRegistrationModal}
       title={t('registration:create')}
     >
-      <div></div>
+      <div>
+        <RegistrationForm />
+      </div>
     </AuthFormWrapper>
   )
 }
