@@ -22,5 +22,8 @@
   "password-min": "Enter at least 8 characters",
 
   "password-match": "Password don't match",
-  "confirmPassword-required": "Confirm password field is required"
+  "confirmPassword-required": "Confirm password field is required",
+
+  "google-sign-up": "Sign up with Google",
+  "google-sign-in": "Sign in with Google"
 }

@@ -12,7 +12,7 @@ const AuthFormWrapper: React.FC<FormWrapperProps> = (props) => {
         }}
       ></div>
       <div
-        className={`fixed h-[732px]  w-full md:w-[601px] md:h-[704px] z-[99999] left-1/2 -translate-x-1/2 md:top-[10%]`}
+        className={`fixed h-[732px]  w-full md:w-[601px] md:h-[704px] z-[99999] left-1/2 -translate-x-1/2 md:top-[2%] lg:top-[5%] xl:top-[10%]`}
       >
         <div
           className={`h-screen animate-scale-up md:h-[732px] rounded-xl bg-darkBlue pt-[73px] px-8 md:px-[121px]`}

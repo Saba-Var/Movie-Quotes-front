@@ -22,5 +22,8 @@
   "password-min": "შეიყვანეთ მინიმუმ 8 სიმბოლო",
 
   "password-match": "პაროლები არ ემთხვევა",
-  "confirmPassword-required": "პაროლის დადასტურების ველი სავალდებულოა"
+  "confirmPassword-required": "პაროლის დადასტურების ველი სავალდებულოა",
+
+  "google-sign-up": "დარეგისტრირდით Google-ით",
+  "google-sign-in": "შედით Google-ით"
 }

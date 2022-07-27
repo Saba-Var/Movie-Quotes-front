@@ -1,6 +1,6 @@
+import { AuthInputField, Button, GoogleAuthButton } from 'components'
 import { useRegistrationForm } from './useRegistrationForm'
 import { registrationFormValidationSchema } from 'schemas'
-import { AuthInputField, Button } from 'components'
 import { Formik, Form } from 'formik'
 
 const RegistrationForm = () => {
@@ -22,11 +22,15 @@ const RegistrationForm = () => {
               <AuthInputField name='confirmPassword' type='password' />
             </div>
 
-            <div>
+            <div className='flex flex-col gap-4'>
               <Button
                 styles={'bg-orange mx-auto block w-[360px]'}
                 title={t('landing:start')}
                 type='submit'
+              />
+              <GoogleAuthButton
+                title={t('registration:google-sign-up')}
+                googleAuthHandler={() => {}}
               />
             </div>
           </Form>

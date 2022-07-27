@@ -1,3 +1,4 @@
+export * from './GoogleAuthButton'
 export * from './AuthFormWrapper'
 export * from './AuthInputField'
 export * from './Header'
