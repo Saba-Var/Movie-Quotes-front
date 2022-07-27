@@ -1,10 +1,10 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Header, FilmList, RegistrationModal } from 'components'
 import type { GetStaticProps } from 'next'
-import { useHome } from 'hooks'
+import { useLanding } from 'hooks'
 
 const Home = () => {
-  const { setRegistrationModal, showRegistrationModal } = useHome()
+  const { setRegistrationModal, showRegistrationModal } = useLanding()
 
   return (
     <div className='overflow-x-hidden'>
