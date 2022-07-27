@@ -9,9 +9,12 @@ export const useAuthInputField = (data: AuthInputFieldProps) => {
 
   const isValid = meta.touched && !meta.error
 
+  const isPasswordField = field.name.toLocaleLowerCase().includes('password')
+
   return {
     touched: meta.touched,
     error: meta.error,
+    isPasswordField,
     isValid,
     field,
     t,

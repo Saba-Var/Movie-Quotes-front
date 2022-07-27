@@ -1,12 +1,13 @@
+import { ErrorIcon, ValidIcon, EyeIcon } from 'components'
 import { useAuthInputField } from './useAuthInputField'
-import { ErrorIcon, ValidIcon } from 'components'
 import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
   const { type } = props
 
-  const { field, isValid, error, touched, t } = useAuthInputField(props)
+  const { field, isValid, error, touched, t, isPasswordField } =
+    useAuthInputField(props)
 
   return (
     <div className='flex flex-col gap-1 animate-fade-in'>
@@ -33,6 +34,12 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         )}
 
         {isValid && <ValidIcon styles='absolute right-3 bottom-[9px]' />}
+
+        {isPasswordField && (
+          <EyeIcon
+            styles={`${(isValid || (error && touched)) && 'right-10'}`}
+          />
+        )}
       </div>
 
       <ErrorMessage name={field.name}>
