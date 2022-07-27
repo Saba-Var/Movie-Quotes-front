@@ -1,19 +1,15 @@
+import { useAuthInputField } from './useAuthInputField'
 import { ErrorIcon, ValidIcon } from 'components'
 import { AuthInputFieldProps } from './types.d'
-import { useTranslation } from 'next-i18next'
 import { ErrorMessage } from 'formik'
-import { useField } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
   const { type } = props
-  const { t } = useTranslation()
 
-  const [field, meta] = useField(props)
-
-  const isValid = meta.touched && !meta.error
+  const { field, isValid, error, touched, t } = useAuthInputField(props)
 
   return (
-    <div className='flex flex-col gap-2 animate-fade-in'>
+    <div className='flex flex-col gap-1 animate-fade-in'>
       <div className='flex flex-col gap-2 relative'>
         <label
           className='text-white text-base font-Helvetica-Neue-Geo font-thin'
@@ -26,16 +22,17 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           {...field}
           {...props}
           className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue rounded w-[360px] border ${
-            meta.error && meta.touched && 'border-errorRed'
+            error && touched && 'border-errorRed'
           } ${isValid && 'border-green'} h-[38px] outline-none`}
           autoComplete='off'
           type={type}
         />
 
-        {meta.error && meta.touched && (
+        {error && touched && (
           <ErrorIcon styles='absolute right-3 bottom-[11px]' />
         )}
-        {isValid && <ValidIcon styles='absolute right-3 bottom-[11px]' />}
+
+        {isValid && <ValidIcon styles='absolute right-3 bottom-[9px]' />}
       </div>
 
       <ErrorMessage name={field.name}>
