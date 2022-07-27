@@ -5,7 +5,7 @@ const ErrorIcon: React.FC<IconStyle> = (props) => {
 
   return (
     <svg
-      className={styles}
+      className={`${styles} animate-shake-horizontal`}
       viewBox='0 0 16 16'
       height='16'
       fill='none'

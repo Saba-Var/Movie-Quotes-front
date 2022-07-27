@@ -5,7 +5,7 @@ const ValidIcon: React.FC<IconStyle> = (props) => {
 
   return (
     <svg
-      className={styles}
+      className={`${styles} animate-scale-up`}
       viewBox='0 0 20 20'
       height='20'
       fill='none'

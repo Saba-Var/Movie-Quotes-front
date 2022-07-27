@@ -10,8 +10,8 @@ const RegistrationForm = () => {
     <Formik
       validationSchema={registrationFormValidationSchema}
       initialValues={initialValues}
-      onSubmit={() => {}}
       validateOnMount={false}
+      onSubmit={() => {}}
     >
       {() => {
         return (

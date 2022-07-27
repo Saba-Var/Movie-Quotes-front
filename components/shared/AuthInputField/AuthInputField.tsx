@@ -56,7 +56,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
       <ErrorMessage name={field.name}>
         {(errorMessage) => {
           return (
-            <div className='text-errorRed text-sm'>
+            <div className='text-errorRed text-sm animate-fade-in'>
               {t(`registration:${errorMessage}`)}.
             </div>
           )

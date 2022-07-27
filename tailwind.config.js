@@ -12,6 +12,8 @@ module.exports = {
           'scale-up 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'focus-in-text-expand':
           'focus-in-text-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        'shake-horizontal':
+          'shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
       },
       colors: {
         lightGold: '#DDCCAA',
@@ -59,6 +61,23 @@ module.exports = {
           },
           to: {
             transform: 'scale(1)',
+          },
+        },
+        'shake-horizontal': {
+          '0%,to': {
+            transform: 'translateX(0)',
+          },
+          '10%,30%,50%,70%': {
+            transform: 'translateX(-2.5px)',
+          },
+          '20%,40%,60%': {
+            transform: 'translateX(2.5px)',
+          },
+          '80%': {
+            transform: 'translateX(2px)',
+          },
+          '90%': {
+            transform: 'translateX(-2px)',
           },
         },
         'focus-in-text-expand': {
