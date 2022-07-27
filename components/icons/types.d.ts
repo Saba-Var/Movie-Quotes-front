@@ -5,3 +5,7 @@ export type SelectorArrowProps = {
 export type IconStyle = {
   styles?: string
 }
+
+export type EyeIconProps = {
+  onClick: () => void
+}

@@ -11,6 +11,7 @@ const RegistrationForm = () => {
       validationSchema={registrationFormValidationSchema}
       initialValues={initialValues}
       onSubmit={() => {}}
+      validateOnMount={false}
     >
       {() => {
         return (

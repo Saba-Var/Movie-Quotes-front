@@ -4,10 +4,15 @@ import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
-  const { type } = props
-
-  const { field, isValid, error, touched, t, isPasswordField } =
-    useAuthInputField(props)
+  const {
+    passwordShowHandler,
+    isPasswordField,
+    inputType,
+    isValid,
+    isError,
+    field,
+    t,
+  } = useAuthInputField(props)
 
   return (
     <div className='flex flex-col gap-1 animate-fade-in'>
@@ -23,23 +28,29 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           {...field}
           {...props}
           className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] border ${
-            error && touched && 'border-errorRed'
+            isError && 'border-errorRed'
           } ${isValid && 'border-green'} h-[38px] outline-none`}
           autoComplete='off'
-          type={type}
+          type={inputType}
         />
 
-        {error && touched && (
-          <ErrorIcon styles='absolute right-3 bottom-[11px]' />
-        )}
-
-        {isValid && <ValidIcon styles='absolute right-3 bottom-[9px]' />}
-
-        {isPasswordField && (
-          <EyeIcon
-            styles={`${(isValid || (error && touched)) && 'right-10'}`}
+        {isError && (
+          <ErrorIcon
+            styles={`absolute ${
+              isPasswordField && 'right-9'
+            } right-3 bottom-[11px]`}
           />
         )}
+
+        {isValid && (
+          <ValidIcon
+            styles={`absolute ${
+              isPasswordField && 'right-8'
+            } right-3 bottom-[9px]`}
+          />
+        )}
+
+        {isPasswordField && <EyeIcon onClick={passwordShowHandler} />}
       </div>
 
       <ErrorMessage name={field.name}>

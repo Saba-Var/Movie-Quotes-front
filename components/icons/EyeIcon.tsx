@@ -1,11 +1,12 @@
-import { IconStyle } from './types.d'
+import { EyeIconProps } from './types.d'
 
-const EyeIcon: React.FC<IconStyle> = (props) => {
-  const { styles } = props
+const EyeIcon: React.FC<EyeIconProps> = (props) => {
+  const { onClick } = props
 
   return (
     <svg
-      className={`absolute hover:scale-125 transition-transform right-3 bottom-[12px] cursor-pointer ${styles}`}
+      className={`absolute hover:scale-125 transition-transform right-3 bottom-[12px] cursor-pointer`}
+      onClick={onClick}
       viewBox='0 0 14 14'
       height='14'
       fill='none'
