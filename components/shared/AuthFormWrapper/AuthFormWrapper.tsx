@@ -28,7 +28,7 @@ const AuthFormWrapper: React.FC<FormWrapperProps> = (props) => {
             <p className='font-normal text-medGray text-base'>{instruction}</p>
           </div>
           {children}
-          <div className='flex justify-center gap-1 mt-5'>
+          <div className='flex justify-center gap-1 mt-5 animate-fade-in'>
             <p className='text-medGray cursor-default font-medium text-base font-Helvetica-Neue-Geo'>
               {question}
             </p>
