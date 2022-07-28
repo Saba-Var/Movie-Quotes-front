@@ -16,7 +16,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
       onClick={() => {}}
     >
       <div>
-        <RegistrationForm />
+        <RegistrationForm setRegistrationModal={setRegistrationModal} />
       </div>
     </AuthFormWrapper>
   )

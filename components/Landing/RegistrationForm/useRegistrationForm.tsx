@@ -1,6 +1,10 @@
+import { SetRegistrationModal, FormData } from './types.d'
 import { useTranslation } from 'next-i18next'
+import { registerUSer } from 'services'
 
-export const useRegistrationForm = () => {
+export const useRegistrationForm = (
+  setRegistrationModal: SetRegistrationModal
+) => {
   const { t } = useTranslation()
 
   const initialValues = {
@@ -10,5 +14,17 @@ export const useRegistrationForm = () => {
     name: '',
   }
 
-  return { t, initialValues }
+  const submitHandler = async (data: FormData) => {
+    try {
+      const { status } = await registerUSer(data)
+
+      if (status === 201) {
+        setRegistrationModal(false)
+      }
+    } catch (error: any) {
+      console.log(error)
+    }
+  }
+
+  return { t, initialValues, submitHandler }
 }

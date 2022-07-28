@@ -1,17 +1,23 @@
 import { AuthInputField, Button, GoogleAuthButton } from 'components'
 import { useRegistrationForm } from './useRegistrationForm'
 import { registrationFormValidationSchema } from 'schemas'
+import { RegistrationFormProps } from './types.d'
 import { Formik, Form } from 'formik'
 
-const RegistrationForm = () => {
-  const { t, initialValues } = useRegistrationForm()
+const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
+  const { setRegistrationModal } = props
+
+  const { t, initialValues, submitHandler } =
+    useRegistrationForm(setRegistrationModal)
 
   return (
     <Formik
       validationSchema={registrationFormValidationSchema}
       initialValues={initialValues}
       validateOnMount={false}
-      onSubmit={() => {}}
+      onSubmit={(data) => {
+        submitHandler(data)
+      }}
     >
       {() => {
         return (
@@ -29,10 +35,7 @@ const RegistrationForm = () => {
                 title={t('landing:start')}
                 type='submit'
               />
-              <GoogleAuthButton
-                title={t('registration:google-sign-up')}
-                googleAuthHandler={() => {}}
-              />
+              <GoogleAuthButton title={t('registration:google-sign-up')} />
             </div>
           </Form>
         )
