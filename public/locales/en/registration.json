@@ -26,5 +26,7 @@
   "confirmPassword-required": "Confirm password field is required",
 
   "google-sign-up": "Sign up with Google",
-  "google-sign-in": "Sign in with Google"
+  "google-sign-in": "Sign in with Google",
+
+  "user-exists": "User is already registered"
 }

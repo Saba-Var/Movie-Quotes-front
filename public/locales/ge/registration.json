@@ -26,5 +26,7 @@
   "confirmPassword-required": "პაროლის დადასტურების ველი სავალდებულოა",
 
   "google-sign-up": "დარეგისტრირდით Google-ით",
-  "google-sign-in": "შედით Google-ით"
+  "google-sign-in": "შედით Google-ით",
+
+  "user-exists": "მომხმარებელი უკვე დარეგისტრირებულია"
 }
