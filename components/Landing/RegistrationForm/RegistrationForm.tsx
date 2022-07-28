@@ -1,13 +1,18 @@
-import { AuthInputField, Button, GoogleAuthButton } from 'components'
 import { useRegistrationForm } from './useRegistrationForm'
 import { registrationFormValidationSchema } from 'schemas'
 import { RegistrationFormProps } from './types.d'
 import { Formik, Form } from 'formik'
+import {
+  GoogleAuthButton,
+  AuthInputField,
+  ErrorAlert,
+  Button,
+} from 'components'
 
 const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
   const { setRegistrationModal } = props
 
-  const { t, initialValues, submitHandler } =
+  const { t, initialValues, submitHandler, errorAlert, setErrorAlert } =
     useRegistrationForm(setRegistrationModal)
 
   return (
@@ -22,6 +27,13 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
       {() => {
         return (
           <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
+            {errorAlert && (
+              <ErrorAlert
+                setShowAlert={setErrorAlert}
+                title='მომხმარებელი უკვე რეგისტრირებულია'
+              />
+            )}
+
             <div className='flex flex-col gap-4 mb-8'>
               <AuthInputField type='text' name='name' />
               <AuthInputField type='text' name='email' />

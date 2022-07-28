@@ -1,1 +1,1 @@
-export { default as ErrorAlert } from './index'
+export { default as ErrorAlert } from './ErrorAlert'
