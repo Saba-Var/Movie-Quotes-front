@@ -1,5 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 
+type SetState = Dispatch<SetStateAction<boolean>>
+
 export type RegistrationModalProps = {
-  setRegistrationModal: Dispatch<SetStateAction<boolean>>
+  setRegistrationModal: SetState
+  setShowPopupModal: SetState
 }

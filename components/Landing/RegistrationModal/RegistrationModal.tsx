@@ -3,7 +3,7 @@ import { useRegistrationModal } from './useRegistrationModal'
 import { RegistrationModalProps } from './type.d'
 
 const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
-  const { setRegistrationModal } = props
+  const { setRegistrationModal, setShowPopupModal } = props
 
   const { t } = useRegistrationModal()
 
@@ -16,7 +16,10 @@ const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
       onClick={() => {}}
     >
       <div>
-        <RegistrationForm setRegistrationModal={setRegistrationModal} />
+        <RegistrationForm
+          setRegistrationModal={setRegistrationModal}
+          setShowPopupModal={setShowPopupModal}
+        />
       </div>
     </AuthFormWrapper>
   )

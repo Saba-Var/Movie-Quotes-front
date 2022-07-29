@@ -28,5 +28,11 @@
   "google-sign-up": "Sign up with Google",
   "google-sign-in": "Sign in with Google",
 
-  "user-exists": "User is already registered"
+  "user-exists": "User is already registered",
+
+  "thank": "Thank you!",
+  "check-email": "Please check your email and follow the instructions to activate your account.",
+  "open-email": "Go to my email",
+  "account-activated": "Your account has been activated.",
+  "open-news-feed": "Go to my news feed"
 }

@@ -10,10 +10,10 @@ import {
 } from 'components'
 
 const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
-  const { setRegistrationModal } = props
+  const { setRegistrationModal, setShowPopupModal } = props
 
   const { t, initialValues, submitHandler, errorAlert, setErrorAlert } =
-    useRegistrationForm(setRegistrationModal)
+    useRegistrationForm(setRegistrationModal, setShowPopupModal)
 
   return (
     <Formik

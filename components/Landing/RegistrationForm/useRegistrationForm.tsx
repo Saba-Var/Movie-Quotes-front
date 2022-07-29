@@ -1,10 +1,11 @@
-import { SetRegistrationModal, FormData } from './types.d'
+import { SetRegistrationModal, FormData, setShowPopupModal } from './types.d'
 import { useTranslation } from 'next-i18next'
 import { registerUSer } from 'services'
 import { useState } from 'react'
 
 export const useRegistrationForm = (
-  setRegistrationModal: SetRegistrationModal
+  setRegistrationModal: SetRegistrationModal,
+  setShowPopupModal: setShowPopupModal
 ) => {
   const { t } = useTranslation()
 
@@ -23,6 +24,8 @@ export const useRegistrationForm = (
 
       if (status === 201) {
         setRegistrationModal(false)
+
+        setShowPopupModal(true)
 
         if (errorAlert) {
           setErrorAlert(false)
