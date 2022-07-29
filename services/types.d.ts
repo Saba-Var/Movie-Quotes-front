@@ -5,3 +5,8 @@ export type NewUserData = {
   email: string
   password: string
 }
+
+export type AccountVerificationData = {
+  email: string
+  token: string
+}
