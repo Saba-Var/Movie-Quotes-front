@@ -12,11 +12,10 @@ export const useLanding = () => {
   useEffect(() => {
     const activateAccount = async () => {
       try {
-        const { emailToConfirm, token } = query
+        const { token } = query
 
-        if (typeof emailToConfirm === 'string' && typeof token === 'string') {
+        if (typeof token === 'string') {
           const { status } = await activateUserAccount({
-            email: emailToConfirm!,
             token: token,
           })
 

@@ -6,8 +6,7 @@ export type NewUserData = {
   password: string
 }
 
-export type AccountVerificationData = {
-  email: string
+export type AccountVerificationToken = {
   token: string
 }
 

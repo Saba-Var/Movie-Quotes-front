@@ -1,12 +1,12 @@
+import { AxiosResponse } from 'axios'
+import axios from 'services'
 import {
-  AccountVerificationData,
+  AccountVerificationToken,
   GoogleUserData,
   NewUserData,
   Status,
   Token,
 } from './types.d'
-import { AxiosResponse } from 'axios'
-import axios from 'services'
 
 export const registerUSer = (
   data: NewUserData
@@ -21,10 +21,7 @@ export const registerGoogleUSer = (
 }
 
 export const activateUserAccount = (
-  data: AccountVerificationData
+  data: AccountVerificationToken
 ): Promise<AxiosResponse<Status>> => {
-  return axios.put(
-    `/activate-account?email=${data.email}&token=${data.token}`,
-    data
-  )
+  return axios.get(`/activate-account?token=${data.token}`)
 }
