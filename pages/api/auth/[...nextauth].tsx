@@ -1,4 +1,5 @@
 import GoogleProvider from 'next-auth/providers/google'
+import { registerGoogleUSer } from 'services'
 import NextAuth from 'next-auth/next'
 
 export default NextAuth({
@@ -26,6 +27,21 @@ export default NextAuth({
     async session({ session, token }) {
       session.accessToken = token.accessToken
       return session
+    },
+
+    async signIn({ account, profile }) {
+      try {
+        const { data } = await registerGoogleUSer({
+          name: profile.name!,
+          email: profile.email!,
+        })
+
+        account.access_token = data.token
+
+        return true
+      } catch (error) {
+        return false
+      }
     },
   },
 })
