@@ -6,7 +6,9 @@ import { useLanding } from 'hooks'
 const Home = () => {
   const {
     showRegistrationModal,
+    setShowActivatedModal,
     setRegistrationModal,
+    showActivatedModal,
     setShowPopupModal,
     showPopupModal,
   } = useLanding()
@@ -22,6 +24,10 @@ const Home = () => {
 
       {showPopupModal && (
         <Popup type='activate' setShowPopupModal={setShowPopupModal} />
+      )}
+
+      {showActivatedModal && (
+        <Popup type='verified' setShowPopupModal={setShowActivatedModal} />
       )}
 
       <div

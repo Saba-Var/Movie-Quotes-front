@@ -18,8 +18,8 @@ const Popup: React.FC<PopupProps> = (props) => {
         className={`fixed w-[360px] h-[414px] md:w-[538px] z-[99999] left-1/2 -translate-x-1/2 top-[18%]`}
       >
         <div
-          className={`h-[414px] ${
-            locale === 'ge' && 'h-[440px]'
+          className={`h-[414px] ${locale === 'ge' && 'h-[440px]'} ${
+            type !== 'activate' && '!h-[388px] md:!h-[375px]'
           } pt-[72px] pb-[105px] md:pb-[76px] w-[360px] md:w-[538px] animate-scale-up rounded-xl bg-darkBlue`}
         >
           <div className='w-full h-full flex flex-col items-center gap-5 md:gap-6'>
@@ -38,6 +38,8 @@ const Popup: React.FC<PopupProps> = (props) => {
               <a
                 className={`bg-orange w-[190px] px-10 ${
                   locale === 'ge' && 'px-2'
+                } ${
+                  type !== 'activate' && 'w-[200px] px-1'
                 } active:scale-95 py-2 cursor-pointer hover:scale-105 transition-transform rounded font-medium font-Helvetica-Neue-Geo text-center md:w-96 text-white text-base`}
                 href={actionUri}
               >

@@ -21,7 +21,7 @@ export const usePopup = (
   if (type !== 'activate') {
     info = 'account-activated'
     buttonTitle = 'open-news-feed'
-    actionUri = process.env.NEXT_PUBLIC_API_BASE_URI!
+    actionUri = `${locale}/news-feed`
   }
 
   return {

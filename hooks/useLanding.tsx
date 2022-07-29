@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 export const useLanding = () => {
   const [showRegistrationModal, setRegistrationModal] = useState(false)
+  const [showActivatedModal, setShowActivatedModal] = useState(false)
   const [showPopupModal, setShowPopupModal] = useState(false)
   const [disappear, setDisappear] = useState(false)
   const { query } = useRouter()
@@ -20,7 +21,7 @@ export const useLanding = () => {
           })
 
           if (status === 200) {
-            console.log('Account activated')
+            setShowActivatedModal(true)
           }
         }
       } catch (error) {
@@ -33,7 +34,9 @@ export const useLanding = () => {
 
   return {
     showRegistrationModal,
+    setShowActivatedModal,
     setRegistrationModal,
+    showActivatedModal,
     setShowPopupModal,
     showPopupModal,
     setDisappear,
