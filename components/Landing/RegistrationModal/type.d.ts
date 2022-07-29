@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { SetState } from 'types'
 
-type SetState = Dispatch<SetStateAction<boolean>>
+type SetStateBoolean = SetState<boolean>
 
 export type RegistrationModalProps = {
   setRegistrationModal: SetState

@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
+import { SetState } from 'types'
 
 export type FormWrapperProps = {
-  setCloseModal: Dispatch<SetStateAction<boolean>>
+  setCloseModal: SetState<boolean>
   children: JSX.Element
   onClick: () => void
   instruction: string

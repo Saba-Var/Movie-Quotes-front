@@ -1,8 +1,11 @@
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { SetState } from './types'
+import { SetState } from 'types'
 
-export const usePopup = (setShowPopupModal: SetState, type: string) => {
+export const usePopup = (
+  setShowPopupModal: SetState<boolean>,
+  type: string
+) => {
   const { t } = useTranslation()
 
   const locale = useRouter().locale

@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
-
-export type SetState = Dispatch<SetStateAction<boolean>>
+import { SetState } from 'types'
 
 export type PopupProps = {
-  setShowPopupModal: Dispatch<SetStateAction<boolean>>
+  setShowPopupModal: SetState<boolean>
   type: string
 }

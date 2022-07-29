@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
+import { SetState } from 'types'
 
 export type FilmListProps = {
-  setRegistrationModal: Dispatch<SetStateAction<boolean>>
+  setRegistrationModal: SetState<boolean>
 }

@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { SetState } from 'types'
 
-export type SetShowAlert = Dispatch<SetStateAction<boolean>>
+export type SetShowAlert = SetState<boolean>
 
 export type ErrorAlertProps = {
   setShowAlert: SetShowAlert
