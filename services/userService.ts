@@ -6,7 +6,7 @@ import {
   GoogleUserData,
   NewUserData,
   Token,
-} from './types.d'
+} from 'types'
 
 export const registerUSer = (
   data: NewUserData
