@@ -1,14 +1,12 @@
 import { SetState } from 'types'
 
-type SetStateBoolean = SetState<boolean>
+export type SetRegistrationModal = SetState<boolean>
 
-export type SetRegistrationModal = SetStateBoolean
-
-export type setShowPopupModal = SetStateBoolean
+export type setShowPopupModal = SetState<boolean>
 
 export type RegistrationFormProps = {
-  setRegistrationModal: SetStateBoolean
-  setShowPopupModal: SetStateBoolean
+  setRegistrationModal: SetState<boolean>
+  setShowPopupModal: SetState<boolean>
 }
 
 export type FormData = {
