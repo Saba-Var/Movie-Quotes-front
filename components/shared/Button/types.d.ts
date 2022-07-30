@@ -1,4 +1,8 @@
+export type clickHandler = (() => void) | undefined
+
 export type ButtonType = {
-  styles: string
+  onClick?: () => void
+  styles?: string
   title: string
+  type: string
 }

@@ -1,6 +1,5 @@
 import { SetState } from 'types'
 
-export type HeaderProps = {
+export type FilmListProps = {
   setRegistrationModal: SetState<boolean>
-  page: string
 }

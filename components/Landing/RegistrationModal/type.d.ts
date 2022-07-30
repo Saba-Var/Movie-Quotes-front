@@ -1,6 +1,6 @@
 import { SetState } from 'types'
 
-export type HeaderProps = {
+export type RegistrationModalProps = {
   setRegistrationModal: SetState<boolean>
-  page: string
+  setShowPopupModal: SetState<boolean>
 }

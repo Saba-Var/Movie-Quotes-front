@@ -1,1 +1,8 @@
 export { default as SelectorArrow } from './SelectorArrow'
+export { default as MiniCloseIcon } from './MiniCloseIcon'
+export { default as CorrectIcon } from './CorrectIcon'
+export { default as GoogleIcon } from './GoogleIcon'
+export { default as ErrorIcon } from './ErrorIcon'
+export { default as ValidIcon } from './ValidIcon'
+export { default as PlanIcon } from './PlanIcon'
+export { default as EyeIcon } from './EyeIcon'

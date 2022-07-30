@@ -4,7 +4,7 @@ import { useHeader } from './useHeader'
 import Link from 'next/link'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page } = props
+  const { page, setRegistrationModal } = props
 
   const { t, showSelector, language, languageChangeHandler, setShowSelector } =
     useHeader()
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
             {showSelector && (
               <div
-                className={`absolute border bg-background border-white py-3 rounded-md gap-1 flex flex-col w-28 justify-center -left-5 top-7 items-center ${
+                className={`absolute animate-dropdown border bg-background border-white py-3 rounded-md gap-1 flex flex-col w-28 justify-center -left-5 top-7 items-center ${
                   language === 'Eng' && '-left-10'
                 }`}
               >
@@ -71,15 +71,25 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page === 'home' && (
             <>
               <Button
+                onClick={() => setRegistrationModal(true)}
                 styles='bg-orange hidden md:block'
                 title={t('common:SignUp')}
+                type='button'
               />
-              <Button styles='border border-white' title={t('common:Log-in')} />
+              <Button
+                styles='border border-white'
+                title={t('common:Log-in')}
+                type='button'
+              />
             </>
           )}
 
           {page !== 'home' && (
-            <Button styles='border border-white' title={t('common:Log-out')} />
+            <Button
+              styles='border border-white'
+              title={t('common:Log-out')}
+              type='button'
+            />
           )}
         </div>
       </div>

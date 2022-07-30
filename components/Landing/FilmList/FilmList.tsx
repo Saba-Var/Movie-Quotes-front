@@ -1,8 +1,11 @@
 import { interstellar, lord, tenenbaums } from 'public'
 import { Button, FilmCover } from 'components'
 import { useFilmList } from './useFilmList'
+import { FilmListProps } from './types.d'
 
-function FilmList() {
+const FilmList: React.FC<FilmListProps> = (props) => {
+  const { setRegistrationModal } = props
+
   const { t, locale } = useFilmList()
 
   return (
@@ -20,8 +23,10 @@ function FilmList() {
             </p>
           </div>
           <Button
+            onClick={() => setRegistrationModal(true)}
             styles='bg-orange px-4 block mx-auto !text-xl'
             title={t('landing:start')}
+            type='button'
           />
         </div>
       </div>

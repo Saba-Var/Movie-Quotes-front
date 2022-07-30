@@ -1,0 +1,40 @@
+{
+  "create": "Create an account",
+  "instruction": "Start your journey!",
+  "have-account": "Already have an account?",
+  "don't-have-account": "Don't have an account?",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "name-reqs": "At least 3 & max.15 lower case characters",
+  "password-reqs": "At least 8 & max.15 lower case characters",
+
+  "lower-required": "Enter numbers and lower case characters",
+  "max-char": "Enter maximum 15 characters",
+
+  "name-required": "Name field is required",
+  "name-min": "Enter at least 3 characters",
+
+  "email-required": "Email field is required",
+  "valid-email": "Please provide a valid email",
+
+  "password-required": "Password field is required",
+  "password-min": "Enter at least 8 characters",
+
+  "password-match": "Password don't match",
+  "confirmPassword-required": "Confirm password field is required",
+
+  "google-sign-up": "Sign up with Google",
+  "google-sign-in": "Sign in with Google",
+
+  "user-exists": "User is already registered",
+
+  "thank": "Thank you!",
+  "check-email": "Please check your email and follow the instructions to activate your account.",
+  "open-email": "Go to my email",
+  "account-activated": "Your account has been activated.",
+  "open-news-feed": "Go to my news feed",
+
+  "account-activation-fail": "Account activation failed"
+}
