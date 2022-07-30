@@ -6,7 +6,9 @@ export const useLanding = () => {
   const [showRegistrationModal, setRegistrationModal] = useState(false)
   const [showActivatedModal, setShowActivatedModal] = useState(false)
   const [showPopupModal, setShowPopupModal] = useState(false)
+  const [activationFail, setActivationFail] = useState(false)
   const [disappear, setDisappear] = useState(false)
+
   const { query } = useRouter()
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export const useLanding = () => {
           }
         }
       } catch (error) {
-        console.log(error)
+        setActivationFail(true)
       }
     }
 
@@ -37,6 +39,8 @@ export const useLanding = () => {
     setRegistrationModal,
     showActivatedModal,
     setShowPopupModal,
+    setActivationFail,
+    activationFail,
     showPopupModal,
     setDisappear,
     disappear,

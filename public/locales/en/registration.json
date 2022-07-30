@@ -34,5 +34,7 @@
   "check-email": "Please check your email and follow the instructions to activate your account.",
   "open-email": "Go to my email",
   "account-activated": "Your account has been activated.",
-  "open-news-feed": "Go to my news feed"
+  "open-news-feed": "Go to my news feed",
+
+  "account-activation-fail": "Account activation failed"
 }

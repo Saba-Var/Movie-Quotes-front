@@ -34,5 +34,7 @@
   "check-email": "შეამოწმეთ ელ-ფოსტა და მიყევით ინსტრუქციას ანგარიშის გასააქტიურებლად.",
   "open-email": "ელ-ფოსტაზე გადასვლა",
   "account-activated": "თქვენი ანგარიში გააქტიურდა.",
-  "open-news-feed": "გადადი news-feed-ზე"
+  "open-news-feed": "გადადი news-feed-ზე",
+
+  "account-activation-fail": "ანგარიში ვერ გააქტიურდა"
 }

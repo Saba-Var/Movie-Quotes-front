@@ -1,7 +1,13 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Header, FilmList, RegistrationModal, Popup } from 'components'
 import type { GetStaticProps } from 'next'
 import { useLanding } from 'hooks'
+import {
+  RegistrationModal,
+  ErrorAlert,
+  FilmList,
+  Header,
+  Popup,
+} from 'components'
 
 const Home = () => {
   const {
@@ -10,7 +16,9 @@ const Home = () => {
     setRegistrationModal,
     showActivatedModal,
     setShowPopupModal,
+    setActivationFail,
     showPopupModal,
+    activationFail,
   } = useLanding()
 
   return (
@@ -28,6 +36,14 @@ const Home = () => {
 
       {showActivatedModal && (
         <Popup type='verified' setShowPopupModal={setShowActivatedModal} />
+      )}
+
+      {activationFail && (
+        <ErrorAlert
+          styles='left-[50%] !-translate-x-1/2'
+          setShowAlert={setActivationFail}
+          title='account-activation-fail'
+        />
       )}
 
       <div

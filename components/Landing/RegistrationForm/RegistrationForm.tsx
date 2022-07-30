@@ -28,7 +28,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
         return (
           <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
             {errorAlert && (
-              <ErrorAlert setShowAlert={setErrorAlert} title='user-exists' />
+              <ErrorAlert
+                setShowAlert={setErrorAlert}
+                title='user-exists'
+                animate={true}
+              />
             )}
 
             <div className='flex flex-col gap-4 mb-8'>
