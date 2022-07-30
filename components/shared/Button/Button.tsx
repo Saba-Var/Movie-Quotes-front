@@ -1,11 +1,11 @@
 import { ButtonType } from './types.d'
 
 const Button: React.FC<ButtonType> = (props) => {
-  const { title, styles } = props
+  const { title, styles, onClick } = props
 
   const clickHandler = () => {
-    if (props.onClick) {
-      props.onClick()
+    if (onClick) {
+      onClick()
     }
   }
 
