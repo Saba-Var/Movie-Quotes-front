@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios'
+import { Status } from 'types'
 import axios from 'services'
 import {
   AccountVerificationToken,
   GoogleUserData,
   NewUserData,
-  Status,
   Token,
 } from './types.d'
 

@@ -1,5 +1,3 @@
-export type Status = { status: number }
-
 export type NewUserData = {
   password: string
   email: string
