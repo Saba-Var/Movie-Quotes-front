@@ -26,6 +26,7 @@ const FilmList: React.FC<FilmListProps> = (props) => {
             onClick={() => setRegistrationModal(true)}
             styles='bg-orange px-4 block mx-auto !text-xl'
             title={t('landing:start')}
+            type='button'
           />
         </div>
       </div>
