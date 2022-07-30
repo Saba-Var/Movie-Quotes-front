@@ -1,11 +1,12 @@
-import { SetRegistrationModal, FormData, setShowPopupModal } from './types.d'
 import { useTranslation } from 'next-i18next'
 import { registerUSer } from 'services'
+import { FormData } from './types.d'
+import { SetState } from 'types'
 import { useState } from 'react'
 
 export const useRegistrationForm = (
-  setRegistrationModal: SetRegistrationModal,
-  setShowPopupModal: setShowPopupModal
+  setRegistrationModal: SetState<boolean>,
+  setShowPopupModal: SetState<boolean>
 ) => {
   const { t } = useTranslation()
 
