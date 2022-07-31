@@ -36,5 +36,8 @@
   "account-activated": "თქვენი ანგარიში გააქტიურდა.",
   "open-news-feed": "გადადი news-feed-ზე",
 
-  "account-activation-fail": "ანგარიში ვერ გააქტიურდა"
+  "account-activation-fail": "ანგარიში ვერ გააქტიურდა",
+
+  "log-into": "შედით ანგარიშში",
+  "forgot-password": "დაგავიწყდა პაროლი"
 }

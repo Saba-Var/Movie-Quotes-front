@@ -6,6 +6,7 @@ import {
   ErrorAlert,
   FilmList,
   Header,
+  LogIn,
   Popup,
 } from 'components'
 
@@ -19,6 +20,8 @@ const Home = () => {
     setActivationFail,
     showPopupModal,
     activationFail,
+    setShowLogIn,
+    showLogIn,
   } = useLanding()
 
   return (
@@ -46,12 +49,18 @@ const Home = () => {
         />
       )}
 
+      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
+
       <div
         className={`${
           (showRegistrationModal || showPopupModal) && 'blur-[6px]'
         }`}
       >
-        <Header setRegistrationModal={setRegistrationModal} page='home' />
+        <Header
+          setRegistrationModal={setRegistrationModal}
+          setShowLogIn={setShowLogIn}
+          page='home'
+        />
         <FilmList setRegistrationModal={setRegistrationModal} />
       </div>
     </div>

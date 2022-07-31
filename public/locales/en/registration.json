@@ -36,5 +36,8 @@
   "account-activated": "Your account has been activated.",
   "open-news-feed": "Go to my news feed",
 
-  "account-activation-fail": "Account activation failed"
+  "account-activation-fail": "Account activation failed",
+
+  "log-into": "Log in to your account",
+  "forgot-password": "Forgot password"
 }

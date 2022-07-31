@@ -8,6 +8,7 @@ export const useLanding = () => {
 
   const [showPopupModal, setShowPopupModal] = useState(false)
   const [activationFail, setActivationFail] = useState(false)
+  const [showLogIn, setShowLogIn] = useState(false)
 
   const [disappear, setDisappear] = useState(false)
 
@@ -45,6 +46,8 @@ export const useLanding = () => {
     activationFail,
     showPopupModal,
     setDisappear,
+    setShowLogIn,
     disappear,
+    showLogIn,
   }
 }
