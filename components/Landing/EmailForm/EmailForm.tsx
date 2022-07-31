@@ -66,7 +66,11 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
                     </p>
 
                     <div className='h-[103px]'>
-                      <AuthInputField type='text' name='email' />
+                      <AuthInputField
+                        placeholder='enter-email'
+                        type='text'
+                        name='email'
+                      />
                     </div>
 
                     <Button

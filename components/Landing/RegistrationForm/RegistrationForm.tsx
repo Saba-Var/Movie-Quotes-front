@@ -36,10 +36,22 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
             )}
 
             <div className='flex flex-col gap-4 mb-8'>
-              <AuthInputField type='text' name='name' />
-              <AuthInputField type='text' name='email' />
-              <AuthInputField type='password' name='password' />
-              <AuthInputField name='confirmPassword' type='password' />
+              <AuthInputField placeholder='name-reqs' type='text' name='name' />
+              <AuthInputField
+                placeholder='enter-email'
+                type='text'
+                name='email'
+              />
+              <AuthInputField
+                placeholder='password-reqs'
+                type='password'
+                name='password'
+              />
+              <AuthInputField
+                placeholder='confirmPassword'
+                name='confirmPassword'
+                type='password'
+              />
             </div>
 
             <div className='flex flex-col gap-4'>

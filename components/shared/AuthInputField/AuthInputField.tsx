@@ -4,6 +4,8 @@ import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
+  const { placeholder } = props
+
   const {
     passwordShowHandler,
     isPasswordField,
@@ -27,11 +29,12 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         <input
           {...field}
           {...props}
-          className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] border ${
+          className={`bg-inputGray pl-3 pr-7 placeholder text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] border ${
             isError && 'border-errorRed'
           } ${isValid && 'border-green'} h-[38px] outline-none`}
           autoComplete='off'
           type={inputType}
+          placeholder={t(`auth:${placeholder}`)}
         />
 
         {isError && (

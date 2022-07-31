@@ -37,12 +37,17 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
 
                     <div className='h-[203px] flex flex-col'>
                       <div className='h-24'>
-                        <AuthInputField type='password' name='password' />
+                        <AuthInputField
+                          placeholder='password-reqs'
+                          type='password'
+                          name='password'
+                        />
                       </div>
                       <div className='h-24'>
                         <AuthInputField
-                          type='password'
+                          placeholder='confirmPassword'
                           name='confirmPassword'
+                          type='password'
                         />
                       </div>
                     </div>
