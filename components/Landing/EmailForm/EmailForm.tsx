@@ -70,7 +70,7 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
                     </div>
 
                     <Button
-                      styles={'bg-orange mx-auto block w-[360px]'}
+                      styles={'bg-orange block w-[360px]'}
                       title={t('auth:send-instructions')}
                       type='submit'
                     />

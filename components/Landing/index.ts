@@ -1,3 +1,4 @@
+export * from './ChangePasswordForm'
 export * from './RegistrationModal'
 export * from './RegistrationForm'
 export * from './FormModalWrapper'

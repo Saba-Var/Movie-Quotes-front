@@ -2,6 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
 import { useLanding } from 'hooks'
 import {
+  ChangePasswordForm,
   RegistrationModal,
   ErrorAlert,
   EmailForm,
@@ -67,6 +68,8 @@ const Home = () => {
       {emailForm && (
         <EmailForm setShowLogIn={setShowLogIn} setModal={setEmailForm} />
       )}
+
+      <ChangePasswordForm setShowLogIn={setShowLogIn} />
 
       <div
         className={`${
