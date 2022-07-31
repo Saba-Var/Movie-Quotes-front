@@ -40,7 +40,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         {isError && (
           <ErrorIcon
             styles={`absolute ${
-              isPasswordField && 'right-9'
+              isPasswordField && 'right-8'
             } right-3 bottom-[11px]`}
           />
         )}
@@ -48,7 +48,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         {isValid && (
           <ValidIcon
             styles={`absolute ${
-              isPasswordField && 'right-8'
+              isPasswordField && 'right-7'
             } right-3 bottom-[9px]`}
           />
         )}
