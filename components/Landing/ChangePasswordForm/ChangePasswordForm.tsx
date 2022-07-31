@@ -1,14 +1,28 @@
-import { FormModalWrapper, AuthInputField, Button } from 'components'
 import { useChangePasswordForm } from './useChangePasswordForm'
 import { ChangePasswordFormProps } from './types.d'
 import { passwordChangeFormSchema } from 'schemas'
 import { Formik, Form } from 'formik'
+import {
+  FormModalWrapper,
+  AuthInputField,
+  ErrorAlert,
+  Button,
+} from 'components'
 
 const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
   const { setShowLogIn } = props
 
-  const { setShowForm, showForm, changedSuccessfully, t } =
-    useChangePasswordForm()
+  const {
+    changedSuccessfully,
+    setUserNotFound,
+    submitHandler,
+    setNotUpdate,
+    userNotFound,
+    setShowForm,
+    notUpdate,
+    showForm,
+    t,
+  } = useChangePasswordForm()
 
   return (
     <>
@@ -16,10 +30,10 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
         <FormModalWrapper
           setCloseModal={setShowForm}
           styles='md:!h-[550px]'
-          top='2.5xl:top-[17%]'
+          top='top-[17%]'
         >
           <Formik
-            onSubmit={() => {}}
+            onSubmit={(data) => submitHandler(data.password)}
             validationSchema={passwordChangeFormSchema}
             initialValues={{ password: '', confirmPassword: '' }}
             validateOnMount={false}
@@ -28,6 +42,22 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
               return (
                 <div>
                   <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
+                    {userNotFound && (
+                      <ErrorAlert
+                        setShowAlert={setUserNotFound}
+                        title='auth:user-not-found'
+                        animate={true}
+                      />
+                    )}
+
+                    {notUpdate && (
+                      <ErrorAlert
+                        setShowAlert={setNotUpdate}
+                        title='auth:password-not-change'
+                        animate={true}
+                      />
+                    )}
+
                     <p className='text-white cursor-default text-[32px] font-Helvetica-Neue-Geo font-medium '>
                       {t('auth:create-new-password')}
                     </p>

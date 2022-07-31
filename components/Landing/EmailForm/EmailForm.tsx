@@ -30,7 +30,7 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
         <FormModalWrapper
           setCloseModal={setModal}
           styles='md:!h-[500px]'
-          top='2.5xl:top-[17%]'
+          top='top-[20%]'
         >
           <Formik
             onSubmit={(data) => submitHandler(data)}

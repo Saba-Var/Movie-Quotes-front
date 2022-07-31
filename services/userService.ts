@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios'
-import { Status } from 'types'
 import axios from 'services'
 import {
   AccountVerificationToken,
   GoogleUserData,
   NewUserData,
+  Status,
   Token,
 } from 'types'
 
@@ -28,4 +28,10 @@ export const activateUserAccount = (
 
 export const verifyEmail = (email: string): Promise<AxiosResponse<Status>> => {
   return axios.get(`/verify-email?email=${email}`)
+}
+
+export const changePassword = (
+  password: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.post('/change-password', { password })
 }
