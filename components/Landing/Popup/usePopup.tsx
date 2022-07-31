@@ -4,7 +4,8 @@ import { SetState } from 'types'
 
 export const usePopup = (
   setShowPopupModal: SetState<boolean>,
-  type: string
+  type: string,
+  setModal: SetState<boolean> | undefined
 ) => {
   const { t } = useTranslation()
 
@@ -12,14 +13,16 @@ export const usePopup = (
 
   const popupCloseHandler = () => {
     setShowPopupModal(false)
+
+    if (setModal) {
+      setModal(false)
+    }
   }
 
-  let info = 'check-email'
   let buttonTitle = 'open-email'
   let actionUri = 'https://mail.google.com/'
 
   if (type !== 'activate') {
-    info = 'account-activated'
     buttonTitle = 'open-news-feed'
     actionUri = `${locale}/news-feed`
   }
@@ -29,7 +32,6 @@ export const usePopup = (
     buttonTitle,
     actionUri,
     locale,
-    info,
     t,
   }
 }

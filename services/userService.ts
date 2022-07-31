@@ -25,3 +25,7 @@ export const activateUserAccount = (
 ): Promise<AxiosResponse<Status>> => {
   return axios.get(`/activate-account?token=${data.token}`)
 }
+
+export const verifyEmail = (email: string): Promise<AxiosResponse<Status>> => {
+  return axios.get(`/verify-email?email=${email}`)
+}

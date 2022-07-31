@@ -37,18 +37,26 @@ const Home = () => {
       )}
 
       {showPopupModal && (
-        <Popup type='activate' setShowPopupModal={setShowPopupModal} />
+        <Popup
+          setShowPopupModal={setShowPopupModal}
+          info='check-email'
+          type='activate'
+        />
       )}
 
       {showActivatedModal && (
-        <Popup type='verified' setShowPopupModal={setShowActivatedModal} />
+        <Popup
+          setShowPopupModal={setShowActivatedModal}
+          info='თქვენი ანგარიში გააქტიურდა.'
+          type='verified'
+        />
       )}
 
       {activationFail && (
         <ErrorAlert
           styles='left-[50%] !-translate-x-1/2'
           setShowAlert={setActivationFail}
-          title='account-activation-fail'
+          title='auth:account-activation-fail'
         />
       )}
 

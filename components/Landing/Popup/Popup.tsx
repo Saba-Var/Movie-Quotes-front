@@ -3,10 +3,13 @@ import { usePopup } from './usePopup'
 import { PopupProps } from './types'
 
 const Popup: React.FC<PopupProps> = (props) => {
-  const { setShowPopupModal, type } = props
+  const { setShowPopupModal, type, info, children, setModal } = props
 
-  const { popupCloseHandler, t, buttonTitle, info, actionUri, locale } =
-    usePopup(setShowPopupModal, type)
+  const { popupCloseHandler, t, buttonTitle, actionUri, locale } = usePopup(
+    setShowPopupModal,
+    type,
+    setModal
+  )
 
   return (
     <div>
@@ -31,7 +34,7 @@ const Popup: React.FC<PopupProps> = (props) => {
               </p>
             </div>
 
-            <div className='flex flex-col justify-between items-center gap-6 md:gap-10'>
+            <div className='flex flex-col relative justify-between items-center gap-6 md:gap-10'>
               <p className='text-center animate-fade-in w-72 md:w-96 text-base text-white font-Helvetica-Neue-Geo'>
                 {t(`auth:${info}`)}
               </p>
@@ -45,6 +48,8 @@ const Popup: React.FC<PopupProps> = (props) => {
               >
                 {t(`auth:${buttonTitle}`)}
               </a>
+
+              {children && children}
             </div>
           </div>
         </div>

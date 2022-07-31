@@ -30,7 +30,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
             {errorAlert && (
               <ErrorAlert
                 setShowAlert={setErrorAlert}
-                title='user-exists'
+                title='auth:user-exists'
                 animate={true}
               />
             )}
