@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 export const useLanding = () => {
   const [showRegistrationModal, setRegistrationModal] = useState(false)
   const [showActivatedModal, setShowActivatedModal] = useState(false)
+  const [emailForm, setEmailForm] = useState(false)
 
   const [showPopupModal, setShowPopupModal] = useState(false)
   const [activationFail, setActivationFail] = useState(false)
@@ -46,7 +47,9 @@ export const useLanding = () => {
     activationFail,
     showPopupModal,
     setDisappear,
+    setEmailForm,
     setShowLogIn,
+    emailForm,
     disappear,
     showLogIn,
   }

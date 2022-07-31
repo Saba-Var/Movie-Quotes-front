@@ -9,9 +9,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
 
   return (
     <AuthFormWrapper
-      instruction={t('registration:instruction')}
+      instruction={t('auth:instruction')}
       setCloseModal={setRegistrationModal}
-      title={t('registration:create')}
+      title={t('auth:create')}
       modalName='registration'
       onClick={() => {}}
     >

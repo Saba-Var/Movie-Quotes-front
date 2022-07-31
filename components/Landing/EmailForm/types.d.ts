@@ -1,6 +1,6 @@
 import { SetState } from 'types'
 
-export type LogInProps = {
+export type EmailFormProps = {
+  setModal: SetState<boolean>
   setShowLogIn: SetState<boolean>
-  setEmailForm: SetState<boolean>
 }

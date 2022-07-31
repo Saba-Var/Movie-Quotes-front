@@ -13,7 +13,7 @@ export const useAuthFormWrapper = (modalName: string) => {
   }
 
   return {
-    question: t(`registration:${question}`),
+    question: t(`auth:${question}`),
     linkName: t(`common:${linkName}`),
   }
 }

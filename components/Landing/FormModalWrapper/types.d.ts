@@ -1,6 +1,8 @@
 import { SetState } from 'types'
 
 export type FormModalWrapperProps = {
-  children: JSX.Element
   setCloseModal: SetState<boolean>
+  children: JSX.Element
+  styles?: string
+  top?: string
 }

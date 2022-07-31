@@ -19,3 +19,7 @@ export const registrationFormValidationSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'password-match')
     .required('confirmPassword-required'),
 })
+
+export const emailFormSchema = Yup.object({
+  email: Yup.string().required('email-required').email('valid-email'),
+})

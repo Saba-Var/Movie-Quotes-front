@@ -48,7 +48,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
                 title={t('landing:start')}
                 type='submit'
               />
-              <GoogleAuthButton title={t('registration:google-sign-up')} />
+              <GoogleAuthButton title={t('auth:google-sign-up')} />
             </div>
           </Form>
         )

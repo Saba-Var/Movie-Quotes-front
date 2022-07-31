@@ -4,6 +4,7 @@ import { useLanding } from 'hooks'
 import {
   RegistrationModal,
   ErrorAlert,
+  EmailForm,
   FilmList,
   Header,
   LogIn,
@@ -21,7 +22,9 @@ const Home = () => {
     showPopupModal,
     activationFail,
     setShowLogIn,
+    setEmailForm,
     showLogIn,
+    emailForm,
   } = useLanding()
 
   return (
@@ -49,7 +52,13 @@ const Home = () => {
         />
       )}
 
-      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
+      {showLogIn && (
+        <LogIn setEmailForm={setEmailForm} setShowLogIn={setShowLogIn} />
+      )}
+
+      {emailForm && (
+        <EmailForm setShowLogIn={setShowLogIn} setModal={setEmailForm} />
+      )}
 
       <div
         className={`${
@@ -72,11 +81,7 @@ export default Home
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, [
-        'common',
-        'landing',
-        'registration',
-      ])),
+      ...(await serverSideTranslations(locale!, ['common', 'landing', 'auth'])),
     },
   }
 }
