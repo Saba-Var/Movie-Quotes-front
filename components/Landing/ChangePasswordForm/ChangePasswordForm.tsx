@@ -115,6 +115,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
               </Formik>
             </FormModalWrapper>
           )}
+
           {changedSuccessfully && (
             <Popup
               loginButtonAction={() => {

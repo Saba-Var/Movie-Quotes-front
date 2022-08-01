@@ -40,16 +40,20 @@ const Home = () => {
       {showPopupModal && (
         <Popup
           setShowPopupModal={setShowPopupModal}
+          buttonTitle='open-email'
           info='check-email'
           type='activate'
+          title='thank'
         />
       )}
 
       {showActivatedModal && (
         <Popup
           setShowPopupModal={setShowActivatedModal}
-          info='თქვენი ანგარიში გააქტიურდა.'
+          buttonTitle='open-news-feed'
+          info='account-activated'
           type='verified'
+          title='thank'
         />
       )}
 

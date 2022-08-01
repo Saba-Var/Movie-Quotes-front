@@ -102,6 +102,8 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
         <Popup
           info='password-recover-instructions'
           setShowPopupModal={setShowLogIn}
+          title='check-your-email'
+          buttonTitle='open-email'
           setModal={setModal}
           type='activate'
         >
