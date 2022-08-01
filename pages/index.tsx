@@ -32,8 +32,9 @@ const Home = () => {
     <div className='overflow-x-hidden'>
       {showRegistrationModal && (
         <RegistrationModal
-          setShowPopupModal={setShowPopupModal}
           setRegistrationModal={setRegistrationModal}
+          setShowPopupModal={setShowPopupModal}
+          setShowLogIn={setShowLogIn}
         />
       )}
 
@@ -66,7 +67,11 @@ const Home = () => {
       )}
 
       {showLogIn && (
-        <LogIn setEmailForm={setEmailForm} setShowLogIn={setShowLogIn} />
+        <LogIn
+          setRegistrationModal={setRegistrationModal}
+          setEmailForm={setEmailForm}
+          setShowLogIn={setShowLogIn}
+        />
       )}
 
       {emailForm && (

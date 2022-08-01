@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 const LogIn: React.FC<LogInProps> = (props) => {
-  const { setShowLogIn, setEmailForm } = props
+  const { setShowLogIn, setEmailForm, setRegistrationModal } = props
   const { t } = useLogIn()
 
   return (
@@ -24,10 +24,10 @@ const LogIn: React.FC<LogInProps> = (props) => {
         </p>
 
         <Formik
-          onSubmit={() => {}}
-          validationSchema={logInFormSchema}
           initialValues={{ email: '', password: '' }}
+          validationSchema={logInFormSchema}
           validateOnMount={false}
+          onSubmit={() => {}}
         >
           {() => {
             return (
@@ -56,7 +56,7 @@ const LogIn: React.FC<LogInProps> = (props) => {
                           type={'checkbox'}
                           className='h-4 w-4 cursor-pointer'
                         />
-                        <span className='text-white font-Helvetica-Neue-Geo font-medium text-base'>
+                        <span className='text-white select-none font-Helvetica-Neue-Geo font-medium text-base'>
                           {t('auth:remember-me')}
                         </span>
                       </label>
@@ -84,7 +84,13 @@ const LogIn: React.FC<LogInProps> = (props) => {
 
                 <p className='text-medGray mt-8 text-center text-base font-Helvetica-Neue-Geo font-medium'>
                   {t("auth:don't-have-account")}
-                  <span className='text-blue pl-1 cursor-pointer hover:scale-110 transition-transform text-base font-medium font-Helvetica-Neue-Geo'>
+                  <span
+                    onClick={() => {
+                      setShowLogIn(false)
+                      setRegistrationModal(true)
+                    }}
+                    className='text-blue pl-1 cursor-pointer hover:scale-110 transition-transform text-base font-medium font-Helvetica-Neue-Geo'
+                  >
                     {t('common:SignUp')}
                   </span>
                 </p>
