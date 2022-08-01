@@ -1,5 +1,5 @@
 import GoogleProvider from 'next-auth/providers/google'
-import { registerGoogleUSer } from 'services'
+import { googleAuth } from 'services'
 import NextAuth from 'next-auth/next'
 
 export default NextAuth({
@@ -31,7 +31,7 @@ export default NextAuth({
 
     async signIn({ account, profile }) {
       try {
-        const { data } = await registerGoogleUSer({
+        const { data } = await googleAuth({
           name: profile.name!,
           email: profile.email!,
         })
@@ -40,6 +40,7 @@ export default NextAuth({
 
         return true
       } catch (error) {
+        console.log(error)
         return false
       }
     },
