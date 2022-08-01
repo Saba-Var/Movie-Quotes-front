@@ -1,12 +1,25 @@
-import { PlanIcon, CorrectIcon } from 'components'
+import { PlanIcon, CorrectIcon, Button } from 'components'
 import { usePopup } from './usePopup'
 import { PopupProps } from './types'
 
 const Popup: React.FC<PopupProps> = (props) => {
-  const { setShowPopupModal, type } = props
+  const {
+    setShowPopupModal,
+    loginButtonAction,
+    buttonTitle,
+    loginButton,
+    children,
+    setModal,
+    title,
+    type,
+    info,
+  } = props
 
-  const { popupCloseHandler, t, buttonTitle, info, actionUri, locale } =
-    usePopup(setShowPopupModal, type)
+  const { popupCloseHandler, t, actionUri, locale } = usePopup(
+    setShowPopupModal,
+    type,
+    setModal
+  )
 
   return (
     <div>
@@ -27,24 +40,39 @@ const Popup: React.FC<PopupProps> = (props) => {
               {type === 'activate' && <PlanIcon />}
               {type !== 'activate' && <CorrectIcon />}
               <p className='text-2xl animate-focus-in-text-expand text-white md:text-[32px] font-Helvetica-Neue-Geo font-medium'>
-                {t('registration:thank')}
+                {t(`auth:${title}`)}
               </p>
             </div>
 
-            <div className='flex flex-col justify-between items-center gap-6 md:gap-10'>
+            <div className='flex flex-col relative justify-between items-center gap-6 md:gap-10'>
               <p className='text-center animate-fade-in w-72 md:w-96 text-base text-white font-Helvetica-Neue-Geo'>
-                {t(`registration:${info}`)}
+                {t(`auth:${info}`)}
               </p>
-              <a
-                className={`bg-orange w-[190px] px-10 ${
-                  locale === 'ge' && 'px-2'
-                } ${
-                  type !== 'activate' && 'w-[200px] px-1'
-                } active:scale-95 py-2 cursor-pointer hover:scale-105 transition-transform rounded font-medium font-Helvetica-Neue-Geo text-center md:w-96 text-white text-base`}
-                href={actionUri}
-              >
-                {t(`registration:${buttonTitle}`)}
-              </a>
+              {!loginButton && (
+                <a
+                  className={`bg-orange w-[190px] px-10 ${
+                    locale === 'ge' && 'px-2'
+                  } ${
+                    type !== 'activate' && 'w-[200px] px-1'
+                  } active:scale-95 py-2 cursor-pointer hover:scale-105 transition-transform rounded font-medium font-Helvetica-Neue-Geo text-center md:w-96 text-white text-base`}
+                  href={actionUri}
+                >
+                  {t(`auth:${buttonTitle}`)}
+                </a>
+              )}
+
+              {loginButton && (
+                <Button
+                  styles={
+                    'mx-auto block w-[360px] bg-orange mt-8 text-white text-base font-medium'
+                  }
+                  title={t(`auth:${buttonTitle}`)}
+                  onClick={loginButtonAction}
+                  type='button'
+                />
+              )}
+
+              {children && children}
             </div>
           </div>
         </div>

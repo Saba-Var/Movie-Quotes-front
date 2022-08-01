@@ -19,3 +19,19 @@ export const registrationFormValidationSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'password-match')
     .required('confirmPassword-required'),
 })
+
+export const emailFormSchema = Yup.object({
+  email: Yup.string().required('email-required').email('valid-email'),
+})
+
+export const passwordChangeFormSchema = Yup.object({
+  password: Yup.string()
+    .required('password-required')
+    .min(8, 'password-min')
+    .max(15, 'max-char')
+    .matches(/^[a-z0-9]+$/g, 'lower-required'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'password-match')
+    .required('confirmPassword-required'),
+})

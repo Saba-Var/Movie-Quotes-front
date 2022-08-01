@@ -30,16 +30,28 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
             {errorAlert && (
               <ErrorAlert
                 setShowAlert={setErrorAlert}
-                title='user-exists'
+                title='auth:user-exists'
                 animate={true}
               />
             )}
 
             <div className='flex flex-col gap-4 mb-8'>
-              <AuthInputField type='text' name='name' />
-              <AuthInputField type='text' name='email' />
-              <AuthInputField type='password' name='password' />
-              <AuthInputField name='confirmPassword' type='password' />
+              <AuthInputField placeholder='name-reqs' type='text' name='name' />
+              <AuthInputField
+                placeholder='enter-email'
+                type='text'
+                name='email'
+              />
+              <AuthInputField
+                placeholder='password-reqs'
+                type='password'
+                name='password'
+              />
+              <AuthInputField
+                placeholder='confirmPassword'
+                name='confirmPassword'
+                type='password'
+              />
             </div>
 
             <div className='flex flex-col gap-4'>
@@ -48,7 +60,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
                 title={t('landing:start')}
                 type='submit'
               />
-              <GoogleAuthButton title={t('registration:google-sign-up')} />
+              <GoogleAuthButton title={t('auth:google-sign-up')} />
             </div>
           </Form>
         )

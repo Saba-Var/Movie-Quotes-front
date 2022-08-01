@@ -2,10 +2,13 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
 import { useLanding } from 'hooks'
 import {
+  ChangePasswordForm,
   RegistrationModal,
   ErrorAlert,
+  EmailForm,
   FilmList,
   Header,
+  LogIn,
   Popup,
 } from 'components'
 
@@ -19,6 +22,10 @@ const Home = () => {
     setActivationFail,
     showPopupModal,
     activationFail,
+    setShowLogIn,
+    setEmailForm,
+    showLogIn,
+    emailForm,
   } = useLanding()
 
   return (
@@ -31,27 +38,53 @@ const Home = () => {
       )}
 
       {showPopupModal && (
-        <Popup type='activate' setShowPopupModal={setShowPopupModal} />
+        <Popup
+          setShowPopupModal={setShowPopupModal}
+          buttonTitle='open-email'
+          info='check-email'
+          type='activate'
+          title='thank'
+        />
       )}
 
       {showActivatedModal && (
-        <Popup type='verified' setShowPopupModal={setShowActivatedModal} />
+        <Popup
+          setShowPopupModal={setShowActivatedModal}
+          buttonTitle='open-news-feed'
+          info='account-activated'
+          type='verified'
+          title='thank'
+        />
       )}
 
       {activationFail && (
         <ErrorAlert
           styles='left-[50%] !-translate-x-1/2'
           setShowAlert={setActivationFail}
-          title='account-activation-fail'
+          title='auth:account-activation-fail'
         />
       )}
+
+      {showLogIn && (
+        <LogIn setEmailForm={setEmailForm} setShowLogIn={setShowLogIn} />
+      )}
+
+      {emailForm && (
+        <EmailForm setShowLogIn={setShowLogIn} setModal={setEmailForm} />
+      )}
+
+      <ChangePasswordForm setShowLogIn={setShowLogIn} />
 
       <div
         className={`${
           (showRegistrationModal || showPopupModal) && 'blur-[6px]'
         }`}
       >
-        <Header setRegistrationModal={setRegistrationModal} page='home' />
+        <Header
+          setRegistrationModal={setRegistrationModal}
+          setShowLogIn={setShowLogIn}
+          page='home'
+        />
         <FilmList setRegistrationModal={setRegistrationModal} />
       </div>
     </div>
@@ -63,11 +96,7 @@ export default Home
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, [
-        'common',
-        'landing',
-        'registration',
-      ])),
+      ...(await serverSideTranslations(locale!, ['common', 'landing', 'auth'])),
     },
   }
 }

@@ -4,7 +4,7 @@ import { useHeader } from './useHeader'
 import Link from 'next/link'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page, setRegistrationModal } = props
+  const { page, setRegistrationModal, setShowLogIn } = props
 
   const { t, showSelector, language, languageChangeHandler, setShowSelector } =
     useHeader()
@@ -77,6 +77,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 type='button'
               />
               <Button
+                onClick={() => setShowLogIn(true)}
                 styles='border border-white'
                 title={t('common:Log-in')}
                 type='button'

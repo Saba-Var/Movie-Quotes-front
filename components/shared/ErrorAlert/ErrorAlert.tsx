@@ -19,9 +19,7 @@ const ErrorAlert: React.FC<ErrorAlertProps> = (props) => {
           <span className='mr-1 md:inline-block hidden  '>
             <ErrorIcon styles='w-6 h-6' />
           </span>
-          <strong className=' font-bold text-red mr-1'>
-            {t(`registration:${title}`)}
-          </strong>
+          <strong className=' font-bold text-red mr-1'>{t(title)}</strong>
 
           <span className='ml-1 inline-block' onClick={clickHandler}>
             <MiniCloseIcon />

@@ -4,6 +4,8 @@ import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
+  const { placeholder } = props
+
   const {
     passwordShowHandler,
     isPasswordField,
@@ -21,7 +23,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           className='text-white text-base font-Helvetica-Neue-Geo font-thin'
           htmlFor={field.name}
         >
-          {t(`registration:${field.name}`)}
+          {t(`auth:${field.name}`)}
           <span className='text-red-500 text-base font-Helvetica-Neue'> *</span>
         </label>
         <input
@@ -32,12 +34,13 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           } ${isValid && 'border-green'} h-[38px] outline-none`}
           autoComplete='off'
           type={inputType}
+          placeholder={t(`auth:${placeholder}`)}
         />
 
         {isError && (
           <ErrorIcon
             styles={`absolute ${
-              isPasswordField && 'right-9'
+              isPasswordField && 'right-8'
             } right-3 bottom-[11px]`}
           />
         )}
@@ -45,7 +48,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         {isValid && (
           <ValidIcon
             styles={`absolute ${
-              isPasswordField && 'right-8'
+              isPasswordField && 'right-7'
             } right-3 bottom-[9px]`}
           />
         )}
@@ -57,7 +60,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
         {(errorMessage) => {
           return (
             <div className='text-errorRed text-sm animate-fade-in'>
-              {t(`registration:${errorMessage}`)}.
+              {t(`auth:${errorMessage}`)}.
             </div>
           )
         }}
