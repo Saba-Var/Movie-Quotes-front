@@ -16,12 +16,6 @@
   font-style: normal;
 }
 
-.placeholder::placeholder {
-  color: '#6C757D';
-  font-weight: 500;
-  font-size: 16px;
-}
-
 .gradient {
   background: linear-gradient(
     90deg,
