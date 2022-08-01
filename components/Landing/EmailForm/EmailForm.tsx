@@ -14,7 +14,6 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
   const {
     setFetchFailed,
     submitHandler,
-    defaultValue,
     setNotFound,
     fetchFailed,
     emailSent,
@@ -35,7 +34,7 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
           <Formik
             onSubmit={(data) => submitHandler(data)}
             validationSchema={emailFormSchema}
-            initialValues={defaultValue}
+            initialValues={{ email: '' }}
             validateOnMount={false}
           >
             {() => {

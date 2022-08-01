@@ -10,8 +10,6 @@ export const useEmailForm = () => {
   const [fetchFailed, setFetchFailed] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
 
-  const defaultValue = { email: '' }
-
   const submitHandler = async (formData: { email: string }) => {
     try {
       const { status } = await verifyEmail(formData.email)
@@ -32,7 +30,6 @@ export const useEmailForm = () => {
     setFetchFailed,
     submitHandler,
     setEmailSent,
-    defaultValue,
     fetchFailed,
     setNotFound,
     emailSent,

@@ -18,7 +18,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
     changedSuccessfully,
     setUserNotFound,
     submitHandler,
-    defaultValues,
     setNotUpdate,
     userNotFound,
     setShowModal,
@@ -42,7 +41,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
               <Formik
                 onSubmit={(data) => submitHandler(data.password)}
                 validationSchema={passwordChangeFormSchema}
-                initialValues={defaultValues}
+                initialValues={{ password: '', confirmPassword: '' }}
                 validateOnMount={false}
               >
                 {() => {

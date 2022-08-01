@@ -19,8 +19,6 @@ export const useChangePasswordForm = () => {
 
   const { t } = useTranslation()
 
-  const defaultValues = { password: '', confirmPassword: '' }
-
   useEffect(() => {
     const { emailVerificationToken } = router.query
 
@@ -53,7 +51,6 @@ export const useChangePasswordForm = () => {
     setChangedSuccessfully,
     changedSuccessfully,
     setUserNotFound,
-    defaultValues,
     submitHandler,
     userNotFound,
     setNotUpdate,
