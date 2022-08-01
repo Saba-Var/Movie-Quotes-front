@@ -14,10 +14,10 @@ export const registerUSer = (
   return axios.post('/register-user', data)
 }
 
-export const registerGoogleUSer = (
+export const googleAuth = (
   data: GoogleUserData
 ): Promise<AxiosResponse<Token>> => {
-  return axios.post('/register-google-user', data)
+  return axios.post('/google-auth', data)
 }
 
 export const activateUserAccount = (
