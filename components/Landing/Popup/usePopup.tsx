@@ -19,17 +19,14 @@ export const usePopup = (
     }
   }
 
-  let buttonTitle = 'open-email'
   let actionUri = 'https://mail.google.com/'
 
   if (type !== 'activate') {
-    buttonTitle = 'open-news-feed'
     actionUri = `${locale}/news-feed`
   }
 
   return {
     popupCloseHandler,
-    buttonTitle,
     actionUri,
     locale,
     t,

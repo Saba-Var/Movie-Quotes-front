@@ -2,8 +2,12 @@ import { SetState } from 'types'
 
 export type PopupProps = {
   setShowPopupModal: SetState<boolean>
-  children?: JSX.Element
+  loginButtonAction?: () => void
   setModal?: SetState<boolean>
+  children?: JSX.Element
+  loginButton?: boolean
+  buttonTitle: string
+  title: string
   type: string
   info: string
 }

@@ -8,8 +8,10 @@ export const useChangePasswordForm = () => {
   const [changedSuccessfully, setChangedSuccessfully] = useState(false)
   const [userNotFound, setUserNotFound] = useState(false)
 
-  const [showForm, setShowForm] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const [notUpdate, setNotUpdate] = useState(false)
+
+  const [showForm, setShowForm] = useState(false)
 
   const [token, setToken] = useState('token')
 
@@ -17,11 +19,14 @@ export const useChangePasswordForm = () => {
 
   const { t } = useTranslation()
 
+  const defaultValues = { password: '', confirmPassword: '' }
+
   useEffect(() => {
     const { emailVerificationToken } = router.query
 
     if (typeof emailVerificationToken === 'string') {
       setToken(emailVerificationToken)
+      setShowModal(true)
       setShowForm(true)
     }
   }, [router.query])
@@ -45,13 +50,17 @@ export const useChangePasswordForm = () => {
   }
 
   return {
+    setChangedSuccessfully,
     changedSuccessfully,
     setUserNotFound,
+    defaultValues,
     submitHandler,
     userNotFound,
     setNotUpdate,
+    setShowModal,
     setShowForm,
     notUpdate,
+    showModal,
     showForm,
     t,
   }
