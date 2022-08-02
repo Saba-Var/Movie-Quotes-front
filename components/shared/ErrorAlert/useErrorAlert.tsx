@@ -2,7 +2,10 @@ import { useTranslation } from 'next-i18next'
 import { SetShowAlert } from './types.d'
 import { useState } from 'react'
 
-export const useErrorAlert = (setShowAlert: SetShowAlert, animate: boolean) => {
+export const useErrorAlert = (
+  setShowAlert: SetShowAlert,
+  animate: boolean | undefined
+) => {
   const [exit, setExit] = useState(false)
   const { t } = useTranslation()
 

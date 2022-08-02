@@ -6,16 +6,53 @@ import {
   GoogleAuthButton,
   FormModalWrapper,
   AuthInputField,
+  ErrorAlert,
   Button,
 } from 'components'
 
 const LogIn: React.FC<LogInProps> = (props) => {
   const { setShowLogIn, setEmailForm, setRegistrationModal } = props
-  const { t } = useLogIn()
+  const {
+    setNotVerified,
+    submitHandler,
+    setAuthError,
+    setNotFound,
+    notVerified,
+    authError,
+    notFound,
+    t,
+  } = useLogIn()
 
   return (
     <FormModalWrapper styles='md:!h-[600px]' setCloseModal={setShowLogIn}>
       <div className='flex animate-focus-in-text-expand flex-col gap-3 justify-center items-center'>
+        {notFound && (
+          <ErrorAlert
+            styles='!top-0 md:!top-[-10%]'
+            title='auth:user-not-found'
+            setShowAlert={setNotFound}
+            animate={true}
+          />
+        )}
+
+        {notVerified && (
+          <ErrorAlert
+            styles='!top-0 md:!top-[-10%]'
+            setShowAlert={setNotVerified}
+            title='auth:not-verified'
+            animate={true}
+          />
+        )}
+
+        {authError && (
+          <ErrorAlert
+            styles='!top-0 md:!top-[-10%]'
+            setShowAlert={setAuthError}
+            title='auth:log-in-failed'
+            animate={true}
+          />
+        )}
+
         <p className='text-white font-Helvetica-Neue-Geo text-2xl font-medium '>
           {t('auth:log-into')}
         </p>
@@ -27,7 +64,7 @@ const LogIn: React.FC<LogInProps> = (props) => {
           initialValues={{ email: '', password: '' }}
           validationSchema={logInFormSchema}
           validateOnMount={false}
-          onSubmit={() => {}}
+          onSubmit={(data) => submitHandler(data)}
         >
           {() => {
             return (
@@ -62,6 +99,7 @@ const LogIn: React.FC<LogInProps> = (props) => {
                       </label>
                     </div>
                   </div>
+
                   <div
                     onClick={() => {
                       setShowLogIn(false)
@@ -102,4 +140,5 @@ const LogIn: React.FC<LogInProps> = (props) => {
     </FormModalWrapper>
   )
 }
+
 export default LogIn

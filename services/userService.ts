@@ -4,6 +4,7 @@ import {
   AccountVerificationToken,
   GoogleUserData,
   NewUserData,
+  LogInData,
   Status,
   Token,
 } from 'types'
@@ -34,4 +35,10 @@ export const changePassword = (
   password: string
 ): Promise<AxiosResponse<Status>> => {
   return axios.post('/change-password', { password })
+}
+
+export const authorization = (
+  data: LogInData
+): Promise<AxiosResponse<Token>> => {
+  return axios.post('/authorization', data)
 }
