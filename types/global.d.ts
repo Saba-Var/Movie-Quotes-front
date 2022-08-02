@@ -22,3 +22,8 @@ export type GoogleUserData = {
 export type Token = {
   token: string
 }
+
+export type LogInData = {
+  password: string
+  email: string
+}

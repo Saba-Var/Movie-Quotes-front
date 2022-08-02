@@ -35,3 +35,8 @@ export const passwordChangeFormSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'password-match')
     .required('confirmPassword-required'),
 })
+
+export const logInFormSchema = Yup.object({
+  email: Yup.string().required('email-required').email('valid-email'),
+  password: Yup.string().trim().required('password-required'),
+})
