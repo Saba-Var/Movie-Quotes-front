@@ -24,7 +24,7 @@ const ErrorPage: React.FC<ErrorPageProps> = (props) => {
         </p>
 
         <Button
-          styles='bg-orange w-[150px] block mx-auto'
+          styles='bg-orange w-fit block mx-auto'
           onClick={clickHandler}
           title={buttonTitle}
           type='button'

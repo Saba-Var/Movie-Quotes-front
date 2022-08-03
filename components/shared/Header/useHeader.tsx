@@ -22,7 +22,7 @@ export const useHeader = () => {
     }
 
     if (session) {
-      signOut({ redirect: false, callbackUrl: callBackUri })
+      signOut({ callbackUrl: callBackUri })
     }
   }
 

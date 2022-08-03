@@ -9,7 +9,7 @@ const NewsFeed = () => {
 
   return (
     <div>
-      <Header page='news-feed'></Header>
+      <Header page='news-feed' />
     </div>
   )
 }
