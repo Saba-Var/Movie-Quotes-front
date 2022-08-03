@@ -19,7 +19,7 @@ export default NewsFeed
 export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ['common', 'landing', 'auth'])),
+      ...(await serverSideTranslations(locale!, ['landing', 'common', 'auth'])),
     },
   }
 }
