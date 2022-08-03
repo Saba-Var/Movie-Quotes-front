@@ -15,6 +15,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const {
     languageChangeHandler,
     setShowSelector,
+    logOutHandler,
     showSelector,
     language,
     router,
@@ -121,6 +122,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
           {page !== 'home' && (
             <Button
+              onClick={() => logOutHandler()}
               styles='hidden md:block border border-white'
               title={t('common:Log-out')}
               type='button'
