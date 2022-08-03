@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       animation: {
         'bounce-in-top': 'bounce-in-top   1.2s ease-in both',
+        flying: 'flying 5s linear  infinite both',
         'bounce-out-top': 'bounce-out-top 1.5s ease both',
         'fade-in': 'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         dropdown: 'dropdown 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -15,7 +16,7 @@ module.exports = {
         'focus-in-text-expand':
           'focus-in-text-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'shake-horizontal':
-          'shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
+          'shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both',
       },
       colors: {
         lightGold: '#DDCCAA',
@@ -44,6 +45,23 @@ module.exports = {
         'bottom-left-center': 'bottom right -14rem',
       },
       keyframes: {
+        flying: {
+          '0%,to': {
+            transform: 'translate(0)',
+          },
+          '20%': {
+            transform: 'translate(-16px, 16px)',
+          },
+          '40%': {
+            transform: 'translate(-16px, -16px)',
+          },
+          '60%': {
+            transform: 'translate(16px, 16px)',
+          },
+          '80%': {
+            transform: 'translate(16px, -16px)',
+          },
+        },
         'fade-in': {
           '0%': {
             opacity: '0',

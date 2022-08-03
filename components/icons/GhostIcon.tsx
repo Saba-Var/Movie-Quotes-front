@@ -1,6 +1,12 @@
 const GhostIcon = () => {
   return (
-    <svg width='122' height='178' viewBox='0 0 122 178' fill='none'>
+    <svg
+      className='animate-flying'
+      viewBox='0 0 122 178'
+      height='178'
+      width='122'
+      fill='none'
+    >
       <path
         fillRule='evenodd'
         clipRule='evenodd'

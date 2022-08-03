@@ -16,10 +16,10 @@ const ErrorPage: React.FC<ErrorPageProps> = (props) => {
           {statusCode === 403 && <WizardIcon />}
         </div>
 
-        <p className='text-white text-center text-2xl mb-4 font-Helvetica-Neue-Geo font-bold'>
+        <p className='text-white cursor-default animate-focus-in-text-expand text-center text-2xl mb-4 font-Helvetica-Neue-Geo font-bold'>
           {alert}
         </p>
-        <p className='text-white mb-8 text-center text-base font-Helvetica-Neue-Geo font-semibold'>
+        <p className='text-white cursor-default animate-focus-in-text-expand mb-8 text-center text-base font-Helvetica-Neue-Geo font-semibold'>
           {alertMessage}
         </p>
 
