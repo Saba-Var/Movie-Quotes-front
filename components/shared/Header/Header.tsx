@@ -1,16 +1,34 @@
-import { Button, SelectorArrow } from 'components'
 import { HeaderProps } from './types.d'
 import { useHeader } from './useHeader'
 import Link from 'next/link'
+import {
+  NotificationIcon,
+  SelectorArrow,
+  SearchIcon,
+  MenuIcon,
+  Button,
+} from 'components'
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { page, setRegistrationModal, setShowLogIn } = props
 
-  const { t, showSelector, language, languageChangeHandler, setShowSelector } =
-    useHeader()
+  const {
+    languageChangeHandler,
+    setShowSelector,
+    showSelector,
+    language,
+    router,
+    t,
+  } = useHeader()
 
   return (
-    <div className='bg-background py-5 px-9 fixed w-screen z-[99]'>
+    <div
+      className={`py-5 px-9 fixed w-screen z-[99] ${
+        page === 'news-feed'
+          ? 'bg-backgroundGray !pt-8 md:!pt-6'
+          : 'bg-background'
+      } h-[86px]`}
+    >
       {showSelector && (
         <div
           onClick={() => setShowSelector(false)}
@@ -26,18 +44,31 @@ const Header: React.FC<HeaderProps> = (props) => {
               behavior: 'smooth',
             })
           }
-          className='text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue'
+          className={`text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue ${
+            page === 'news-feed' && 'hidden md:block'
+          }`}
         >
           MOVIE QUOTES
         </p>
 
+        {page === 'news-feed' && <MenuIcon />}
+
         <div className='flex gap-4 items-center'>
+          {page === 'news-feed' && (
+            <>
+              <NotificationIcon />
+              <SearchIcon />
+            </>
+          )}
+
           <div className='hidden md:block relative z-[9999] mr-5'>
             <div
               className='flex justify-center animate-fade-in items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
             >
-              <p className='text-base text-white cursor-pointer'>{language}</p>
+              <p className='text-base text-white cursor-pointer select-none'>
+                {language}
+              </p>
               <SelectorArrow isSelected={showSelector} />
             </div>
 
@@ -47,7 +78,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   language === 'Eng' && '-left-10'
                 }`}
               >
-                <Link scroll={false} href={'/'} locale={'en'}>
+                <Link scroll={false} href={router.pathname} locale={'en'}>
                   <a
                     onClick={() => languageChangeHandler(t('common:Eng'))}
                     className='text-base text-white hover:scale-110 transition-transform'
@@ -56,7 +87,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   </a>
                 </Link>
 
-                <Link scroll={false} href={'/'} locale={'ge'}>
+                <Link scroll={false} href={router.pathname} locale={'ge'}>
                   <a
                     onClick={() => languageChangeHandler(t('common:Geo'))}
                     className='text-base text-white hover:scale-110 transition-transform'
@@ -71,23 +102,26 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page === 'home' && (
             <>
               <Button
-                onClick={() => setRegistrationModal(true)}
+                onClick={() =>
+                  setRegistrationModal && setRegistrationModal(true)
+                }
                 styles='bg-orange hidden md:block'
                 title={t('common:SignUp')}
                 type='button'
               />
               <Button
-                onClick={() => setShowLogIn(true)}
+                onClick={() => setShowLogIn && setShowLogIn(true)}
                 styles='border border-white'
                 title={t('common:Log-in')}
                 type='button'
               />
             </>
           )}
+          <div className='hidden'></div>
 
           {page !== 'home' && (
             <Button
-              styles='border border-white'
+              styles='hidden md:block border border-white'
               title={t('common:Log-out')}
               type='button'
             />

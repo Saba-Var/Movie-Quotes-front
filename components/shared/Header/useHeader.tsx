@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export const useHeader = () => {
-  const locale = useRouter().locale
+  const router = useRouter()
 
   const [showSelector, setShowSelector] = useState(false)
   const [language, setLanguage] = useState('')
@@ -16,11 +16,18 @@ export const useHeader = () => {
   }
 
   useEffect(() => {
-    if (locale === 'en') {
+    if (router.locale === 'en') {
       return setLanguage(t('common:Eng'))
     }
     setLanguage(t('common:Geo'))
-  }, [locale, t])
+  }, [router.locale, t])
 
-  return { t, showSelector, language, languageChangeHandler, setShowSelector }
+  return {
+    languageChangeHandler,
+    setShowSelector,
+    showSelector,
+    language,
+    router,
+    t,
+  }
 }
