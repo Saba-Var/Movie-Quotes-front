@@ -8,7 +8,7 @@ export const useNewsFeed = () => {
 
   useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {
-      Router.push(`/${router.locale}`)
+      Router.push(`/${router.locale}/unauthorized`)
     }
   }, [router.locale, session, status])
 

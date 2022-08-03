@@ -9,7 +9,7 @@ const NewsFeed = () => {
 
   return (
     <div>
-      <Header page='news-feed'></Header>
+      <Header page='news-feed' />
     </div>
   )
 }
@@ -19,7 +19,7 @@ export default NewsFeed
 export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ['common', 'landing', 'auth'])),
+      ...(await serverSideTranslations(locale!, ['landing', 'common', 'auth'])),
     },
   }
 }
