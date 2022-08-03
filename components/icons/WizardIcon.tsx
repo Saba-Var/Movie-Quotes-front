@@ -1,6 +1,12 @@
 const WizardIcon = () => {
   return (
-    <svg width='345' height='261' viewBox='0 0 345 261' fill='none'>
+    <svg
+      className='animate-slide-in'
+      viewBox='0 0 345 261'
+      width='345'
+      height='261'
+      fill='none'
+    >
       <path
         fillRule='evenodd'
         clipRule='evenodd'
