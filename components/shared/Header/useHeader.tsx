@@ -1,14 +1,30 @@
+import { useSession, signOut } from 'next-auth/react'
+import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 export const useHeader = () => {
-  const locale = useRouter().locale
+  const router = useRouter()
 
   const [showSelector, setShowSelector] = useState(false)
   const [language, setLanguage] = useState('')
 
   const { t } = useTranslation()
+
+  const { data: session } = useSession()
+
+  const logOutHandler = () => {
+    const callBackUri = `/${router.locale}`
+
+    if (localStorage.getItem('token')) {
+      localStorage.removeItem('token')
+      Router.push(callBackUri)
+    }
+
+    if (session) {
+      signOut({ redirect: false, callbackUrl: callBackUri })
+    }
+  }
 
   const languageChangeHandler = (lan: string) => {
     setShowSelector(false)
@@ -16,11 +32,19 @@ export const useHeader = () => {
   }
 
   useEffect(() => {
-    if (locale === 'en') {
+    if (router.locale === 'en') {
       return setLanguage(t('common:Eng'))
     }
     setLanguage(t('common:Geo'))
-  }, [locale, t])
+  }, [router.locale, t])
 
-  return { t, showSelector, language, languageChangeHandler, setShowSelector }
+  return {
+    languageChangeHandler,
+    setShowSelector,
+    logOutHandler,
+    showSelector,
+    language,
+    router,
+    t,
+  }
 }
