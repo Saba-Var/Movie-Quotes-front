@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 export type SetState<T> = Dispatch<SetStateAction<T>>
 
@@ -33,4 +33,10 @@ export type UserData = {
   email: string
   name: string
   _id: string
+}
+
+export type ComponentWithPageLayout = AppProps & {
+  Component: AppProps['Component'] & {
+    PageLayout?: React.ComponentType
+  }
 }

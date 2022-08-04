@@ -4,7 +4,7 @@ export type PopupProps = {
   setShowPopupModal: SetState<boolean>
   loginButtonAction?: () => void
   setModal?: SetState<boolean>
-  children?: JSX.Element
+  children?: React.ReactNode
   loginButton?: boolean
   buttonTitle: string
   title: string

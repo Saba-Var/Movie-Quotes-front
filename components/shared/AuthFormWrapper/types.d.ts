@@ -2,7 +2,7 @@ import { SetState } from 'types'
 
 export type FormWrapperProps = {
   setCloseModal: SetState<boolean>
-  children: JSX.Element
+  children: React.ReactNode
   onClick: () => void
   instruction: string
   modalName: string

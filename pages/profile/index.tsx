@@ -3,12 +3,10 @@ import type { GetStaticProps } from 'next'
 import { Layout } from 'components'
 
 const Profile = () => {
-  return (
-    <Layout>
-      <div className='w-full h-screen bg-gray-600 !block'>News Feed</div>
-    </Layout>
-  )
+  return <div className='w-full h-screen bg-gray-600 !block'>Profile</div>
 }
+
+Profile.PageLayout = Layout
 
 export default Profile
 

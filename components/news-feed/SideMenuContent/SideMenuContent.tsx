@@ -13,8 +13,8 @@ const SideMenuContent = () => {
         {userData.image && (
           <Image
             className='rounded-full'
-            unoptimized={true}
             loader={() => imageSrc}
+            unoptimized={true}
             height={'60px'}
             width={'60px'}
             src={imageSrc}
@@ -25,7 +25,10 @@ const SideMenuContent = () => {
           <div className='text-white font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-base'>
             {userData.name}
           </div>
-          <div className='text-inputGray text-sm cursor-pointer'>
+          <div
+            onClick={() => navigate('profile')}
+            className='text-inputGray text-sm cursor-pointer'
+          >
             {t('side-menu:edit-profile')}
           </div>
         </div>
@@ -35,7 +38,7 @@ const SideMenuContent = () => {
         <p className='text-white mb-10'>{t('side-menu:news-feed')}</p>
       </div>
 
-      <div onClick={() => navigate('profile')} className='cursor-pointer'>
+      <div onClick={() => navigate('movies')} className='cursor-pointer'>
         <p className='text-white'>{t('side-menu:movies-list')}</p>
       </div>
     </div>

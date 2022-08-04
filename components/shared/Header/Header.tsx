@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               behavior: 'smooth',
             })
           }
-          className={`text-lightGold cursor-pointer text-base font-Helvetica-Neue ${
+          className={`text-lightGold animate-fade-in cursor-pointer text-base font-Helvetica-Neue ${
             page === 'news-feed' && 'hidden 1xl:block'
           }`}
         >

@@ -1,12 +1,21 @@
 import { appWithTranslation } from 'next-i18next'
 import { SessionProvider } from 'next-auth/react'
-import type { AppProps } from 'next/app'
+import { ComponentWithPageLayout } from 'types'
 import 'styles/globals.css'
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: ComponentWithPageLayout) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      {Component.PageLayout ? (
+        <Component.PageLayout>
+          <Component {...pageProps} />
+        </Component.PageLayout>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </SessionProvider>
   )
 }
