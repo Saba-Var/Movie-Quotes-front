@@ -29,7 +29,7 @@ export const useNewsFeed = () => {
     } else {
       const fetchUserData = async () => {
         try {
-          let token: string | null = 'token'
+          let token: string | null = ''
 
           if (localStorage?.getItem('token')) {
             token = localStorage?.getItem('token')
