@@ -17,7 +17,13 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
     <div>
       <div className='flex gap-5 1xl:gap-6 items-center mb-10 h-[60px]'>
         {!userData.image && (
-          <div className='text-white'>{userData.name[0]}</div>
+          <p
+            className={`text-white h-[60px] w-[60px] bg-green rounded-full flex justify-center items-center text-3xl pb-1 ${
+              page.includes('profile') && 'border rounded-full border-orange'
+            }`}
+          >
+            {userData.name && String(userData.name[0]).toUpperCase()}
+          </p>
         )}
         {userData.image && (
           <div
