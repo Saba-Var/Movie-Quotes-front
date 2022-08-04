@@ -6,6 +6,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        'slide-in-right':
+          'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        'slide-from-left':
+          'slide-from-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-in':
           'slide-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'bounce-in-top': 'bounce-in-top   1.2s ease-in both',
@@ -37,6 +41,7 @@ module.exports = {
       },
       screens: {
         '2.5xl': '1600px',
+        '1xl': '850px',
       },
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],
@@ -47,6 +52,26 @@ module.exports = {
         'bottom-left-center': 'bottom right -14rem',
       },
       keyframes: {
+        'slide-in-right': {
+          '0%': {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+          to: {
+            transform: 'translateX(-500px)',
+            opacity: '0',
+          },
+        },
+        'slide-from-left': {
+          '0%': {
+            transform: 'translateX(-1000px)',
+            opacity: '0',
+          },
+          to: {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
         'slide-in': {
           '0%': {
             transform: 'translateY(-600px) rotateX(-30deg) scale(0)',

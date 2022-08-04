@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page, setRegistrationModal, setShowLogIn } = props
+  const { page, setRegistrationModal, setShowLogIn, setShowSideMenu } = props
 
   const {
     languageChangeHandler,
@@ -24,9 +24,9 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <div
-      className={`py-5 px-9 fixed w-screen z-[99] ${
+      className={`py-5 px-9  lg:px-[70px] fixed w-screen z-[99] ${
         page === 'news-feed'
-          ? 'bg-backgroundGray !pt-8 md:!pt-6'
+          ? 'bg-backgroundGray !pt-8 1xl:!pt-6'
           : 'bg-background'
       } h-[86px]`}
     >
@@ -46,13 +46,17 @@ const Header: React.FC<HeaderProps> = (props) => {
             })
           }
           className={`text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue ${
-            page === 'news-feed' && 'hidden md:block'
+            page === 'news-feed' && 'hidden 1xl:block'
           }`}
         >
           MOVIE QUOTES
         </p>
 
-        {page === 'news-feed' && <MenuIcon />}
+        {page === 'news-feed' && (
+          <div onClick={() => setShowSideMenu && setShowSideMenu(true)}>
+            <MenuIcon />
+          </div>
+        )}
 
         <div className='flex gap-4 items-center'>
           {page === 'news-feed' && (
@@ -62,7 +66,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             </>
           )}
 
-          <div className='hidden md:block relative z-[9999] mr-5'>
+          <div className='hidden 1xl:block relative z-[9999] mr-5'>
             <div
               className='flex justify-center animate-fade-in items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
@@ -106,7 +110,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 onClick={() =>
                   setRegistrationModal && setRegistrationModal(true)
                 }
-                styles='bg-orange hidden md:block'
+                styles='bg-orange hidden 1xl:block'
                 title={t('common:SignUp')}
                 type='button'
               />
@@ -123,7 +127,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page !== 'home' && (
             <Button
               onClick={() => logOutHandler()}
-              styles='hidden md:block border border-white'
+              styles='hidden 1xl:block border border-white'
               title={t('common:Log-out')}
               type='button'
             />

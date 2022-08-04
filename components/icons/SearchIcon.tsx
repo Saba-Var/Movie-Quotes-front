@@ -1,7 +1,7 @@
 const SearchIcon = () => {
   return (
     <svg
-      className='cursor-pointer md:hidden animate-fade-in'
+      className='cursor-pointer 1xl:hidden animate-fade-in'
       viewBox='0 0 24 24'
       height='24'
       fill='none'

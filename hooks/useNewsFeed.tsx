@@ -1,9 +1,12 @@
 import Router, { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useNewsFeed = () => {
   const { data: session, status } = useSession()
+
+  const [showSideMenu, setShowSideMenu] = useState(false)
+
   const router = useRouter()
 
   useEffect(() => {
@@ -12,5 +15,5 @@ export const useNewsFeed = () => {
     }
   }, [router.locale, session, status])
 
-  return {}
+  return { showSideMenu, setShowSideMenu }
 }
