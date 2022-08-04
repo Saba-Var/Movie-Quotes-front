@@ -6,7 +6,7 @@ const SideMenuContent = () => {
 
   return (
     <div>
-      <div className='flex gap-5 1xl:gap-6 items-center mb-10'>
+      <div className='flex gap-5 1xl:gap-6 items-center mb-10 h-[60px]'>
         {!userData.image && (
           <div className='text-white'>{userData.name[0]}</div>
         )}
