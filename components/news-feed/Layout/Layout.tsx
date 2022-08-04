@@ -1,11 +1,10 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Header, SideMenuWrapper } from 'components'
-import type { GetStaticProps } from 'next'
+import { LayoutProps } from './types.d'
 import { useNewsFeed } from 'hooks'
-import Movies from './movies'
-import React from 'react'
 
-const NewsFeed = () => {
+const Layout: React.FC<LayoutProps> = (props) => {
+  const { children } = props
+
   const { setShowSideMenu, showSideMenu } = useNewsFeed()
 
   return (
@@ -17,19 +16,10 @@ const NewsFeed = () => {
           setShowSideMenu={setShowSideMenu}
           showSideMenu={showSideMenu}
         />
-
-        <Movies />
+        {children}
       </div>
     </div>
   )
 }
 
-export default NewsFeed
-
-export const getServerSideProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale!, ['landing', 'common', 'auth'])),
-    },
-  }
-}
+export default Layout
