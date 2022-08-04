@@ -9,7 +9,7 @@ const Button: React.FC<ButtonType> = (props) => {
 
   return (
     <button
-      className={`text-white relative animate-fade-in text-base px-6 py-2 active:scale-100 transition-transform hover:scale-105 rounded-md ${styles}`}
+      className={`text-white relative text-base px-6 py-2 active:scale-100 transition-transform hover:scale-105 rounded-md ${styles}`}
       onClick={clickHandler}
       type='submit'
     >

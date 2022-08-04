@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               behavior: 'smooth',
             })
           }
-          className={`text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue ${
+          className={`text-lightGold cursor-pointer text-base font-Helvetica-Neue ${
             page === 'news-feed' && 'hidden 1xl:block'
           }`}
         >
@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
           <div className='hidden 1xl:block relative z-[9999] mr-5'>
             <div
-              className='flex justify-center animate-fade-in items-center gap-2 cursor-pointer '
+              className='flex justify-center items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
             >
               <p className='text-base text-white cursor-pointer select-none'>
@@ -114,6 +114,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 title={t('common:SignUp')}
                 type='button'
               />
+
               <Button
                 onClick={() => setShowLogIn && setShowLogIn(true)}
                 styles='border border-white'

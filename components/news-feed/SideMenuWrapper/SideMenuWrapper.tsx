@@ -18,7 +18,7 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
             }`}
           ></div>
           <div
-            className={`text-red-600 w-[240px] ${
+            className={`w-[240px] ${
               showSideMenu &&
               'z-[9999] animate-slide-from-left fixed left-0 top-0 bg-background h-screen w-[85vw]'
             } ${closeMenu && 'animate-slide-in-right'}`}
@@ -28,7 +28,7 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
         </div>
       )}
 
-      <div className='hidden 1xl:block w-[233px] bg-red-500 h-fit'>
+      <div className='hidden 1xl:block  w-[265px] h-fit 1xl:pt-[14px]'>
         <SideMenuContent />
       </div>
     </>

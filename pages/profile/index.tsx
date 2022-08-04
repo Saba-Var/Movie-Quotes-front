@@ -15,7 +15,12 @@ export default Profile
 export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ['landing', 'common', 'auth'])),
+      ...(await serverSideTranslations(locale!, [
+        'side-menu',
+        'landing',
+        'common',
+        'auth',
+      ])),
     },
   }
 }
