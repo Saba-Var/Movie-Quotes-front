@@ -1,5 +1,6 @@
-import { useSideMenu } from './useSideMenu'
 import { SideMenuWrapperProps } from './types'
+import { SideMenuContent } from 'components'
+import { useSideMenu } from './useSideMenu'
 
 const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
   const { setShowSideMenu, showSideMenu } = props
@@ -7,7 +8,7 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
   const { closeHandler, closeMenu } = useSideMenu(setShowSideMenu)
 
   return (
-    <div>
+    <>
       {showSideMenu && (
         <div className={`1xl:hidden overflow-hidden`}>
           <div
@@ -22,11 +23,15 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
               'z-[9999] animate-slide-from-left fixed left-0 top-0 bg-background h-screen w-[75vw]'
             } ${closeMenu && 'animate-slide-in-right'}`}
           >
-            sidemenu
+            <SideMenuContent />
           </div>
         </div>
       )}
-    </div>
+
+      <div className='hidden 1xl:block w-[233px] bg-red-500 h-fit'>
+        <SideMenuContent />
+      </div>
+    </>
   )
 }
 

@@ -27,3 +27,10 @@ export type LogInData = {
   password: string
   email: string
 }
+
+export type UserData = {
+  image?: string
+  email: string
+  name: string
+  _id: string
+}
