@@ -15,6 +15,7 @@ export const useSideMenu = (setShowSideMenu: SetState<boolean>) => {
 
   return {
     closeHandler,
+    setCloseMenu,
     closeMenu,
   }
 }

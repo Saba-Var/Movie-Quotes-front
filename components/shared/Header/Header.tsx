@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <div
-      className={`py-5 px-9  lg:px-[70px] fixed w-screen z-[99] ${
+      className={`py-5 px-9 fixed w-screen z-[99] ${
         page === 'news-feed'
           ? 'bg-backgroundGray !pt-8 1xl:!pt-6'
           : 'bg-background'

@@ -1,8 +1,17 @@
+import { useSideMenuContent } from './useSideMenuContent'
+import { HomeIcon, CameraIcon } from 'components'
+import { SideMenuProps } from './types.d'
 import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
-const SideMenuContent = () => {
-  const { userData, t, imageSrc, navigate } = useNewsFeed()
+const SideMenuContent: React.FC<SideMenuProps> = (props) => {
+  const { setCloseMenu, setShowSideMenu } = props
+  const { userData, t, imageSrc } = useNewsFeed()
+
+  const { closeHandler, page } = useSideMenuContent(
+    setShowSideMenu,
+    setCloseMenu
+  )
 
   return (
     <div>
@@ -11,22 +20,28 @@ const SideMenuContent = () => {
           <div className='text-white'>{userData.name[0]}</div>
         )}
         {userData.image && (
-          <Image
-            className='rounded-full'
-            loader={() => imageSrc}
-            unoptimized={true}
-            height={'60px'}
-            width={'60px'}
-            src={imageSrc}
-            alt='user'
-          />
+          <div
+            className={`h-[60px] w-[60px] ${
+              page.includes('profile') && 'border rounded-full border-orange'
+            }`}
+          >
+            <Image
+              className='rounded-full'
+              loader={() => imageSrc}
+              unoptimized={true}
+              height={'60px'}
+              width={'60px'}
+              src={imageSrc}
+              alt='user'
+            />
+          </div>
         )}
         <div className='flex flex-col'>
           <div className='text-white font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-base'>
             {userData.name}
           </div>
           <div
-            onClick={() => navigate('profile')}
+            onClick={() => closeHandler('profile')}
             className='text-inputGray text-sm cursor-pointer'
           >
             {t('side-menu:edit-profile')}
@@ -34,12 +49,26 @@ const SideMenuContent = () => {
         </div>
       </div>
 
-      <div onClick={() => navigate('news-feed')} className='cursor-pointer'>
-        <p className='text-white mb-10'>{t('side-menu:news-feed')}</p>
-      </div>
+      <div className='pl-3'>
+        <div
+          onClick={() => closeHandler('news-feed')}
+          className='cursor-pointer flex gap-12'
+        >
+          <HomeIcon isSelected={page.includes('news-feed')} />
+          <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl mb-10'>
+            {t('side-menu:news-feed')}
+          </p>
+        </div>
 
-      <div onClick={() => navigate('movies')} className='cursor-pointer'>
-        <p className='text-white'>{t('side-menu:movies-list')}</p>
+        <div
+          onClick={() => closeHandler('movies')}
+          className='cursor-pointer flex gap-12'
+        >
+          <CameraIcon isSelected={page.includes('movies')} />
+          <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl'>
+            {t('side-menu:movies-list')}
+          </p>
+        </div>
       </div>
     </div>
   )

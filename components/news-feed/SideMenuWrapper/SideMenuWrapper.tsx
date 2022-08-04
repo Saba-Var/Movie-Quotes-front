@@ -5,7 +5,7 @@ import { useSideMenu } from './useSideMenu'
 const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
   const { setShowSideMenu, showSideMenu } = props
 
-  const { closeHandler, closeMenu } = useSideMenu(setShowSideMenu)
+  const { closeHandler, closeMenu, setCloseMenu } = useSideMenu(setShowSideMenu)
 
   return (
     <>
@@ -23,13 +23,19 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
               'z-[9999] animate-slide-from-left fixed left-0 top-0 bg-background h-screen w-[85vw]'
             } ${closeMenu && 'animate-slide-in-right'}`}
           >
-            <SideMenuContent />
+            <SideMenuContent
+              setShowSideMenu={setShowSideMenu}
+              setCloseMenu={setCloseMenu}
+            />
           </div>
         </div>
       )}
 
-      <div className='hidden 1xl:block  w-[265px] 1xl:pt-[14px]'>
-        <SideMenuContent />
+      <div className='hidden 1xl:block w-[330px] 1xl:pt-[14px]'>
+        <SideMenuContent
+          setShowSideMenu={setShowSideMenu}
+          setCloseMenu={setCloseMenu}
+        />
       </div>
     </>
   )
