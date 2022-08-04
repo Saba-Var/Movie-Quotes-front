@@ -44,7 +44,5 @@ export const useNewsFeed = () => {
     }
   }, [router.locale, session, status])
 
-  console.log(userData)
-
   return { showSideMenu, setShowSideMenu, userData }
 }

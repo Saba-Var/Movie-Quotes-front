@@ -2,6 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Header, SideMenuWrapper } from 'components'
 import type { GetStaticProps } from 'next'
 import { useNewsFeed } from 'hooks'
+import Movies from './movies'
 import React from 'react'
 
 const NewsFeed = () => {
@@ -17,7 +18,7 @@ const NewsFeed = () => {
           showSideMenu={showSideMenu}
         />
 
-        <div className='w-full h-screen bg-gray-600 !block'>saba</div>
+        <Movies />
       </div>
     </div>
   )

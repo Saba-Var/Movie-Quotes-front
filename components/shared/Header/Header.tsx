@@ -61,8 +61,8 @@ const Header: React.FC<HeaderProps> = (props) => {
         <div className='flex gap-4 items-center'>
           {page === 'news-feed' && (
             <>
-              <NotificationIcon />
               <SearchIcon />
+              <NotificationIcon />
             </>
           )}
 
