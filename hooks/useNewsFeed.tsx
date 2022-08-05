@@ -11,6 +11,9 @@ export const useNewsFeed = () => {
   const { t } = useTranslation()
 
   const [showSideMenu, setShowSideMenu] = useState(false)
+
+  const [userDataFail, setUserDataFail] = useState(false)
+
   const [userData, setUserData] = useState<UserData>({
     email: '',
     name: '',
@@ -43,7 +46,7 @@ export const useNewsFeed = () => {
             setUserData(data)
           }
         } catch (error: any) {
-          console.log(error)
+          setUserDataFail(true)
         }
       }
 
@@ -53,5 +56,14 @@ export const useNewsFeed = () => {
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
-  return { showSideMenu, setShowSideMenu, userData, imageSrc, t, navigate }
+  return {
+    setUserDataFail,
+    setShowSideMenu,
+    showSideMenu,
+    userDataFail,
+    userData,
+    imageSrc,
+    navigate,
+    t,
+  }
 }
