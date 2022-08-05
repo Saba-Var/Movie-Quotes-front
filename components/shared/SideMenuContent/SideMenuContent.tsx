@@ -1,6 +1,6 @@
 import { useSideMenuContent } from './useSideMenuContent'
 import { HomeIcon, CameraIcon } from 'components'
-import { SideMenuProps } from './types.d'
+import { SideMenuProps } from './types'
 import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
@@ -43,7 +43,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
           </div>
         )}
         <div className='flex flex-col'>
-          <div className='text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-base'>
+          <div className='text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl'>
             {userData.name}
           </div>
           <div

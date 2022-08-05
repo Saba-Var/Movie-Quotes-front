@@ -13,3 +13,7 @@ export type EyeIconProps = {
 export type SelectedIcon = {
   isSelected: boolean
 }
+
+export type SearchIconProps = {
+  styles?: string
+}

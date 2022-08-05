@@ -1,7 +1,11 @@
-const SearchIcon = () => {
+import { SearchIconProps } from './types.d'
+
+const SearchIcon: React.FC<SearchIconProps> = (props) => {
+  const { styles } = props
+
   return (
     <svg
-      className='cursor-pointer 1xl:hidden animate-fade-in'
+      className={`cursor-pointer 1xl:hidden animate-fade-in ${styles}`}
       viewBox='0 0 24 24'
       height='24'
       fill='none'
