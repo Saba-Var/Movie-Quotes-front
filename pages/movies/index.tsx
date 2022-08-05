@@ -10,10 +10,10 @@ const Movies = () => {
     <div className='w-full h-screen !block pt-[25px]'>
       <div className='flex justify-between items-center'>
         <div className='1xl:flex-row 1xl:gap-3 flex flex-col animate-focus-in-text-expand'>
-          <p className='text-white text-2xl font-Helvetica-Neue-Geo font-medium'>
+          <p className='text-white cursor-default text-2xl font-Helvetica-Neue-Geo font-medium'>
             {t('movies:movies-list')}
           </p>
-          <p className='text-white text-base 1xl:text-2xl font-Helvetica-Neue-Geo font-medium'>
+          <p className='text-white text-base cursor-default 1xl:text-2xl font-Helvetica-Neue-Geo font-medium'>
             {`(${t('movies:total')} 0)`}
           </p>
         </div>

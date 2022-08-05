@@ -43,19 +43,19 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
           </div>
         )}
         <div className='flex flex-col'>
-          <div className='text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl'>
+          <div className='text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl animate-focus-in-text-expand'>
             {userData.name}
           </div>
           <div
             onClick={() => closeHandler('profile')}
-            className='text-inputGray text-sm cursor-pointer hover:scale-105 transition-transform'
+            className='text-inputGray animate-focus-in-text-expand text-sm cursor-pointer hover:scale-105 transition-transform'
           >
             {t('side-menu:edit-profile')}
           </div>
         </div>
       </div>
 
-      <div className='pl-3 flex flex-col gap-10'>
+      <div className='pl-3 flex flex-col gap-10 animate-focus-in-text-expand'>
         <div
           onClick={() => closeHandler('news-feed')}
           className='cursor-pointer flex gap-12 hover:scale-105 transition-transform'
