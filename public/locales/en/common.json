@@ -12,5 +12,6 @@
   "enter-english": "Enter English characters",
   "upload-image": "Upload image file",
   "drag-drop-image": "Drag & drop your image here or",
-  "choose-file": "Choose file"
+  "choose-file": "Choose file",
+  "budget-min": "You can't Enter less than 0"
 }

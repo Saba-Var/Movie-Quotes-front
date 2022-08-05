@@ -43,9 +43,11 @@ export const logInFormSchema = Yup.object({
 })
 
 export const addMovieFormSchema = Yup.object({
+  budget: Yup.number().required('required-field').min(0, 'budget-min'),
+
   movie_name_en: Yup.string()
     .trim()
-    .required('required-georgian')
+    .required('required-field')
     .test('input text validation', 'enter-english', function (value) {
       const { path, createError } = this
       return languageValidation({

@@ -1,5 +1,5 @@
 export type AddTextInputProps = {
-  language: 'Eng' | 'ქარ'
+  language?: 'Eng' | 'ქარ'
   placeholder: string
   name: string
 }

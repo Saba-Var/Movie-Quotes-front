@@ -16,12 +16,13 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
       <Formik
         validationSchema={addMovieFormSchema}
         initialValues={{
+          movie_description_en: '',
+          movie_description_ge: '',
           movie_name_en: '',
           movie_name_ge: '',
           director_en: '',
           director_ge: '',
-          movie_description_en: '',
-          movie_description_ge: '',
+          budget: '',
         }}
         validateOnMount={false}
         onSubmit={() => {}}
@@ -35,11 +36,14 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                   name='movie_name_en'
                   language='Eng'
                 />
+
                 <AddTextInput
                   placeholder='ფილმის სახელი'
                   name='movie_name_ge'
                   language='ქარ'
                 />
+
+                <AddTextInput placeholder={t('movies:budget')} name='budget' />
 
                 {/* Categories */}
 
