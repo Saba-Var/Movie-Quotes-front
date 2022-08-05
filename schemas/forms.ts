@@ -40,3 +40,10 @@ export const logInFormSchema = Yup.object({
   email: Yup.string().required('email-required').email('valid-email'),
   password: Yup.string().trim().required('password-required'),
 })
+
+export const addMovieFormSchema = Yup.object({
+  movie_name_ge: Yup.string().trim().required('required-field'),
+  movie_name_en: Yup.string().trim().required('required-field'),
+  director_en: Yup.string().trim().required('required-field'),
+  director_ge: Yup.string().trim().required('required-field'),
+})

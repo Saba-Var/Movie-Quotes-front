@@ -1,1 +1,1 @@
-export { default as AddMovieForm } from './AddMovieForm'
+export * from './AddMovieForm'
