@@ -13,7 +13,7 @@ export const useSideMenuContent = (
   const closeHandler = (uri: string) => {
     setCloseMenu(true)
 
-    Router.push(`${router.locale}/${uri}`)
+    Router.push(`/${router.locale}/${uri}`)
 
     setTimeout(() => {
       setShowSideMenu(false)

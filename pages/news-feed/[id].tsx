@@ -1,21 +1,18 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import { Layout } from 'components'
-import Link from 'next/link'
 
-const Movies = () => {
-  return (
-    <div className='w-full h-screen bg-gray-600 !block'>
-      <Link href={'/en/movies/123'}>
-        <a>Movie 123</a>
-      </Link>
-    </div>
-  )
+const Quote = () => {
+  const { query } = useRouter()
+  const movieId = query.id
+
+  return <div className='w-full h-screen bg-gray-600 !block'>{movieId}</div>
 }
 
-Movies.PageLayout = Layout
+Quote.PageLayout = Layout
 
-export default Movies
+export default Quote
 
 export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   return {
