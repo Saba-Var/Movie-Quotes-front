@@ -29,7 +29,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
         {() => {
           return (
             <Form>
-              <div className='flex flex-col gap-6 xl:gap-8'>
+              <div className='flex flex-col gap-4 xl:gap-7'>
                 <AddTextInput
                   placeholder='Movie name'
                   name='movie_name_en'
@@ -55,19 +55,17 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                   language='ქარ'
                 />
 
-                <div className='mb-9 flex flex-col gap-[70px]'>
-                  <TextAreaInput
-                    placeholder='Movie description'
-                    name='movie_description_en'
-                    language='Eng'
-                  />
+                <TextAreaInput
+                  placeholder='Movie description'
+                  name='movie_description_en'
+                  language='Eng'
+                />
 
-                  <TextAreaInput
-                    placeholder='ფილმის აღწერა'
-                    name='movie_description_ge'
-                    language='ქარ'
-                  />
-                </div>
+                <TextAreaInput
+                  placeholder='ფილმის აღწერა'
+                  name='movie_description_ge'
+                  language='ქარ'
+                />
 
                 <Button
                   styles='bg-orange !hover:scale-105 xl:text-xl'

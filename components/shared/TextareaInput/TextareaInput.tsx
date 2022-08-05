@@ -9,12 +9,12 @@ const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
   const { field, isError, isValid, t } = useAddTextInput(props)
 
   return (
-    <div className='flex flex-col animate-fade-in h-11'>
+    <div className='flex flex-col animate-fade-in h-[57px] 2xl:h-20'>
       <div className='flex flex-col relative w-full'>
         <textarea
           {...field}
           {...props}
-          className={`!bg-transparent border-gray-500 resize-none h-14 xl:h-[85px] pl-3 pr-7 !outline-none text-white text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
+          className={`!bg-transparent border-gray-500 resize-none h-14 xl:h-[75px] pl-3 pr-7 !outline-none text-white 2xl:text-xl  text-base  font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
           } ${isValid && 'border-green'} outline-none `}
           autoComplete='off'
@@ -25,7 +25,7 @@ const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
         {isValid && <ValidIcon styles={`absolute right-16 top-[15px]`} />}
 
         {
-          <p className='absolute cursor-default select-none right-3 top-[9px] text-medGray text-xl'>
+          <p className='absolute cursor-default select-none right-3 top-[9px] text-medGray text-base 2xl:text-xl'>
             {language}
           </p>
         }
