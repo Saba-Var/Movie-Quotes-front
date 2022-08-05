@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        'fold-out': 'fold-out 0.45s ease   both',
         'slide-in-right':
           'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-from-left':
@@ -26,7 +27,7 @@ module.exports = {
       },
       colors: {
         lightGold: '#DDCCAA',
-        background: '#11101A',
+        background: '#181623',
         darkBlue: '#181623',
         orange: '#E31221',
         lightGray: '#D9D9D9',
@@ -38,6 +39,7 @@ module.exports = {
         green: '#198754',
         blue: '#0D6EFD',
         backgroundGray: '#24222f',
+        formModalBlue: '#18141c',
       },
       screens: {
         '2.5xl': '1600px',
@@ -52,6 +54,19 @@ module.exports = {
         'bottom-left-center': 'bottom right -14rem',
       },
       keyframes: {
+        'fold-out': {
+          '0%': {
+            transform: 'translateZ(-800px) rotateY(90deg)',
+            opacity: '0',
+          },
+          '54%': {
+            transform: 'translateZ(-160px) rotateY(87deg)',
+            opacity: '1',
+          },
+          to: {
+            transform: 'translateZ(0) rotateY(0)',
+          },
+        },
         'slide-in-right': {
           '0%': {
             transform: 'translateX(0)',

@@ -1,5 +1,5 @@
 import { useEmailForm } from './useEmailForm'
-import { EmailFormProps } from './types.d'
+import { EmailFormProps } from './types'
 import { emailFormSchema } from 'schemas'
 import { Formik, Form } from 'formik'
 import {

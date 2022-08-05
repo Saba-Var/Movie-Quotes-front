@@ -1,7 +1,7 @@
 import { interstellar, lord, tenenbaums } from 'public'
 import { Button, FilmCover } from 'components'
 import { useFilmList } from './useFilmList'
-import { FilmListProps } from './types.d'
+import { FilmListProps } from './types'
 
 const FilmList: React.FC<FilmListProps> = (props) => {
   const { setRegistrationModal } = props

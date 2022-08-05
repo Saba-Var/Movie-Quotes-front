@@ -1,6 +1,6 @@
 import { AuthFormWrapper, RegistrationForm } from 'components'
 import { useRegistrationModal } from './useRegistrationModal'
-import { RegistrationModalProps } from './type.d'
+import { RegistrationModalProps } from './type'
 
 const RegistrationModal: React.FC<RegistrationModalProps> = (props) => {
   const { setRegistrationModal, setShowPopupModal, setShowLogIn } = props

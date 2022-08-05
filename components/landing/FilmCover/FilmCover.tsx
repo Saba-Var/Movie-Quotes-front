@@ -1,4 +1,4 @@
-import { FilmCoverProps } from './types.d'
+import { FilmCoverProps } from './types'
 
 const FilmCover: React.FC<FilmCoverProps> = (props) => {
   const { src, info, quote, positionRight } = props

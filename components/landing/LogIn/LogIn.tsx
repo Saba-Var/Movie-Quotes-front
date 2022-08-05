@@ -1,5 +1,5 @@
 import { logInFormSchema } from 'schemas'
-import { LogInProps } from './types.d'
+import { LogInProps } from './types'
 import { useLogIn } from './useLogIn'
 import { Formik, Form } from 'formik'
 import {

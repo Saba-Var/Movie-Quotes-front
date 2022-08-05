@@ -1,5 +1,5 @@
 import { useChangePasswordForm } from './useChangePasswordForm'
-import { ChangePasswordFormProps } from './types.d'
+import { ChangePasswordFormProps } from './types'
 import { passwordChangeFormSchema } from 'schemas'
 import { Formik, Form } from 'formik'
 import {

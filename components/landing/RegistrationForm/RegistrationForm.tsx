@@ -1,6 +1,6 @@
 import { useRegistrationForm } from './useRegistrationForm'
 import { registrationFormValidationSchema } from 'schemas'
-import { RegistrationFormProps } from './types.d'
+import { RegistrationFormProps } from './types'
 import { Formik, Form } from 'formik'
 import {
   GoogleAuthButton,

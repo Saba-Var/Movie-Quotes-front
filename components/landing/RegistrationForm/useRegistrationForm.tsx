@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { registerUSer } from 'services'
-import { FormData } from './types.d'
+import { FormData } from './types'
 import { SetState } from 'types'
 import { useState } from 'react'
 

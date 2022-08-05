@@ -1,7 +1,10 @@
 import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
 
 export const useMovies = () => {
   const { t } = useTranslation()
 
-  return { t }
+  const [showAddMovieForm, setShowAddMovieForm] = useState(false)
+
+  return { t, showAddMovieForm, setShowAddMovieForm }
 }

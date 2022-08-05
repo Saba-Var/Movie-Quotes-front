@@ -1,4 +1,4 @@
-import { FormModalWrapperProps } from './types.d'
+import { FormModalWrapperProps } from './types'
 
 const FormModalWrapper: React.FC<FormModalWrapperProps> = (props) => {
   const { children, setCloseModal, styles, top } = props
