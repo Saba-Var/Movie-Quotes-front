@@ -4,26 +4,34 @@ import { AddTextInputProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AddTextInput: React.FC<AddTextInputProps> = (props) => {
-  const { language, placeholder, page } = props
+  const { language, placeholder } = props
 
   const { field, isError, isValid, t } = useAddTextInput(props)
 
   return (
-    <div className='flex flex-col gap-1 animate-fade-in'>
-      <div className='flex flex-col gap-2 relative'>
+    <div className='flex flex-col animate-fade-in h-11'>
+      <div className='flex flex-col relative w-full'>
         <input
           {...field}
           {...props}
-          className={`bg-inputGray pl-3 pr-7 !outline-none text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] border ${
+          className={`!bg-transparent border-gray-500 pl-3 pr-7 !outline-none text-white text-base font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
-          } ${isValid && 'border-green'} h-[38px] outline- none`}
+          } ${
+            isValid && 'border-green'
+          } h-[48px] outline- none placeholder-orange-500`}
           autoComplete='off'
           type='text'
-          placeholder={t(`${page}:${placeholder}`)}
+          placeholder={placeholder}
         />
 
-        {isError && <ErrorIcon styles={`absolute  right-3 bottom-[11px]`} />}
-        {isValid && <ValidIcon styles={`absolute right-3 bottom-[9px]`} />}
+        {isError && <ErrorIcon styles={`absolute right-16 bottom-[16px]`} />}
+        {isValid && <ValidIcon styles={`absolute right-16 bottom-[15px]`} />}
+
+        {
+          <p className='absolute cursor-default select-none right-3 bottom-[9px] text-medGray text-xl'>
+            {language}
+          </p>
+        }
       </div>
 
       <ErrorMessage name={field.name}>

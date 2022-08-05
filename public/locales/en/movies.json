@@ -1,8 +1,5 @@
 {
   "movies-list": "My list of movies",
   "add-movie": "Add movie",
-  "total": "Total",
-  "movie-name": "Movie Name",
-  "director": "Director",
-  "movie-description": "Movie description"
+  "total": "Total"
 }

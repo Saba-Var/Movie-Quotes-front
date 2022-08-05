@@ -1,3 +1,4 @@
+import { languageValidation } from 'helpers'
 import * as Yup from 'yup'
 
 export const registrationFormValidationSchema = Yup.object({
@@ -42,8 +43,55 @@ export const logInFormSchema = Yup.object({
 })
 
 export const addMovieFormSchema = Yup.object({
-  movie_name_ge: Yup.string().trim().required('required-field'),
-  movie_name_en: Yup.string().trim().required('required-field'),
-  director_en: Yup.string().trim().required('required-field'),
-  director_ge: Yup.string().trim().required('required-field'),
+  movie_name_en: Yup.string()
+    .trim()
+    .required('required-georgian')
+    .test('georgian text', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  movie_name_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('georgian text', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  director_en: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('georgian text', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  director_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('georgian text', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
 })
