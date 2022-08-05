@@ -33,7 +33,7 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
         </div>
       )}
 
-      <div className='hidden 1xl:block w-[330px] 1xl:pt-[14px]'>
+      <div className='hidden fixed 1xl:block w-[330px] 1xl:pt-[14px]'>
         <SideMenuContent
           setShowSideMenu={setShowSideMenu}
           setCloseMenu={setCloseMenu}
