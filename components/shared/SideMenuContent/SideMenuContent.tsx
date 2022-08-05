@@ -48,27 +48,27 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
           </div>
           <div
             onClick={() => closeHandler('profile')}
-            className='text-inputGray text-sm cursor-pointer'
+            className='text-inputGray text-sm cursor-pointer hover:scale-105 transition-transform'
           >
             {t('side-menu:edit-profile')}
           </div>
         </div>
       </div>
 
-      <div className='pl-3'>
+      <div className='pl-3 flex flex-col gap-10'>
         <div
           onClick={() => closeHandler('news-feed')}
-          className='cursor-pointer flex gap-12'
+          className='cursor-pointer flex gap-12 hover:scale-105 transition-transform'
         >
           <HomeIcon isSelected={page.includes('news-feed')} />
-          <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl mb-10'>
+          <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl'>
             {t('side-menu:news-feed')}
           </p>
         </div>
 
         <div
           onClick={() => closeHandler('movies')}
-          className='cursor-pointer flex gap-12'
+          className='cursor-pointer flex gap-12 hover:scale-105 transition-transform'
         >
           <CameraIcon isSelected={page.includes('movies')} />
           <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl'>
