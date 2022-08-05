@@ -23,10 +23,10 @@ const Movies = () => {
             </p>
           </div>
 
-          <div className='hidden 1xl:block animate-fade-in'>
+          <div className='animate-fade-in'>
             <div className='flex gap-7 items-center'>
               <div className='flex cursor-pointer items-center gap-3 xl:gap-4'>
-                <SearchIcon styles='xl:!block' />
+                <SearchIcon styles='hidden xl:!block' />
                 <p className='hidden xl:block animate-fade-in text-base lg:text-xl text-inputGray font-Helvetica-Neue-Geo font-medium'>
                   {t('common:search')}
                 </p>
