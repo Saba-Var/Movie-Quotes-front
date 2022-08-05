@@ -1,4 +1,4 @@
-import { FormWrapper, AddTextInput } from 'components'
+import { FormWrapper, AddTextInput, Button } from 'components'
 import { useAddMovieForm } from './useAddMovieForm'
 import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
@@ -58,12 +58,11 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
 
                 {/* Image picker */}
 
-                <button
+                <Button
+                  styles='bg-orange !hover:scale-105 xl:text-xl'
+                  title={t('movies:add-movie')}
                   type='submit'
-                  className='text-white hover:scale-105 active:scale-100 transition-transform'
-                >
-                  {t('movie:add-movie')}
-                </button>
+                />
               </div>
             </Form>
           )

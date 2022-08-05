@@ -48,7 +48,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
                 />
               </div>
             )}
-            <p className='text-white font-Helvetica-Neue-Geo text-xl'>
+            <p className='text-white animate-focus-in-text-expand font-Helvetica-Neue-Geo text-xl'>
               {userData.name}
             </p>
           </div>

@@ -16,9 +16,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
           {...props}
           className={`!bg-transparent border-gray-500 pl-3 pr-7 !outline-none text-white text-base font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
-          } ${
-            isValid && 'border-green'
-          } h-[48px] outline- none placeholder-orange-500`}
+          } ${isValid && 'border-green'} h-[48px] outline-none `}
           autoComplete='off'
           type='text'
           placeholder={placeholder}
