@@ -46,7 +46,7 @@ export const addMovieFormSchema = Yup.object({
   movie_name_en: Yup.string()
     .trim()
     .required('required-georgian')
-    .test('georgian text', 'enter-english', function (value) {
+    .test('input text validation', 'enter-english', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'ENG',
@@ -59,7 +59,7 @@ export const addMovieFormSchema = Yup.object({
   movie_name_ge: Yup.string()
     .trim()
     .required('required-field')
-    .test('georgian text', 'enter-georgian', function (value) {
+    .test('input text validation', 'enter-georgian', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'GEO',
@@ -72,7 +72,7 @@ export const addMovieFormSchema = Yup.object({
   director_en: Yup.string()
     .trim()
     .required('required-field')
-    .test('georgian text', 'enter-english', function (value) {
+    .test('input text validation', 'enter-english', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'ENG',
@@ -85,7 +85,33 @@ export const addMovieFormSchema = Yup.object({
   director_ge: Yup.string()
     .trim()
     .required('required-field')
-    .test('georgian text', 'enter-georgian', function (value) {
+    .test('input text validation', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  movie_description_en: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  movie_description_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-georgian', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'GEO',

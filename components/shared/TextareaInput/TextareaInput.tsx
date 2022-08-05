@@ -1,9 +1,9 @@
-import { useAddTextInput } from './useAddTextInput'
+import { useAddTextInput } from './useTextAreaInput'
 import { ErrorIcon, ValidIcon } from 'components'
-import { AddTextInputProps } from './types.d'
+import { TextAreaInputProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
-const AddTextInput: React.FC<AddTextInputProps> = (props) => {
+const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
   const { language, placeholder } = props
 
   const { field, isError, isValid, t } = useAddTextInput(props)
@@ -11,22 +11,21 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
   return (
     <div className='flex flex-col animate-fade-in h-11'>
       <div className='flex flex-col relative w-full'>
-        <input
+        <textarea
           {...field}
           {...props}
-          className={`!bg-transparent border-gray-500 pl-3 pr-7 !outline-none text-white text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
+          className={`!bg-transparent border-gray-500 resize-none h-14 xl:h-[85px] pl-3 pr-7 !outline-none text-white text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
-          } ${isValid && 'border-green'} h-[48px] outline-none `}
+          } ${isValid && 'border-green'} outline-none `}
           autoComplete='off'
-          type='text'
           placeholder={placeholder}
-        />
+        ></textarea>
 
-        {isError && <ErrorIcon styles={`absolute right-16 bottom-[16px]`} />}
-        {isValid && <ValidIcon styles={`absolute right-16 bottom-[15px]`} />}
+        {isError && <ErrorIcon styles={`absolute right-16 top-[16px]`} />}
+        {isValid && <ValidIcon styles={`absolute right-16 top-[15px]`} />}
 
         {
-          <p className='absolute cursor-default select-none right-3 bottom-[9px] text-medGray text-xl'>
+          <p className='absolute cursor-default select-none right-3 top-[9px] text-medGray text-xl'>
             {language}
           </p>
         }
@@ -45,4 +44,4 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
   )
 }
 
-export default AddTextInput
+export default TextAreaInput

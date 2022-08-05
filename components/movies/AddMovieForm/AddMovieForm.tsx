@@ -1,4 +1,4 @@
-import { FormWrapper, AddTextInput, Button } from 'components'
+import { FormWrapper, AddTextInput, Button, TextAreaInput } from 'components'
 import { useAddMovieForm } from './useAddMovieForm'
 import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
@@ -20,6 +20,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
           movie_name_ge: '',
           director_en: '',
           director_ge: '',
+          movie_description_en: '',
+          movie_description_ge: '',
         }}
         validateOnMount={false}
         onSubmit={() => {}}
@@ -53,10 +55,19 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                   language='ქარ'
                 />
 
-                {/* Movie Description EN */}
-                {/* Movie Description GE */}
+                <div className='mb-9 flex flex-col gap-[70px]'>
+                  <TextAreaInput
+                    placeholder='Movie description'
+                    name='movie_description_en'
+                    language='Eng'
+                  />
 
-                {/* Image picker */}
+                  <TextAreaInput
+                    placeholder='ფილმის აღწერა'
+                    name='movie_description_ge'
+                    language='ქარ'
+                  />
+                </div>
 
                 <Button
                   styles='bg-orange !hover:scale-105 xl:text-xl'
