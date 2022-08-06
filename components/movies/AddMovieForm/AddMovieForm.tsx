@@ -37,7 +37,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
         {() => {
           return (
             <Form>
-              <div className='flex flex-col gap-4 xl:gap-7'>
+              <div className='flex flex-col gap-4 2xl:gap-5'>
                 <AddTextInput
                   placeholder='Movie name'
                   name='movie_name_en'
@@ -53,6 +53,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                 <AddTextInput placeholder={t('movies:budget')} name='budget' />
 
                 {/* Categories */}
+
+                <div className='w-full bg-red-500 h-[45px]'></div>
 
                 <AddTextInput
                   placeholder='Director'

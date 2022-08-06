@@ -11,7 +11,7 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
     useImageDragAndDrop(setEmptyFIleError, setFile, emptyFileError)
 
   return (
-    <div className='flex flex-col relative h-[80px]'>
+    <div className='flex flex-col relative h-[74px]'>
       <div className='hidden 1xl:block'>
         <FileUploader
           types={['JPG', 'PNG', 'GIF', 'JPEG', 'SVG']}
@@ -41,11 +41,11 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
           <PhotoIcon />
           <p className='text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
             {t('common:upload-image')}
-          </p>{' '}
+          </p>
           <label>
-            <span className='bg-purple p-2 ml-2 text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
+            <p className='bg-purple  p-2 ml-2 text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
               {t('common:choose-file')}
-            </span>
+            </p>
             <input type='file' onChange={fileChangeHandler} />
           </label>
         </div>
@@ -66,7 +66,7 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
 
       {typeError && (
         <ErrorAlert
-          styles='left-[35%] 1xl:left-[52%] 2xl:!left-[38%]'
+          styles='left-[35%] 1xl:left-[44%] 2xl:!left-[45%]'
           title='common:upload-only-image'
           setShowAlert={setTypeError}
           animate={true}
