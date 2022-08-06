@@ -1,4 +1,5 @@
 export * from './GoogleAuthButton'
+export * from './ImageDragAndDrop'
 export * from './AuthFormWrapper'
 export * from './SideMenuContent'
 export * from './SideMenuWrapper'

@@ -1,12 +1,18 @@
-import { FormWrapper, AddTextInput, Button, TextAreaInput } from 'components'
 import { useAddMovieForm } from './useAddMovieForm'
 import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
 import { Form, Formik } from 'formik'
+import {
+  ImageDragAndDrop,
+  TextAreaInput,
+  AddTextInput,
+  FormWrapper,
+  Button,
+} from 'components'
 
 const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
-  const { t } = useAddMovieForm()
+  const { t, file, setFile } = useAddMovieForm()
 
   return (
     <FormWrapper
@@ -27,7 +33,9 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
         validateOnMount={false}
         onSubmit={() => {}}
       >
-        {() => {
+        {(data) => {
+          console.log(data.submitCount)
+
           return (
             <Form>
               <div className='flex flex-col gap-4 xl:gap-7'>
@@ -70,6 +78,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                   name='movie_description_ge'
                   language='ქარ'
                 />
+
+                <ImageDragAndDrop file={file} setFile={setFile} />
 
                 <Button
                   styles='bg-orange !hover:scale-105 xl:text-xl'

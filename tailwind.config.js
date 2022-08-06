@@ -40,6 +40,7 @@ module.exports = {
         blue: '#0D6EFD',
         backgroundGray: '#24222f',
         formModalBlue: '#18141c',
+        purple: '#482474',
       },
       screens: {
         '2.5xl': '1600px',

@@ -12,10 +12,10 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
     <div>
       <div
         onClick={() => setShowForm(false)}
-        className='fixed w-full h-screen bg-background opacity-70 top-[86px] z-[9]'
+        className='fixed w-full h-screen bg-background opacity-60 left-0  top-0 z-[99999]'
       ></div>
 
-      <div className='fixed right-0 top-0 w-screen z-[999] animate-fade-in !rounded-[12px] bg-formModalBlue 1xl:top-24 1xl:left-[35%] pb-6 1xl:w-[550px] lg:!w-[700px] xl:!w-[961px] lg:right-[5%] h-fit 2xl:!left-[-3%] 2xl:translate-x-1/2 xl:!left-[27%]'>
+      <div className='fixed right-0 top-0 1xl:top-4 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue  1xl:left-[35%] pb-6 1xl:w-[550px] lg:!w-[700px] xl:!w-[961px] lg:right-[5%] h-fit 2xl:!left-[-3%] 2xl:translate-x-1/2 xl:!left-[27%]'>
         <div className='h-[70px] relative border-b border-b-gray-600 w-full flex justify-center items-center'>
           <p className='text-center animate-focus-in-text-expand text-2xl text-white font-Helvetica-Neue-Geo font-medium'>
             {title}
@@ -52,7 +52,6 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
               {userData.name}
             </p>
           </div>
-
           {children}
         </div>
       </div>
