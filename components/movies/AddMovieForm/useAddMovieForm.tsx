@@ -6,5 +6,7 @@ export const useAddMovieForm = () => {
 
   const [file, setFile] = useState<File | null>(null)
 
-  return { t, file, setFile }
+  const [emptyFileError, setEmptyFIleError] = useState(false)
+
+  return { t, file, setFile, emptyFileError, setEmptyFIleError }
 }

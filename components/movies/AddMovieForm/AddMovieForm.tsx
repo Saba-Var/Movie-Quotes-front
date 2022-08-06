@@ -12,7 +12,8 @@ import {
 
 const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
-  const { t, file, setFile } = useAddMovieForm()
+  const { t, file, setFile, emptyFileError, setEmptyFIleError } =
+    useAddMovieForm()
 
   return (
     <FormWrapper
@@ -33,9 +34,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
         validateOnMount={false}
         onSubmit={() => {}}
       >
-        {(data) => {
-          console.log(data.submitCount)
-
+        {() => {
           return (
             <Form>
               <div className='flex flex-col gap-4 xl:gap-7'>
@@ -79,9 +78,19 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                   language='ქარ'
                 />
 
-                <ImageDragAndDrop file={file} setFile={setFile} />
+                <ImageDragAndDrop
+                  setEmptyFIleError={setEmptyFIleError}
+                  emptyFileError={emptyFileError}
+                  setFile={setFile}
+                  file={file}
+                />
 
                 <Button
+                  onClick={() => {
+                    if (!file) {
+                      setEmptyFIleError(true)
+                    }
+                  }}
                   styles='bg-orange !hover:scale-105 xl:text-xl'
                   title={t('movies:add-movie')}
                   type='submit'

@@ -1,32 +1,14 @@
 import { useImageDragAndDrop } from './useImageDragAndDrop'
 import { FileUploader } from 'react-drag-drop-files'
+import { PhotoIcon, ErrorAlert } from 'components'
 import { ImageDragAndDropProps } from './types.d'
-import { PhotoIcon } from 'components'
-import { useState } from 'react'
 import Image from 'next/image'
 
 const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
-  const [typeError, setTypeError] = useState(false)
-  const { file, setFile } = props
+  const { file, setFile, emptyFileError, setEmptyFIleError } = props
 
-  const handleChange = (file: File) => {
-    setFile(file)
-    if (typeError) {
-      setTypeError(false)
-    }
-  }
-
-  const { t } = useImageDragAndDrop()
-
-  const fileChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0].type.includes('image/')) {
-      setFile(e.target.files[0])
-
-      if (typeError) {
-        setTypeError(false)
-      }
-    }
-  }
+  const { t, fileChangeHandler, handleChange, setTypeError, typeError } =
+    useImageDragAndDrop(setEmptyFIleError, setFile, emptyFileError)
 
   return (
     <div className='flex flex-col relative h-[80px]'>
@@ -40,7 +22,7 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
         >
           <div
             className={`pl-3 h-[70px] flex gap-2 items-center w-full text-white border border-gray-600 rounded ${
-              typeError && 'border-red-500'
+              emptyFileError && 'border-red-500'
             } `}
           >
             <PhotoIcon />
@@ -80,8 +62,19 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
         </div>
       )}
 
+      <div className='-left-1/2 2x'></div>
+
       {typeError && (
-        <p className='text-sm text-red-500'>{t('common:upload-only-image')}</p>
+        <ErrorAlert
+          styles='left-[35%] 1xl:left-[52%] 2xl:!left-[38%]'
+          title='common:upload-only-image'
+          setShowAlert={setTypeError}
+          animate={true}
+        />
+      )}
+
+      {emptyFileError && (
+        <p className='text-sm text-red-500'>{t('common:upload-image')}</p>
       )}
     </div>
   )
