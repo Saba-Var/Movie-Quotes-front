@@ -3,9 +3,10 @@
   "add-movie": "Add movie",
   "total": "Total",
   "budget": "Budget",
-  "genres-fetch-fail": "Film genres fetch failed",
-  "film-genres": "Film Genres",
 
+  "genres-fetch-fail": "Film genres fetch failed",
+  "genre-not-found": "Genre not found",
+  "film-genres": "Film Genres",
   "Adventure": "Adventure",
   "Musicals": "Musicals",
   "Romance": "Romance",

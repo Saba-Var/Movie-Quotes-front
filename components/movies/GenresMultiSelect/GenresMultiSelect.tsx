@@ -9,6 +9,7 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
 
   return (
     <Select
+      noOptionsMessage={() => t('movies:genre-not-found')}
       placeholder={t('movies:film-genres')}
       closeMenuOnSelect={false}
       isSearchable={true}

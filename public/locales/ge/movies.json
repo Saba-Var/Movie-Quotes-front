@@ -3,9 +3,10 @@
   "add-movie": "დაამატე ფილმი",
   "total": "სულ",
   "budget": "ბიუჯეტი",
-  "genres-fetch-fail": "ფილმის ჯანრები ვერ ჩაიტვირთა",
-  "film-genres": "ფილმის ჟანრები",
 
+  "genres-fetch-fail": "ფილმის ჯანრები ვერ ჩაიტვირთა",
+  "genre-not-found": "ჟანრი ვერ მოიძებნა",
+  "film-genres": "ფილმის ჟანრები",
   "Adventure": "სათავგადასავლო",
   "Musicals": "მიუზიკლი",
   "Romance": "რომანი",
