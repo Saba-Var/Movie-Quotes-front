@@ -37,12 +37,12 @@ export type UserData = {
 
 export type FilmGenres = string[]
 
-export type SelectedOptions =
-  | {
-      value: string
-      label: string
-    }[]
-  | unknown
+type Unknown = unknown
+
+export type SelectedOptions = {
+  value: string
+  label: string
+}[]
 
 export type ComponentWithPageLayout = AppProps & {
   Component: AppProps['Component'] & {

@@ -16,10 +16,12 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
   const {
     setGenresFetchError,
+    setGenreNotSelected,
     setSelectedOptions,
+    emptyInputHandler,
     setEmptyFIleError,
     genresFetchError,
-    emptyFileHandler,
+    genreNotSelected,
     emptyFileError,
     filmGenres,
     setFile,
@@ -73,7 +75,9 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                 <AddTextInput placeholder={t('movies:budget')} name='budget' />
 
                 <GenresMultiSelect
+                  setGenreNotSelected={setGenreNotSelected}
                   setSelectedOptions={setSelectedOptions}
+                  genreNotSelected={genreNotSelected}
                   filmGenres={filmGenres}
                 />
 
@@ -111,7 +115,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                 <Button
                   styles='bg-orange !hover:scale-105 xl:text-xl'
                   title={t('movies:add-movie')}
-                  onClick={emptyFileHandler}
+                  onClick={emptyInputHandler}
                   type='submit'
                 />
               </div>

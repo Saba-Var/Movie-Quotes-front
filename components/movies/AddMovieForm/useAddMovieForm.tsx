@@ -16,7 +16,19 @@ export const useAddMovieForm = () => {
   const [genresFetchError, setGenresFetchError] = useState(false)
   const [emptyFileError, setEmptyFIleError] = useState(false)
 
-  const emptyFileHandler = () => {
+  const [genreNotSelected, setGenreNotSelected] = useState(false)
+
+  const emptyInputHandler = () => {
+    const emptyValue = selectedOptions.find((genre) => genre.value === '')
+
+    if (typeof selectedOptions === 'undefined') {
+      setGenreNotSelected(true)
+    }
+
+    if (emptyValue || (!emptyValue && selectedOptions.length === 0)) {
+      setGenreNotSelected(true)
+    }
+
     if (!file) {
       setEmptyFIleError(true)
     }
@@ -40,10 +52,12 @@ export const useAddMovieForm = () => {
 
   return {
     setGenresFetchError,
+    setGenreNotSelected,
     setSelectedOptions,
     setEmptyFIleError,
     genresFetchError,
-    emptyFileHandler,
+    emptyInputHandler,
+    genreNotSelected,
     selectedOptions,
     emptyFileError,
     filmGenres,
