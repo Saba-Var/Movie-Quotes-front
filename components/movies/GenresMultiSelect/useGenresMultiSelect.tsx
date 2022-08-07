@@ -7,7 +7,7 @@ export const useGenresMultiSelect = (filmGenres: FilmGenres) => {
   const options = [{}]
 
   filmGenres.forEach((genre) => {
-    options.push({ value: genre, label: genre })
+    options.push({ value: genre, label: t(`movies:${genre}`) })
   })
 
   options.shift()

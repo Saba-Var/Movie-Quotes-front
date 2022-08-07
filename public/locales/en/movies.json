@@ -4,5 +4,16 @@
   "total": "Total",
   "budget": "Budget",
   "genres-fetch-fail": "Film genres fetch failed",
-  "film-genres": "Film Genres"
+  "film-genres": "Film Genres",
+
+  "Adventure": "Adventure",
+  "Musicals": "Musicals",
+  "Romance": "Romance",
+  "Fantasy": "Fantasy",
+  "Mystery": "Mystery",
+  "Action": "Action",
+  "Comedy": "Comedy",
+  "Horror": "Horror",
+  "Sports": "Sports",
+  "Drama": "Drama"
 }

@@ -12,7 +12,7 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
       placeholder={t('movies:film-genres')}
       closeMenuOnSelect={false}
       isSearchable={true}
-      isClearable={true}
+      isClearable={false}
       options={options}
       isMulti
       onChange={(item) => {
