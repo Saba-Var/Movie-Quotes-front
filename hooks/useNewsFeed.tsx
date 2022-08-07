@@ -3,6 +3,7 @@ import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { getToken } from 'helpers'
 import { UserData } from 'types'
 
 export const useNewsFeed = () => {
@@ -32,13 +33,7 @@ export const useNewsFeed = () => {
     } else {
       const fetchUserData = async () => {
         try {
-          let token: string | null = ''
-
-          if (localStorage?.getItem('token')) {
-            token = localStorage?.getItem('token')
-          } else if (typeof session?.accessToken === 'string') {
-            token = session.accessToken
-          }
+          const token = getToken(session)
 
           if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
