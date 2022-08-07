@@ -1,7 +1,7 @@
 import { useAddMovieForm } from './useAddMovieForm'
+import { Form, Formik } from 'formik'
 import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
-import { Form, Formik } from 'formik'
 import {
   GenresMultiSelect,
   ImageDragAndDrop,
@@ -15,15 +15,19 @@ import {
 const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
   const {
+    setExistingMovieErr,
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,
     emptyInputHandler,
     setEmptyFIleError,
     genresFetchError,
+    existingMovieErr,
     genreNotSelected,
     emptyFileError,
+    setFilmAddErr,
     submitHandler,
+    filmAddErr,
     filmGenres,
     setFile,
     file,
@@ -58,6 +62,22 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                     setShowAlert={setGenresFetchError}
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
                     title='movies:genres-fetch-fail'
+                  />
+                )}
+
+                {existingMovieErr && (
+                  <ErrorAlert
+                    setShowAlert={setExistingMovieErr}
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='movies:movie-exists'
+                  />
+                )}
+
+                {filmAddErr && (
+                  <ErrorAlert
+                    setShowAlert={setFilmAddErr}
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='movies:movie-add-err'
                   />
                 )}
 

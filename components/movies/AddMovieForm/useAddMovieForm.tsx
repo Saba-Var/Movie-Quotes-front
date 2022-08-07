@@ -6,29 +6,26 @@ import { useEffect, useState } from 'react'
 import { getToken } from 'helpers'
 
 export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
-  const { t } = useTranslation()
-  const { data: session } = useSession()
-
+  const [genresFetchError, setGenresFetchError] = useState(false)
+  const [genreNotSelected, setGenreNotSelected] = useState(false)
+  const [existingMovieErr, setExistingMovieErr] = useState(false)
+  const [emptyFileError, setEmptyFIleError] = useState(false)
+  const [filmAddErr, setFilmAddErr] = useState(false)
+  const [file, setFile] = useState<File | null>(null)
+  const [filmGenres, setFilmGenres] = useState([''])
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>([
     { value: '', label: '' },
   ])
-
-  const [filmGenres, setFilmGenres] = useState([''])
-  const [file, setFile] = useState<File | null>(null)
-
-  const [genresFetchError, setGenresFetchError] = useState(false)
-  const [emptyFileError, setEmptyFIleError] = useState(false)
-
-  const [genreNotSelected, setGenreNotSelected] = useState(false)
+  const { data: session } = useSession()
+  const { t } = useTranslation()
 
   const emptyInputHandler = () => {
     const emptyValue = selectedOptions.find((genre) => genre.value === '')
-
-    if (typeof selectedOptions === 'undefined') {
-      setGenreNotSelected(true)
-    }
-
-    if (emptyValue || (!emptyValue && selectedOptions.length === 0)) {
+    if (
+      emptyValue ||
+      (!emptyValue && selectedOptions.length === 0) ||
+      typeof selectedOptions === 'undefined'
+    ) {
       setGenreNotSelected(true)
     }
 
@@ -67,44 +64,50 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
           'emptyInputHandlertion'
         ] = `Bearer ${token}`
 
-        if (token) {
-          const response = await addNewMovie({
-            ...data,
-            film_genres: selectedGenres,
-          })
+        const response = await addNewMovie({
+          ...data,
+          film_genres: selectedGenres,
+        })
 
-          if (response.status === 201) {
-            const formData = new FormData()
+        if (response.status === 201) {
+          const formData = new FormData()
 
-            if (file) {
-              formData.append('id', response.data.movieId)
-              formData.append('image', file)
-            }
+          if (file) {
+            formData.append('id', response.data.movieId)
+            formData.append('image', file)
+          }
 
-            const { status } = await imageUpload('movie', formData)
+          const { status } = await imageUpload('movie', formData)
 
-            if (status === 201) {
-              setShowAddMovieForm(false)
-            }
+          if (status === 201) {
+            // setShowAddMovieForm(false)
           }
         }
       }
-    } catch (error) {
-      console.log(error)
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setExistingMovieErr(true)
+      } else {
+        setFilmAddErr(true)
+      }
     }
   }
 
   return {
+    setExistingMovieErr,
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,
     setEmptyFIleError,
-    genresFetchError,
     emptyInputHandler,
+    existingMovieErr,
+    genresFetchError,
     genreNotSelected,
     selectedOptions,
     emptyFileError,
+    setFilmAddErr,
     submitHandler,
+    filmAddErr,
     filmGenres,
     setFile,
     file,
