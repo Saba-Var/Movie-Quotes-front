@@ -3,6 +3,7 @@ import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
 import { Form, Formik } from 'formik'
 import {
+  GenresMultiSelect,
   ImageDragAndDrop,
   TextAreaInput,
   AddTextInput,
@@ -15,6 +16,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
   const {
     setGenresFetchError,
+    setSelectedOptions,
     setEmptyFIleError,
     genresFetchError,
     emptyFileHandler,
@@ -70,9 +72,10 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
 
                 <AddTextInput placeholder={t('movies:budget')} name='budget' />
 
-                {/* Categories */}
-
-                <div className='w-full bg-red-500 h-[45px]'>{filmGenres}</div>
+                <GenresMultiSelect
+                  setSelectedOptions={setSelectedOptions}
+                  filmGenres={filmGenres}
+                />
 
                 <AddTextInput
                   placeholder='Director'

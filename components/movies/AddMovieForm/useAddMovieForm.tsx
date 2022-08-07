@@ -1,9 +1,14 @@
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import { SelectedOptions } from './types.d'
 import { getFilmGenres } from 'services'
 
 export const useAddMovieForm = () => {
   const { t } = useTranslation()
+
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>([
+    { value: '', label: '' },
+  ])
 
   const [filmGenres, setFilmGenres] = useState([''])
   const [file, setFile] = useState<File | null>(null)
@@ -35,9 +40,11 @@ export const useAddMovieForm = () => {
 
   return {
     setGenresFetchError,
+    setSelectedOptions,
     setEmptyFIleError,
     genresFetchError,
     emptyFileHandler,
+    selectedOptions,
     emptyFileError,
     filmGenres,
     setFile,
