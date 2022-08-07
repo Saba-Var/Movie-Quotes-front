@@ -35,6 +35,8 @@ export type UserData = {
   _id: string
 }
 
+export type FilmGenres = string[]
+
 export type ComponentWithPageLayout = AppProps & {
   Component: AppProps['Component'] & {
     PageLayout?: React.ComponentType

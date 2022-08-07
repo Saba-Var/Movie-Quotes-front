@@ -2,5 +2,6 @@
   "movies-list": "My list of movies",
   "add-movie": "Add movie",
   "total": "Total",
-  "budget": "Budget"
+  "budget": "Budget",
+  "genres-fetch-fail": "Film genres fetch failed"
 }

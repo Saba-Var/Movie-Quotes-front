@@ -7,13 +7,23 @@ import {
   TextAreaInput,
   AddTextInput,
   FormWrapper,
+  ErrorAlert,
   Button,
 } from 'components'
 
 const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
-  const { t, file, setFile, emptyFileError, setEmptyFIleError } =
-    useAddMovieForm()
+  const {
+    setGenresFetchError,
+    setEmptyFIleError,
+    genresFetchError,
+    emptyFileHandler,
+    emptyFileError,
+    filmGenres,
+    setFile,
+    file,
+    t,
+  } = useAddMovieForm()
 
   return (
     <FormWrapper
@@ -38,6 +48,14 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
           return (
             <Form>
               <div className='flex flex-col gap-4 2xl:gap-5'>
+                {genresFetchError && (
+                  <ErrorAlert
+                    setShowAlert={setGenresFetchError}
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='movies:genres-fetch-fail'
+                  />
+                )}
+
                 <AddTextInput
                   placeholder='Movie name'
                   name='movie_name_en'
@@ -54,7 +72,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
 
                 {/* Categories */}
 
-                <div className='w-full bg-red-500 h-[45px]'></div>
+                <div className='w-full bg-red-500 h-[45px]'>{filmGenres}</div>
 
                 <AddTextInput
                   placeholder='Director'
@@ -88,13 +106,9 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                 />
 
                 <Button
-                  onClick={() => {
-                    if (!file) {
-                      setEmptyFIleError(true)
-                    }
-                  }}
                   styles='bg-orange !hover:scale-105 xl:text-xl'
                   title={t('movies:add-movie')}
+                  onClick={emptyFileHandler}
                   type='submit'
                 />
               </div>
