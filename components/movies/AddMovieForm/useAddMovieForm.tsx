@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
-import { SelectedOptions } from './types.d'
 import { getFilmGenres } from 'services'
+import { SelectedOptions } from 'types'
 
 export const useAddMovieForm = () => {
   const { t } = useTranslation()

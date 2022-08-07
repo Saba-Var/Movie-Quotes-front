@@ -1,7 +1,7 @@
+import { SetState, SelectedOptions } from 'types'
 import { FilmGenres } from 'types'
-import { SetState } from 'types'
 
 export type GenresMultiSelectProps = {
-  setSelectedOptions: SetState<unknown | {}[]>
+  setSelectedOptions: SetState<unknown | SelectedOptions>
   filmGenres: FilmGenres
 }

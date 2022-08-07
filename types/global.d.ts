@@ -37,6 +37,13 @@ export type UserData = {
 
 export type FilmGenres = string[]
 
+export type SelectedOptions =
+  | {
+      value: string
+      label: string
+    }[]
+  | unknown
+
 export type ComponentWithPageLayout = AppProps & {
   Component: AppProps['Component'] & {
     PageLayout?: React.ComponentType

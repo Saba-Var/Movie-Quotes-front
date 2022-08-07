@@ -3,5 +3,6 @@
   "add-movie": "Add movie",
   "total": "Total",
   "budget": "Budget",
-  "genres-fetch-fail": "Film genres fetch failed"
+  "genres-fetch-fail": "Film genres fetch failed",
+  "film-genres": "Film Genres"
 }
