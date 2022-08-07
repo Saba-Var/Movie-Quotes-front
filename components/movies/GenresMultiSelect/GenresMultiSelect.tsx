@@ -5,7 +5,7 @@ import Select from 'react-select'
 const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
   const { filmGenres, setSelectedOptions } = props
 
-  const { options, t } = useGenresMultiSelect(filmGenres)
+  const { options, t, whiteTextStyle } = useGenresMultiSelect(filmGenres)
 
   return (
     <Select
@@ -19,25 +19,15 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
         setSelectedOptions(item)
       }}
       components={{
-        DropdownIndicator: () => null,
         IndicatorSeparator: () => null,
+        DropdownIndicator: () => null,
       }}
       styles={{
-        control: (base: {}) => ({
-          ...base,
-          borderColor: '#6C757D !important',
-          background: 'transparent',
-          minHeight: '45px',
-          fontSize: '19px',
-          color: '#ffffff',
-        }),
+        multiValueLabel: (styles: {}) => whiteTextStyle(styles),
 
-        placeholder: (defaultStyles: {}) => {
-          return {
-            ...defaultStyles,
-            color: '#ffffff',
-          }
-        },
+        placeholder: (styles: {}) => whiteTextStyle(styles),
+
+        input: (styles: {}) => whiteTextStyle(styles),
 
         multiValue: (styles: {}) => {
           return {
@@ -47,9 +37,18 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
           }
         },
 
-        multiValueLabel: (styles: {}) => ({
-          ...styles,
+        control: (base: {}) => ({
+          ...base,
+          background: 'transparent',
+          borderColor: '#6C757D',
+          minHeight: '45px',
+          boxShadow: 'none',
+          outline: 'none',
+          fontSize: '18px',
           color: '#ffffff',
+          '&:hover': {
+            border: '1px solid #6C757D',
+          },
         }),
       }}
     />

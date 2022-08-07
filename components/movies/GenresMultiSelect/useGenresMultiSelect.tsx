@@ -12,5 +12,12 @@ export const useGenresMultiSelect = (filmGenres: FilmGenres) => {
 
   options.shift()
 
-  return { options, t }
+  const whiteTextStyle = (styles: {}) => {
+    return {
+      ...styles,
+      color: '#ffffff',
+    }
+  }
+
+  return { options, t, whiteTextStyle }
 }
