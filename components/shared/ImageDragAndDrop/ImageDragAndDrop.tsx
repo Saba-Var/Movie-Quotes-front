@@ -23,7 +23,7 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
           <div
             className={`pl-3 h-[70px] flex gap-2 items-center w-full text-white border border-gray-600 rounded ${
               emptyFileError && 'border-red-500'
-            } `}
+            } ${file && '!border-green'}`}
           >
             <PhotoIcon />
             <p className='text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
@@ -37,13 +37,17 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
       </div>
 
       <div className='block 1xl:hidden'>
-        <div className='pl-3 h-[70px] gap-2 flex items-center w-full text-white border border-gray-600 rounded'>
+        <div
+          className={`pl-3 h-[70px] gap-1 flex items-center w-full text-white border border-gray-600 rounded ${
+            emptyFileError && 'border-red-500'
+          } ${file && '!border-green'}`}
+        >
           <PhotoIcon />
           <p className='text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
             {t('common:upload-image')}
           </p>
           <label>
-            <p className='bg-purple  p-2 ml-2 text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
+            <p className='bg-purple p-1 ml-2 text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium'>
               {t('common:choose-file')}
             </p>
             <input type='file' onChange={fileChangeHandler} />

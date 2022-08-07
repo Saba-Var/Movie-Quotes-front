@@ -1,10 +1,13 @@
+import axios, { getFilmGenres, addNewMovie, imageUpload } from 'services'
+import { SelectedOptions, MovieData, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
+import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { getFilmGenres } from 'services'
-import { SelectedOptions } from 'types'
+import { getToken } from 'helpers'
 
-export const useAddMovieForm = () => {
+export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   const { t } = useTranslation()
+  const { data: session } = useSession()
 
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>([
     { value: '', label: '' },
@@ -50,6 +53,47 @@ export const useAddMovieForm = () => {
     fetchFilmGenres()
   }, [])
 
+  const submitHandler = async (data: MovieData) => {
+    try {
+      if (!emptyFileError && !genreNotSelected) {
+        const selectedGenres = []
+        for (const key in selectedOptions) {
+          selectedGenres.push(selectedOptions[key].value)
+        }
+
+        const token = getToken(session)
+
+        axios.defaults.headers.common[
+          'emptyInputHandlertion'
+        ] = `Bearer ${token}`
+
+        if (token) {
+          const response = await addNewMovie({
+            ...data,
+            film_genres: selectedGenres,
+          })
+
+          if (response.status === 201) {
+            const formData = new FormData()
+
+            if (file) {
+              formData.append('id', response.data.movieId)
+              formData.append('image', file)
+            }
+
+            const { status } = await imageUpload('movie', formData)
+
+            if (status === 201) {
+              setShowAddMovieForm(false)
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
     setGenresFetchError,
     setGenreNotSelected,
@@ -60,6 +104,7 @@ export const useAddMovieForm = () => {
     genreNotSelected,
     selectedOptions,
     emptyFileError,
+    submitHandler,
     filmGenres,
     setFile,
     file,

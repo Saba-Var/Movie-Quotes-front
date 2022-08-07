@@ -23,11 +23,12 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
     genresFetchError,
     genreNotSelected,
     emptyFileError,
+    submitHandler,
     filmGenres,
     setFile,
     file,
     t,
-  } = useAddMovieForm()
+  } = useAddMovieForm(setShowAddMovieForm)
 
   return (
     <FormWrapper
@@ -46,12 +47,12 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
           budget: '',
         }}
         validateOnMount={false}
-        onSubmit={() => {}}
+        onSubmit={submitHandler}
       >
         {() => {
           return (
             <Form>
-              <div className='flex flex-col gap-4 2xl:gap-5'>
+              <div className='flex flex-col gap-5 2xl:gap-6'>
                 {genresFetchError && (
                   <ErrorAlert
                     setShowAlert={setGenresFetchError}
