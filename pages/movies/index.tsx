@@ -1,13 +1,27 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Layout, SearchIcon, AddButton, AddMovieForm } from 'components'
 import type { GetStaticProps } from 'next'
 import { useMovies } from 'hooks'
+import Image from 'next/image'
+import {
+  AddMovieForm,
+  CommentIcon,
+  SearchIcon,
+  AddButton,
+  Layout,
+} from 'components'
 
 const Movies = () => {
-  const { t, setShowAddMovieForm, showAddMovieForm } = useMovies()
+  const {
+    setShowAddMovieForm,
+    showAddMovieForm,
+    movieList,
+    navigate,
+    locale,
+    t,
+  } = useMovies()
 
   return (
-    <div className={`w-full h-screen !block pt-[25px]`}>
+    <div className={`w-full min-h-screen !block pt-[25px] pb-14`}>
       {showAddMovieForm && (
         <AddMovieForm setShowAddMovieForm={setShowAddMovieForm} />
       )}
@@ -41,6 +55,40 @@ const Movies = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className='pt-10 grid gap-y-[60px] grid-cols-1 xl:grid-cols-2 2.5xl:grid-cols-3 place-items-center !px-0'>
+        {movieList.map((movie) => {
+          const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${movie.image}`
+
+          return (
+            <div
+              onClick={() => navigate(movie._id)}
+              key={movie._id}
+              className='flex flex-col gap-4 hover:scale-[1.03] transition-transform cursor-pointer'
+            >
+              <div className='text-white overflow-hidden block w-[358px] h-[302px] md:w-[400px] md:h-[331px] relative'>
+                <Image
+                  className='animate-fold-out rounded-xl'
+                  loader={() => imageSrc}
+                  unoptimized={true}
+                  src={imageSrc}
+                  layout='fill'
+                  alt='movie'
+                />
+              </div>
+              <p className='font-Helvetica-Neue-Geo animate-focus-in-text-expand font-medium text-white text-2xl'>
+                {locale === 'en' ? movie.movie_name_en : movie.movie_name_ge}
+              </p>
+              <div className='flex items-center gap-3'>
+                <p className='font-Helvetica-Neue-Geo animate-fade-in font-medium text-white text-xl'>
+                  0
+                </p>
+                <CommentIcon />
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

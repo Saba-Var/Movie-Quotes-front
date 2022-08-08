@@ -25,7 +25,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
           setShowSideMenu={setShowSideMenu}
           showSideMenu={showSideMenu}
         />
-        <div className='1xl:pl-[300px] lg:!pl-[350px]'>{children}</div>
+        <div className='1xl:pl-[300px] lg:!pl-[350px] min-h-screen'>
+          {children}
+        </div>
       </div>
     </div>
   )

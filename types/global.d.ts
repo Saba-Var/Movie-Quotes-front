@@ -61,4 +61,5 @@ export type AllMovie = {
   budget: string
   image?: string
   userId: string
+  _id: string
 }[]

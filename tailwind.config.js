@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'fold-out': 'fold-out 0.45s ease   both',
+        'fold-out': 'fold-out 0.7s ease   both',
         'slide-in-right':
           'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-from-left':
@@ -16,7 +16,7 @@ module.exports = {
         'bounce-in-top': 'bounce-in-top   1.2s ease-in both',
         flying: 'flying 5s linear  infinite both',
         'bounce-out-top': 'bounce-out-top 1.5s ease both',
-        'fade-in': 'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'fade-in': 'fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         dropdown: 'dropdown 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'scale-up':
           'scale-up 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -43,6 +43,7 @@ module.exports = {
         purple: '#482474',
       },
       screens: {
+        '3xl': '1750px',
         '2.5xl': '1600px',
         '1xl': '850px',
       },
@@ -60,7 +61,7 @@ module.exports = {
             transform: 'translateZ(-800px) rotateY(90deg)',
             opacity: '0',
           },
-          '54%': {
+          '40%': {
             transform: 'translateZ(-160px) rotateY(87deg)',
             opacity: '1',
           },
