@@ -6,5 +6,5 @@ export const imageUpload = (
   type: string,
   formData: FormData
 ): Promise<AxiosResponse<Status>> => {
-  return axios.patch(`/upload-${type}-images`, formData)
+  return axios.patch(`/upload-${type}-image`, formData)
 }

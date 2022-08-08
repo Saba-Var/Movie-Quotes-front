@@ -1,7 +1,7 @@
 import { useAddMovieForm } from './useAddMovieForm'
-import { Form, Formik } from 'formik'
 import { AddMovieFormProps } from './types.d'
 import { addMovieFormSchema } from 'schemas'
+import { Form, Formik } from 'formik'
 import {
   GenresMultiSelect,
   ImageDragAndDrop,

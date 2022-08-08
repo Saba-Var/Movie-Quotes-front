@@ -1,4 +1,4 @@
-import axios, { getFilmGenres, addNewMovie, imageUpload } from 'services'
+import axios, { getFilmGenres, addNewMovie } from 'services'
 import { SelectedOptions, MovieData, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
@@ -58,30 +58,27 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
           selectedGenres.push(selectedOptions[key].value)
         }
 
-        const token = getToken(session)
-
         axios.defaults.headers.common[
           'emptyInputHandlertion'
-        ] = `Bearer ${token}`
+        ] = `Bearer ${getToken(session)}`
 
-        const response = await addNewMovie({
-          ...data,
-          film_genres: selectedGenres,
-        })
+        const formData = new FormData()
+        formData.append('movie_description_en', data.movie_description_en)
+        formData.append('movie_description_ge', data.movie_description_ge)
+        formData.append('movie_name_en', data.movie_name_en)
+        formData.append('movie_name_ge', data.movie_name_ge)
+        formData.append('director_en', data.director_en)
+        formData.append('director_ge', data.director_ge)
+        formData.append('budget', data.budget)
+        formData.append('image', file!)
+        for (const a of selectedGenres) {
+          formData.append('film_genres', a)
+        }
 
-        if (response.status === 201) {
-          const formData = new FormData()
+        const { status } = await addNewMovie(formData)
 
-          if (file) {
-            formData.append('id', response.data.movieId)
-            formData.append('image', file)
-          }
-
-          const { status } = await imageUpload('movie', formData)
-
-          if (status === 201) {
-            // setShowAddMovieForm(false)
-          }
+        if (status === 201) {
+          setShowAddMovieForm(false)
         }
       }
     } catch (error: any) {
