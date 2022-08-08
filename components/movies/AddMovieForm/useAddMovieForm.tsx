@@ -1,5 +1,5 @@
 import axios, { getFilmGenres, addNewMovie } from 'services'
-import { SelectedOptions, MovieData, SetState } from 'types'
+import { SelectedOptions, MovieFormData, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -53,7 +53,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
     fetchFilmGenres()
   }, [])
 
-  const submitHandler = async (data: MovieData) => {
+  const submitHandler = async (data: MovieFormData) => {
     try {
       if (!emptyFileError && !genreNotSelected) {
         const selectedGenres = []
