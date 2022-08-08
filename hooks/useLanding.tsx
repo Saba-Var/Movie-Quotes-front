@@ -27,6 +27,7 @@ export const useLanding = () => {
 
           if (status === 200) {
             setShowActivatedModal(true)
+            localStorage.setItem('token', token)
           }
         }
       } catch (error) {

@@ -3,6 +3,7 @@ import { SelectedOptions, MovieData, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
 
 export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
@@ -18,6 +19,8 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   ])
   const { data: session } = useSession()
   const { t } = useTranslation()
+
+  const { userData } = useNewsFeed()
 
   const emptyInputHandler = () => {
     const emptyValue = selectedOptions.find((genre) => genre.value === '')
@@ -69,6 +72,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         formData.append('movie_name_ge', data.movie_name_ge)
         formData.append('director_en', data.director_en)
         formData.append('director_ge', data.director_ge)
+        formData.append('userId', userData._id)
         formData.append('budget', data.budget)
         formData.append('image', file!)
         for (const a of selectedGenres) {
