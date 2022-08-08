@@ -61,6 +61,13 @@ const Movies = () => {
         {movieList.map((movie) => {
           const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${movie.image}`
 
+          let movieName =
+            locale === 'en' ? movie.movie_name_en : movie.movie_name_ge
+
+          if (movieName.length >= 34) {
+            movieName = movieName.slice(0, 23) + '...'
+          }
+
           return (
             <div
               onClick={() => navigate(movie._id)}
@@ -78,7 +85,7 @@ const Movies = () => {
                 />
               </div>
               <p className='font-Helvetica-Neue-Geo animate-focus-in-text-expand font-medium text-white text-2xl'>
-                {locale === 'en' ? movie.movie_name_en : movie.movie_name_ge}
+                {movieName}
               </p>
               <div className='flex items-center gap-3'>
                 <p className='font-Helvetica-Neue-Geo animate-fade-in font-medium text-white text-xl'>
