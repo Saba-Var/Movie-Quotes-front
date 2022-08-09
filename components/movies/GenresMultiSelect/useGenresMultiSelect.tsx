@@ -15,7 +15,7 @@ export const useGenresMultiSelect = (filmGenres: FilmGenres) => {
   const whiteTextStyle = (styles: {}) => {
     return {
       ...styles,
-      color: '#ffffff',
+      color: '#fffff',
     }
   }
 

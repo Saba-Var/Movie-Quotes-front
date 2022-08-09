@@ -7,9 +7,7 @@ const Movie = () => {
   const { movieList } = useMovies()
 
   return (
-    <div>
-      <MovieDetails movieList={movieList} />
-    </div>
+    <div>{movieList.length > 0 && <MovieDetails movieList={movieList} />}</div>
   )
 }
 

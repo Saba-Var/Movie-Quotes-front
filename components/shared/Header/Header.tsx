@@ -19,7 +19,6 @@ const Header: React.FC<HeaderProps> = (props) => {
     showSelector,
     language,
     hrefData,
-    router,
     t,
   } = useHeader()
 

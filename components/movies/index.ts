@@ -1,3 +1,4 @@
+export * from './ChangeMovieTextInput'
 export * from './GenresMultiSelect'
 export * from './MovieDetailsForm'
 export * from './AddMovieForm'
