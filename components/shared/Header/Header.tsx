@@ -18,6 +18,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     logOutHandler,
     showSelector,
     language,
+    hrefData,
     router,
     t,
   } = useHeader()
@@ -83,7 +84,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   language === 'Eng' && '-left-10'
                 }`}
               >
-                <Link scroll={false} href={router.pathname} locale={'en'}>
+                <Link href={hrefData} scroll={false} locale='en' rel='preload'>
                   <a
                     onClick={() => languageChangeHandler(t('common:Eng'))}
                     className='text-base text-white hover:scale-110 transition-transform'
@@ -92,7 +93,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   </a>
                 </Link>
 
-                <Link scroll={false} href={router.pathname} locale={'ge'}>
+                <Link href={hrefData} scroll={false} rel='preload' locale='ge'>
                   <a
                     onClick={() => languageChangeHandler(t('common:Geo'))}
                     className='text-base text-white hover:scale-110 transition-transform'

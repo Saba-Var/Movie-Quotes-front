@@ -1,5 +1,6 @@
 import { useMovieDetails } from './useMovieDetails'
 import { MovieDetailsProps } from './types.d'
+import { MovieDetailsForm } from 'components'
 import Image from 'next/image'
 
 const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
@@ -22,12 +23,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
               src={imageSrc}
               layout='fill'
               alt='movie'
+              priority
             />
           </div>
 
-          <p className='bg-red-400 w-[358px] h-[302px] sm:w-[438px] sm:h-[382px] 3xl:h-[440px] xl:w-[42%]'>
-            {currentMovie?.movie_description_en}
-          </p>
+          <MovieDetailsForm currentMovie={currentMovie} />
         </div>
 
         <p className='bg-blue w-[358px] text-3xl flex justify-center items-center h-[302px] sm:w-[438px] sm:h-[382px] xl:w-[55%] 3xl:h-[440px]'>

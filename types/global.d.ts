@@ -50,7 +50,7 @@ export type ComponentWithPageLayout = AppProps & {
   }
 }
 
-export type AllMovie = {
+export type CertainMovieDetails = {
   movie_description_en: string
   movie_description_ge: string
   movie_name_en: string
@@ -62,4 +62,6 @@ export type AllMovie = {
   image?: string
   userId: string
   _id: string
-}[]
+}
+
+export type AllMovie = CertainMovieDetails[]

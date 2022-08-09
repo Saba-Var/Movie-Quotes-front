@@ -123,3 +123,89 @@ export const addMovieFormSchema = Yup.object({
       })
     }),
 })
+
+export const movieDetailsEnSchema = Yup.object({
+  budget: Yup.number().required('required-field').min(0, 'budget-min'),
+
+  movie_name_en: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  director_en: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  movie_description_en: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+})
+
+export const movieDetailsGeSchema = Yup.object({
+  budget: Yup.number().required('required-field').min(0, 'budget-min'),
+
+  movie_name_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  director_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  movie_description_ge: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('input text validation', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+})

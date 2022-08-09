@@ -6,3 +6,12 @@ export type HeaderProps = {
   setShowLogIn?: SetState<boolean>
   page: string
 }
+
+export type HrefData =
+  | string
+  | {
+      pathname: string
+      query: {
+        id: string
+      }
+    }

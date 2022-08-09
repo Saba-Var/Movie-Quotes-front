@@ -24,15 +24,16 @@ export const useMovies = () => {
   useEffect(() => {
     const fetchAllMovies = async () => {
       try {
-        if (userData._id) {
-          const response = await getAllMovies(userData._id)
-          setMovieList(response.data)
-        }
+        const response = await getAllMovies(userData._id)
+        setMovieList(response.data)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchAllMovies()
+
+    if (userData._id) {
+      fetchAllMovies()
+    }
   }, [userData._id])
 
   return {
