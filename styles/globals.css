@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-background;
+  }
+}
+
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('../public/assets/fonts/Helvetica-Neue.ttf');

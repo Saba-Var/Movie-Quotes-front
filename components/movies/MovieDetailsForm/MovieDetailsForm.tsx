@@ -113,21 +113,6 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
           )
         }}
       </Formik>
-
-      <div>
-        <div
-          className='text-white mt-8'
-          onClick={() => setDisableInputs(false)}
-        >
-          Edit
-        </div>
-
-        {!disableInputs && (
-          <div className='text-white' onClick={() => setDisableInputs(true)}>
-            Save changes
-          </div>
-        )}
-      </div>
     </div>
   )
 }
