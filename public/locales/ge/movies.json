@@ -18,5 +18,6 @@
   "Sports": "სპორტული",
   "Drama": "დრამა",
   "movie-exists": "ფილმი უკვე დამატებულია",
-  "movie-add-err": "ფილმი ვერ დაამატა"
+  "movie-add-err": "ფილმი ვერ დაამატა",
+  "movie-description": "ფილმის აღწერა"
 }

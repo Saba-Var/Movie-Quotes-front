@@ -18,5 +18,6 @@
   "Sports": "Sports",
   "Drama": "Drama",
   "movie-exists": "Movie is already added",
-  "movie-add-err": "Film could not be added"
+  "movie-add-err": "Film could not be added",
+  "movie-description": "Movie Description"
 }

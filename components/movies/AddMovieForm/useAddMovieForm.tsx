@@ -1,8 +1,9 @@
 import axios, { getFilmGenres, addNewMovie } from 'services'
-import { SelectedOptions, MovieFormData, SetState } from 'types'
+import { SelectedOptions, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { MovieFormData } from './types.d'
 import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
 

@@ -60,7 +60,6 @@ const Movies = () => {
       <div className='pt-10 grid gap-y-[60px] grid-cols-1 xl:grid-cols-2 2.5xl:grid-cols-3 place-items-center !px-0'>
         {movieList.map((movie) => {
           const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${movie.image}`
-
           let movieName =
             locale === 'en' ? movie.movie_name_en : movie.movie_name_ge
 
@@ -72,7 +71,7 @@ const Movies = () => {
             <div
               onClick={() => navigate(movie._id)}
               key={movie._id}
-              className='flex flex-col gap-4 hover:scale-[1.03] transition-transform cursor-pointer'
+              className='flex flex-col gap-4 hover:scale-[1.03] active:scale-100 transition-transform cursor-pointer'
             >
               <div className='text-white overflow-hidden block w-[358px] h-[302px] md:w-[400px] md:h-[331px] relative'>
                 <Image

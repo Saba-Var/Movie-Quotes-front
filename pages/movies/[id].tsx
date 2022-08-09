@@ -1,13 +1,16 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Layout, MovieDetails } from 'components'
 import type { GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
-import { Layout } from 'components'
+import { useMovies } from 'hooks'
 
 const Movie = () => {
-  const { query } = useRouter()
-  const movieId = query.id
+  const { movieList } = useMovies()
 
-  return <div className='w-full h-screen bg-gray-600 !block'>{movieId}</div>
+  return (
+    <div>
+      <MovieDetails movieList={movieList} />
+    </div>
+  )
 }
 
 Movie.PageLayout = Layout
@@ -21,6 +24,7 @@ export const getServerSideProps: GetStaticProps = async ({ locale }) => {
         'side-menu',
         'landing',
         'common',
+        'movies',
         'auth',
       ])),
     },
