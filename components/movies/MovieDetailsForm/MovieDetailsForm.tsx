@@ -1,8 +1,12 @@
 import { movieDetailsGeSchema, movieDetailsEnSchema } from 'schemas'
-import { ChangeMovieTextInput, GenresMultiSelect } from 'components'
 import { useMovieDetailsForm } from './useMovieDetailsForm'
 import { MovieDetailsProps } from './types.d'
 import { Form, Formik } from 'formik'
+import {
+  ChangeMovieTextInput,
+  MovieDetailsTextarea,
+  GenresMultiSelect,
+} from 'components'
 
 const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
   const { currentMovie } = props
@@ -30,7 +34,7 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
   } = currentMovie
 
   return (
-    <div className='w-[358px] h-[302px] sm:w-[438px] sm:h-[382px] 3xl:h-[440px] xl:w-[42%]'>
+    <div className='w-[358px] sm:w-[438px] xl:w-[42%]'>
       <Formik
         initialValues={
           locale === 'en'
@@ -45,23 +49,15 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
         {(data) => {
           return (
             <Form>
-              <div className=''>
+              <div
+                className={`flex flex-col pt-7 gap-4 h-full ${
+                  disableInputs && 'gap-7 pt-0'
+                } h-[302px] sm:h-[382px] 3xl:h-[440px]`}
+              >
                 <ChangeMovieTextInput
                   name={locale === 'en' ? 'movie_name_en' : 'movie_name_ge'}
+                  placeholder={t('movies:movie-name')}
                   isDisabled={disableInputs}
-                  placeholder='Movie Name'
-                />
-
-                <ChangeMovieTextInput
-                  name={locale === 'en' ? 'director_en' : 'director_ge'}
-                  isDisabled={disableInputs}
-                  placeholder='director'
-                />
-
-                <ChangeMovieTextInput
-                  isDisabled={disableInputs}
-                  placeholder='budget'
-                  name='budget'
                 />
 
                 {!disableInputs && (
@@ -90,6 +86,28 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
                     })}
                   </div>
                 )}
+
+                <ChangeMovieTextInput
+                  name={locale === 'en' ? 'director_en' : 'director_ge'}
+                  placeholder={t('movies:director')}
+                  isDisabled={disableInputs}
+                />
+
+                <ChangeMovieTextInput
+                  placeholder={t('movies:budget')}
+                  isDisabled={disableInputs}
+                  name='budget'
+                />
+
+                <MovieDetailsTextarea
+                  isDisabled={disableInputs}
+                  placeholder={t('movies:movie-description')}
+                  name={
+                    locale === 'en'
+                      ? 'movie_description_en'
+                      : 'movie_description_ge'
+                  }
+                />
               </div>
             </Form>
           )
@@ -97,7 +115,10 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
       </Formik>
 
       <div>
-        <div className='text-white' onClick={() => setDisableInputs(false)}>
+        <div
+          className='text-white mt-8'
+          onClick={() => setDisableInputs(false)}
+        >
           Edit
         </div>
 

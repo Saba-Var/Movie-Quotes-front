@@ -29,10 +29,6 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
 
           <MovieDetailsForm currentMovie={currentMovie} />
         </div>
-
-        <p className='bg-blue w-[358px] text-3xl flex justify-center items-center h-[302px] sm:w-[438px] sm:h-[382px] xl:w-[55%] 3xl:h-[440px]'>
-          Quotes will be added soon
-        </p>
       </div>
     </div>
   )

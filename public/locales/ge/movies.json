@@ -19,5 +19,8 @@
   "Drama": "დრამა",
   "movie-exists": "ფილმი უკვე დამატებულია",
   "movie-add-err": "ფილმი ვერ დაამატა",
-  "movie-description": "ფილმის აღწერა"
+  "movie-description": "ფილმის აღწერა",
+  "director": "რეჟისორი",
+  "budget:": "ბიუჯეტი",
+  "movie-name": "ფილმის სახელი"
 }

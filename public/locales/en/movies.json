@@ -19,5 +19,8 @@
   "Drama": "Drama",
   "movie-exists": "Movie is already added",
   "movie-add-err": "Film could not be added",
-  "movie-description": "Movie Description"
+  "movie-description": "Movie Description",
+  "director": "Director",
+  "budget:": "budget",
+  "movie-name": "Movie Name"
 }
