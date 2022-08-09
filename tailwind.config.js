@@ -41,6 +41,7 @@ module.exports = {
         backgroundGray: '#24222f',
         formModalBlue: '#18141c',
         purple: '#482474',
+        darkPurple: '#24222F',
       },
       screens: {
         '3xl': '1750px',

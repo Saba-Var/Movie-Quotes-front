@@ -6,6 +6,7 @@ import {
   ChangeMovieTextInput,
   MovieDetailsTextarea,
   GenresMultiSelect,
+  EditOrDelete,
 } from 'components'
 
 const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
@@ -50,15 +51,23 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
           return (
             <Form>
               <div
-                className={`flex flex-col pt-7 gap-4 h-full ${
-                  disableInputs && 'gap-7 pt-0'
+                className={`flex flex-col gap-4 h-full ${
+                  disableInputs && 'gap-7'
                 } h-[302px] sm:h-[382px] 3xl:h-[440px]`}
               >
-                <ChangeMovieTextInput
-                  name={locale === 'en' ? 'movie_name_en' : 'movie_name_ge'}
-                  placeholder={t('movies:movie-name')}
-                  isDisabled={disableInputs}
-                />
+                <div className='flex justify-between items-center'>
+                  <ChangeMovieTextInput
+                    name={locale === 'en' ? 'movie_name_en' : 'movie_name_ge'}
+                    placeholder={t('movies:movie-name')}
+                    isDisabled={disableInputs}
+                  />
+                  <div className='hidden xl:block'>
+                    <EditOrDelete
+                      deleteHandler={() => data.resetForm()}
+                      setDisabledInputs={setDisableInputs}
+                    />
+                  </div>
+                </div>
 
                 {!disableInputs && (
                   <GenresMultiSelect
@@ -108,6 +117,13 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
                       : 'movie_description_ge'
                   }
                 />
+
+                <div className='xl:hidden flex justify-end mt-16'>
+                  <EditOrDelete
+                    setDisabledInputs={setDisableInputs}
+                    deleteHandler={() => data.resetForm()}
+                  />
+                </div>
               </div>
             </Form>
           )
