@@ -5,8 +5,10 @@ import { Form, Formik } from 'formik'
 import {
   ChangeMovieTextInput,
   MovieDetailsTextarea,
+  DeleteDialogWrapper,
   GenresMultiSelect,
   EditOrDelete,
+  Button,
 } from 'components'
 
 const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
@@ -18,7 +20,9 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
     genresNotSelected,
     defaultSelection,
     setDisableInputs,
+    setDeleteModal,
     disableInputs,
+    deleteModal,
     filmGenres,
     locale,
     t,
@@ -36,16 +40,37 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
 
   return (
     <div className='w-[358px] sm:w-[438px] xl:w-[42%]'>
+      {deleteModal && (
+        <DeleteDialogWrapper
+          setDeleteDialogWrapper={setDeleteModal}
+          question={t('movies:delete-movie-question')}
+          title={t('movies:delete-movie')}
+        >
+          <div className='flex justify-center gap-12 mt-12'>
+            <Button
+              onClick={() => setDeleteModal(false)}
+              styles='bg-gray-400 1xl:!text-xl w-[100px]'
+              title={t('common:no')}
+              type='button'
+            />
+
+            <Button
+              onClick={() => setDeleteModal(false)}
+              styles='bg-orange 1xl:!text-xl w-[100px]'
+              title={t('common:yes')}
+              type='button'
+            />
+          </div>
+        </DeleteDialogWrapper>
+      )}
+
       <div className='h-[302px] sm:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
         <div className='flex justify-between items-center'>
           <p className='text-lightGold animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
-            {t('movies:movie-name')}
+            {locale === 'en' ? movie_name_en : movie_name_ge}
           </p>
           <div className='hidden xl:block animate-scale-up'>
-            <EditOrDelete
-              deleteHandler={() => {}}
-              setDisabledInputs={setDisableInputs}
-            />
+            <EditOrDelete setDeleteModal={setDeleteModal} />
           </div>
         </div>
 
@@ -79,6 +104,11 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         <p className='break-words animate-focus-in-text-expand cursor-default text-inputGray text-lg font-Helvetica-Neue-Geo'>
           {locale === 'en' ? movie_description_en : movie_description_ge}
         </p>
+
+        <div className='xl:hidden animate-scale-up flex justify-between'>
+          <div className='bg-orange'>Add quote</div>
+          <EditOrDelete setDeleteModal={setDeleteModal} />
+        </div>
       </div>
     </div>
   )

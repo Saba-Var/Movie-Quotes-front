@@ -16,6 +16,7 @@ export const useMovieInfo = (userFilmGenres: string[]) => {
   })
 
   const [filmGenres, setFilmGenres] = useState([''])
+  const [deleteModal, setDeleteModal] = useState(false)
 
   useEffect(() => {
     const fetchFilmGenres = async () => {
@@ -54,7 +55,9 @@ export const useMovieInfo = (userFilmGenres: string[]) => {
     genresNotSelected,
     setDisableInputs,
     defaultSelection,
+    setDeleteModal,
     disableInputs,
+    deleteModal,
     filmGenres,
     locale,
     t,

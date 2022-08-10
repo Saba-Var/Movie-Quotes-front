@@ -1,6 +1,5 @@
 import { SetState } from 'types'
 
 export type EditOrDeleteProps = {
-  setDisabledInputs: SetState<boolean>
-  deleteHandler: () => void
+  setDeleteModal: SetState<boolean>
 }

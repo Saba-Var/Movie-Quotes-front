@@ -15,5 +15,7 @@
   "choose-file": "Choose file",
   "budget-min": "You can't Enter less than 0",
   "user-fetch-fail": "User data fetching failed",
-  "upload-only-image": "You can upload only image"
+  "upload-only-image": "You can upload only image",
+  "yes": "Yes",
+  "no": "No"
 }

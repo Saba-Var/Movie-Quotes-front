@@ -22,5 +22,7 @@
   "movie-description": "ფილმის აღწერა",
   "director": "რეჟისორი",
   "budget:": "ბიუჯეტი",
-  "movie-name": "ფილმის სახელი"
+  "movie-name": "ფილმის სახელი",
+  "delete-movie": "ფილმის წაშლა",
+  "delete-movie-question": "ნამდვილად გინდათ ამ ფილმის წაშლა"
 }
