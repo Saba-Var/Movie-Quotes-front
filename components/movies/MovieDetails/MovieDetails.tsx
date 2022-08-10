@@ -10,7 +10,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
 
   return (
     <div className='mt-10 1xl:mt-5'>
-      <p className='text-white text-start font-Helvetica-Neue-Geo font-medium text-2xl hidden xl:block mb-8'>
+      <p className='text-white animate-fade-in text-start font-Helvetica-Neue-Geo font-medium text-2xl hidden xl:block mb-8'>
         {t('movies:movie-description')}
       </p>
       <div className='text-white flex flex-col items-center xl:items-start gap-8'>
