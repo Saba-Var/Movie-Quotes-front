@@ -76,8 +76,12 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         formData.append('userId', userData._id)
         formData.append('budget', data.budget)
         formData.append('image', file!)
-        for (const genre of selectedGenres) {
-          formData.append('film_genres', genre)
+        if (selectedGenres.length === 1) {
+          formData.append('film_genres[]', selectedGenres[0])
+        } else {
+          for (const genre of selectedGenres) {
+            formData.append('film_genres', genre)
+          }
         }
 
         const { status } = await addNewMovie(formData)

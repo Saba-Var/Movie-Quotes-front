@@ -66,6 +66,8 @@ export const useEditMovieInfo = (
           selectedGenres.push(selectedOptions[key].value)
         }
 
+        console.log(selectedGenres)
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${getToken(
           session
         )}`
@@ -82,8 +84,13 @@ export const useEditMovieInfo = (
           formData.append('image', file)
         }
         formData.append('id', id)
-        for (const genre of selectedGenres) {
-          formData.append('film_genres', genre)
+
+        if (selectedGenres.length === 1) {
+          formData.append('film_genres[]', selectedGenres[0])
+        } else {
+          for (const genre of selectedGenres) {
+            formData.append('film_genres', genre)
+          }
         }
 
         const { status } = await changeMovie(formData)
