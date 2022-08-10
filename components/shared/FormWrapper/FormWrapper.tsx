@@ -4,7 +4,7 @@ import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
 const FormWrapper: React.FC<FormWrapperProps> = (props) => {
-  const { children, setShowForm, title, hideImage, top } = props
+  const { children, setShowForm, title, hideImage, styles, titleStyle } = props
 
   const { userData, imageSrc } = useNewsFeed()
 
@@ -16,10 +16,12 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
       ></div>
 
       <div
-        className={`fixed overflow-y-auto right-0 top-0 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue h-screen 1xl:!h-fit pb-2 1xl:w-[50vw] 1xl:left-[28%] 2xl:top-4 ${top}`}
+        className={`fixed overflow-y-auto right-0 top-0 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue h-screen 1xl:!h-fit pb-2 1xl:w-[50vw] 1xl:left-[28%] 2xl:top-4 ${styles}`}
       >
         <div className='h-[55px] 2xl:h-16 relative border-b border-b-gray-600 w-full flex justify-center items-center'>
-          <p className='text-center animate-focus-in-text-expand text-2xl text-white font-Helvetica-Neue-Geo font-medium'>
+          <p
+            className={`text-center animate-focus-in-text-expand text-2xl text-white font-Helvetica-Neue-Geo font-medium ${titleStyle}`}
+          >
             {title}
           </p>
 

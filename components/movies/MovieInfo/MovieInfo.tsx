@@ -8,6 +8,7 @@ import {
   DeleteDialogWrapper,
   GenresMultiSelect,
   EditOrDelete,
+  ErrorAlert,
   Button,
 } from 'components'
 
@@ -17,11 +18,14 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
   const {
     setGenreNotSelected,
     setSelectedOptions,
+    movieDeleteHandler,
     genresNotSelected,
     defaultSelection,
     setDisableInputs,
+    setDeleteError,
     setDeleteModal,
     disableInputs,
+    deleteError,
     deleteModal,
     filmGenres,
     locale,
@@ -36,6 +40,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
     director_ge,
     director_en,
     budget,
+    _id,
   } = currentMovie
 
   return (
@@ -55,13 +60,21 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
             />
 
             <Button
-              onClick={() => setDeleteModal(false)}
+              onClick={() => movieDeleteHandler(_id)}
               styles='bg-orange 1xl:!text-xl w-[100px]'
               title={t('common:yes')}
               type='button'
             />
           </div>
         </DeleteDialogWrapper>
+      )}
+
+      {deleteError && (
+        <ErrorAlert
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+          setShowAlert={setDeleteError}
+          title={t('movies:delete-failed')}
+        />
       )}
 
       <div className='h-[302px] sm:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>

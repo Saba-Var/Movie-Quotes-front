@@ -7,14 +7,15 @@ const DeleteDialogWrapper: React.FC<DeleteDialogWrapperProps> = (props) => {
   return (
     <FormWrapper
       setShowForm={setDeleteDialogWrapper}
-      top='1xl:!top-[86px]'
+      titleStyle='xl:!text-3xl'
+      styles='1xl:!top-[86px]'
       hideImage={true}
       title={title}
     >
       <div className='flex flex-col py-9'>
-        <div className='text-xl 1xl:text-2xl xl:!text-3xl text-center'>
+        <p className='text-xl 1xl:text-2xl xl:!text-3xl text-center'>
           {question}?
-        </div>
+        </p>
         {children}
       </div>
     </FormWrapper>
