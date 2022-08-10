@@ -16,6 +16,10 @@ export const addNewMovie = (data: FormData): Promise<AxiosResponse<Status>> => {
   return axios.post('/add-movie', data)
 }
 
+export const changeMovie = (data: FormData): Promise<AxiosResponse<Status>> => {
+  return axios.put('/change-movie', data)
+}
+
 export const deleteMovie = (id: string): Promise<AxiosResponse<Status>> => {
   return axios.delete(`/delete-movie?id=${id}`)
 }

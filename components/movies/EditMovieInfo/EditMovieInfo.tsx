@@ -16,13 +16,15 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,
+    setMovieEditFailed,
     emptyInputHandler,
     setEmptyFIleError,
     genresFetchError,
     defaultSelection,
     genreNotSelected,
-    selectedOptions,
+    movieEditFailed,
     emptyFileError,
+    submitHandler,
     filmGenres,
     setFile,
     file,
@@ -31,8 +33,8 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
 
   return (
     <FormWrapper
-      setShowForm={setShowEditForm}
       title={t('movies:change-movie')}
+      setShowForm={setShowEditForm}
       styles='1xl:top-10'
       hideImage={true}
     >
@@ -48,11 +50,9 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
           budget: currentMovie.budget,
         }}
         validateOnMount={false}
-        onSubmit={(data) => {
-          if (file && !genreNotSelected) {
-            console.log(selectedOptions)
-          }
-        }}
+        onSubmit={(data) =>
+          submitHandler(data, currentMovie._id, setShowEditForm)
+        }
       >
         {() => {
           return (
@@ -61,6 +61,14 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
                 {genresFetchError && (
                   <ErrorAlert
                     setShowAlert={setGenresFetchError}
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='movies:genres-fetch-fail'
+                  />
+                )}
+
+                {movieEditFailed && (
+                  <ErrorAlert
+                    setShowAlert={setMovieEditFailed}
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
                     title='movies:genres-fetch-fail'
                   />

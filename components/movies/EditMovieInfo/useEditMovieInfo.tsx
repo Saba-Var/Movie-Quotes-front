@@ -1,7 +1,10 @@
+import axios, { getFilmGenres, changeMovie } from 'services'
 import { SelectedOptions, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
+import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { getFilmGenres } from 'services'
+import getToken from 'helpers/getToken'
+import { MovieFormData } from 'types'
 
 export const useEditMovieInfo = (
   setShowEditForm: SetState<boolean>,
@@ -9,7 +12,7 @@ export const useEditMovieInfo = (
 ) => {
   const [genresFetchError, setGenresFetchError] = useState(false)
   const [genreNotSelected, setGenreNotSelected] = useState(false)
-  const [emptyFileError, setEmptyFIleError] = useState(false)
+  const [movieEditFailed, setMovieEditFailed] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [filmGenres, setFilmGenres] = useState([''])
   const { t } = useTranslation()
@@ -46,9 +49,50 @@ export const useEditMovieInfo = (
     ) {
       setGenreNotSelected(true)
     }
+  }
 
-    if (!file) {
-      setEmptyFIleError(true)
+  const { data: session } = useSession()
+
+  const submitHandler = async (
+    data: MovieFormData,
+    id: string,
+    setShowEditForm: SetState<boolean>
+  ) => {
+    try {
+      if (!genreNotSelected) {
+        const selectedGenres = []
+        for (const key in selectedOptions) {
+          selectedGenres.push(selectedOptions[key].value)
+        }
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${getToken(
+          session
+        )}`
+
+        const formData = new FormData()
+        formData.append('movie_description_en', data.movie_description_en)
+        formData.append('movie_description_ge', data.movie_description_ge)
+        formData.append('movie_name_en', data.movie_name_en)
+        formData.append('movie_name_ge', data.movie_name_ge)
+        formData.append('director_en', data.director_en)
+        formData.append('director_ge', data.director_ge)
+        formData.append('budget', data.budget)
+        if (file) {
+          formData.append('image', file)
+        }
+        formData.append('id', id)
+        for (const genre of selectedGenres) {
+          formData.append('film_genres', genre)
+        }
+
+        const { status } = await changeMovie(formData)
+
+        if (status === 200) {
+          setShowEditForm(false)
+        }
+      }
+    } catch (error) {
+      setMovieEditFailed(true)
     }
   }
 
@@ -72,13 +116,13 @@ export const useEditMovieInfo = (
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,
+    setMovieEditFailed,
     emptyInputHandler,
-    setEmptyFIleError,
     defaultSelection,
     genresFetchError,
     genreNotSelected,
-    selectedOptions,
-    emptyFileError,
+    movieEditFailed,
+    submitHandler,
     filmGenres,
     setFile,
     file,

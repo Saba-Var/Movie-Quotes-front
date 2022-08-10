@@ -3,7 +3,7 @@ import { SelectedOptions, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { MovieFormData } from './types.d'
+import { MovieFormData } from 'types'
 import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
 
@@ -76,8 +76,8 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         formData.append('userId', userData._id)
         formData.append('budget', data.budget)
         formData.append('image', file!)
-        for (const a of selectedGenres) {
-          formData.append('film_genres', a)
+        for (const genre of selectedGenres) {
+          formData.append('film_genres', genre)
         }
 
         const { status } = await addNewMovie(formData)
