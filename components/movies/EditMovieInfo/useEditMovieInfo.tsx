@@ -13,6 +13,7 @@ export const useEditMovieInfo = (
   const [genresFetchError, setGenresFetchError] = useState(false)
   const [genreNotSelected, setGenreNotSelected] = useState(false)
   const [movieEditFailed, setMovieEditFailed] = useState(false)
+  const [emptyFileError, setEmptyFIleError] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [filmGenres, setFilmGenres] = useState([''])
   const { t } = useTranslation()
@@ -118,10 +119,12 @@ export const useEditMovieInfo = (
     setSelectedOptions,
     setMovieEditFailed,
     emptyInputHandler,
+    setEmptyFIleError,
     defaultSelection,
     genresFetchError,
     genreNotSelected,
     movieEditFailed,
+    emptyFileError,
     submitHandler,
     filmGenres,
     setFile,
