@@ -1,6 +1,6 @@
 import { movieDetailsGeSchema, movieDetailsEnSchema } from 'schemas'
-import { useMovieDetailsForm } from './useMovieDetailsForm'
-import { MovieDetailsProps } from './types.d'
+import { useMovieInfo } from './useMovieInfo'
+import { MovieDetailsProps } from './types'
 import { Form, Formik } from 'formik'
 import {
   ChangeMovieTextInput,
@@ -9,7 +9,7 @@ import {
   EditOrDelete,
 } from 'components'
 
-const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
+const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
   const { currentMovie } = props
 
   const {
@@ -22,7 +22,7 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
     filmGenres,
     locale,
     t,
-  } = useMovieDetailsForm(currentMovie.film_genres)
+  } = useMovieInfo(currentMovie.film_genres)
 
   const {
     movie_description_en,
@@ -84,7 +84,7 @@ const MovieDetailsForm: React.FC<MovieDetailsProps> = (props) => {
   )
 }
 
-export default MovieDetailsForm
+export default MovieInfo
 
 {
   /* <Formik

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { getFilmGenres } from 'services'
 import { useTranslation } from 'next-i18next'
 
-export const useMovieDetailsForm = (userFilmGenres: string[]) => {
+export const useMovieInfo = (userFilmGenres: string[]) => {
   const locale = useRouter().locale
 
   const { t } = useTranslation()

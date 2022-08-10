@@ -69,28 +69,32 @@ const Movies = () => {
 
           return (
             <div
-              onClick={() => navigate(movie._id)}
+              className='hover:scale-[1.03] active:scale-100 transition-transform'
               key={movie._id}
-              className='flex flex-col gap-4 hover:scale-[1.03] active:scale-100 transition-transform cursor-pointer'
             >
-              <div className='text-white overflow-hidden block w-[358px] h-[302px] md:w-[400px] md:h-[331px] relative'>
-                <Image
-                  className='animate-fold-out rounded-xl'
-                  loader={() => imageSrc}
-                  unoptimized={true}
-                  src={imageSrc}
-                  layout='fill'
-                  alt='movie'
-                />
-              </div>
-              <p className='font-Helvetica-Neue-Geo animate-focus-in-text-expand font-medium text-white text-2xl'>
-                {movieName}
-              </p>
-              <div className='flex items-center gap-3'>
-                <p className='font-Helvetica-Neue-Geo animate-fade-in font-medium text-white text-xl'>
-                  0
+              <div
+                onClick={() => navigate(movie._id)}
+                className='flex flex-col animate-scale-up gap-4 cursor-pointer'
+              >
+                <div className='text-white overflow-hidden block w-[358px] h-[302px] md:w-[400px] md:h-[331px] relative'>
+                  <Image
+                    className='rounded-xl'
+                    loader={() => imageSrc}
+                    unoptimized={true}
+                    src={imageSrc}
+                    layout='fill'
+                    alt='movie'
+                  />
+                </div>
+                <p className='font-Helvetica-Neue-Geo animate-focus-in-text-expand font-medium text-white text-2xl'>
+                  {movieName}
                 </p>
-                <CommentIcon />
+                <div className='flex items-center gap-3'>
+                  <p className='font-Helvetica-Neue-Geo animate-fade-in font-medium text-white text-xl'>
+                    0
+                  </p>
+                  <CommentIcon />
+                </div>
               </div>
             </div>
           )

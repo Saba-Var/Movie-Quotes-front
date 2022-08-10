@@ -1,6 +1,6 @@
 import { useMovieDetails } from './useMovieDetails'
-import { MovieDetailsProps } from './types.d'
-import { MovieDetailsForm } from 'components'
+import { MovieDetailsProps } from './types'
+import { MovieInfo } from 'components'
 import Image from 'next/image'
 
 const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
@@ -27,7 +27,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
             />
           </div>
 
-          <MovieDetailsForm currentMovie={currentMovie} />
+          <MovieInfo currentMovie={currentMovie} />
         </div>
       </div>
     </div>
