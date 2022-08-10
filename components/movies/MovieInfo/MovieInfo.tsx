@@ -1,12 +1,8 @@
-import { movieDetailsGeSchema, movieDetailsEnSchema } from 'schemas'
 import { useMovieInfo } from './useMovieInfo'
 import { MovieDetailsProps } from './types'
-import { Form, Formik } from 'formik'
 import {
-  ChangeMovieTextInput,
-  MovieDetailsTextarea,
   DeleteDialogWrapper,
-  GenresMultiSelect,
+  EditMovieInfo,
   EditOrDelete,
   ErrorAlert,
   Button,
@@ -16,21 +12,16 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
   const { currentMovie } = props
 
   const {
-    setGenreNotSelected,
-    setSelectedOptions,
     movieDeleteHandler,
-    genresNotSelected,
-    defaultSelection,
-    setDisableInputs,
+    setShowEditForm,
     setDeleteError,
     setDeleteModal,
-    disableInputs,
+    showEditForm,
     deleteError,
     deleteModal,
-    filmGenres,
     locale,
     t,
-  } = useMovieInfo(currentMovie.film_genres)
+  } = useMovieInfo()
 
   const {
     movie_description_en,
@@ -77,13 +68,23 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         />
       )}
 
+      {showEditForm && (
+        <EditMovieInfo
+          setShowEditForm={setShowEditForm}
+          currentMovie={currentMovie}
+        />
+      )}
+
       <div className='h-[302px] sm:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
         <div className='flex justify-between items-center'>
           <p className='text-lightGold animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
             {locale === 'en' ? movie_name_en : movie_name_ge}
           </p>
           <div className='hidden xl:block animate-scale-up'>
-            <EditOrDelete setDeleteModal={setDeleteModal} />
+            <EditOrDelete
+              setDeleteModal={setDeleteModal}
+              setEditModal={setShowEditForm}
+            />
           </div>
         </div>
 
@@ -120,7 +121,10 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
 
         <div className='xl:hidden animate-scale-up flex justify-between'>
           <div className='bg-orange'>Add quote</div>
-          <EditOrDelete setDeleteModal={setDeleteModal} />
+          <EditOrDelete
+            setDeleteModal={setDeleteModal}
+            setEditModal={setShowEditForm}
+          />
         </div>
       </div>
     </div>
@@ -128,99 +132,3 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
 }
 
 export default MovieInfo
-
-{
-  /* <Formik
-initialValues={
-  locale === 'en'
-    ? { movie_description_en, movie_name_en, director_en, budget }
-    : { movie_description_ge, movie_name_ge, director_ge, budget }
-}
-validationSchema={
-  locale === 'en' ? movieDetailsEnSchema : movieDetailsGeSchema
-}
-onSubmit={() => {}}
->
-{(data) => {
-  return (
-    <Form>
-      <div
-        className={`flex flex-col gap-4 h-full ${
-          disableInputs && 'gap-7'
-        } h-[302px] sm:h-[382px] 3xl:h-[440px]`}
-      >
-        <div className='flex justify-between items-center'>
-          <ChangeMovieTextInput
-            name={locale === 'en' ? 'movie_name_en' : 'movie_name_ge'}
-            placeholder={t('movies:movie-name')}
-            isDisabled={disableInputs}
-          />
-          <div className='hidden xl:block'>
-            <EditOrDelete
-              deleteHandler={() => data.resetForm()}
-              setDisabledInputs={setDisableInputs}
-            />
-          </div>
-        </div>
-
-        {!disableInputs && (
-          <GenresMultiSelect
-            setGenreNotSelected={setGenreNotSelected}
-            setSelectedOptions={setSelectedOptions}
-            genreNotSelected={genresNotSelected}
-            defaultValue={defaultSelection}
-            isDisabled={disableInputs}
-            hasDefaultValues={true}
-            filmGenres={filmGenres}
-          />
-        )}
-
-        {disableInputs && currentMovie.film_genres && (
-          <div className='flex flex-wrap gap-2'>
-            {currentMovie.film_genres.map((el: string) => {
-              return (
-                <div
-                  className='text-white text-sm rounded bg-medGray px-[7px] py-[4px]'
-                  key={el}
-                >
-                  {t(`movies:${el}`)}
-                </div>
-              )
-            })}
-          </div>
-        )}
-
-        <ChangeMovieTextInput
-          name={locale === 'en' ? 'director_en' : 'director_ge'}
-          placeholder={t('movies:director')}
-          isDisabled={disableInputs}
-        />
-
-        <ChangeMovieTextInput
-          placeholder={t('movies:budget')}
-          isDisabled={disableInputs}
-          name='budget'
-        />
-
-        <MovieDetailsTextarea
-          isDisabled={disableInputs}
-          placeholder={t('movies:movie-description')}
-          name={
-            locale === 'en'
-              ? 'movie_description_en'
-              : 'movie_description_ge'
-          }
-        />
-
-        <div className='xl:hidden flex justify-end mt-16'>
-          <EditOrDelete
-            setDisabledInputs={setDisableInputs}
-            deleteHandler={() => data.resetForm()}
-          />
-        </div>
-      </div>
-    </Form>
-  )
-}}
-</Formik> */
-}

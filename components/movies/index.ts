@@ -1,6 +1,5 @@
-export * from './MovieDetailsTextarea'
-export * from './ChangeMovieTextInput'
 export * from './GenresMultiSelect'
+export * from './EditMovieInfo'
 export * from './AddMovieForm'
 export * from './MovieDetails'
 export * from './EditOrDelete'

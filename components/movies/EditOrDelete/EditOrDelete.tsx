@@ -2,11 +2,11 @@ import { PencilIcon, TrashIcon } from 'components'
 import { EditOrDeleteProps } from './types.d'
 
 const EditOrDelete: React.FC<EditOrDeleteProps> = (props) => {
-  const { setDeleteModal } = props
+  const { setDeleteModal, setEditModal } = props
 
   return (
     <div className='flex justify-between w-[144px] rounded-[10px] h-10 py-[10px] px-7 bg-darkPurple'>
-      <div onClick={() => {}}>
+      <div onClick={() => setEditModal(true)}>
         <PencilIcon />
       </div>
 

@@ -62,9 +62,9 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
           selectedGenres.push(selectedOptions[key].value)
         }
 
-        axios.defaults.headers.common[
-          'emptyInputHandlertion'
-        ] = `Bearer ${getToken(session)}`
+        axios.defaults.headers.common['Authorization'] = `Bearer ${getToken(
+          session
+        )}`
 
         const formData = new FormData()
         formData.append('movie_description_en', data.movie_description_en)

@@ -10,7 +10,6 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
     hasDefaultValues,
     defaultValue,
     filmGenres,
-    isDisabled,
   } = props
 
   const { options, t, whiteTextStyle } = useGenresMultiSelect(filmGenres)
@@ -21,7 +20,6 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
         defaultValue={hasDefaultValues ? defaultValue! : undefined}
         noOptionsMessage={() => t('movies:genre-not-found')}
         placeholder={t('movies:film-genres')}
-        isDisabled={isDisabled ? true : false}
         closeMenuOnSelect={false}
         isSearchable={true}
         isClearable={false}
@@ -77,7 +75,7 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
 
       <div className='h-4'>
         {genreNotSelected && (
-          <p className='text-red-500 text-sm'>Select film genre</p>
+          <p className='text-red-500 text-sm'> {t(`common:required-field`)}.</p>
         )}
       </div>
     </div>

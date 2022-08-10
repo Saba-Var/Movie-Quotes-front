@@ -7,6 +7,5 @@ export type GenresMultiSelectProps = {
   hasDefaultValues?: boolean
   genreNotSelected: boolean
   filmGenres: FilmGenres
-  isDisabled?: boolean
   defaultValue?: {}[]
 }
