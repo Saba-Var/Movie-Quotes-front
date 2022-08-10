@@ -4,12 +4,9 @@ import { addMovieFormSchema } from 'schemas'
 import { Form, Formik } from 'formik'
 import {
   GenresMultiSelect,
-  ImageDragAndDrop,
-  TextAreaInput,
-  AddTextInput,
-  ErrorAlert,
+  MoviesFormInputs,
   FormWrapper,
-  Button,
+  ErrorAlert,
 } from 'components'
 
 const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
@@ -69,66 +66,23 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
                   />
                 )}
 
-                <AddTextInput
-                  placeholder='Movie name'
-                  name='movie_name_en'
-                  language='Eng'
-                />
-
-                <AddTextInput
-                  placeholder='ფილმის სახელი'
-                  name='movie_name_ge'
-                  language='ქარ'
-                />
-
-                <AddTextInput placeholder={t('movies:budget')} name='budget' />
-
-                <GenresMultiSelect
-                  setGenreNotSelected={setGenreNotSelected}
-                  setSelectedOptions={setSelectedOptions}
-                  genreNotSelected={genreNotSelected}
-                  defaultValue={defaultSelection}
-                  hasDefaultValues={true}
-                  filmGenres={filmGenres}
-                />
-
-                <AddTextInput
-                  placeholder='Director'
-                  name='director_en'
-                  language='Eng'
-                />
-
-                <AddTextInput
-                  placeholder='რეჟისორი'
-                  name='director_ge'
-                  language='ქარ'
-                />
-
-                <TextAreaInput
-                  placeholder='Movie description'
-                  name='movie_description_en'
-                  language='Eng'
-                />
-
-                <TextAreaInput
-                  placeholder='ფილმის აღწერა'
-                  name='movie_description_ge'
-                  language='ქარ'
-                />
-
-                <ImageDragAndDrop
+                <MoviesFormInputs
                   setEmptyFIleError={setEmptyFIleError}
+                  emptyInputHandler={emptyInputHandler}
                   emptyFileError={emptyFileError}
+                  buttonTitle='change-movie'
                   setFile={setFile}
                   file={file}
-                />
-
-                <Button
-                  styles='bg-orange !hover:scale-105 xl:text-xl'
-                  title={t('movies:add-movie')}
-                  onClick={emptyInputHandler}
-                  type='submit'
-                />
+                >
+                  <GenresMultiSelect
+                    setGenreNotSelected={setGenreNotSelected}
+                    setSelectedOptions={setSelectedOptions}
+                    genreNotSelected={genreNotSelected}
+                    defaultValue={defaultSelection}
+                    hasDefaultValues={true}
+                    filmGenres={filmGenres}
+                  />
+                </MoviesFormInputs>
               </div>
             </Form>
           )
