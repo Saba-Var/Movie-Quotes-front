@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import getToken from 'helpers/getToken'
 import { MovieFormData } from 'types'
+import { useSockets } from 'hooks'
+import { EVENTS } from 'helpers'
 
 export const useEditMovieInfo = (
   setShowEditForm: SetState<boolean>,
@@ -20,6 +22,8 @@ export const useEditMovieInfo = (
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>([
     { value: '', label: '' },
   ])
+
+  const { socket } = useSockets()
 
   useEffect(() => {
     const selectedGenres = [{ value: '', label: '' }]
@@ -93,9 +97,10 @@ export const useEditMovieInfo = (
           }
         }
 
-        const { status } = await changeMovie(formData)
+        const response = await changeMovie(formData)
 
-        if (status === 200) {
+        if (response.status === 200) {
+          socket.emit(EVENTS.movies.emit.UPDATE_MOVIE, response.data)
           setShowEditForm(false)
         }
       }

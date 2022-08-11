@@ -23,8 +23,16 @@ export const useMovies = () => {
 
   socket
     .off(EVENTS.movies.on.SEND_NEW_MOVIE)
-    .on(EVENTS.movies.on.SEND_NEW_MOVIE, (data: any) => {
+    .on(EVENTS.movies.on.SEND_NEW_MOVIE, (data) => {
       setMovieList((prev) => [...prev, data])
+    })
+
+  socket
+    .off(EVENTS.movies.on.SEND_UPDATED_MOVIE)
+    .on(EVENTS.movies.on.SEND_UPDATED_MOVIE, (data) => {
+      setMovieList((prev) => {
+        return prev.map((movie) => (movie._id === data._id ? data : movie))
+      })
     })
 
   useEffect(() => {
