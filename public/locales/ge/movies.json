@@ -27,5 +27,6 @@
   "delete-movie-question": "ნამდვილად გინდათ ამ ფილმის წაშლა",
   "delete-failed": "ფილმი ვერ წაიშალა",
   "change-movie": "შეცვალე ფილმის დეტალები",
-  "edit-failed-error": "ფილმის დეტალები ვერ შეიცვალა"
+  "edit-failed-error": "ფილმის დეტალები ვერ შეიცვალა",
+  "movie-fetch-failed": "ფილმების სია ვერ ჩაიტვირთა"
 }

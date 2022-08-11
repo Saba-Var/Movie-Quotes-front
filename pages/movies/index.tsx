@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {
   AddMovieForm,
   CommentIcon,
-  SearchIcon,
+  ErrorAlert,
   AddButton,
   Layout,
 } from 'components'
@@ -13,7 +13,9 @@ import {
 const Movies = () => {
   const {
     setShowAddMovieForm,
+    setMovieFetchError,
     showAddMovieForm,
+    movieFetchError,
     movieList,
     navigate,
     locale,
@@ -24,6 +26,14 @@ const Movies = () => {
     <div className={`w-full min-h-screen !block pt-[25px] pb-14`}>
       {showAddMovieForm && (
         <AddMovieForm setShowAddMovieForm={setShowAddMovieForm} />
+      )}
+
+      {movieFetchError && (
+        <ErrorAlert
+          styles={'left-1/2 !-translate-x-1/2 1xl:left-[53%]'}
+          title={'movies:movie-fetch-failed'}
+          setShowAlert={setMovieFetchError}
+        />
       )}
 
       <div>

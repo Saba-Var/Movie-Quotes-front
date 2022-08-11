@@ -10,6 +10,7 @@ import { EVENTS } from 'helpers'
 
 export const useMovies = () => {
   const [showAddMovieForm, setShowAddMovieForm] = useState(false)
+  const [movieFetchError, setMovieFetchError] = useState(false)
   const [movieList, setMovieList] = useState<AllMovie>([])
 
   const { userData } = useNewsFeed()
@@ -41,7 +42,7 @@ export const useMovies = () => {
         const response = await getAllMovies(userData._id)
         setMovieList(response.data)
       } catch (error) {
-        console.log(error)
+        setMovieFetchError(true)
       }
     }
 
@@ -52,7 +53,9 @@ export const useMovies = () => {
 
   return {
     setShowAddMovieForm,
+    setMovieFetchError,
     showAddMovieForm,
+    movieFetchError,
     setMovieList,
     movieList,
     navigate,
