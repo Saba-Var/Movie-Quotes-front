@@ -70,8 +70,6 @@ export const useEditMovieInfo = (
           selectedGenres.push(selectedOptions[key].value)
         }
 
-        console.log(selectedGenres)
-
         axios.defaults.headers.common['Authorization'] = `Bearer ${getToken(
           session
         )}`
