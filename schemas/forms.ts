@@ -48,7 +48,7 @@ export const addMovieFormSchema = Yup.object({
   movie_name_en: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
+    .test('Movie name validation (Eng)', 'enter-english', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'ENG',
@@ -61,7 +61,7 @@ export const addMovieFormSchema = Yup.object({
   movie_name_ge: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
+    .test('Movie name validation (Geo)', 'enter-georgian', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'GEO',
@@ -74,7 +74,7 @@ export const addMovieFormSchema = Yup.object({
   director_en: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
+    .test('Director name validation (Eng)', 'enter-english', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'ENG',
@@ -87,7 +87,7 @@ export const addMovieFormSchema = Yup.object({
   director_ge: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
+    .test('Director name validation (Geo)', 'enter-georgian', function (value) {
       const { path, createError } = this
       return languageValidation({
         language: 'GEO',
@@ -100,112 +100,34 @@ export const addMovieFormSchema = Yup.object({
   movie_description_en: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'ENG',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
+    .test(
+      'Movie description validation (Eng)',
+      'enter-english',
+      function (value) {
+        const { path, createError } = this
+        return languageValidation({
+          language: 'ENG',
+          value: value!,
+          createError,
+          path,
+        })
+      }
+    ),
 
   movie_description_ge: Yup.string()
     .trim()
     .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'GEO',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-})
-
-export const movieDetailsEnSchema = Yup.object({
-  budget: Yup.number().required('required-field').min(0, 'budget-min'),
-
-  movie_name_en: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'ENG',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-
-  director_en: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'ENG',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-
-  movie_description_en: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-english', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'ENG',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-})
-
-export const movieDetailsGeSchema = Yup.object({
-  budget: Yup.number().required('required-field').min(0, 'budget-min'),
-
-  movie_name_ge: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'GEO',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-
-  director_ge: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'GEO',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
-
-  movie_description_ge: Yup.string()
-    .trim()
-    .required('required-field')
-    .test('input text validation', 'enter-georgian', function (value) {
-      const { path, createError } = this
-      return languageValidation({
-        language: 'GEO',
-        value: value!,
-        createError,
-        path,
-      })
-    }),
+    .test(
+      'Movie description validation (Geo)',
+      'enter-georgian',
+      function (value) {
+        const { path, createError } = this
+        return languageValidation({
+          language: 'GEO',
+          value: value!,
+          createError,
+          path,
+        })
+      }
+    ),
 })
