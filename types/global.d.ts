@@ -37,8 +37,6 @@ export type UserData = {
 
 export type FilmGenres = string[]
 
-type Unknown = unknown
-
 export type SelectedOptions = {
   value: string
   label: string
