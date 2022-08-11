@@ -75,4 +75,8 @@ export type MovieFormData = {
   budget: string
 }
 
+export type Id = {
+  id: string
+}
+
 export type AllMovie = CertainMovieDetails[]

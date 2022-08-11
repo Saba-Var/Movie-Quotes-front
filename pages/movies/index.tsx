@@ -33,7 +33,7 @@ const Movies = () => {
               {t('movies:movies-list')}
             </p>
             <p className='text-white text-base cursor-default 1xl:text-2xl font-Helvetica-Neue-Geo font-medium'>
-              {`(${t('movies:total')} 0)`}
+              {`(${t('movies:total')} ${movieList.length})`}
             </p>
           </div>
 
@@ -81,6 +81,7 @@ const Movies = () => {
                     className='rounded-xl'
                     loader={() => imageSrc}
                     unoptimized={true}
+                    priority={true}
                     src={imageSrc}
                     layout='fill'
                     alt='movie'

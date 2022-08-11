@@ -1,11 +1,11 @@
 import axios, { getFilmGenres, addNewMovie } from 'services'
 import { SelectedOptions, SetState } from 'types'
+import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { getToken, EVENTS } from 'helpers'
 import { MovieFormData } from 'types'
-import { useNewsFeed } from 'hooks'
-import { getToken } from 'helpers'
 
 export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   const [genresFetchError, setGenresFetchError] = useState(false)
@@ -18,10 +18,11 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>([
     { value: '', label: '' },
   ])
-  const { data: session } = useSession()
-  const { t } = useTranslation()
 
+  const { data: session } = useSession()
   const { userData } = useNewsFeed()
+  const { socket } = useSockets()
+  const { t } = useTranslation()
 
   const emptyInputHandler = () => {
     const emptyValue = selectedOptions.find((genre) => genre.value === '')
@@ -57,6 +58,16 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   const submitHandler = async (data: MovieFormData) => {
     try {
       if (!emptyFileError && !genreNotSelected) {
+        const {
+          movie_description_en,
+          movie_description_ge,
+          movie_name_en,
+          movie_name_ge,
+          director_en,
+          director_ge,
+          budget,
+        } = data
+
         const selectedGenres = []
         for (const key in selectedOptions) {
           selectedGenres.push(selectedOptions[key].value)
@@ -67,15 +78,16 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         )}`
 
         const formData = new FormData()
-        formData.append('movie_description_en', data.movie_description_en)
-        formData.append('movie_description_ge', data.movie_description_ge)
-        formData.append('movie_name_en', data.movie_name_en)
-        formData.append('movie_name_ge', data.movie_name_ge)
-        formData.append('director_en', data.director_en)
-        formData.append('director_ge', data.director_ge)
+        formData.append('movie_description_en', movie_description_en)
+        formData.append('movie_description_ge', movie_description_ge)
+        formData.append('movie_name_en', movie_name_en)
+        formData.append('movie_name_ge', movie_name_ge)
+        formData.append('director_en', director_en)
+        formData.append('director_ge', director_ge)
+        formData.append('budget', budget)
         formData.append('userId', userData._id)
-        formData.append('budget', data.budget)
         formData.append('image', file!)
+
         if (selectedGenres.length === 1) {
           formData.append('film_genres[]', selectedGenres[0])
         } else {
@@ -84,9 +96,10 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
           }
         }
 
-        const { status } = await addNewMovie(formData)
+        const response = await addNewMovie(formData)
 
-        if (status === 201) {
+        if (response.status === 201) {
+          socket.emit(EVENTS.movies.emit.ADD_MOVIE, response.data)
           setShowAddMovieForm(false)
         }
       }

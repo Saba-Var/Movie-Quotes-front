@@ -1,9 +1,14 @@
 const EVENTS = {
   connection: 'connection',
 
-  MOVIES: {
-    UPDATE_MOVIE: 'UPDATE_MOVIE',
-    ADD_MOVIE: 'ADD_MOVIE',
+  movies: {
+    on: {
+      SEND_NEW_MOVIE: 'SEND_NEW_MOVIE',
+    },
+
+    emit: {
+      ADD_MOVIE: 'ADD_MOVIE',
+    },
   },
 }
 
