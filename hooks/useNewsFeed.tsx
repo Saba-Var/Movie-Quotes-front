@@ -7,12 +7,7 @@ import { getToken } from 'helpers'
 import { UserData } from 'types'
 
 export const useNewsFeed = () => {
-  const { data: session, status } = useSession()
-
-  const { t } = useTranslation()
-
   const [showSideMenu, setShowSideMenu] = useState(false)
-
   const [userDataFail, setUserDataFail] = useState(false)
 
   const [userData, setUserData] = useState<UserData>({
@@ -21,6 +16,8 @@ export const useNewsFeed = () => {
     _id: '',
   })
 
+  const { data: session, status } = useSession()
+  const { t } = useTranslation()
   const router = useRouter()
 
   const navigate = (routeUri: string) => {

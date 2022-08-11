@@ -1,26 +1,22 @@
+import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { useNewsFeed } from './useNewsFeed'
 import { getAllMovies } from 'services'
-import { useRouter } from 'next/router'
 import { useSockets } from 'hooks'
 import { AllMovie } from 'types'
-import Router from 'next/router'
 import { EVENTS } from 'helpers'
 
 export const useMovies = () => {
   const [showAddMovieForm, setShowAddMovieForm] = useState(false)
   const [movieFetchError, setMovieFetchError] = useState(false)
+
   const [movieList, setMovieList] = useState<AllMovie>([])
 
   const { userData } = useNewsFeed()
   const locale = useRouter().locale
   const { socket } = useSockets()
   const { t } = useTranslation()
-
-  const navigate = (movieId: string) => {
-    Router.push(`/${locale}/movies/${movieId}`)
-  }
 
   socket
     .off(EVENTS.movies.on.SEND_NEW_MOVIE)
@@ -35,6 +31,10 @@ export const useMovies = () => {
         return prev.map((movie) => (movie._id === data._id ? data : movie))
       })
     })
+
+  const navigate = (movieId: string) => {
+    Router.push(`/${locale}/movies/${movieId}`)
+  }
 
   useEffect(() => {
     const fetchAllMovies = async () => {
