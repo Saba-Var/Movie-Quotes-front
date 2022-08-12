@@ -22,6 +22,7 @@ const Movies = () => {
     t,
   } = useMovies()
 
+
   return (
     <div className={`w-full min-h-screen !block pt-[25px] pb-14`}>
       {showAddMovieForm && (
@@ -64,7 +65,7 @@ const Movies = () => {
         {movieList.map((movie) => {
           const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${movie.image}`
           let movieName =
-            locale === 'en' ? movie.movie_name_en : movie.movie_name_ge
+            locale === 'en' ? movie.movieNameEn : movie.movieNameGe
 
           if (movieName.length >= 34) {
             movieName = movieName.slice(0, 23) + '...'

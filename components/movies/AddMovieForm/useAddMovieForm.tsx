@@ -59,12 +59,12 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
     try {
       if (!emptyFileError && !genreNotSelected) {
         const {
-          movie_description_en,
-          movie_description_ge,
-          movie_name_en,
-          movie_name_ge,
-          director_en,
-          director_ge,
+          movieDescriptionEn,
+          movieDescriptionGe,
+          movieNameEn,
+          movieNameGe,
+          directorEn,
+          directorGe,
           budget,
         } = data
 
@@ -78,21 +78,21 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         )}`
 
         const formData = new FormData()
-        formData.append('movie_description_en', movie_description_en)
-        formData.append('movie_description_ge', movie_description_ge)
-        formData.append('movie_name_en', movie_name_en)
-        formData.append('movie_name_ge', movie_name_ge)
-        formData.append('director_en', director_en)
-        formData.append('director_ge', director_ge)
+        formData.append('movieDescriptionEn', movieDescriptionEn)
+        formData.append('movieDescriptionGe', movieDescriptionGe)
+        formData.append('movieNameEn', movieNameEn)
+        formData.append('movieNameGe', movieNameGe)
+        formData.append('directorEn', directorEn)
+        formData.append('directorGe', directorGe)
         formData.append('budget', budget)
         formData.append('userId', userData._id)
         formData.append('image', file!)
 
         if (selectedGenres.length === 1) {
-          formData.append('film_genres[]', selectedGenres[0])
+          formData.append('movieGenres[]', selectedGenres[0])
         } else {
           for (const genre of selectedGenres) {
-            formData.append('film_genres', genre)
+            formData.append('movieGenres', genre)
           }
         }
 

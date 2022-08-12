@@ -24,12 +24,12 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
   } = useMovieInfo()
 
   const {
-    movie_description_en,
-    movie_description_ge,
-    movie_name_ge,
-    movie_name_en,
-    director_ge,
-    director_en,
+    movieDescriptionEn,
+    movieDescriptionGe,
+    movieNameGe,
+    movieNameEn,
+    directorGe,
+    directorEn,
     budget,
     _id,
   } = currentMovie
@@ -78,7 +78,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
       <div className='h-[302px] sm:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
         <div className='flex justify-between items-center'>
           <p className='text-lightGold animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
-            {locale === 'en' ? movie_name_en : movie_name_ge}
+            {locale === 'en' ? movieNameEn : movieNameGe}
           </p>
           <div className='hidden xl:block animate-scale-up'>
             <EditOrDelete
@@ -89,7 +89,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         </div>
 
         <div className='flex flex-wrap gap-2'>
-          {currentMovie.film_genres.map((el: string) => {
+          {currentMovie.movieGenres.map((el: string) => {
             return (
               <div
                 className='text-white animate-scale-up cursor-default text-sm rounded bg-medGray px-[7px] py-[4px]'
@@ -104,7 +104,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         <div className='animate-fade-in flex items-center cursor-default gap-[10px]'>
           <p className='text-inputGray text-lg'>{t('movies:director')}:</p>
           <p className='text-white text-lg font-medium font-Helvetica-Neue-Geo'>
-            {locale === 'en' ? director_en : director_ge}
+            {locale === 'en' ? directorEn : directorGe}
           </p>
         </div>
 
@@ -116,7 +116,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         </div>
 
         <p className='break-words animate-focus-in-text-expand cursor-default text-inputGray text-lg font-Helvetica-Neue-Geo'>
-          {locale === 'en' ? movie_description_en : movie_description_ge}
+          {locale === 'en' ? movieDescriptionEn : movieDescriptionGe}
         </p>
 
         <div className='xl:hidden animate-scale-up flex justify-between'>

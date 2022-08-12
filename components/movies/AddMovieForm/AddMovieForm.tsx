@@ -39,12 +39,12 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
       <Formik
         validationSchema={addMovieFormSchema}
         initialValues={{
-          movie_description_en: '',
-          movie_description_ge: '',
-          movie_name_en: '',
-          movie_name_ge: '',
-          director_en: '',
-          director_ge: '',
+          movieDescriptionEn: '',
+          movieDescriptionGe: '',
+          movieNameEn: '',
+          movieNameGe: '',
+          directorEn: '',
+          directorGe: '',
           budget: '',
         }}
         validateOnMount={false}

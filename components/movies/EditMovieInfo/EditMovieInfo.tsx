@@ -29,7 +29,7 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
     setFile,
     file,
     t,
-  } = useEditMovieInfo(setShowEditForm, currentMovie.film_genres)
+  } = useEditMovieInfo(setShowEditForm, currentMovie.movieGenres)
 
   return (
     <FormWrapper
@@ -41,12 +41,12 @@ const EditMovieInfo: React.FC<EditMovieInfoProps> = (props) => {
       <Formik
         validationSchema={addMovieFormSchema}
         initialValues={{
-          movie_description_en: currentMovie.movie_description_en,
-          movie_description_ge: currentMovie.movie_description_ge,
-          movie_name_en: currentMovie.movie_name_en,
-          movie_name_ge: currentMovie.movie_name_ge,
-          director_en: currentMovie.director_en,
-          director_ge: currentMovie.director_ge,
+          movieDescriptionEn: currentMovie.movieDescriptionEn,
+          movieDescriptionGe: currentMovie.movieDescriptionGe,
+          movieNameEn: currentMovie.movieNameEn,
+          movieNameGe: currentMovie.movieNameGe,
+          directorEn: currentMovie.directorEn,
+          directorGe: currentMovie.directorGe,
           budget: currentMovie.budget,
         }}
         validateOnMount={false}

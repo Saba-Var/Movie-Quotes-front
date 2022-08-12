@@ -45,7 +45,7 @@ export const logInFormSchema = Yup.object({
 export const addMovieFormSchema = Yup.object({
   budget: Yup.number().required('required-field').min(0, 'budget-min'),
 
-  movie_name_en: Yup.string()
+  movieNameEn: Yup.string()
     .trim()
     .required('required-field')
     .test('Movie name validation (Eng)', 'enter-english', function (value) {
@@ -58,7 +58,7 @@ export const addMovieFormSchema = Yup.object({
       })
     }),
 
-  movie_name_ge: Yup.string()
+  movieNameGe: Yup.string()
     .trim()
     .required('required-field')
     .test('Movie name validation (Geo)', 'enter-georgian', function (value) {
@@ -71,7 +71,7 @@ export const addMovieFormSchema = Yup.object({
       })
     }),
 
-  director_en: Yup.string()
+  directorEn: Yup.string()
     .trim()
     .required('required-field')
     .test('Director name validation (Eng)', 'enter-english', function (value) {
@@ -84,7 +84,7 @@ export const addMovieFormSchema = Yup.object({
       })
     }),
 
-  director_ge: Yup.string()
+  directorGe: Yup.string()
     .trim()
     .required('required-field')
     .test('Director name validation (Geo)', 'enter-georgian', function (value) {
@@ -97,7 +97,7 @@ export const addMovieFormSchema = Yup.object({
       })
     }),
 
-  movie_description_en: Yup.string()
+  movieDescriptionEn: Yup.string()
     .trim()
     .required('required-field')
     .test(
@@ -114,7 +114,7 @@ export const addMovieFormSchema = Yup.object({
       }
     ),
 
-  movie_description_ge: Yup.string()
+  movieDescriptionGe: Yup.string()
     .trim()
     .required('required-field')
     .test(

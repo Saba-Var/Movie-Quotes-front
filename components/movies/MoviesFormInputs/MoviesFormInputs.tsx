@@ -24,13 +24,13 @@ const MoviesFormInputs: React.FC<MoviesFormInputsProp> = (props) => {
     <>
       <AddTextInput
         placeholder='Movie name'
-        name='movie_name_en'
+        name='movieNameEn'
         language='Eng'
       />
 
       <AddTextInput
         placeholder='ფილმის სახელი'
-        name='movie_name_ge'
+        name='movieNameGe'
         language='ქარ'
       />
 
@@ -38,19 +38,19 @@ const MoviesFormInputs: React.FC<MoviesFormInputsProp> = (props) => {
 
       {children}
 
-      <AddTextInput placeholder='Director' name='director_en' language='Eng' />
+      <AddTextInput placeholder='Director' name='directorEn' language='Eng' />
 
-      <AddTextInput placeholder='რეჟისორი' name='director_ge' language='ქარ' />
+      <AddTextInput placeholder='რეჟისორი' name='directorGe' language='ქარ' />
 
       <TextAreaInput
         placeholder='Movie description'
-        name='movie_description_en'
+        name='movieDescriptionEn'
         language='Eng'
       />
 
       <TextAreaInput
         placeholder='ფილმის აღწერა'
-        name='movie_description_ge'
+        name='movieDescriptionGe'
         language='ქარ'
       />
 

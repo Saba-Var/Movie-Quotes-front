@@ -75,12 +75,12 @@ export const useEditMovieInfo = (
         )}`
 
         const formData = new FormData()
-        formData.append('movie_description_en', data.movie_description_en)
-        formData.append('movie_description_ge', data.movie_description_ge)
-        formData.append('movie_name_en', data.movie_name_en)
-        formData.append('movie_name_ge', data.movie_name_ge)
-        formData.append('director_en', data.director_en)
-        formData.append('director_ge', data.director_ge)
+        formData.append('movieDescriptionEn', data.movieDescriptionEn)
+        formData.append('movieDescriptionGe', data.movieDescriptionGe)
+        formData.append('movieNameEn', data.movieNameEn)
+        formData.append('movieNameGe', data.movieNameGe)
+        formData.append('directorEn', data.directorEn)
+        formData.append('directorGe', data.directorGe)
         formData.append('budget', data.budget)
         if (file) {
           formData.append('image', file)
@@ -88,10 +88,10 @@ export const useEditMovieInfo = (
         formData.append('id', id)
 
         if (selectedGenres.length === 1) {
-          formData.append('film_genres[]', selectedGenres[0])
+          formData.append('movieGenres[]', selectedGenres[0])
         } else {
           for (const genre of selectedGenres) {
-            formData.append('film_genres', genre)
+            formData.append('movieGenres', genre)
           }
         }
 
