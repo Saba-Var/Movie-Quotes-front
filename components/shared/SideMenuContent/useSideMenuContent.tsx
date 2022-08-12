@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import { SetState } from 'types'
-import Router from 'next/router'
 
 export const useSideMenuContent = (
   setShowSideMenu: SetState<boolean>,
@@ -12,8 +11,7 @@ export const useSideMenuContent = (
 
   const closeHandler = (uri: string) => {
     setCloseMenu(true)
-
-    Router.push(`/${router.locale}/${uri}`)
+    router.push(`/${router.locale}/${uri}`)
 
     setTimeout(() => {
       setShowSideMenu(false)
