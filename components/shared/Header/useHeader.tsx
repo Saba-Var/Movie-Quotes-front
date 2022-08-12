@@ -1,7 +1,9 @@
 import { useSession, signOut } from 'next-auth/react'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from 'react'
+import { deleteCookie } from 'cookies-next'
+import { HrefData } from './types.d'
 
 export const useHeader = () => {
   const router = useRouter()
@@ -13,15 +15,19 @@ export const useHeader = () => {
 
   const { data: session } = useSession()
 
+  let hrefData: HrefData = router.pathname
+
   const logOutHandler = () => {
     const callBackUri = `/${router.locale}`
 
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
-      Router.push(callBackUri)
+      deleteCookie('token')
+      router.push(callBackUri)
     }
 
     if (session) {
+      deleteCookie('token')
       signOut({ callbackUrl: callBackUri })
     }
   }
@@ -35,14 +41,20 @@ export const useHeader = () => {
     if (router.locale === 'en') {
       return setLanguage(t('common:Eng'))
     }
+
     setLanguage(t('common:Geo'))
-  }, [router.locale, t])
+  }, [router.locale, router.pathname, t])
+
+  if (typeof router.query.id === 'string') {
+    hrefData = { pathname: '/movies/[id]', query: { id: router.query.id! } }
+  }
 
   return {
     languageChangeHandler,
     setShowSelector,
     logOutHandler,
     showSelector,
+    hrefData,
     language,
     router,
     t,

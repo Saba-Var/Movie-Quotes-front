@@ -6,12 +6,17 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        'fold-out': 'fold-out 0.7s ease   both',
+        'slide-in-right':
+          'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        'slide-from-left':
+          'slide-from-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-in':
           'slide-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'bounce-in-top': 'bounce-in-top   1.2s ease-in both',
         flying: 'flying 5s linear  infinite both',
         'bounce-out-top': 'bounce-out-top 1.5s ease both',
-        'fade-in': 'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'fade-in': 'fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         dropdown: 'dropdown 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'scale-up':
           'scale-up 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -22,7 +27,7 @@ module.exports = {
       },
       colors: {
         lightGold: '#DDCCAA',
-        background: '#11101A',
+        background: '#181623',
         darkBlue: '#181623',
         orange: '#E31221',
         lightGray: '#D9D9D9',
@@ -34,9 +39,14 @@ module.exports = {
         green: '#198754',
         blue: '#0D6EFD',
         backgroundGray: '#24222f',
+        formModalBlue: '#18141c',
+        purple: '#482474',
+        darkPurple: '#24222F',
       },
       screens: {
+        '3xl': '1750px',
         '2.5xl': '1600px',
+        '1xl': '850px',
       },
       fontFamily: {
         'Helvetica-Neue': ['Helvetica Neue'],
@@ -47,6 +57,39 @@ module.exports = {
         'bottom-left-center': 'bottom right -14rem',
       },
       keyframes: {
+        'fold-out': {
+          '0%': {
+            transform: 'translateZ(-800px) rotateY(90deg)',
+            opacity: '0',
+          },
+          '40%': {
+            transform: 'translateZ(-160px) rotateY(87deg)',
+            opacity: '1',
+          },
+          to: {
+            transform: 'translateZ(0) rotateY(0)',
+          },
+        },
+        'slide-in-right': {
+          '0%': {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+          to: {
+            transform: 'translateX(-500px)',
+            opacity: '0',
+          },
+        },
+        'slide-from-left': {
+          '0%': {
+            transform: 'translateX(-1000px)',
+            opacity: '0',
+          },
+          to: {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
         'slide-in': {
           '0%': {
             transform: 'translateY(-600px) rotateX(-30deg) scale(0)',

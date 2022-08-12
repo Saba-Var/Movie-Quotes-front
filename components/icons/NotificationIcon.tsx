@@ -1,7 +1,7 @@
 const NotificationIcon = () => {
   return (
     <svg
-      className='cursor-pointer animate-fade-in mr-3 md:mr-5'
+      className='cursor-pointer mr-3 md:mr-5'
       viewBox='0 0 22 24'
       height='24'
       fill='none'

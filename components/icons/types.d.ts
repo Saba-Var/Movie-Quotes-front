@@ -9,3 +9,11 @@ export type IconStyle = {
 export type EyeIconProps = {
   onClick: () => void
 }
+
+export type SelectedIcon = {
+  isSelected: boolean
+}
+
+export type SearchIconProps = {
+  styles?: string
+}

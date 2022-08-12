@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page, setRegistrationModal, setShowLogIn } = props
+  const { setRegistrationModal, setShowSideMenu, setShowLogIn, page } = props
 
   const {
     languageChangeHandler,
@@ -18,15 +18,15 @@ const Header: React.FC<HeaderProps> = (props) => {
     logOutHandler,
     showSelector,
     language,
-    router,
+    hrefData,
     t,
   } = useHeader()
 
   return (
     <div
-      className={`py-5 px-9 fixed w-screen z-[99] ${
+      className={`py-5 px-9 fixed w-screen z-[9998] ${
         page === 'news-feed'
-          ? 'bg-backgroundGray !pt-8 md:!pt-6'
+          ? 'bg-backgroundGray !pt-8 1xl:!pt-6'
           : 'bg-background'
       } h-[86px]`}
     >
@@ -45,26 +45,30 @@ const Header: React.FC<HeaderProps> = (props) => {
               behavior: 'smooth',
             })
           }
-          className={`text-lightGold cursor-pointer animate-fade-in text-base font-Helvetica-Neue ${
-            page === 'news-feed' && 'hidden md:block'
+          className={`text-lightGold animate-fade-in cursor-pointer text-base font-Helvetica-Neue ${
+            page === 'news-feed' && 'hidden 1xl:block'
           }`}
         >
           MOVIE QUOTES
         </p>
 
-        {page === 'news-feed' && <MenuIcon />}
+        {page === 'news-feed' && (
+          <div onClick={() => setShowSideMenu && setShowSideMenu(true)}>
+            <MenuIcon />
+          </div>
+        )}
 
         <div className='flex gap-4 items-center'>
           {page === 'news-feed' && (
             <>
+              {hrefData.toString().includes('news-feed') && <SearchIcon />}
               <NotificationIcon />
-              <SearchIcon />
             </>
           )}
 
-          <div className='hidden md:block relative z-[9999] mr-5'>
+          <div className='hidden 1xl:block relative z-[9999] mr-5'>
             <div
-              className='flex justify-center animate-fade-in items-center gap-2 cursor-pointer '
+              className='flex justify-center items-center gap-2 cursor-pointer '
               onClick={() => setShowSelector(!showSelector)}
             >
               <p className='text-base text-white cursor-pointer select-none'>
@@ -79,7 +83,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   language === 'Eng' && '-left-10'
                 }`}
               >
-                <Link scroll={false} href={router.pathname} locale={'en'}>
+                <Link href={hrefData} scroll={false} locale='en' rel='preload'>
                   <a
                     onClick={() => languageChangeHandler(t('common:Eng'))}
                     className='text-base text-white hover:scale-110 transition-transform'
@@ -88,7 +92,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   </a>
                 </Link>
 
-                <Link scroll={false} href={router.pathname} locale={'ge'}>
+                <Link href={hrefData} scroll={false} rel='preload' locale='ge'>
                   <a
                     onClick={() => languageChangeHandler(t('common:Geo'))}
                     className='text-base text-white hover:scale-110 transition-transform'
@@ -106,10 +110,11 @@ const Header: React.FC<HeaderProps> = (props) => {
                 onClick={() =>
                   setRegistrationModal && setRegistrationModal(true)
                 }
-                styles='bg-orange hidden md:block'
+                styles='bg-orange hidden 1xl:block'
                 title={t('common:SignUp')}
                 type='button'
               />
+
               <Button
                 onClick={() => setShowLogIn && setShowLogIn(true)}
                 styles='border border-white'
@@ -123,7 +128,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page !== 'home' && (
             <Button
               onClick={() => logOutHandler()}
-              styles='hidden md:block border border-white'
+              styles='hidden 1xl:block border border-white'
               title={t('common:Log-out')}
               type='button'
             />

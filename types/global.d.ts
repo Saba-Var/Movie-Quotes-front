@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 export type SetState<T> = Dispatch<SetStateAction<T>>
 
@@ -27,3 +27,54 @@ export type LogInData = {
   password: string
   email: string
 }
+
+export type UserData = {
+  image?: string
+  email: string
+  name: string
+  _id: string
+}
+
+export type FilmGenres = string[]
+
+export type SelectedOptions = {
+  value: string
+  label: string
+}[]
+
+export type ComponentWithPageLayout = AppProps & {
+  Component: AppProps['Component'] & {
+    PageLayout?: React.ComponentType
+  }
+}
+
+export type CertainMovieDetails = {
+  movieDescriptionEn: string
+  movieDescriptionGe: string
+  movieNameEn: string
+  movieNameGe: string
+  movieGenres: string[]
+  directorEn: string
+  directorGe: string
+  budget: string
+  image?: string
+  userId: string
+  _id: string
+}
+
+export type MovieFormData = {
+  movieDescriptionEn: string
+  movieDescriptionGe: string
+  movieNameEn: string
+  movieNameGe: string
+  movieGenres?: string[]
+  directorEn: string
+  directorGe: string
+  budget: string
+}
+
+export type Id = {
+  id: string
+}
+
+export type AllMovie = CertainMovieDetails[]

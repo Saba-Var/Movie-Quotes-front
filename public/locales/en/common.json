@@ -5,5 +5,17 @@
   "Log-in": "Log in",
   "Log-out": "Log Out",
   "English": "English",
-  "Georgian": "Georgian"
+  "Georgian": "Georgian",
+  "search": "Search",
+  "required-field": "This field is required",
+  "enter-georgian": "Enter Georgian characters",
+  "enter-english": "Enter English characters",
+  "upload-image": "Upload image",
+  "drag-drop-image": "Drag & drop your image here or",
+  "choose-file": "Choose file",
+  "budget-min": "You can't Enter less than 0",
+  "user-fetch-fail": "User data fetching failed",
+  "upload-only-image": "You can upload only image",
+  "yes": "Yes",
+  "no": "No"
 }
