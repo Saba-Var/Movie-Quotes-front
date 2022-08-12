@@ -1,3 +1,4 @@
+import { setCookie, getCookie } from 'cookies-next'
 import axios, { getUserDetails } from 'services'
 import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -21,13 +22,17 @@ export const useNewsFeed = () => {
   const router = useRouter()
 
   const navigate = (routeUri: string) => {
-    Router.push(`/${routeUri}`)
+    router.push(`/${routeUri}`)
   }
 
   useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {
-      Router.push(`/${router.locale}/unauthorized`)
+      router.push(`/${router.locale}/unauthorized`)
     } else {
+      if (session && !getCookie('token')) {
+        setCookie('token', session.accessToken)
+      }
+
       const fetchUserData = async () => {
         try {
           const token = getToken(session)

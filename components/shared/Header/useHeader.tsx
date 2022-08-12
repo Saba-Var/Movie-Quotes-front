@@ -1,7 +1,8 @@
 import { useSession, signOut } from 'next-auth/react'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from 'react'
+import { deleteCookie } from 'cookies-next'
 import { HrefData } from './types.d'
 
 export const useHeader = () => {
@@ -21,10 +22,12 @@ export const useHeader = () => {
 
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
-      Router.push(callBackUri)
+      deleteCookie('token')
+      router.push(callBackUri)
     }
 
     if (session) {
+      deleteCookie('token')
       signOut({ callbackUrl: callBackUri })
     }
   }

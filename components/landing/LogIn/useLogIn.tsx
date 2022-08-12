@@ -1,6 +1,7 @@
 import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { authorization } from 'services'
+import { setCookie } from 'cookies-next'
 import { LogInData } from 'types'
 import { useState } from 'react'
 
@@ -19,7 +20,9 @@ export const useLogIn = () => {
       const response = await authorization(data)
 
       if (response.status === 200) {
-        localStorage.setItem('token', response.data.token)
+        const token = response.data.token
+        localStorage.setItem('token', token)
+        setCookie('token', token)
         Router.push(`/${locale}/news-feed`)
       }
     } catch (error: any) {

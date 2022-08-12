@@ -109,6 +109,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
       } else {
         setFilmAddErr(true)
       }
+      console.log(error)
     }
   }
 

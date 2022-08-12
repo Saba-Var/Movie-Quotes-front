@@ -1,5 +1,6 @@
 import { activateUserAccount } from 'services'
 import { useEffect, useState } from 'react'
+import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 
 export const useLanding = () => {
@@ -28,6 +29,7 @@ export const useLanding = () => {
           if (status === 200) {
             setShowActivatedModal(true)
             localStorage.setItem('token', token)
+            setCookie('token', token)
           }
         }
       } catch (error) {
