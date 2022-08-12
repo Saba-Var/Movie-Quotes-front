@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { page, setRegistrationModal, setShowLogIn, setShowSideMenu } = props
+  const { setRegistrationModal, setShowSideMenu, setShowLogIn, page } = props
 
   const {
     languageChangeHandler,
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <div className='flex gap-4 items-center'>
           {page === 'news-feed' && (
             <>
-              <SearchIcon />
+              {hrefData.toString().includes('news-feed') && <SearchIcon />}
               <NotificationIcon />
             </>
           )}
