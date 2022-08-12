@@ -1,4 +1,4 @@
-import axios, { getFilmGenres, changeMovie } from 'services'
+import axios, { getMovieGenres, changeMovie } from 'services'
 import { SelectedOptions, SetState } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
@@ -110,7 +110,7 @@ export const useEditMovieInfo = (
   useEffect(() => {
     const fetchFilmGenres = async () => {
       try {
-        const { data, status } = await getFilmGenres()
+        const { data, status } = await getMovieGenres()
 
         if (status === 200) {
           setFilmGenres(data)

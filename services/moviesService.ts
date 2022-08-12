@@ -2,8 +2,8 @@ import { FilmGenres, Status, AllMovie } from 'types'
 import { AxiosResponse } from 'axios'
 import axios from 'services'
 
-export const getFilmGenres = (): Promise<AxiosResponse<FilmGenres>> => {
-  return axios.get('/film-genres')
+export const getMovieGenres = (): Promise<AxiosResponse<FilmGenres>> => {
+  return axios.get('/movie-genres')
 }
 
 export const getAllMovies = (

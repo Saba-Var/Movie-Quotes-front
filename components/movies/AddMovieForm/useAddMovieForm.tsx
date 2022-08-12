@@ -1,4 +1,4 @@
-import axios, { getFilmGenres, addNewMovie } from 'services'
+import axios, { getMovieGenres, addNewMovie } from 'services'
 import { SelectedOptions, SetState } from 'types'
 import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
@@ -42,7 +42,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   useEffect(() => {
     const fetchFilmGenres = async () => {
       try {
-        const { data, status } = await getFilmGenres()
+        const { data, status } = await getMovieGenres()
 
         if (status === 200) {
           setFilmGenres(data)
