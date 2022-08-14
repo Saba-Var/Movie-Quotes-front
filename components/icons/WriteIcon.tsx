@@ -1,4 +1,4 @@
-const EditIcon = () => {
+const WriteIcon = () => {
   return (
     <svg width='23' height='23' viewBox='0 0 23 23' fill='none'>
       <path
@@ -15,4 +15,4 @@ const EditIcon = () => {
   )
 }
 
-export default EditIcon
+export default WriteIcon

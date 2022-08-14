@@ -131,3 +131,31 @@ export const addMovieFormSchema = Yup.object({
       }
     ),
 })
+
+export const addQuoteSchema = Yup.object({
+  quoteEn: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('Quote validation (Eng)', 'enter-english', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'ENG',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+
+  quoteGe: Yup.string()
+    .trim()
+    .required('required-field')
+    .test('Quote validation (Geo)', 'enter-georgian', function (value) {
+      const { path, createError } = this
+      return languageValidation({
+        language: 'GEO',
+        value: value!,
+        createError,
+        path,
+      })
+    }),
+})

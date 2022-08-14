@@ -4,19 +4,39 @@ import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
 const FormWrapper: React.FC<FormWrapperProps> = (props) => {
-  const { children, setShowForm, title, hideImage, styles, titleStyle } = props
+  const {
+    setSelectedMovieId,
+    setEmptyFIleError,
+    setMovieIdError,
+    disableOverflow,
+    setShowForm,
+    titleStyle,
+    hideImage,
+    children,
+    setFile,
+    styles,
+    title,
+  } = props
 
   const { userData, imageSrc } = useNewsFeed()
 
   return (
     <div>
       <div
-        onClick={() => setShowForm(false)}
+        onClick={() => {
+          setFile && setFile(null)
+          setEmptyFIleError && setEmptyFIleError(false)
+          setMovieIdError && setMovieIdError(false)
+          setSelectedMovieId && setSelectedMovieId('')
+          setShowForm(false)
+        }}
         className={`fixed w-full h-screen bg-background opacity-60 left-0  top-0 z-[99999]`}
       ></div>
 
       <div
-        className={`fixed overflow-y-auto right-0 top-0 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue h-screen 1xl:!h-fit pb-2 1xl:w-[50vw] 1xl:left-[28%] 2xl:top-4 ${styles}`}
+        className={`fixed ${
+          !disableOverflow && 'overflow-y-auto'
+        } right-0 top-0 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue h-screen 1xl:!h-fit pb-2 1xl:w-[50vw] 1xl:left-[28%] 2xl:top-4 ${styles}`}
       >
         <div className='h-[55px] 2xl:h-16 relative border-b border-b-gray-600 w-full flex justify-center items-center'>
           <p
@@ -25,7 +45,15 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
             {title}
           </p>
 
-          <div onClick={() => setShowForm(false)}>
+          <div
+            onClick={() => {
+              setFile && setFile(null)
+              setShowForm(false)
+              setMovieIdError && setMovieIdError(false)
+              setSelectedMovieId && setSelectedMovieId('')
+              setEmptyFIleError && setEmptyFIleError(false)
+            }}
+          >
             <CloseIcon />
           </div>
         </div>

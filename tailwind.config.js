@@ -39,7 +39,7 @@ module.exports = {
         green: '#198754',
         blue: '#0D6EFD',
         backgroundGray: '#24222f',
-        formModalBlue: '#18141c',
+        formModalBlue: '#11101a',
         purple: '#482474',
         darkPurple: '#24222F',
       },
