@@ -10,7 +10,13 @@ import {
 } from 'components'
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { setRegistrationModal, setShowSideMenu, setShowLogIn, page } = props
+  const {
+    setRegistrationModal,
+    setShowSideMenu,
+    setShowLogIn,
+    showSideMenu,
+    page,
+  } = props
 
   const {
     languageChangeHandler,
@@ -53,7 +59,9 @@ const Header: React.FC<HeaderProps> = (props) => {
         </p>
 
         {page === 'news-feed' && (
-          <div onClick={() => setShowSideMenu && setShowSideMenu(true)}>
+          <div
+            onClick={() => setShowSideMenu && setShowSideMenu(!showSideMenu)}
+          >
             <MenuIcon />
           </div>
         )}

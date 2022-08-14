@@ -1,9 +1,9 @@
 import { setCookie, getCookie } from 'cookies-next'
 import axios, { getUserDetails } from 'services'
-import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { getToken } from 'helpers'
 import { UserData } from 'types'
 
@@ -49,7 +49,7 @@ export const useNewsFeed = () => {
 
       fetchUserData()
     }
-  }, [router.locale, session, status])
+  }, [router, router.locale, session, status])
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
