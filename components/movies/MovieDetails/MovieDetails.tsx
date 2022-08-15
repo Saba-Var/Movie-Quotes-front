@@ -1,6 +1,6 @@
 import { useMovieDetails } from './useMovieDetails'
+import { MovieInfo, QuoteList } from 'components'
 import { MovieDetailsProps } from './types'
-import { MovieInfo } from 'components'
 import Image from 'next/image'
 
 const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
@@ -29,6 +29,8 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
 
           <MovieInfo currentMovie={currentMovie} />
         </div>
+
+        <QuoteList />
       </div>
     </div>
   )

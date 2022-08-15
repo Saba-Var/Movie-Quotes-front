@@ -78,3 +78,16 @@ export type Id = {
 }
 
 export type AllMovie = CertainMovieDetails[]
+
+export type Quotes = {
+  _id: string
+  quoteEn: string
+  quoteGe: string
+  likes: string[]
+  comments: {
+    user: { _id: string; name: string; image?: string }
+    commentText: string
+    _id: string
+  }[]
+  image?: string
+}[]

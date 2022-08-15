@@ -93,7 +93,7 @@ const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
       >
         <div className='flex items-center gap-3 cursor-pointer'>
           <CameraReel />
-          <p className='text-white font-Helvetica-Neue-Geo text-2xl'>
+          <p className='text-white font-Helvetica-Neue-Geo text-lg 2xl:text-2xl'>
             {selectedMovieName
               ? selectedMovieName
               : t('news-feed:choose-movie')}
