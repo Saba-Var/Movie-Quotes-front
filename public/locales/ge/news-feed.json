@@ -1,5 +1,7 @@
 {
   "write-quote": "ციტატის დამატება",
   "post": "დამატება",
-  "choose-movie": "აირჩიეთ ფილმი"
+  "choose-movie": "აირჩიეთ ფილმი",
+  "duplicate-quote": "ეს ციტატა უკვე დამატებულია",
+  "quote-add-error": "ციტატა ვერ დაემატა"
 }

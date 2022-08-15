@@ -5,7 +5,8 @@ import { useMovies } from 'hooks'
 import Image from 'next/image'
 
 const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
-  const { setSelectedMovieId, movieIdError, setMovieIdError } = props
+  const { setSelectedMovieId, movieIdError, setMovieIdError, selectedMovieId } =
+    props
 
   const { t, isOpen, setIsOpen, selectedMovieName, setSelectedMovieName } =
     useMovieMultiSelect()
@@ -84,7 +85,9 @@ const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
-        className={`cursor-pointer !z-[999999999] border-transparent border h-[86px] w-full bg-black justify-between rounded px-4 flex items-center ${
+        className={`cursor-pointer !z-[999999999] border-transparent border ${
+          selectedMovieId && 'border-green'
+        } h-[86px] w-full bg-black justify-between rounded px-4 flex items-center ${
           movieIdError && '!border-errorRed'
         }`}
       >

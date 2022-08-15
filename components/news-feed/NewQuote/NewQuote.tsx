@@ -6,20 +6,27 @@ import {
   MovieMultiSelect,
   TextAreaInput,
   FormWrapper,
+  ErrorAlert,
   WriteIcon,
   Button,
 } from 'components'
 
 const NewQuote = () => {
   const {
+    setDuplicateQuotes,
     setSelectedMovieId,
     setEmptyFIleError,
     setMovieIdError,
     selectedMovieId,
+    duplicateQuotes,
     emptyFileError,
     setShowAddForm,
+    submitHandler,
+    setFetchError,
+    closeHandler,
     movieIdError,
     showAddForm,
+    fetchError,
     setFile,
     file,
     t,
@@ -43,26 +50,39 @@ const NewQuote = () => {
         <FormWrapper
           styles='1xl:top-[10%] 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px]  1xl:left-[335px] lg:!left-[405px] 2xl:!left-[497px]'
           title={t('news-feed:write-quote')}
-          setSelectedMovieId={setSelectedMovieId}
-          setEmptyFIleError={setEmptyFIleError}
-          setMovieIdError={setMovieIdError}
           setShowForm={setShowAddForm}
+          closeHandler={closeHandler}
           disableOverflow={true}
-          setFile={setFile}
         >
           <Formik
             validationSchema={addQuoteSchema}
             validateOnMount={false}
+            onSubmit={submitHandler}
             initialValues={{
               quoteEn: '',
               quoteGe: '',
             }}
-            onSubmit={() => {}}
           >
             {() => {
               return (
                 <Form>
                   <div className='flex flex-col gap-8 mt-9'>
+                    {duplicateQuotes && (
+                      <ErrorAlert
+                        styles='left-1/2 !-translate-x-1/2 1xl:left-[53%] lg:!left-[730px] xl:!left-[800px] 2xl:!left-[980px]'
+                        setShowAlert={setDuplicateQuotes}
+                        title='news-feed:duplicate-quote'
+                      />
+                    )}
+
+                    {fetchError && (
+                      <ErrorAlert
+                        styles='left-1/2 !-translate-x-1/2 1xl:left-[53%] lg:!left-[730px] xl:!left-[800px] 2xl:!left-[980px]'
+                        title='news-feed:quote-add-error'
+                        setShowAlert={setFetchError}
+                      />
+                    )}
+
                     <TextAreaInput
                       placeholder='Start create new quote'
                       language='Eng'
@@ -85,6 +105,7 @@ const NewQuote = () => {
                     <MovieMultiSelect
                       setSelectedMovieId={setSelectedMovieId}
                       setMovieIdError={setMovieIdError}
+                      selectedMovieId={selectedMovieId}
                       movieIdError={movieIdError}
                     />
 

@@ -16,7 +16,7 @@ const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
           {...props}
           className={`!bg-transparent border-gray-500 resize-none h-14 xl:h-[60px] pl-3 pr-7 !outline-none text-white 2xl:text-xl  text-base  font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
-          } ${isValid && 'border-green'} outline-none `}
+          } ${isValid && '!border-green'} outline-none `}
           autoComplete='off'
           placeholder={placeholder}
         ></textarea>

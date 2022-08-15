@@ -1,5 +1,7 @@
 {
   "write-quote": "Write new quote",
   "post": "Post",
-  "choose-movie": "Choose movie"
+  "choose-movie": "Choose movie",
+  "duplicate-quote": "This quote is already added",
+  "quote-add-error": "Quote could not be added"
 }

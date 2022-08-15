@@ -5,15 +5,12 @@ import Image from 'next/image'
 
 const FormWrapper: React.FC<FormWrapperProps> = (props) => {
   const {
-    setSelectedMovieId,
-    setEmptyFIleError,
-    setMovieIdError,
     disableOverflow,
+    closeHandler,
     setShowForm,
     titleStyle,
     hideImage,
     children,
-    setFile,
     styles,
     title,
   } = props
@@ -24,10 +21,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
     <div>
       <div
         onClick={() => {
-          setFile && setFile(null)
-          setEmptyFIleError && setEmptyFIleError(false)
-          setMovieIdError && setMovieIdError(false)
-          setSelectedMovieId && setSelectedMovieId('')
+          closeHandler && closeHandler()
           setShowForm(false)
         }}
         className={`fixed w-full h-screen bg-background opacity-60 left-0  top-0 z-[99999]`}
@@ -47,11 +41,8 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
 
           <div
             onClick={() => {
-              setFile && setFile(null)
+              closeHandler && closeHandler()
               setShowForm(false)
-              setMovieIdError && setMovieIdError(false)
-              setSelectedMovieId && setSelectedMovieId('')
-              setEmptyFIleError && setEmptyFIleError(false)
             }}
           >
             <CloseIcon />
