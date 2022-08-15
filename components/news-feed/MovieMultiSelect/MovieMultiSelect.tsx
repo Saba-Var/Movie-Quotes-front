@@ -72,9 +72,9 @@ const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
                 onClick={() => {
                   setIsOpen(false)
                 }}
-                className='text-white cursor-pointer pt-7 h-full text-center text-2xl'
+                className='text-white cursor-pointer pt-7 h-full text-center text-lg md:text-xl lg:text-2xl'
               >
-                add movie
+                {t('news-feed:empty-movie-list')}
               </p>
             )}
           </div>

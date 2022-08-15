@@ -3,5 +3,6 @@
   "post": "დამატება",
   "choose-movie": "აირჩიეთ ფილმი",
   "duplicate-quote": "ეს ციტატა უკვე დამატებულია",
-  "quote-add-error": "ციტატა ვერ დაემატა"
+  "quote-add-error": "ციტატა ვერ დაემატა",
+  "empty-movie-list": "თქვენი ფილმების სია ცარიელია"
 }
