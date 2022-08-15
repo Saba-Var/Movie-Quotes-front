@@ -56,6 +56,7 @@ export type CertainMovieDetails = {
   movieGenres: string[]
   directorEn: string
   directorGe: string
+  quotes?: string[]
   budget: string
   image?: string
   userId: string

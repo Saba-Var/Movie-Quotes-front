@@ -1,4 +1,4 @@
-import { AddButton, HeartIcon, ChatIcon, ThreeDotsIcon } from 'components'
+import { QuoteDropdown, AddButton, HeartIcon, ChatIcon } from 'components'
 import { useQuoteList } from './useQuoteList'
 import Image from 'next/image'
 
@@ -10,14 +10,14 @@ const QuoteList = () => {
       <div className='hidden xl:flex animate-fade-in mt-6 items-center gap-4'>
         <p className='text-2xl pr-4 border-r border-r-gray-600 text-white font-Helvetica-Neue-Geo'>{`${t(
           'news-feed:quotes'
-        )} (${t('news-feed:total')} 0)`}</p>
+        )} (${t('news-feed:total')} ${quoteList?.length})`}</p>
         <AddButton clickHandler={() => {}} title={t('news-feed:add-quote')} />
       </div>
 
       <div className='pt-10 mt-4 border-t border-t-gray-600'>
-        <p className='text-2xl lg:hidden mb-8 pr-4 text-white font-Helvetica-Neue-Geo'>{`${t(
+        <p className='text-2xl xl:hidden mb-8 pr-4 text-white font-Helvetica-Neue-Geo'>{`${t(
           'news-feed:quotes'
-        )} (${t('news-feed:total')} 0)`}</p>
+        )} (${t('news-feed:total')} ${quoteList?.length})`}</p>
 
         <div className='flex flex-col gap-8 xl:gap-10'>
           {quoteList &&
@@ -36,8 +36,8 @@ const QuoteList = () => {
                   className='flex h-[350px] animate-scale-up rounded-[10px] justify-between xl:!h-[268px] flex-col bg-formModalBlue py-4 xl:py-6 px-4 xl:px-8'
                 >
                   <div className='flex flex-col relative xl:flex-row items-center gap-6 pb-6'>
-                    <div className='hidden hover:scale-110 active:scale-100 transition-transform cursor-pointer xl:block xl:absolute top-0 right-0'>
-                      <ThreeDotsIcon />
+                    <div className='hidden xl:block xl:absolute top-0 right-0'>
+                      <QuoteDropdown />
                     </div>
 
                     <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
@@ -72,7 +72,7 @@ const QuoteList = () => {
                     </div>
 
                     <div className='xl:hidden'>
-                      <ThreeDotsIcon />
+                      <QuoteDropdown />
                     </div>
                   </div>
                 </div>

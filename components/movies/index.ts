@@ -1,5 +1,6 @@
 export * from './GenresMultiSelect'
 export * from './MoviesFormInputs'
+export * from './QuoteDropdown'
 export * from './EditMovieInfo'
 export * from './AddMovieForm'
 export * from './MovieDetails'

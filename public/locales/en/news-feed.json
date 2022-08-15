@@ -7,5 +7,8 @@
   "empty-movie-list": "Your movie list is empty",
   "add-quote": "Add quote",
   "quotes": "Quotes",
-  "total": "total"
+  "total": "total",
+  "view-post": "View Post",
+  "edit": "Edit",
+  "delete": "Delete"
 }
