@@ -1,4 +1,5 @@
 import { useQuoteList } from './useQuoteList'
+import { QuoteListProps } from './types.d'
 import Image from 'next/image'
 import {
   QuoteDropdown,
@@ -6,9 +7,12 @@ import {
   AddButton,
   HeartIcon,
   ChatIcon,
+  AddQuote,
 } from 'components'
 
-const QuoteList = () => {
+const QuoteList: React.FC<QuoteListProps> = (props) => {
+  const { addQuoteModal, setAddQuoteModal } = props
+
   const {
     setDeleteModal,
     deleteModal,
@@ -25,11 +29,18 @@ const QuoteList = () => {
         <DeleteQuote quoteId={quoteId} setDeleteModal={setDeleteModal} />
       )}
 
+      {addQuoteModal && <AddQuote setAddQuoteModal={setAddQuoteModal} />}
+
       <div className='hidden xl:flex animate-fade-in mt-6 items-center gap-4'>
         <p className='text-2xl pr-4 border-r border-r-gray-600 text-white font-Helvetica-Neue-Geo'>{`${t(
           'news-feed:quotes'
         )} (${t('news-feed:total')} ${quoteList?.length})`}</p>
-        <AddButton clickHandler={() => {}} title={t('news-feed:add-quote')} />
+        <AddButton
+          clickHandler={() => {
+            setAddQuoteModal(true)
+          }}
+          title={t('news-feed:add-quote')}
+        />
       </div>
 
       <div className='pt-10 mt-4 border-t border-t-gray-600'>

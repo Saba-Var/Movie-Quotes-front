@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
-  const { currentMovie } = props
+  const { currentMovie, setAddQuoteModal } = props
 
   const {
     movieDeleteHandler,
@@ -121,7 +121,12 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         </p>
 
         <div className='xl:hidden animate-scale-up flex justify-between mt-6'>
-          <AddButton clickHandler={() => {}} title={t('news-feed:add-quote')} />
+          <AddButton
+            clickHandler={() => {
+              setAddQuoteModal(true)
+            }}
+            title={t('news-feed:add-quote')}
+          />
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export const useMovies = () => {
   socket
     .off(EVENTS.movies.on.SEND_NEW_MOVIE)
     .on(EVENTS.movies.on.SEND_NEW_MOVIE, (data) => {
-      setMovieList((prev) => [...prev, data])
+      setMovieList((prev) => [data, ...prev])
     })
 
   socket

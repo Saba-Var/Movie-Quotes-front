@@ -28,7 +28,9 @@ const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
             </div>
 
             <div
-              onClick={() => setShowDropDown(false)}
+              onClick={() => {
+                setShowDropDown(false)
+              }}
               className='flex cursor-pointer hover:scale-[1.025] transition-transform gap-4 items-center'
             >
               <PencilIcon />

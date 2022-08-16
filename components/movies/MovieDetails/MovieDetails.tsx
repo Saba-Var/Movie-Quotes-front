@@ -6,7 +6,8 @@ import Image from 'next/image'
 const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
   const { movieList } = props
 
-  const { currentMovie, imageSrc, t } = useMovieDetails(movieList)
+  const { currentMovie, imageSrc, t, addQuoteModal, setAddQuoteModal } =
+    useMovieDetails(movieList)
 
   return (
     <div className='mt-10 1xl:mt-5'>
@@ -27,10 +28,16 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
             />
           </div>
 
-          <MovieInfo currentMovie={currentMovie} />
+          <MovieInfo
+            setAddQuoteModal={setAddQuoteModal}
+            currentMovie={currentMovie}
+          />
         </div>
 
-        <QuoteList />
+        <QuoteList
+          setAddQuoteModal={setAddQuoteModal}
+          addQuoteModal={addQuoteModal}
+        />
       </div>
     </div>
   )

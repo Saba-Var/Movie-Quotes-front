@@ -66,7 +66,7 @@ const Movies = () => {
           let movieName =
             locale === 'en' ? movie.movieNameEn : movie.movieNameGe
 
-          if (movieName.length >= 34) {
+          if (movieName.length >= 23) {
             movieName = movieName.slice(0, 23) + '...'
           }
 

@@ -7,8 +7,10 @@ import { EVENTS } from 'helpers'
 import { Quotes } from 'types'
 
 export const useQuoteList = () => {
-  const [quoteList, setQuoteList] = useState<Quotes>([])
+  const [addQuoteModal, setAddQuoteModal] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
+
+  const [quoteList, setQuoteList] = useState<Quotes>([])
   const [quoteId, setQuoteId] = useState('')
 
   const { query, locale } = useRouter()
@@ -21,6 +23,12 @@ export const useQuoteList = () => {
       setQuoteList((prev) => {
         return prev.filter((quote) => quote._id !== deletedQuoteId)
       })
+    })
+
+  socket
+    .off(EVENTS.movies.on.SEND_NEW_QUOTE)
+    .on(EVENTS.movies.on.SEND_NEW_QUOTE, (quote) => {
+      setQuoteList((prev) => [quote, ...prev])
     })
 
   useEffect(() => {
@@ -37,7 +45,9 @@ export const useQuoteList = () => {
   }, [query.id])
 
   return {
+    setAddQuoteModal,
     setDeleteModal,
+    addQuoteModal,
     setQuoteList,
     deleteModal,
     setQuoteId,

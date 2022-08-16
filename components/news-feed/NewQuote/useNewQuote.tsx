@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
-import { QuoteText } from './types.d'
 import { useNewsFeed } from 'hooks'
 import { addQuote } from 'services'
+import { QuoteText } from 'types'
 import { useState } from 'react'
 
 export const useNewQuote = () => {

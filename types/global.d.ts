@@ -92,3 +92,8 @@ export type Quotes = {
   }[]
   image?: string
 }[]
+
+export type QuoteText = {
+  quoteEn: string
+  quoteGe: string
+}

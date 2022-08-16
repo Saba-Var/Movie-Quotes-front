@@ -49,7 +49,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
           </div>
         </div>
 
-        <div className='px-8 pt-4'>
+        <div className='px-8 pt-5'>
           {!hideImage && (
             <div className='h-[50px] flex gap-4 items-center mb-4 animate-fade-in'>
               {!userData.image && (
