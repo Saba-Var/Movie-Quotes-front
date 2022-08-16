@@ -3,7 +3,7 @@ import { useQuoteDropdown } from './useQuoteDropdown'
 import { QuoteDropdownProps } from './types.d'
 
 const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
-  const { setDeleteModal } = props
+  const { setDeleteModal, setEditModal } = props
 
   const { t, setShowDropDown, showDropDown } = useQuoteDropdown()
 
@@ -29,6 +29,7 @@ const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
 
             <div
               onClick={() => {
+                setEditModal(true)
                 setShowDropDown(false)
               }}
               className='flex cursor-pointer hover:scale-[1.025] transition-transform gap-4 items-center'

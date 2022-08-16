@@ -89,13 +89,9 @@ const AddQuote: React.FC<AddQuoteProps> = (props) => {
                 </div>
 
                 <Button
+                  onClick={() => !file && setEmptyFIleError(true)}
                   styles='bg-orange !hover:scale-105 xl:text-xl'
                   title={t('news-feed:add-quote')}
-                  onClick={() => {
-                    if (!file) {
-                      setEmptyFIleError(true)
-                    }
-                  }}
                   type='submit'
                 />
               </div>

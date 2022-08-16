@@ -5,6 +5,7 @@ import {
   QuoteDropdown,
   DeleteQuote,
   AddButton,
+  EditQuote,
   HeartIcon,
   ChatIcon,
   AddQuote,
@@ -15,8 +16,10 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
 
   const {
     setDeleteModal,
+    setEditModal,
     deleteModal,
     setQuoteId,
+    editModal,
     quoteList,
     quoteId,
     locale,
@@ -27,6 +30,14 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
     <div className='w-[358px] sm:w-[438px] xl:w-[55%] pb-10'>
       {deleteModal && (
         <DeleteQuote quoteId={quoteId} setDeleteModal={setDeleteModal} />
+      )}
+
+      {editModal && (
+        <EditQuote
+          setDeleteModal={setDeleteModal}
+          setEditModal={setEditModal}
+          quoteId={quoteId}
+        />
       )}
 
       {addQuoteModal && <AddQuote setAddQuoteModal={setAddQuoteModal} />}
@@ -69,7 +80,10 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                       onClick={() => setQuoteId(quote._id)}
                       className='hidden xl:block xl:absolute top-0 right-0'
                     >
-                      <QuoteDropdown setDeleteModal={setDeleteModal} />
+                      <QuoteDropdown
+                        setDeleteModal={setDeleteModal}
+                        setEditModal={setEditModal}
+                      />
                     </div>
 
                     <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
@@ -107,7 +121,10 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                       onClick={() => setQuoteId(quote._id)}
                       className='xl:hidden'
                     >
-                      <QuoteDropdown setDeleteModal={setDeleteModal} />
+                      <QuoteDropdown
+                        setDeleteModal={setDeleteModal}
+                        setEditModal={setEditModal}
+                      />
                     </div>
                   </div>
                 </div>

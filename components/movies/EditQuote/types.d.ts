@@ -1,6 +1,7 @@
 import { SetState } from 'types'
 
-export type QuoteDropdownProps = {
+export type EditQuoteProps = {
   setDeleteModal: SetState<boolean>
   setEditModal: SetState<boolean>
+  quoteId: string
 }

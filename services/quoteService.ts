@@ -17,3 +17,7 @@ export const deleteQuote = (
 ): Promise<AxiosResponse<DeletedQuoteId>> => {
   return axios.delete(`/delete-quote?id=${id}`)
 }
+
+export const editQuote = (data: FormData): Promise<AxiosResponse<Status>> => {
+  return axios.put('/change-quote', data)
+}

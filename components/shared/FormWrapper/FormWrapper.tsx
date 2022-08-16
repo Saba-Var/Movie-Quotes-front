@@ -1,11 +1,12 @@
+import { CloseIcon, TrashIcon } from 'components'
 import { FormWrapperProps } from './types.d'
-import { CloseIcon } from 'components'
 import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
 const FormWrapper: React.FC<FormWrapperProps> = (props) => {
   const {
     disableOverflow,
+    setDeleteModal,
     closeHandler,
     setShowForm,
     titleStyle,
@@ -13,9 +14,10 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
     children,
     styles,
     title,
+    modal,
   } = props
 
-  const { userData, imageSrc } = useNewsFeed()
+  const { userData, imageSrc, t } = useNewsFeed()
 
   return (
     <div>
@@ -33,6 +35,19 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
         } right-0 top-0 w-screen z-[99999] animate-fade-in !rounded-[12px] bg-formModalBlue h-screen 1xl:!h-fit pb-2 1xl:w-[50vw] 1xl:left-[28%] 2xl:top-4 ${styles}`}
       >
         <div className='h-[55px] 2xl:h-16 relative border-b border-b-gray-600 w-full flex justify-center items-center'>
+          {modal === 'edit' && (
+            <div
+              onClick={() => {
+                setDeleteModal && setDeleteModal(true)
+                setShowForm(false)
+              }}
+              className='absolute cursor-pointer hover:scale-105 transition-transform active:scale-100 left-8 flex gap-2'
+            >
+              <TrashIcon />
+              <p className='hidden 1xl:block'>{t('movies:delete')}</p>
+            </div>
+          )}
+
           <p
             className={`text-center animate-focus-in-text-expand text-2xl text-white font-Helvetica-Neue-Geo font-medium ${titleStyle}`}
           >

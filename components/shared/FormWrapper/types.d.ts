@@ -1,6 +1,7 @@
 import { SetState } from 'types'
 
 export type FormWrapperProps = {
+  setDeleteModal?: SetState<boolean>
   setShowForm: SetState<boolean>
   children: React.ReactNode
   disableOverflow?: boolean
@@ -8,5 +9,6 @@ export type FormWrapperProps = {
   titleStyle?: string
   hideImage?: boolean
   styles?: string
+  modal?: 'edit'
   title: string
 }

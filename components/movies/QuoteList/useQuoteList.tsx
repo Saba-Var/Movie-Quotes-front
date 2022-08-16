@@ -9,6 +9,7 @@ import { Quotes } from 'types'
 export const useQuoteList = () => {
   const [addQuoteModal, setAddQuoteModal] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
+  const [editModal, setEditModal] = useState(false)
 
   const [quoteList, setQuoteList] = useState<Quotes>([])
   const [quoteId, setQuoteId] = useState('')
@@ -31,6 +32,14 @@ export const useQuoteList = () => {
       setQuoteList((prev) => [quote, ...prev])
     })
 
+  socket
+    .off(EVENTS.movies.on.SEND_EDITED_QUOTE)
+    .on(EVENTS.movies.on.SEND_EDITED_QUOTE, (data) => {
+      setQuoteList((prev) => {
+        return prev.map((quote) => (quote._id === data._id ? data : quote))
+      })
+    })
+
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
@@ -48,9 +57,11 @@ export const useQuoteList = () => {
     setAddQuoteModal,
     setDeleteModal,
     addQuoteModal,
+    setEditModal,
     setQuoteList,
     deleteModal,
     setQuoteId,
+    editModal,
     quoteList,
     quoteId,
     locale,

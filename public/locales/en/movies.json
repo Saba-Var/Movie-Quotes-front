@@ -29,5 +29,8 @@
   "change-movie": "Change movie",
   "edit-failed-error": "Movie edit failed",
   "movie-fetch-failed": "Movie fetch failed",
-  "quote-delete-failed": "Quote deletion failed"
+  "quote-delete-failed": "Quote deletion failed",
+  "delete": "Delete",
+  "save-changes": "Save changes",
+  "change-photo": "Change Photo"
 }

@@ -1,7 +1,7 @@
 const CloseIcon = () => {
   return (
     <svg
-      className='cursor-pointer absolute right-[41px] animate-fade-in transition-transform hover:scale-125 active:scale-100'
+      className='cursor-pointer absolute bottom-5 right-[41px] animate-fade-in transition-transform hover:scale-125 active:scale-100'
       viewBox='0 0 15 15'
       height='15'
       fill='none'

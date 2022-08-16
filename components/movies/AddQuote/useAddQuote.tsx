@@ -1,8 +1,8 @@
 import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
+import { QuoteText, SetState } from 'types'
 import { useRouter } from 'next/router'
 import { addQuote } from 'services'
-import { QuoteText, SetState } from 'types'
 import { useState } from 'react'
 import { EVENTS } from 'helpers'
 
@@ -10,10 +10,11 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
   const [duplicateQuotes, setDuplicateQuotes] = useState(false)
   const [emptyFileError, setEmptyFIleError] = useState(false)
   const [fetchError, setFetchError] = useState(false)
+
   const [file, setFile] = useState<File | null>(null)
-  const { id } = useRouter().query
 
   const { userData } = useNewsFeed()
+  const { id } = useRouter().query
   const { socket } = useSockets()
   const { t } = useTranslation()
 
