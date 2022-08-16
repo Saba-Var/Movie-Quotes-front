@@ -3,11 +3,14 @@ import { deleteQuote } from 'services'
 import { useSockets } from 'hooks'
 import { SetState } from 'types'
 import { EVENTS } from 'helpers'
+import { useState } from 'react'
 
 export const useDeleteQuote = (
   id: string,
   setDeleteModal: SetState<boolean>
 ) => {
+  const [fetchError, setFetchError] = useState(false)
+
   const { socket } = useSockets()
   const { t } = useTranslation()
 
@@ -23,9 +26,9 @@ export const useDeleteQuote = (
         setDeleteModal(false)
       }
     } catch (error) {
-      console.log(error)
+      setFetchError(true)
     }
   }
 
-  return { t, deleteHandler }
+  return { t, deleteHandler, fetchError, setFetchError }
 }
