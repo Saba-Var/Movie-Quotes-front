@@ -10,6 +10,8 @@ export const useEditQuote = (
   quoteId: string,
   setEditModal: SetState<boolean>
 ) => {
+  const [fetchError, setFetchError] = useState(false)
+
   const [file, setFile] = useState<File | null>(null)
 
   const { quoteList } = useQuoteList()
@@ -42,15 +44,19 @@ export const useEditQuote = (
           setEditModal(false)
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      setFetchError(true)
+    }
   }
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${currentQuote?.image}`
 
   return {
     fileChangeHandler,
+    setFetchError,
     submitHandler,
     currentQuote,
+    fetchError,
     imageSrc,
     setFile,
     file,

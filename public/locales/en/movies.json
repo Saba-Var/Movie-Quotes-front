@@ -32,5 +32,6 @@
   "quote-delete-failed": "Quote deletion failed",
   "delete": "Delete",
   "save-changes": "Save changes",
-  "change-photo": "Change Photo"
+  "change-photo": "Change Photo",
+  "edit-quote-failed": "Quote edit failed"
 }

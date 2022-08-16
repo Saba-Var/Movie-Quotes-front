@@ -1,15 +1,29 @@
-import { Button, FormWrapper, PhotoIcon, TextAreaInput } from 'components'
 import { useEditQuote } from './useEditQuote'
 import { EditQuoteProps } from './types.d'
 import { addQuoteSchema } from 'schemas'
 import { Form, Formik } from 'formik'
 import Image from 'next/image'
+import {
+  TextAreaInput,
+  FormWrapper,
+  ErrorAlert,
+  PhotoIcon,
+  Button,
+} from 'components'
 
 const EditQuote: React.FC<EditQuoteProps> = (props) => {
   const { setEditModal, setDeleteModal, quoteId } = props
 
-  const { t, currentQuote, fileChangeHandler, imageSrc, file, submitHandler } =
-    useEditQuote(quoteId, setEditModal)
+  const {
+    fileChangeHandler,
+    submitHandler,
+    setFetchError,
+    currentQuote,
+    fetchError,
+    imageSrc,
+    file,
+    t,
+  } = useEditQuote(quoteId, setEditModal)
 
   return (
     <>
@@ -33,6 +47,14 @@ const EditQuote: React.FC<EditQuoteProps> = (props) => {
               return (
                 <Form>
                   <div className='flex flex-col gap-6 mt-9 1xl:mt-0'>
+                    {fetchError && (
+                      <ErrorAlert
+                        setShowAlert={setFetchError}
+                        styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                        title='movies:edit-quote-failed'
+                      />
+                    )}
+
                     <TextAreaInput
                       placeholder={`"Quote in English."`}
                       name='quoteEn'
