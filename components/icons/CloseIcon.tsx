@@ -1,7 +1,15 @@
-const CloseIcon = () => {
+import { CloseIconProps } from './types.d'
+
+const CloseIcon: React.FC<CloseIconProps> = (props) => {
+  const { noStyle } = props
+
   return (
     <svg
-      className='cursor-pointer absolute bottom-5 right-[41px] animate-fade-in transition-transform hover:scale-125 active:scale-100'
+      className={`${
+        noStyle
+          ? ''
+          : 'cursor-pointer absolute bottom-5 right-[41px] animate-fade-in transition-transform hover:scale-125 active:scale-100'
+      }`}
       viewBox='0 0 15 15'
       height='15'
       fill='none'

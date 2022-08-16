@@ -33,5 +33,6 @@
   "delete": "Delete",
   "save-changes": "Save changes",
   "change-photo": "Change Photo",
-  "edit-quote-failed": "Quote edit failed"
+  "edit-quote-failed": "Quote edit failed",
+  "view-quote": "View Quote"
 }

@@ -32,7 +32,7 @@ const EditQuote: React.FC<EditQuoteProps> = (props) => {
           title={t('news-feed:add-quote')}
           setDeleteModal={setDeleteModal}
           setShowForm={setEditModal}
-          styles='1xl:top-28'
+          styles='1xl:top-24'
           modal='edit'
         >
           <Formik

@@ -7,6 +7,7 @@ import { EVENTS } from 'helpers'
 import { Quotes } from 'types'
 
 export const useQuoteList = () => {
+  const [viewQuoteModal, setViewQuoteModal] = useState(false)
   const [addQuoteModal, setAddQuoteModal] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
   const [editModal, setEditModal] = useState(false)
@@ -54,7 +55,9 @@ export const useQuoteList = () => {
   }, [query.id])
 
   return {
+    setViewQuoteModal,
     setAddQuoteModal,
+    viewQuoteModal,
     setDeleteModal,
     addQuoteModal,
     setEditModal,

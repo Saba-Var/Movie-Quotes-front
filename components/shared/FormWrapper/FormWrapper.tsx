@@ -26,7 +26,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
           closeHandler && closeHandler()
           setShowForm(false)
         }}
-        className={`fixed w-full h-screen bg-background opacity-60 left-0  top-0 z-[99999]`}
+        className={`fixed w-full h-screen bg-background opacity-70 left-0  top-0 z-[99999]`}
       ></div>
 
       <div

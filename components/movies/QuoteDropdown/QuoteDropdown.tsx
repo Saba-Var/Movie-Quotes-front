@@ -3,7 +3,7 @@ import { useQuoteDropdown } from './useQuoteDropdown'
 import { QuoteDropdownProps } from './types.d'
 
 const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
-  const { setDeleteModal, setEditModal } = props
+  const { setDeleteModal, setEditModal, setViewQuoteModal } = props
 
   const { t, setShowDropDown, showDropDown } = useQuoteDropdown()
 
@@ -18,9 +18,12 @@ const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
 
       {showDropDown && (
         <>
-          <div className='flex absolute top-[-210px] animate-scale-up xl:animate-dropdown -left-10 xl:top-7 xl:-left-9 items-left justify-center flex-col pl-10 gap-9 bg-backgroundGray w-[249px] h-[200px] rounded-[10px]'>
+          <div className='flex absolute top-[-210px] animate-scale-up xl:animate-dropdown -left-52 sm:-left-20 md:-left-10 xl:top-7 xl:-left-9 items-left justify-center flex-col pl-10 gap-9 bg-backgroundGray w-[249px] h-[200px] rounded-[10px]'>
             <div
-              onClick={() => setShowDropDown(false)}
+              onClick={() => {
+                setViewQuoteModal(true)
+                setShowDropDown(false)
+              }}
               className='flex cursor-pointer hover:scale-[1.025] transition-transform gap-4 items-center'
             >
               <ViewEyeIcon />

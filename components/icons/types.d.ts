@@ -17,3 +17,7 @@ export type SelectedIcon = {
 export type SearchIconProps = {
   styles?: string
 }
+
+export type CloseIconProps = {
+  noStyle?: boolean
+}

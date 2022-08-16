@@ -6,6 +6,7 @@ import {
   DeleteQuote,
   AddButton,
   EditQuote,
+  ViewQuote,
   HeartIcon,
   ChatIcon,
   AddQuote,
@@ -15,7 +16,9 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
   const { addQuoteModal, setAddQuoteModal } = props
 
   const {
+    setViewQuoteModal,
     setDeleteModal,
+    viewQuoteModal,
     setEditModal,
     deleteModal,
     setQuoteId,
@@ -30,6 +33,15 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
     <div className='w-[358px] sm:w-[438px] xl:w-[55%] pb-10'>
       {deleteModal && (
         <DeleteQuote quoteId={quoteId} setDeleteModal={setDeleteModal} />
+      )}
+
+      {viewQuoteModal && (
+        <ViewQuote
+          setViewQuoteModal={setViewQuoteModal}
+          setDeleteModal={setDeleteModal}
+          setEditModal={setEditModal}
+          quoteId={quoteId}
+        />
       )}
 
       {editModal && (
@@ -81,6 +93,7 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                       className='hidden xl:block xl:absolute top-0 right-0'
                     >
                       <QuoteDropdown
+                        setViewQuoteModal={setViewQuoteModal}
                         setDeleteModal={setDeleteModal}
                         setEditModal={setEditModal}
                       />
@@ -122,6 +135,7 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                       className='xl:hidden'
                     >
                       <QuoteDropdown
+                        setViewQuoteModal={setViewQuoteModal}
                         setDeleteModal={setDeleteModal}
                         setEditModal={setEditModal}
                       />

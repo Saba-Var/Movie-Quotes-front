@@ -33,5 +33,6 @@
   "delete": "წაშლა",
   "save-changes": "ცვლილებების შენახვა",
   "change-photo": "ფოტოს შეცვლა",
-  "edit-quote-failed": "ციტატა ვერ შეიცვალა"
+  "edit-quote-failed": "ციტატა ვერ შეიცვალა",
+  "view-quote": "ციტატის ნახვა"
 }
