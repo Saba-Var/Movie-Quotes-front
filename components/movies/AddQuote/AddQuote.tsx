@@ -5,16 +5,27 @@ import { Form, Formik } from 'formik'
 import {
   DefaultMovieInfo,
   ImageDragAndDrop,
-  FormWrapper,
   TextAreaInput,
+  FormWrapper,
+  ErrorAlert,
   Button,
 } from 'components'
 
 const AddQuote: React.FC<AddQuoteProps> = (props) => {
   const { setAddQuoteModal } = props
 
-  const { t, file, setFile, setEmptyFIleError, emptyFileError, submitHandler } =
-    useAddQuote(setAddQuoteModal)
+  const {
+    setDuplicateQuotes,
+    setEmptyFIleError,
+    duplicateQuotes,
+    emptyFileError,
+    setFetchError,
+    submitHandler,
+    fetchError,
+    setFile,
+    file,
+    t,
+  } = useAddQuote(setAddQuoteModal)
 
   return (
     <FormWrapper
@@ -24,16 +35,32 @@ const AddQuote: React.FC<AddQuoteProps> = (props) => {
     >
       <Formik
         validationSchema={addQuoteSchema}
+        onSubmit={submitHandler}
         initialValues={{
           quoteEn: '',
           quoteGe: '',
         }}
-        onSubmit={submitHandler}
       >
         {() => {
           return (
             <Form>
               <div className='flex flex-col gap-5 xl:gap-6'>
+                {fetchError && (
+                  <ErrorAlert
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='news-feed:quote-add-error'
+                    setShowAlert={setFetchError}
+                  />
+                )}
+
+                {duplicateQuotes && (
+                  <ErrorAlert
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+                    title='news-feed:duplicate-quote'
+                    setShowAlert={setDuplicateQuotes}
+                  />
+                )}
+
                 <div className='hidden lg:block '>
                   <DefaultMovieInfo />
                 </div>

@@ -7,7 +7,9 @@ import { useState } from 'react'
 import { EVENTS } from 'helpers'
 
 export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
+  const [duplicateQuotes, setDuplicateQuotes] = useState(false)
   const [emptyFileError, setEmptyFIleError] = useState(false)
+  const [fetchError, setFetchError] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const { id } = useRouter().query
 
@@ -34,8 +36,25 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
           setAddQuoteModal(false)
         }
       }
-    } catch (error) {}
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setDuplicateQuotes(true)
+      } else {
+        setFetchError(true)
+      }
+    }
   }
 
-  return { t, file, setFile, setEmptyFIleError, emptyFileError, submitHandler }
+  return {
+    setDuplicateQuotes,
+    setEmptyFIleError,
+    duplicateQuotes,
+    emptyFileError,
+    submitHandler,
+    setFetchError,
+    fetchError,
+    setFile,
+    file,
+    t,
+  }
 }

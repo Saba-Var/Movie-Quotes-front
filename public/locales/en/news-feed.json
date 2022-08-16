@@ -2,7 +2,7 @@
   "write-quote": "Write new quote",
   "post": "Post",
   "choose-movie": "Choose movie",
-  "duplicate-quote": "This quote is already added",
+  "duplicate-quote": "This quote is already exists",
   "quote-add-error": "Quote could not be added",
   "empty-movie-list": "Your movie list is empty",
   "add-quote": "Add quote",
