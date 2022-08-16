@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'fold-out': 'fold-out 0.7s ease   both',
+        'fold-out': 'fold-out 0.7s ease both',
         'slide-in-right':
           'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-from-left':

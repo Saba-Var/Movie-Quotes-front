@@ -1,7 +1,10 @@
 import { ThreeDotsIcon, PencilIcon, TrashIcon, ViewEyeIcon } from 'components'
 import { useQuoteDropdown } from './useQuoteDropdown'
+import { QuoteDropdownProps } from './types.d'
 
-const QuoteDropdown = () => {
+const QuoteDropdown: React.FC<QuoteDropdownProps> = (props) => {
+  const { setDeleteModal } = props
+
   const { t, setShowDropDown, showDropDown } = useQuoteDropdown()
 
   return (
@@ -33,7 +36,10 @@ const QuoteDropdown = () => {
             </div>
 
             <div
-              onClick={() => setShowDropDown(false)}
+              onClick={() => {
+                setDeleteModal(true)
+                setShowDropDown(false)
+              }}
               className='flex cursor-pointer hover:scale-[1.025] transition-transform gap-4 items-center'
             >
               <TrashIcon />

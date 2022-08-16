@@ -1,3 +1,4 @@
+import { DeletedQuoteId } from './types.d'
 import { AxiosResponse } from 'axios'
 import { Status } from 'types'
 import { Quotes } from 'types'
@@ -9,4 +10,10 @@ export const getMovieQuotes = (id: string): Promise<AxiosResponse<Quotes>> => {
 
 export const addQuote = (data: FormData): Promise<AxiosResponse<Status>> => {
   return axios.post('/add-quote', data)
+}
+
+export const deleteQuote = (
+  id: string
+): Promise<AxiosResponse<DeletedQuoteId>> => {
+  return axios.delete(`/delete-quote?id=${id}`)
 }

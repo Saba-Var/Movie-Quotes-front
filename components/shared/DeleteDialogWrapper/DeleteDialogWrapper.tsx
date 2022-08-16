@@ -8,7 +8,7 @@ const DeleteDialogWrapper: React.FC<DeleteDialogWrapperProps> = (props) => {
     <FormWrapper
       setShowForm={setDeleteDialogWrapper}
       titleStyle='xl:!text-3xl'
-      styles='1xl:!top-[86px]'
+      styles='1xl:!top-[200px]'
       hideImage={true}
       title={title}
     >

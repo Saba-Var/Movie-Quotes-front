@@ -10,5 +10,7 @@
   "total": "სულ",
   "view-post": "პოსტის ნახვა",
   "edit": "შეცვლა",
-  "delete": "წაშლა"
+  "delete": "წაშლა",
+  "delete-quote": "ციტატის წაშლა",
+  "delete-quote-question": "გინდათ წიტატის წაშლა"
 }

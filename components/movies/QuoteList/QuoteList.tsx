@@ -1,12 +1,30 @@
-import { QuoteDropdown, AddButton, HeartIcon, ChatIcon } from 'components'
 import { useQuoteList } from './useQuoteList'
 import Image from 'next/image'
+import {
+  QuoteDropdown,
+  DeleteQuote,
+  AddButton,
+  HeartIcon,
+  ChatIcon,
+} from 'components'
 
 const QuoteList = () => {
-  const { t, quoteList, locale } = useQuoteList()
+  const {
+    setDeleteModal,
+    deleteModal,
+    setQuoteId,
+    quoteList,
+    quoteId,
+    locale,
+    t,
+  } = useQuoteList()
 
   return (
     <div className='w-[358px] sm:w-[438px] xl:w-[55%] pb-10'>
+      {deleteModal && (
+        <DeleteQuote quoteId={quoteId} setDeleteModal={setDeleteModal} />
+      )}
+
       <div className='hidden xl:flex animate-fade-in mt-6 items-center gap-4'>
         <p className='text-2xl pr-4 border-r border-r-gray-600 text-white font-Helvetica-Neue-Geo'>{`${t(
           'news-feed:quotes'
@@ -36,8 +54,11 @@ const QuoteList = () => {
                   className='flex h-[350px] animate-scale-up rounded-[10px] justify-between xl:!h-[268px] flex-col bg-formModalBlue py-4 xl:py-6 px-4 xl:px-8'
                 >
                   <div className='flex flex-col relative xl:flex-row items-center gap-6 pb-6'>
-                    <div className='hidden xl:block xl:absolute top-0 right-0'>
-                      <QuoteDropdown />
+                    <div
+                      onClick={() => setQuoteId(quote._id)}
+                      className='hidden xl:block xl:absolute top-0 right-0'
+                    >
+                      <QuoteDropdown setDeleteModal={setDeleteModal} />
                     </div>
 
                     <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
@@ -71,8 +92,11 @@ const QuoteList = () => {
                       </div>
                     </div>
 
-                    <div className='xl:hidden'>
-                      <QuoteDropdown />
+                    <div
+                      onClick={() => setQuoteId(quote._id)}
+                      className='xl:hidden'
+                    >
+                      <QuoteDropdown setDeleteModal={setDeleteModal} />
                     </div>
                   </div>
                 </div>
