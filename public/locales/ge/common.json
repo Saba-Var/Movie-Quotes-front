@@ -19,5 +19,6 @@
   "yes": "კი",
   "no": "არა",
   "like-failed": "ვერ დალაიქდა",
-  "dislike-failed": "არ მოწონება ვერ მოხდა"
+  "dislike-failed": "არ მოწონება ვერ მოხდა",
+  "write-comment": "წერეთ კომენტარი"
 }

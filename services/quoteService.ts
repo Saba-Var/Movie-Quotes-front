@@ -1,4 +1,4 @@
-import { DeletedQuoteId } from './types.d'
+import { DeletedQuoteId, CommentReqBody } from './types.d'
 import { AxiosResponse } from 'axios'
 import { Status } from 'types'
 import { Quotes } from 'types'
@@ -34,4 +34,10 @@ export const dislikeQuote = (
   userId: string
 ): Promise<AxiosResponse<Status>> => {
   return axios.put(`/dislike-quote?quoteId=${quoteId}&userId=${userId}`)
+}
+
+export const commentOnQuote = (
+  data: CommentReqBody
+): Promise<AxiosResponse<Status>> => {
+  return axios.post('/add-comment', data)
 }

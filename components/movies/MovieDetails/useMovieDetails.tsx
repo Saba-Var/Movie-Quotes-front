@@ -8,9 +8,8 @@ export const useMovieDetails = (movieList: AllMovie) => {
 
   const { t } = useTranslation()
   const router = useRouter()
-  const movieId = router.query.id
 
-  const currentMovie = movieList.find((movie) => movie._id === movieId)
+  const currentMovie = movieList.find((movie) => movie._id === router.query.id)
 
   if (!currentMovie) {
     router.push(`/${router.locale}/not-found`)

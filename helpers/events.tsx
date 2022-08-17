@@ -20,6 +20,12 @@ const EVENTS = {
       ADD_MOVIE: 'ADD_MOVIE',
     },
   },
+
+  quotes: {
+    on: { SEND_NEW_COMMENT: 'SEND_NEW_COMMENT' },
+
+    emit: { ADD_COMMENT: 'ADD_COMMENT' },
+  },
 }
 
 export default EVENTS

@@ -4,6 +4,7 @@ import { CommentType } from 'types'
 import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 import {
+  CommentInput,
   PencilIcon,
   TrashIcon,
   CloseIcon,
@@ -122,8 +123,9 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
 
             <div className='flex gap-6 items-center mt-7 xl:mt-8 lg:!border-b-0 border-b border-b-gray-600 pb-4 mb-4'>
               <div className='items-center flex gap-3'>
-                <p className='text-white text-xl'></p>
-                {currentQuote?.comments.length}
+                <p className='text-white text-xl'>
+                  {currentQuote?.comments.length}
+                </p>
                 <ChatIcon />
               </div>
 
@@ -151,7 +153,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
                             }
                             src={`${process.env.NEXT_PUBLIC_API_BASE_URI}/${comment.user.image}`}
                             unoptimized={true}
-                            alt='quote image'
+                            alt='user image'
                             layout='fill'
                             priority
                           />
@@ -179,30 +181,12 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
               })}
             </div>
 
-            <div className='mt-8'>
-              <div className='flex items-center gap-4'>
-                {userData.image && (
-                  <div className='w-10 h-10 relative lg:w-[60px] lg:h-[60px]'>
-                    <Image
-                      className='rounded-full select-none'
-                      loader={() =>
-                        `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
-                      }
-                      unoptimized={true}
-                      alt='quote image'
-                      src={`${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`}
-                      layout='fill'
-                      priority
-                    />
-                  </div>
-                )}
-
-                {!userData.image && (
-                  <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
-                    <p className='text-3xl pb-2'>{userData.name[0]}</p>
-                  </div>
-                )}
-              </div>
+            <div
+              className={`${
+                currentQuote && currentQuote?.comments.length > 0 && 'mt-8'
+              }`}
+            >
+              {currentQuote?._id && <CommentInput quoteId={currentQuote._id} />}
             </div>
           </div>
         </div>

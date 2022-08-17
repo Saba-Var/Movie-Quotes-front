@@ -20,7 +20,7 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
 
   return (
     <>
-      <p className='text-white text-xl'>{likes.length}</p>
+      <p className='text-white text-xl cursor-default'>{likes.length}</p>
 
       {likes.includes(userData._id) && (
         <div

@@ -80,7 +80,7 @@ export type Id = {
 
 export type AllMovie = CertainMovieDetails[]
 
-export type Quotes = {
+export type Quote = {
   _id: string
   quoteEn: string
   quoteGe: string
@@ -91,7 +91,9 @@ export type Quotes = {
     _id: string
   }[]
   image?: string
-}[]
+}
+
+export type Quotes = Quote[]
 
 export type QuoteText = {
   quoteEn: string

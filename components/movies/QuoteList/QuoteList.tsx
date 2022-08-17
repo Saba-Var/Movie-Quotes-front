@@ -87,7 +87,7 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                   key={quote._id}
                   className='flex h-[350px] animate-scale-up rounded-[10px] justify-between xl:!h-[268px] flex-col bg-formModalBlue py-4 xl:py-6 px-4 xl:px-8'
                 >
-                  {quote.likes && (
+                  {quote.likes && quote.comments && (
                     <>
                       <div className='flex flex-col relative xl:flex-row items-center gap-6 pb-6'>
                         <div
