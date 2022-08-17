@@ -1,9 +1,14 @@
+import { useTranslation } from 'next-i18next'
 import { likeQuote } from 'services'
 import { useSockets } from 'hooks'
 import { EVENTS } from 'helpers'
+import { useState } from 'react'
 
 export const useQuoteLike = () => {
+  const [fetchError, setFetchError] = useState(false)
+
   const { socket } = useSockets()
+  const { t } = useTranslation()
 
   const likeHandler = async (quoteId: string, userId: string) => {
     try {
@@ -13,9 +18,9 @@ export const useQuoteLike = () => {
         socket.emit(EVENTS.movies.emit.LIKE_QUOTE, response.data, quoteId)
       }
     } catch (error) {
-      console.log(error)
+      setFetchError(true)
     }
   }
 
-  return { likeHandler }
+  return { t, likeHandler, fetchError, setFetchError }
 }

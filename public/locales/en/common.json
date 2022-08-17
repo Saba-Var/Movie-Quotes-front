@@ -17,5 +17,6 @@
   "user-fetch-fail": "User data fetching failed",
   "upload-only-image": "You can upload only image",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "like-failed": "Like failed"
 }

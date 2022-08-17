@@ -1,25 +1,19 @@
-import { useNewsFeed, useQuoteLike } from 'hooks'
 import { useQuoteList } from './useQuoteList'
 import { QuoteListProps } from './types.d'
 import Image from 'next/image'
 import {
-  WhiteHeartIcon,
   QuoteDropdown,
   DeleteQuote,
   AddButton,
   EditQuote,
   ViewQuote,
-  HeartIcon,
+  QuoteLike,
   ChatIcon,
   AddQuote,
 } from 'components'
 
 const QuoteList: React.FC<QuoteListProps> = (props) => {
   const { addQuoteModal, setAddQuoteModal } = props
-
-  const { likeHandler } = useQuoteLike()
-
-  const { userData } = useNewsFeed()
 
   const {
     setViewQuoteModal,
@@ -109,7 +103,7 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
 
                         <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
                           <Image
-                            className='animate-fold-out rounded-sm round ed-xl'
+                            className='animate-fold-out select-none rounded-sm round ed-xl'
                             loader={() => imageSrc}
                             unoptimized={true}
                             src={imageSrc}
@@ -131,26 +125,10 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                           </div>
 
                           <div className='flex items-center gap-4'>
-                            <p className='text-white text-xl'>
-                              {quote.likes.length}
-                            </p>
-
-                            {quote.likes.includes(userData._id) && (
-                              <div className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'>
-                                <WhiteHeartIcon />
-                              </div>
-                            )}
-
-                            {!quote.likes.includes(userData._id) && (
-                              <div
-                                onClick={() => {
-                                  likeHandler(quote._id, userData._id)
-                                }}
-                                className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
-                              >
-                                <HeartIcon />
-                              </div>
-                            )}
+                            <QuoteLike
+                              likes={quote.likes}
+                              quoteId={quote._id}
+                            />
                           </div>
                         </div>
 

@@ -1,14 +1,13 @@
-import { useNewsFeed, useQuoteLike } from 'hooks'
 import { useViewQuote } from './useViewQuote'
 import { ViewQuoteProps } from './types.d'
 import { CommentType } from 'types'
+import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 import {
-  WhiteHeartIcon,
   PencilIcon,
   TrashIcon,
   CloseIcon,
-  HeartIcon,
+  QuoteLike,
   ChatIcon,
 } from 'components'
 
@@ -16,7 +15,6 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
   const { setViewQuoteModal, quoteId, setDeleteModal, setEditModal } = props
 
   const { currentQuote, t, quoteImageSrc } = useViewQuote(quoteId)
-  const { likeHandler } = useQuoteLike()
   const { userData } = useNewsFeed()
 
   return (
@@ -130,27 +128,12 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
               </div>
 
               <div className='items-center flex gap-3'>
-                <p className='text-white text-xl'>
-                  {currentQuote?.likes.length}
-                </p>
-
-                {currentQuote?.likes.includes(userData._id) && (
-                  <div className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'>
-                    <WhiteHeartIcon />
-                  </div>
+                {currentQuote?.likes && currentQuote._id && (
+                  <QuoteLike
+                    likes={currentQuote?.likes}
+                    quoteId={currentQuote?._id}
+                  />
                 )}
-
-                {!currentQuote?.likes.includes(userData._id) &&
-                  currentQuote?._id && (
-                    <div
-                      onClick={() => {
-                        likeHandler(currentQuote?._id, userData._id)
-                      }}
-                      className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
-                    >
-                      <HeartIcon />
-                    </div>
-                  )}
               </div>
             </div>
 
