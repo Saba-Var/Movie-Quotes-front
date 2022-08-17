@@ -1,7 +1,9 @@
+import { useNewsFeed, useQuoteLike } from 'hooks'
 import { useQuoteList } from './useQuoteList'
 import { QuoteListProps } from './types.d'
 import Image from 'next/image'
 import {
+  WhiteHeartIcon,
   QuoteDropdown,
   DeleteQuote,
   AddButton,
@@ -14,6 +16,10 @@ import {
 
 const QuoteList: React.FC<QuoteListProps> = (props) => {
   const { addQuoteModal, setAddQuoteModal } = props
+
+  const { likeHandler } = useQuoteLike()
+
+  const { userData } = useNewsFeed()
 
   const {
     setViewQuoteModal,
@@ -87,60 +93,80 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                   key={quote._id}
                   className='flex h-[350px] animate-scale-up rounded-[10px] justify-between xl:!h-[268px] flex-col bg-formModalBlue py-4 xl:py-6 px-4 xl:px-8'
                 >
-                  <div className='flex flex-col relative xl:flex-row items-center gap-6 pb-6'>
-                    <div
-                      onClick={() => setQuoteId(quote._id)}
-                      className='hidden xl:block xl:absolute top-0 right-0'
-                    >
-                      <QuoteDropdown
-                        setViewQuoteModal={setViewQuoteModal}
-                        setDeleteModal={setDeleteModal}
-                        setEditModal={setEditModal}
-                      />
-                    </div>
+                  {quote.likes && (
+                    <>
+                      <div className='flex flex-col relative xl:flex-row items-center gap-6 pb-6'>
+                        <div
+                          onClick={() => setQuoteId(quote._id)}
+                          className='hidden xl:block xl:absolute top-0 right-0'
+                        >
+                          <QuoteDropdown
+                            setViewQuoteModal={setViewQuoteModal}
+                            setDeleteModal={setDeleteModal}
+                            setEditModal={setEditModal}
+                          />
+                        </div>
 
-                    <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
-                      <Image
-                        className='animate-fold-out rounded-sm round ed-xl'
-                        loader={() => imageSrc}
-                        unoptimized={true}
-                        src={imageSrc}
-                        layout='fill'
-                        alt='movie'
-                        priority
-                      />
-                    </div>
-                    <p className='text-inputGray animate-focus-in-text-expand w-full break-all text-2xl italic'>{`"${quoteText}"`}</p>
-                  </div>
-
-                  <div className='flex items-center justify-between pt-4 border-t border-t-gray-600'>
-                    <div className='flex gap-6'>
-                      <div className='flex items-center gap-4'>
-                        <p className='text-white text-xl'>
-                          {quote.comments.length}
-                        </p>
-                        <ChatIcon />
+                        <div className='hover:scale-[1.03] transition-transform relative w-full !h-36 xl:!h-[140px] xl:!w-56'>
+                          <Image
+                            className='animate-fold-out rounded-sm round ed-xl'
+                            loader={() => imageSrc}
+                            unoptimized={true}
+                            src={imageSrc}
+                            layout='fill'
+                            alt='movie'
+                            priority
+                          />
+                        </div>
+                        <p className='text-inputGray animate-focus-in-text-expand w-full break-all text-2xl italic'>{`"${quoteText}"`}</p>
                       </div>
 
-                      <div className='flex items-center gap-4'>
-                        <p className='text-white text-xl'>
-                          {quote.likes.length}
-                        </p>
-                        <HeartIcon />
-                      </div>
-                    </div>
+                      <div className='flex items-center justify-between pt-4 border-t border-t-gray-600'>
+                        <div className='flex gap-6'>
+                          <div className='flex items-center gap-4'>
+                            <p className='text-white text-xl'>
+                              {quote.comments.length}
+                            </p>
+                            <ChatIcon />
+                          </div>
 
-                    <div
-                      onClick={() => setQuoteId(quote._id)}
-                      className='xl:hidden'
-                    >
-                      <QuoteDropdown
-                        setViewQuoteModal={setViewQuoteModal}
-                        setDeleteModal={setDeleteModal}
-                        setEditModal={setEditModal}
-                      />
-                    </div>
-                  </div>
+                          <div className='flex items-center gap-4'>
+                            <p className='text-white text-xl'>
+                              {quote.likes.length}
+                            </p>
+
+                            {quote.likes.includes(userData._id) && (
+                              <div className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'>
+                                <WhiteHeartIcon />
+                              </div>
+                            )}
+
+                            {!quote.likes.includes(userData._id) && (
+                              <div
+                                onClick={() => {
+                                  likeHandler(quote._id, userData._id)
+                                }}
+                                className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
+                              >
+                                <HeartIcon />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <div
+                          onClick={() => setQuoteId(quote._id)}
+                          className='xl:hidden'
+                        >
+                          <QuoteDropdown
+                            setViewQuoteModal={setViewQuoteModal}
+                            setDeleteModal={setDeleteModal}
+                            setEditModal={setEditModal}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               )
             })}

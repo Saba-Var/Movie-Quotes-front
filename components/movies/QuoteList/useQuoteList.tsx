@@ -41,6 +41,20 @@ export const useQuoteList = () => {
       })
     })
 
+  socket.on(EVENTS.movies.on.SEND_NEW_LIKE, (likeId, quoteId) => {
+    const currentQuote = quoteList.find((quote) => quote._id === quoteId)
+
+    if (currentQuote && !currentQuote.likes.includes(likeId)) {
+      currentQuote.likes.push(likeId)
+
+      setQuoteList((prev) => {
+        return prev.map((quote) =>
+          quote._id === currentQuote?._id ? currentQuote : quote
+        )
+      })
+    }
+  })
+
   useEffect(() => {
     const fetchQuotes = async () => {
       try {

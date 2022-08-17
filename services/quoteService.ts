@@ -21,3 +21,10 @@ export const deleteQuote = (
 export const editQuote = (data: FormData): Promise<AxiosResponse<Status>> => {
   return axios.put('/change-quote', data)
 }
+
+export const likeQuote = (
+  quoteId: string,
+  userId: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.put(`/like-quote?quoteId=${quoteId}&userId=${userId}`)
+}

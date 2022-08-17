@@ -1,4 +1,5 @@
 export { default as NotificationIcon } from './NotificationIcon'
+export { default as WhiteHeartIcon } from './WhiteHeartIcon'
 export { default as ThreeDotsIcon } from './ThreeDotsIcon'
 export { default as SelectorArrow } from './SelectorArrow'
 export { default as MiniCloseIcon } from './MiniCloseIcon'

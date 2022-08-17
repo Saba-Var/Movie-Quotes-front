@@ -97,3 +97,12 @@ export type QuoteText = {
   quoteEn: string
   quoteGe: string
 }
+
+export type CommentType = {
+  commentText: string
+  _id: string
+  user: {
+    image?: string
+    name: string
+  }
+}

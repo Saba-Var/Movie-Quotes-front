@@ -1,19 +1,22 @@
+import { useNewsFeed, useQuoteLike } from 'hooks'
 import { useViewQuote } from './useViewQuote'
 import { ViewQuoteProps } from './types.d'
-import { useNewsFeed } from 'hooks'
+import { CommentType } from 'types'
 import Image from 'next/image'
 import {
+  WhiteHeartIcon,
   PencilIcon,
   TrashIcon,
   CloseIcon,
-  ChatIcon,
   HeartIcon,
+  ChatIcon,
 } from 'components'
 
 const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
   const { setViewQuoteModal, quoteId, setDeleteModal, setEditModal } = props
 
   const { currentQuote, t, quoteImageSrc } = useViewQuote(quoteId)
+  const { likeHandler } = useQuoteLike()
   const { userData } = useNewsFeed()
 
   return (
@@ -130,12 +133,29 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
                 <p className='text-white text-xl'>
                   {currentQuote?.likes.length}
                 </p>
-                <HeartIcon />
+
+                {currentQuote?.likes.includes(userData._id) && (
+                  <div className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'>
+                    <WhiteHeartIcon />
+                  </div>
+                )}
+
+                {!currentQuote?.likes.includes(userData._id) &&
+                  currentQuote?._id && (
+                    <div
+                      onClick={() => {
+                        likeHandler(currentQuote?._id, userData._id)
+                      }}
+                      className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
+                    >
+                      <HeartIcon />
+                    </div>
+                  )}
               </div>
             </div>
 
             <div className='gap-4 flex flex-col xl:gap-6'>
-              {currentQuote?.comments.map((comment) => {
+              {currentQuote?.comments.map((comment: CommentType) => {
                 return (
                   <div key={comment._id} className='pb-6 flex gap-5 xl:gap-6'>
                     <div className=''>
