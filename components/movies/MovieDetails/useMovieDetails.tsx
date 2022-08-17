@@ -7,10 +7,14 @@ export const useMovieDetails = (movieList: AllMovie) => {
   const [addQuoteModal, setAddQuoteModal] = useState(false)
 
   const { t } = useTranslation()
-  const { query } = useRouter()
-  const movieId = query.id
+  const router = useRouter()
+  const movieId = router.query.id
 
   const currentMovie = movieList.find((movie) => movie._id === movieId)
+
+  if (!currentMovie) {
+    router.push(`/${router.locale}/not-found`)
+  }
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${currentMovie?.image}`
 
