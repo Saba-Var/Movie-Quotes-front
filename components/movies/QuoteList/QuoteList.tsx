@@ -112,13 +112,13 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
                             priority
                           />
                         </div>
-                        <p className='text-inputGray animate-focus-in-text-expand w-full break-all text-2xl italic'>{`"${quoteText}"`}</p>
+                        <p className='text-inputGray select-none animate-focus-in-text-expand w-full break-all text-2xl italic'>{`"${quoteText}"`}</p>
                       </div>
 
                       <div className='flex items-center justify-between pt-4 border-t border-t-gray-600'>
                         <div className='flex gap-6'>
                           <div className='flex items-center gap-4'>
-                            <p className='text-white text-xl'>
+                            <p className='text-white text-xl select-none'>
                               {quote.comments.length}
                             </p>
                             <ChatIcon />
