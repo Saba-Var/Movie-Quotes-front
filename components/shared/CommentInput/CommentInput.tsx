@@ -1,5 +1,6 @@
 import { useCommentInput } from './useCommentInput'
 import { CommentInputProps } from './types.d'
+import { ErrorAlert } from '../ErrorAlert'
 import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
@@ -8,13 +9,27 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
 
   const { userData } = useNewsFeed()
 
-  const { t, inputChangeHandler, onSubmitHandler, commentText } =
-    useCommentInput(quoteId, userData._id)
+  const {
+    inputChangeHandler,
+    onSubmitHandler,
+    setFetchError,
+    commentText,
+    fetchError,
+    t,
+  } = useCommentInput(quoteId, userData._id)
 
   const userImageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
   return (
     <div className='flex items-center gap-4'>
+      {fetchError && (
+        <ErrorAlert
+          setShowAlert={setFetchError}
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+          title='common:comment-fail'
+        />
+      )}
+
       {userData.image && (
         <div className='w-10 h-10 relative lg:w-[52px] lg:h-[52px]'>
           <Image

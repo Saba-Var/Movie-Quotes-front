@@ -5,29 +5,41 @@ import { EVENTS } from 'helpers'
 import { useState } from 'react'
 
 export const useCommentInput = (quoteId: string, userId: string) => {
-  const { t } = useTranslation()
+  const [fetchError, setFetchError] = useState(false)
 
   const [commentText, setCommentText] = useState('')
 
   const { socket } = useSockets()
+  const { t } = useTranslation()
 
   const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setCommentText(e.currentTarget.value)
   }
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    if (commentText.trim().length > 0) {
-      const response = await commentOnQuote({ commentText, quoteId, userId })
+      if (commentText.trim().length > 0) {
+        const response = await commentOnQuote({ commentText, quoteId, userId })
 
-      if (response.status === 201) {
-        socket.emit(EVENTS.quotes.emit.ADD_COMMENT, response.data, quoteId)
+        if (response.status === 201) {
+          socket.emit(EVENTS.quotes.emit.ADD_COMMENT, response.data, quoteId)
 
-        setCommentText('')
+          setCommentText('')
+        }
       }
+    } catch (error) {
+      setFetchError(true)
     }
   }
 
-  return { t, inputChangeHandler, onSubmitHandler, commentText }
+  return {
+    inputChangeHandler,
+    onSubmitHandler,
+    setFetchError,
+    commentText,
+    fetchError,
+    t,
+  }
 }

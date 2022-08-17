@@ -183,7 +183,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
 
             <div
               className={`${
-                currentQuote && currentQuote?.comments.length > 0 && 'mt-8'
+                currentQuote && currentQuote?.comments.length > 0 && 'mt-4'
               }`}
             >
               {currentQuote?._id && <CommentInput quoteId={currentQuote._id} />}

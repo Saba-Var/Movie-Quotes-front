@@ -20,5 +20,6 @@
   "no": "No",
   "like-failed": "Like failed",
   "dislike-failed": "Dislike Failed",
-  "write-comment": "Write a comment"
+  "write-comment": "Write a comment",
+  "comment-fail": "Comment failed"
 }

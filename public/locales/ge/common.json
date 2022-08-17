@@ -20,5 +20,6 @@
   "no": "არა",
   "like-failed": "ვერ დალაიქდა",
   "dislike-failed": "არ მოწონება ვერ მოხდა",
-  "write-comment": "წერეთ კომენტარი"
+  "write-comment": "წერეთ კომენტარი",
+  "comment-fail": "დაკომენტარება ვერ მოხდა"
 }
