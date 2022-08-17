@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {
   QuoteDropdown,
   DeleteQuote,
+  ErrorAlert,
   AddButton,
   EditQuote,
   ViewQuote,
@@ -19,9 +20,11 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
     setViewQuoteModal,
     setDeleteModal,
     viewQuoteModal,
+    setFetchError,
     setEditModal,
     deleteModal,
     setQuoteId,
+    fetchError,
     editModal,
     quoteList,
     quoteId,
@@ -33,6 +36,14 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
     <div className='w-[358px] sm:w-[438px] xl:w-[55%] pb-10'>
       {deleteModal && (
         <DeleteQuote quoteId={quoteId} setDeleteModal={setDeleteModal} />
+      )}
+
+      {fetchError && (
+        <ErrorAlert
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+          title='common:quote-fetch-failed'
+          setShowAlert={setFetchError}
+        />
       )}
 
       {viewQuoteModal && (

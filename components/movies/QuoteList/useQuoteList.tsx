@@ -10,6 +10,7 @@ export const useQuoteList = () => {
   const [viewQuoteModal, setViewQuoteModal] = useState(false)
   const [addQuoteModal, setAddQuoteModal] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
+  const [fetchError, setFetchError] = useState(false)
   const [editModal, setEditModal] = useState(false)
 
   const [quoteList, setQuoteList] = useState<Quotes>([])
@@ -92,7 +93,9 @@ export const useQuoteList = () => {
           const response = await getMovieQuotes(query.id!)
           setQuoteList(response.data)
         }
-      } catch (error) {}
+      } catch (error) {
+        setFetchError(true)
+      }
     }
 
     fetchQuotes()
@@ -104,9 +107,11 @@ export const useQuoteList = () => {
     viewQuoteModal,
     setDeleteModal,
     addQuoteModal,
+    setFetchError,
     setEditModal,
     setQuoteList,
     deleteModal,
+    fetchError,
     setQuoteId,
     editModal,
     quoteList,
