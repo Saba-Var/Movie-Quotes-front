@@ -18,5 +18,6 @@
   "upload-only-image": "You can upload only image",
   "yes": "Yes",
   "no": "No",
-  "like-failed": "Like failed"
+  "like-failed": "Like failed",
+  "dislike-failed": "Dislike Failed"
 }

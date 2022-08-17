@@ -1,10 +1,11 @@
+import { likeQuote, dislikeQuote } from 'services'
 import { useTranslation } from 'next-i18next'
-import { likeQuote } from 'services'
 import { useSockets } from 'hooks'
 import { EVENTS } from 'helpers'
 import { useState } from 'react'
 
 export const useQuoteLike = () => {
+  const [dislikeError, setDislikeError] = useState(false)
   const [fetchError, setFetchError] = useState(false)
 
   const { socket } = useSockets()
@@ -22,5 +23,25 @@ export const useQuoteLike = () => {
     }
   }
 
-  return { t, likeHandler, fetchError, setFetchError }
+  const dislikeHandler = async (quoteId: string, userId: string) => {
+    try {
+      const response = await dislikeQuote(quoteId, userId)
+
+      if (response.status === 200) {
+        socket.emit(EVENTS.movies.emit.DISLIKE_QUOTE, response.data, quoteId)
+      }
+    } catch (error) {
+      setDislikeError(true)
+    }
+  }
+
+  return {
+    setDislikeError,
+    dislikeHandler,
+    setFetchError,
+    dislikeError,
+    likeHandler,
+    fetchError,
+    t,
+  }
 }

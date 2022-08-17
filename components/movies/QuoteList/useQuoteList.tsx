@@ -43,9 +43,23 @@ export const useQuoteList = () => {
 
   socket.on(EVENTS.movies.on.SEND_NEW_LIKE, (likeId, quoteId) => {
     const currentQuote = quoteList.find((quote) => quote._id === quoteId)
-
     if (currentQuote && !currentQuote.likes.includes(likeId)) {
       currentQuote.likes.push(likeId)
+
+      setQuoteList((prev) => {
+        return prev.map((quote) =>
+          quote._id === currentQuote?._id ? currentQuote : quote
+        )
+      })
+    }
+  })
+
+  socket.on(EVENTS.movies.on.SEND_DISLIKE_QUOTE, (dislikeUser, quoteId) => {
+    let currentQuote = quoteList.find((quote) => quote._id === quoteId)
+    if (currentQuote && currentQuote.likes.includes(dislikeUser)) {
+      currentQuote.likes = currentQuote.likes.filter((like) => {
+        return like !== dislikeUser
+      })
 
       setQuoteList((prev) => {
         return prev.map((quote) =>

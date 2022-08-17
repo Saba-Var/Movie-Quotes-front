@@ -28,3 +28,10 @@ export const likeQuote = (
 ): Promise<AxiosResponse<Status>> => {
   return axios.put(`/like-quote?quoteId=${quoteId}&userId=${userId}`)
 }
+
+export const dislikeQuote = (
+  quoteId: string,
+  userId: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.put(`/dislike-quote?quoteId=${quoteId}&userId=${userId}`)
+}

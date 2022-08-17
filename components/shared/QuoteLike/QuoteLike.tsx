@@ -6,7 +6,15 @@ import { useNewsFeed } from 'hooks'
 const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
   const { likes, quoteId } = props
 
-  const { likeHandler, fetchError, setFetchError, t } = useQuoteLike()
+  const {
+    setDislikeError,
+    dislikeHandler,
+    setFetchError,
+    dislikeError,
+    likeHandler,
+    fetchError,
+    t,
+  } = useQuoteLike()
 
   const { userData } = useNewsFeed()
 
@@ -15,7 +23,12 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
       <p className='text-white text-xl'>{likes.length}</p>
 
       {likes.includes(userData._id) && (
-        <div className='cursor-pointer animate-scale-up hover:scale-110 active:scale-100 transition-transform'>
+        <div
+          onClick={() => {
+            dislikeHandler(quoteId, userData._id)
+          }}
+          className='cursor-pointer animate-scale-up hover:scale-110 active:scale-100 transition-transform'
+        >
           <WhiteHeartIcon />
         </div>
       )}
@@ -31,14 +44,20 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
         </div>
       )}
 
-      {fetchError && (
+      {(fetchError || dislikeError) && (
         <div className='flex items-center gap-2 bg-red-800 p-[2px] px-3 rounded-sm'>
-          <p className='text-base font-medium'>{t('common:like-failed')}</p>
+          <p className='text-base font-medium'>
+            {fetchError ? t('common:like-failed') : t('common:dislike-failed')}
+          </p>
 
           <div
             className='cursor-pointer'
             onClick={() => {
-              setFetchError(false)
+              if (fetchError) {
+                setFetchError(false)
+              } else {
+                setDislikeError(false)
+              }
             }}
           >
             <CloseIcon noStyle={true} />
