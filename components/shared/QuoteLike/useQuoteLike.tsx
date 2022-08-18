@@ -1,7 +1,6 @@
 import { likeQuote, dislikeQuote } from 'services'
 import { useTranslation } from 'next-i18next'
 import { useSockets } from 'hooks'
-import { EVENTS } from 'helpers'
 import { useState } from 'react'
 
 export const useQuoteLike = () => {
@@ -16,7 +15,7 @@ export const useQuoteLike = () => {
       const response = await likeQuote(quoteId, userId)
 
       if (response.status === 200) {
-        socket.emit(EVENTS.movies.emit.LIKE_QUOTE, response.data, quoteId)
+        socket.emit('LIKE_QUOTE', response.data, quoteId)
       }
     } catch (error) {
       setFetchError(true)
@@ -28,7 +27,7 @@ export const useQuoteLike = () => {
       const response = await dislikeQuote(quoteId, userId)
 
       if (response.status === 200) {
-        socket.emit(EVENTS.movies.emit.DISLIKE_QUOTE, response.data, quoteId)
+        socket.emit('DISLIKE_QUOTE', response.data, quoteId)
       }
     } catch (error) {
       setDislikeError(true)

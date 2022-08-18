@@ -4,7 +4,6 @@ import { getMovieQuotes } from 'services'
 import { useRouter } from 'next/router'
 import { Quotes, Quote } from 'types'
 import { useSockets } from 'hooks'
-import { EVENTS } from 'helpers'
 
 export const useQuoteList = () => {
   const [viewQuoteModal, setViewQuoteModal] = useState(false)
@@ -29,20 +28,18 @@ export const useQuoteList = () => {
   }
 
   socket
-    .off(EVENTS.movies.on.SEND_NEW_MOVIE_QUOTES)
-    .on(EVENTS.movies.on.SEND_NEW_MOVIE_QUOTES, (deletedQuoteId) => {
+    .off('SEND_NEW_MOVIE_QUOTES')
+    .on('SEND_NEW_MOVIE_QUOTES', (deletedQuoteId) => {
       setQuoteList((prev) => {
         return prev.filter((quote) => quote._id !== deletedQuoteId)
       })
     })
 
-  socket
-    .off(EVENTS.movies.on.SEND_NEW_QUOTE)
-    .on(EVENTS.movies.on.SEND_NEW_QUOTE, (quote) => {
-      setQuoteList((prev) => [quote, ...prev])
-    })
+  socket.off('SEND_NEW_QUOTE').on('SEND_NEW_QUOTE', (quote) => {
+    setQuoteList((prev) => [quote, ...prev])
+  })
 
-  socket.on(EVENTS.quotes.on.SEND_NEW_COMMENT, (comment, quoteId) => {
+  socket.on('SEND_NEW_COMMENT', (comment, quoteId) => {
     const currentQuote = quoteList.find((quote) => quote._id === quoteId)
 
     if (currentQuote) {
@@ -57,7 +54,7 @@ export const useQuoteList = () => {
     }
   })
 
-  socket.on(EVENTS.movies.on.SEND_NEW_LIKE, (likeId, quoteId) => {
+  socket.on('SEND_NEW_LIKE', (likeId, quoteId) => {
     const currentQuote = quoteList.find((quote) => quote._id === quoteId)
 
     if (currentQuote && !currentQuote.likes.includes(likeId)) {
@@ -66,15 +63,13 @@ export const useQuoteList = () => {
     }
   })
 
-  socket
-    .off(EVENTS.movies.on.SEND_EDITED_QUOTE)
-    .on(EVENTS.movies.on.SEND_EDITED_QUOTE, (data) => {
-      setQuoteList((prev) => {
-        return prev.map((quote) => (quote._id === data._id ? data : quote))
-      })
+  socket.off('SEND_EDITED_QUOTE').on('SEND_EDITED_QUOTE', (data) => {
+    setQuoteList((prev) => {
+      return prev.map((quote) => (quote._id === data._id ? data : quote))
     })
+  })
 
-  socket.on(EVENTS.movies.on.SEND_DISLIKE_QUOTE, (dislikeUser, quoteId) => {
+  socket.on('SEND_DISLIKE_QUOTE', (dislikeUser, quoteId) => {
     let currentQuote = quoteList.find((quote) => quote._id === quoteId)
 
     if (currentQuote && currentQuote.likes.includes(dislikeUser)) {

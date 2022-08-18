@@ -4,7 +4,6 @@ import { useQuoteList } from 'components'
 import { editQuote } from 'services'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
-import { EVENTS } from 'helpers'
 
 export const useEditQuote = (
   quoteId: string,
@@ -40,7 +39,7 @@ export const useEditQuote = (
         const response = await editQuote(formData)
 
         if (response.status === 200) {
-          socket.emit(EVENTS.movies.emit.EDIT_QUOTE, response.data)
+          socket.emit('EDIT_QUOTE', response.data)
           setEditModal(false)
         }
       }

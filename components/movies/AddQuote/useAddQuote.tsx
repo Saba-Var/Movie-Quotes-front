@@ -4,7 +4,6 @@ import { QuoteText, SetState } from 'types'
 import { useRouter } from 'next/router'
 import { addQuote } from 'services'
 import { useState } from 'react'
-import { EVENTS } from 'helpers'
 
 export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
   const [duplicateQuotes, setDuplicateQuotes] = useState(false)
@@ -33,7 +32,7 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
         const response = await addQuote(formData)
 
         if (response.status === 201) {
-          socket.emit(EVENTS.movies.emit.ADD_QUOTE, response.data)
+          socket.emit('ADD_QUOTE', response.data)
           setAddQuoteModal(false)
         }
       }

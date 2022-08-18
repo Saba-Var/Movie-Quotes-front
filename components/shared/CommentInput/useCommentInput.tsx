@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { commentOnQuote } from 'services'
 import { useSockets } from 'hooks'
-import { EVENTS } from 'helpers'
 import { useState } from 'react'
 
 export const useCommentInput = (quoteId: string, userId: string) => {
@@ -24,7 +23,7 @@ export const useCommentInput = (quoteId: string, userId: string) => {
         const response = await commentOnQuote({ commentText, quoteId, userId })
 
         if (response.status === 201) {
-          socket.emit(EVENTS.quotes.emit.ADD_COMMENT, response.data, quoteId)
+          socket.emit('ADD_COMMENT', response.data, quoteId)
 
           setCommentText('')
         }

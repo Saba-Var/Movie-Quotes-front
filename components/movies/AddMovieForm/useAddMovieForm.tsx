@@ -4,8 +4,8 @@ import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { getToken, EVENTS } from 'helpers'
 import { MovieFormData } from 'types'
+import { getToken } from 'helpers'
 
 export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   const [genresFetchError, setGenresFetchError] = useState(false)
@@ -99,7 +99,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
         const response = await addNewMovie(formData)
 
         if (response.status === 201) {
-          socket.emit(EVENTS.movies.emit.ADD_MOVIE, response.data)
+          socket.emit('ADD_MOVIE', response.data)
           setShowAddMovieForm(false)
         }
       }
