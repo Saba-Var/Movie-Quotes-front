@@ -1,17 +1,22 @@
 import { useMovieMultiSelect } from './useMovieMultiSelect'
 import { CameraReel, SelectorArrow } from 'components'
 import { MovieMultiSelectProps } from './types.d'
-import { useMovies } from 'hooks'
+
 import Image from 'next/image'
 
 const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
   const { setSelectedMovieId, movieIdError, setMovieIdError, selectedMovieId } =
     props
 
-  const { t, isOpen, setIsOpen, selectedMovieName, setSelectedMovieName } =
-    useMovieMultiSelect()
-
-  const { movieList, locale } = useMovies()
+  const {
+    setSelectedMovieName,
+    selectedMovieName,
+    setIsOpen,
+    movieList,
+    locale,
+    isOpen,
+    t,
+  } = useMovieMultiSelect()
 
   return (
     <div className='h-[86px] relative'>
