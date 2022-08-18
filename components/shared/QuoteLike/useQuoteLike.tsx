@@ -1,12 +1,13 @@
 import { likeQuote, dislikeQuote } from 'services'
+import { useSockets, useNewsFeed } from 'hooks'
 import { useTranslation } from 'next-i18next'
-import { useSockets } from 'hooks'
 import { useState } from 'react'
 
 export const useQuoteLike = () => {
   const [dislikeError, setDislikeError] = useState(false)
   const [fetchError, setFetchError] = useState(false)
 
+  const { userData } = useNewsFeed()
   const { socket } = useSockets()
   const { t } = useTranslation()
 
@@ -41,6 +42,7 @@ export const useQuoteLike = () => {
     dislikeError,
     likeHandler,
     fetchError,
+    userData,
     t,
   }
 }

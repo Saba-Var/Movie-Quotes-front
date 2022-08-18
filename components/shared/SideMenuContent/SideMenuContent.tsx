@@ -1,14 +1,12 @@
 import { useSideMenuContent } from './useSideMenuContent'
 import { HomeIcon, CameraIcon } from 'components'
 import { SideMenuProps } from './types'
-import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
 const SideMenuContent: React.FC<SideMenuProps> = (props) => {
   const { setCloseMenu, setShowSideMenu } = props
-  const { userData, t, imageSrc } = useNewsFeed()
 
-  const { closeHandler, page } = useSideMenuContent(
+  const { closeHandler, page, imageSrc, t, userData } = useSideMenuContent(
     setShowSideMenu,
     setCloseMenu
   )

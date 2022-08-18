@@ -1,13 +1,13 @@
+import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { commentOnQuote } from 'services'
-import { useSockets } from 'hooks'
 import { useState } from 'react'
 
-export const useCommentInput = (quoteId: string, userId: string) => {
+export const useCommentInput = (quoteId: string) => {
   const [fetchError, setFetchError] = useState(false)
-
   const [commentText, setCommentText] = useState('')
 
+  const { userData } = useNewsFeed()
   const { socket } = useSockets()
   const { t } = useTranslation()
 
@@ -20,7 +20,11 @@ export const useCommentInput = (quoteId: string, userId: string) => {
       e.preventDefault()
 
       if (commentText.trim().length > 0) {
-        const response = await commentOnQuote({ commentText, quoteId, userId })
+        const response = await commentOnQuote({
+          commentText,
+          quoteId,
+          userId: userData._id,
+        })
 
         if (response.status === 201) {
           socket.emit('ADD_COMMENT', response.data, quoteId)
@@ -39,6 +43,7 @@ export const useCommentInput = (quoteId: string, userId: string) => {
     setFetchError,
     commentText,
     fetchError,
+    userData,
     t,
   }
 }

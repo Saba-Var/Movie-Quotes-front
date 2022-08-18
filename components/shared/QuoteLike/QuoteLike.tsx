@@ -1,7 +1,6 @@
 import { HeartIcon, WhiteHeartIcon, CloseIcon } from 'components'
 import { useQuoteLike } from './useQuoteLike'
 import { QuoteLikeProps } from './types.d'
-import { useNewsFeed } from 'hooks'
 
 const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
   const { likes, quoteId } = props
@@ -13,10 +12,9 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
     dislikeError,
     likeHandler,
     fetchError,
+    userData,
     t,
   } = useQuoteLike()
-
-  const { userData } = useNewsFeed()
 
   return (
     <>

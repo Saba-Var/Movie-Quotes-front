@@ -4,6 +4,7 @@ import { AddIcon } from 'components'
 
 const AddButton: React.FC<AddButtonProps> = (props) => {
   const { title, clickHandler } = props
+
   const { locale } = useAddButton()
 
   return (

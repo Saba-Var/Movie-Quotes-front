@@ -1,13 +1,10 @@
 import { useCommentInput } from './useCommentInput'
 import { CommentInputProps } from './types.d'
 import { ErrorAlert } from '../ErrorAlert'
-import { useNewsFeed } from 'hooks'
 import Image from 'next/image'
 
 const CommentInput: React.FC<CommentInputProps> = (props) => {
   const { quoteId } = props
-
-  const { userData } = useNewsFeed()
 
   const {
     inputChangeHandler,
@@ -15,8 +12,9 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
     setFetchError,
     commentText,
     fetchError,
+    userData,
     t,
-  } = useCommentInput(quoteId, userData._id)
+  } = useCommentInput(quoteId)
 
   const userImageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
