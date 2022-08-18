@@ -1,14 +1,15 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Layout, NewQuote } from 'components'
 import type { GetStaticProps } from 'next'
-import { Layout } from 'components'
-import Link from 'next/link'
 
 const NewsFeed = () => {
   return (
-    <div className='w-full h-screen bg-gray-600 !block'>
-      <Link rel='preload' href={'/en/news-feed/123'}>
-        <a>Quote 123</a>
-      </Link>
+    <div className='lg:pl-5 2xl:pl-28'>
+      <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px] h-screen !block lg:pr-[5%] xl:pr-[17%] 2xl:!pr-[350px]'>
+        <div className='h-screen w-full pt-5'>
+          <NewQuote />
+        </div>
+      </div>
     </div>
   )
 }
@@ -21,6 +22,7 @@ export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale!, [
+        'news-feed',
         'side-menu',
         'landing',
         'common',

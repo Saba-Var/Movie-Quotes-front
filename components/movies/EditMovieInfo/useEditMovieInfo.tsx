@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import getToken from 'helpers/getToken'
 import { MovieFormData } from 'types'
 import { useSockets } from 'hooks'
-import { EVENTS } from 'helpers'
 
 export const useEditMovieInfo = (
   setShowEditForm: SetState<boolean>,
@@ -98,7 +97,7 @@ export const useEditMovieInfo = (
         const response = await changeMovie(formData)
 
         if (response.status === 200) {
-          socket.emit(EVENTS.movies.emit.UPDATE_MOVIE, response.data)
+          socket.emit('UPDATE_MOVIE', response.data)
           setShowEditForm(false)
         }
       }

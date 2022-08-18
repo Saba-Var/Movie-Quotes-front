@@ -5,7 +5,6 @@ import { useNewsFeed } from './useNewsFeed'
 import { getAllMovies } from 'services'
 import { useSockets } from 'hooks'
 import { AllMovie } from 'types'
-import { EVENTS } from 'helpers'
 
 export const useMovies = () => {
   const [showAddMovieForm, setShowAddMovieForm] = useState(false)
@@ -18,19 +17,15 @@ export const useMovies = () => {
   const { socket } = useSockets()
   const { t } = useTranslation()
 
-  socket
-    .off(EVENTS.movies.on.SEND_NEW_MOVIE)
-    .on(EVENTS.movies.on.SEND_NEW_MOVIE, (data) => {
-      setMovieList((prev) => [...prev, data])
-    })
+  socket.off('SEND_NEW_MOVIE').on('SEND_NEW_MOVIE', (data) => {
+    setMovieList((prev) => [data, ...prev])
+  })
 
-  socket
-    .off(EVENTS.movies.on.SEND_UPDATED_MOVIE)
-    .on(EVENTS.movies.on.SEND_UPDATED_MOVIE, (data) => {
-      setMovieList((prev) => {
-        return prev.map((movie) => (movie._id === data._id ? data : movie))
-      })
+  socket.off('SEND_UPDATED_MOVIE').on('SEND_UPDATED_MOVIE', (data) => {
+    setMovieList((prev) => {
+      return prev.map((movie) => (movie._id === data._id ? data : movie))
     })
+  })
 
   const navigate = (movieId: string) => {
     Router.push(`/${locale}/movies/${movieId}`)

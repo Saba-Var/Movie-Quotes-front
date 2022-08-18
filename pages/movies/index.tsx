@@ -22,7 +22,6 @@ const Movies = () => {
     t,
   } = useMovies()
 
-
   return (
     <div className={`w-full min-h-screen !block pt-[25px] pb-14`}>
       {showAddMovieForm && (
@@ -67,7 +66,7 @@ const Movies = () => {
           let movieName =
             locale === 'en' ? movie.movieNameEn : movie.movieNameGe
 
-          if (movieName.length >= 34) {
+          if (movieName.length >= 23) {
             movieName = movieName.slice(0, 23) + '...'
           }
 
@@ -91,12 +90,12 @@ const Movies = () => {
                     alt='movie'
                   />
                 </div>
-                <p className='font-Helvetica-Neue-Geo animate-focus-in-text-expand font-medium text-white text-2xl'>
+                <p className='font-Helvetica-Neue-Geo font-medium text-white text-2xl'>
                   {movieName}
                 </p>
                 <div className='flex items-center gap-3'>
                   <p className='font-Helvetica-Neue-Geo animate-fade-in font-medium text-white text-xl'>
-                    0
+                    {movie.quotes?.length}
                   </p>
                   <CommentIcon />
                 </div>

@@ -28,5 +28,11 @@
   "delete-failed": "ფილმი ვერ წაიშალა",
   "change-movie": "შეცვალე ფილმის დეტალები",
   "edit-failed-error": "ფილმის დეტალები ვერ შეიცვალა",
-  "movie-fetch-failed": "ფილმების სია ვერ ჩაიტვირთა"
+  "movie-fetch-failed": "ფილმების სია ვერ ჩაიტვირთა",
+  "quote-delete-failed": "ციტატა ვერ წაიშალა",
+  "delete": "წაშლა",
+  "save-changes": "ცვლილებების შენახვა",
+  "change-photo": "ფოტოს შეცვლა",
+  "edit-quote-failed": "ციტატა ვერ შეიცვალა",
+  "view-quote": "ციტატის ნახვა"
 }

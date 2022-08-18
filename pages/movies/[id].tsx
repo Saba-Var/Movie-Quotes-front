@@ -20,6 +20,7 @@ export const getServerSideProps: GetStaticProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale!, [
         'side-menu',
+        'news-feed',
         'landing',
         'common',
         'movies',

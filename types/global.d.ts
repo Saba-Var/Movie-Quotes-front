@@ -56,6 +56,7 @@ export type CertainMovieDetails = {
   movieGenres: string[]
   directorEn: string
   directorGe: string
+  quotes?: string[]
   budget: string
   image?: string
   userId: string
@@ -78,3 +79,32 @@ export type Id = {
 }
 
 export type AllMovie = CertainMovieDetails[]
+
+export type Quote = {
+  _id: string
+  quoteEn: string
+  quoteGe: string
+  likes: string[]
+  comments: {
+    user: { _id: string; name: string; image?: string }
+    commentText: string
+    _id: string
+  }[]
+  image?: string
+}
+
+export type Quotes = Quote[]
+
+export type QuoteText = {
+  quoteEn: string
+  quoteGe: string
+}
+
+export type CommentType = {
+  commentText: string
+  _id: string
+  user: {
+    image?: string
+    name: string
+  }
+}

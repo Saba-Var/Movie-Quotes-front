@@ -1,3 +1,4 @@
+export * from './news-feed'
 export * from './landing'
 export * from './shared'
 export * from './movies'

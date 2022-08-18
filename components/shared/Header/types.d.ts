@@ -4,6 +4,7 @@ export type HeaderProps = {
   setRegistrationModal?: SetState<boolean>
   setShowSideMenu?: SetState<boolean>
   setShowLogIn?: SetState<boolean>
+  showSideMenu?: boolean
   page: string
 }
 

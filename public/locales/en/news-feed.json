@@ -1,0 +1,16 @@
+{
+  "write-quote": "Write new quote",
+  "post": "Post",
+  "choose-movie": "Choose movie",
+  "duplicate-quote": "This quote is already exists",
+  "quote-add-error": "Quote could not be added",
+  "empty-movie-list": "Your movie list is empty",
+  "add-quote": "Add quote",
+  "quotes": "Quotes",
+  "total": "total",
+  "view-post": "View Post",
+  "edit": "Edit",
+  "delete": "Delete",
+  "delete-quote": "Delete quote",
+  "delete-quote-question": "Do you want to delete quote"
+}

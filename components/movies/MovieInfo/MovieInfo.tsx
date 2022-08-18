@@ -5,11 +5,12 @@ import {
   EditMovieInfo,
   EditOrDelete,
   ErrorAlert,
+  AddButton,
   Button,
 } from 'components'
 
 const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
-  const { currentMovie } = props
+  const { currentMovie, setAddQuoteModal } = props
 
   const {
     movieDeleteHandler,
@@ -75,7 +76,7 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
         />
       )}
 
-      <div className='h-[302px] sm:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
+      <div className='h-fit xl:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
         <div className='flex justify-between items-center'>
           <p className='text-lightGold animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
             {locale === 'en' ? movieNameEn : movieNameGe}
@@ -115,15 +116,16 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
           </p>
         </div>
 
-        <p className='break-words animate-focus-in-text-expand cursor-default text-inputGray text-lg font-Helvetica-Neue-Geo'>
+        <p className='whitespace-pre-line animate-focus-in-text-expand cursor-default text-inputGray text-lg font-Helvetica-Neue-Geo'>
           {locale === 'en' ? movieDescriptionEn : movieDescriptionGe}
         </p>
 
-        <div className='xl:hidden animate-scale-up flex justify-between'>
-          <div className='bg-orange'>Add quote</div>
-          <EditOrDelete
-            setDeleteModal={setDeleteModal}
-            setEditModal={setShowEditForm}
+        <div className='xl:hidden animate-scale-up flex justify-between mt-6'>
+          <AddButton
+            clickHandler={() => {
+              setAddQuoteModal(true)
+            }}
+            title={t('news-feed:add-quote')}
           />
         </div>
       </div>
