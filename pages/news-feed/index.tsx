@@ -1,5 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Layout, NewQuote } from 'components'
+import { Layout, NewQuote, AllQuotes } from 'components'
 import type { GetStaticProps } from 'next'
 
 const NewsFeed = () => {
@@ -8,6 +8,8 @@ const NewsFeed = () => {
       <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px] h-screen !block lg:pr-[5%] xl:pr-[17%] 2xl:!pr-[350px]'>
         <div className='h-screen w-full pt-5'>
           <NewQuote />
+
+          <AllQuotes />
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { DeletedQuoteId, CommentReqBody } from './types.d'
+import { Status, NewsFeedQuotes, Quotes } from 'types'
 import { AxiosResponse } from 'axios'
-import { Status } from 'types'
-import { Quotes } from 'types'
 import axios from 'services'
 
 export const getMovieQuotes = (id: string): Promise<AxiosResponse<Quotes>> => {
@@ -40,4 +39,10 @@ export const commentOnQuote = (
   data: CommentReqBody
 ): Promise<AxiosResponse<Status>> => {
   return axios.post('/add-comment', data)
+}
+
+export const getNewFeedQuotes = (
+  page: number
+): Promise<AxiosResponse<NewsFeedQuotes>> => {
+  return axios.get(`/all-quotes?page=${page}`)
 }

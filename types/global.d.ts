@@ -108,3 +108,10 @@ export type CommentType = {
     name: string
   }
 }
+
+export type NewsFeedQuotes = {
+  quotes: Quotes
+  paginationInfo?: {
+    hasMoreQuotes: boolean
+  }
+}
