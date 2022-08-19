@@ -2,9 +2,15 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { getMovieQuotes } from 'services'
 import { useRouter } from 'next/router'
-import { quoteSetter } from 'helpers'
-import { useSockets } from 'hooks'
 import { Quotes } from 'types'
+import {
+  useDislikeQuote,
+  useCommentQuote,
+  useDeleteQuote,
+  useLikeQuote,
+  useEditQuote,
+  useSockets,
+} from 'hooks'
 
 export const useQuoteList = () => {
   const [viewQuoteModal, setViewQuoteModal] = useState(false)
@@ -20,59 +26,15 @@ export const useQuoteList = () => {
   const { socket } = useSockets()
   const { t } = useTranslation()
 
-  socket
-    .off('SEND_NEW_MOVIE_QUOTES')
-    .on('SEND_NEW_MOVIE_QUOTES', (deletedQuoteId) => {
-      setQuoteList((prev) => {
-        return prev.filter((quote) => quote._id !== deletedQuoteId)
-      })
-    })
-
   socket.off('SEND_NEW_QUOTE').on('SEND_NEW_QUOTE', (quote) => {
     setQuoteList((prev) => [quote, ...prev])
   })
 
-  socket.on('SEND_NEW_COMMENT', (comment, quoteId) => {
-    const currentQuote = quoteList.find((quote) => quote._id === quoteId)
-
-    if (currentQuote) {
-      const existingComment = currentQuote.comments.find(
-        (currentComment) => currentComment._id === comment._id
-      )
-
-      if (!existingComment) {
-        currentQuote.comments.unshift(comment)
-        quoteSetter(currentQuote, setQuoteList)
-      }
-    }
-  })
-
-  socket.on('SEND_NEW_LIKE', (likeId, quoteId) => {
-    const currentQuote = quoteList.find((quote) => quote._id === quoteId)
-
-    if (currentQuote && !currentQuote.likes.includes(likeId)) {
-      currentQuote.likes.push(likeId)
-      quoteSetter(currentQuote, setQuoteList)
-    }
-  })
-
-  socket.off('SEND_EDITED_QUOTE').on('SEND_EDITED_QUOTE', (data) => {
-    setQuoteList((prev) => {
-      return prev.map((quote) => (quote._id === data._id ? data : quote))
-    })
-  })
-
-  socket.on('SEND_DISLIKE_QUOTE', (dislikeUser, quoteId) => {
-    let currentQuote = quoteList.find((quote) => quote._id === quoteId)
-
-    if (currentQuote && currentQuote.likes.includes(dislikeUser)) {
-      currentQuote.likes = currentQuote.likes.filter((like) => {
-        return like !== dislikeUser
-      })
-
-      quoteSetter(currentQuote, setQuoteList)
-    }
-  })
+  useCommentQuote(quoteList, setQuoteList)
+  useDislikeQuote(quoteList, setQuoteList)
+  useDeleteQuote(quoteList, setQuoteList)
+  useEditQuote(quoteList, setQuoteList)
+  useLikeQuote(quoteList, setQuoteList)
 
   useEffect(() => {
     const fetchQuotes = async () => {
