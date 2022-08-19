@@ -1,7 +1,8 @@
 import { getNewFeedQuotes } from 'services'
 import { useEffect, useState } from 'react'
-import { Quote, Quotes } from 'types'
+import { quoteSetter } from 'helpers'
 import { useSockets } from 'hooks'
+import { Quotes } from 'types'
 
 export const useAllQuotes = () => {
   const [hasMoreQuotes, setHasMoreQuotes] = useState(false)
@@ -10,14 +11,6 @@ export const useAllQuotes = () => {
 
   const [page, setPage] = useState(1)
   const { socket } = useSockets()
-
-  const quoteSetter = (currentQuote: Quote) => {
-    setQuoteList((prev) => {
-      return prev.map((quote) =>
-        quote._id === currentQuote?._id ? currentQuote : quote
-      )
-    })
-  }
 
   socket
     .off('SEND_NEW_QUOTE_NEWS_FEED')
@@ -54,7 +47,7 @@ export const useAllQuotes = () => {
 
     if (currentQuote && !currentQuote.likes.includes(likeId)) {
       currentQuote.likes.push(likeId)
-      quoteSetter(currentQuote)
+      quoteSetter(currentQuote, setQuoteList)
     }
   })
 
@@ -66,7 +59,7 @@ export const useAllQuotes = () => {
         return like !== dislikeUser
       })
 
-      quoteSetter(currentQuote)
+      quoteSetter(currentQuote, setQuoteList)
     }
   })
 
@@ -80,7 +73,7 @@ export const useAllQuotes = () => {
 
       if (!existingComment) {
         currentQuote.comments.unshift(comment)
-        quoteSetter(currentQuote)
+        quoteSetter(currentQuote, setQuoteList)
       }
     }
   })

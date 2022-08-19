@@ -2,8 +2,9 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { getMovieQuotes } from 'services'
 import { useRouter } from 'next/router'
-import { Quotes, Quote } from 'types'
+import { quoteSetter } from 'helpers'
 import { useSockets } from 'hooks'
+import { Quotes } from 'types'
 
 export const useQuoteList = () => {
   const [viewQuoteModal, setViewQuoteModal] = useState(false)
@@ -18,14 +19,6 @@ export const useQuoteList = () => {
   const { query, locale } = useRouter()
   const { socket } = useSockets()
   const { t } = useTranslation()
-
-  const quoteSetter = (currentQuote: Quote) => {
-    setQuoteList((prev) => {
-      return prev.map((quote) =>
-        quote._id === currentQuote?._id ? currentQuote : quote
-      )
-    })
-  }
 
   socket
     .off('SEND_NEW_MOVIE_QUOTES')
@@ -49,7 +42,7 @@ export const useQuoteList = () => {
 
       if (!existingComment) {
         currentQuote.comments.unshift(comment)
-        quoteSetter(currentQuote)
+        quoteSetter(currentQuote, setQuoteList)
       }
     }
   })
@@ -59,7 +52,7 @@ export const useQuoteList = () => {
 
     if (currentQuote && !currentQuote.likes.includes(likeId)) {
       currentQuote.likes.push(likeId)
-      quoteSetter(currentQuote)
+      quoteSetter(currentQuote, setQuoteList)
     }
   })
 
@@ -77,7 +70,7 @@ export const useQuoteList = () => {
         return like !== dislikeUser
       })
 
-      quoteSetter(currentQuote)
+      quoteSetter(currentQuote, setQuoteList)
     }
   })
 
