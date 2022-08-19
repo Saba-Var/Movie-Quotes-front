@@ -12,5 +12,6 @@
   "edit": "შეცვლა",
   "delete": "წაშლა",
   "delete-quote": "ციტატის წაშლა",
-  "delete-quote-question": "გინდათ წიტატის წაშლა"
+  "delete-quote-question": "გინდათ წიტატის წაშლა",
+  "quote-fetch-failed": "ციტატები ვერ ჩაიტვირთა"
 }

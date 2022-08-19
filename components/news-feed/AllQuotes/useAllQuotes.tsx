@@ -12,6 +12,7 @@ import {
 
 export const useAllQuotes = () => {
   const [hasMoreQuotes, setHasMoreQuotes] = useState(false)
+  const [fetchError, setFetchError] = useState(false)
 
   const [quoteList, setQuoteList] = useState<Quotes>([])
 
@@ -49,11 +50,13 @@ export const useAllQuotes = () => {
             }
           }
         }
-      } catch (error) {}
+      } catch (error) {
+        setFetchError(true)
+      }
     }
 
     fetchQuotes()
   }, [page])
 
-  return { setPage, page, hasMoreQuotes, quoteList }
+  return { setPage, page, hasMoreQuotes, quoteList, fetchError, setFetchError }
 }

@@ -20,6 +20,7 @@ export const useQuoteList = () => {
   const [editModal, setEditModal] = useState(false)
 
   const [quoteList, setQuoteList] = useState<Quotes>([])
+
   const [quoteId, setQuoteId] = useState('')
 
   const { query, locale } = useRouter()
