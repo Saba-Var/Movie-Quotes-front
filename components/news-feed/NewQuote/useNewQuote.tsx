@@ -1,5 +1,5 @@
+import { useNewsFeed, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
-import { useNewsFeed } from 'hooks'
 import { addQuote } from 'services'
 import { QuoteText } from 'types'
 import { useState } from 'react'
@@ -15,6 +15,7 @@ export const useNewQuote = () => {
   const [file, setFile] = useState<File | null>(null)
 
   const { userData } = useNewsFeed()
+  const { socket } = useSockets()
   const { t } = useTranslation()
 
   const clearErrors = () => {
@@ -46,6 +47,7 @@ export const useNewQuote = () => {
           setSelectedMovieId('')
           clearErrors()
           setShowAddForm(false)
+          socket.emit('ADD_QUOTE_NEWS_FEED', response.data)
         }
       } catch (error: any) {
         if (error.response.status === 409) {

@@ -33,6 +33,7 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
 
         if (response.status === 201) {
           socket.emit('ADD_QUOTE', response.data)
+          socket.emit('ADD_QUOTE_NEWS_FEED', response.data)
           setAddQuoteModal(false)
         }
       }

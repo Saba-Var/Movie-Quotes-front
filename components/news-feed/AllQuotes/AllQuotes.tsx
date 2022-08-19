@@ -6,9 +6,7 @@ const AllQuotes = () => {
 
   return (
     <InfiniteScroll
-      next={() => {
-        setPage(page + 1)
-      }}
+      next={() => setPage(page + 1)}
       hasMore={hasMoreQuotes}
       dataLength={quoteList.length}
       loader={
@@ -17,15 +15,23 @@ const AllQuotes = () => {
         </h1>
       }
     >
-      <>
+      <div className='flex flex-col gap-7'>
         {quoteList.map((quote) => {
           return (
-            <h1 key={quote._id} className='text-white text-4xl'>
-              {quote.quoteEn}
-            </h1>
+            <div key={quote._id} className='flex flex-col gap-7'>
+              <h1 key={quote._id} className='text-white text-4xl'>
+                {quote.quoteEn}
+                <p className='text-white text-4xl'>
+                  comments {quote.comments.length}
+                </p>
+                <p className='text-white text-4xl'>
+                  likes {quote.likes.length}
+                </p>
+              </h1>
+            </div>
           )
         })}
-      </>
+      </div>
     </InfiniteScroll>
   )
 }
