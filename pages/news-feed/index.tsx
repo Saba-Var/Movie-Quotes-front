@@ -4,8 +4,8 @@ import type { GetStaticProps } from 'next'
 
 const NewsFeed = () => {
   return (
-    <div className='lg:pl-5 2xl:pl-28'>
-      <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px] h-screen !block lg:pr-[5%] xl:pr-[17%] 2xl:!pr-[350px]'>
+    <div className='lg:pl-5 2xl:pl-[15%]'>
+      <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[1100px] h-screen !block lg:pr-[5%] xl:pr-[17%] 2xl:!pr-[350px]'>
         <div className='h-screen w-full pt-5'>
           <NewQuote />
 

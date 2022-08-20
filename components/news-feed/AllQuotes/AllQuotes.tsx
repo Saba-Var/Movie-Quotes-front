@@ -1,6 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { ErrorAlert } from 'components/shared'
+import { ErrorAlert, NewsFeedPost } from 'components'
 import { useAllQuotes } from './useAllQuotes'
+import Image from 'next/image'
 
 const AllQuotes = () => {
   const { hasMoreQuotes, page, quoteList, setPage, fetchError, setFetchError } =
@@ -26,22 +27,15 @@ const AllQuotes = () => {
           </h1>
         }
       >
-        <div className='flex flex-col gap-7'>
-          {quoteList.map((quote) => {
-            return (
-              <div key={quote._id} className='flex flex-col gap-7'>
-                <h1 key={quote._id} className='text-white text-4xl'>
-                  {quote.quoteEn}
-                  <p className='text-white text-4xl'>
-                    comments {quote.comments.length}
-                  </p>
-                  <p className='text-white text-4xl'>
-                    likes {quote.likes.length}
-                  </p>
-                </h1>
-              </div>
-            )
-          })}
+        <div className='flex flex-col gap-7 overflow-x-hidden mt-[5%]'>
+          {quoteList &&
+            quoteList.map((quote) => {
+              return (
+                <div key={quote._id}>
+                  <NewsFeedPost quote={quote} />
+                </div>
+              )
+            })}
         </div>
       </InfiniteScroll>
     </>

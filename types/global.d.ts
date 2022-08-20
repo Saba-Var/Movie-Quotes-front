@@ -85,6 +85,7 @@ export type Quote = {
   quoteEn: string
   quoteGe: string
   likes: string[]
+  user: { _id: string; name: string; image?: string }
   comments: {
     user: { _id: string; name: string; image?: string }
     commentText: string
