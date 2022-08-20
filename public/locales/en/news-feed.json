@@ -13,5 +13,6 @@
   "delete": "Delete",
   "delete-quote": "Delete quote",
   "delete-quote-question": "Do you want to delete quote",
-  "quote-fetch-failed": "Quote fetch failed"
+  "quote-fetch-failed": "Quote fetch failed",
+  "movie": "movie"
 }

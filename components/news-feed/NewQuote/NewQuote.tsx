@@ -48,7 +48,7 @@ const NewQuote = () => {
 
       {showAddForm && (
         <FormWrapper
-          styles='1xl:top-[10%] 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px]  1xl:left-[335px] lg:!left-[405px] 2xl:!left-[497px]'
+          styles='1xl:top-[10%] 1xl:w-[555px] lg:!w-[622px] xl:!w-[760px] 2xl:!w-[950px]  1xl:left-[335px] lg:!left-[405px] 2xl:!left-[534px]'
           title={t('news-feed:write-quote')}
           setShowForm={setShowAddForm}
           closeHandler={closeHandler}

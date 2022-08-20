@@ -1,6 +1,7 @@
 import { useCommentInput } from './useCommentInput'
 import { CommentInputProps } from './types.d'
 import { ErrorAlert } from '../ErrorAlert'
+import { SendIcon } from 'components'
 import Image from 'next/image'
 
 const CommentInput: React.FC<CommentInputProps> = (props) => {
@@ -29,7 +30,7 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
       )}
 
       {userData.image && (
-        <div className='w-10 h-10 relative lg:w-[52px] lg:h-[52px]'>
+        <div className='w-12 h-11 relative lg:w-[65px] lg:h-[60px]'>
           <Image
             className='rounded-full select-none'
             loader={() => userImageSrc}
@@ -43,18 +44,24 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
       )}
 
       {!userData.image && (
-        <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
-          <p className='text-3xl pb-2'>{userData.name[0]}</p>
+        <div className='bg-green w-12 h-10 lg:w-[70px] lg:h-[60px] flex justify-center items-center rounded-full'>
+          <p className='text-xl select-none pb-1 lg:text-3xl lg:pb-2 text-white'>
+            {userData.name[0]}
+          </p>
         </div>
       )}
 
-      <form className='w-full' onSubmit={onSubmitHandler}>
+      <form className='w-full relative' onSubmit={onSubmitHandler}>
         <input
-          className='w-full px-4 py-[10px] placeholder-inputGray text-2xl bg-darkPurple h-10 rounded-[10px] xl:h-[52px] opacity-60 outline-none'
+          className='w-full px-4 py-[10px] pr-12 placeholder-inputGray text-white text-base lg:text-xl bg-darkPurple h-10 rounded-[10px] xl:h-[52px] bg-opacity-60 outline-none'
           placeholder={t('common:write-comment')}
           onChange={inputChangeHandler}
           value={commentText}
         />
+
+        <button type='submit'>
+          <SendIcon />
+        </button>
       </form>
     </div>
   )

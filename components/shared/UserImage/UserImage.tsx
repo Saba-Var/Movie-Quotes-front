@@ -24,11 +24,13 @@ const UserImage: React.FC<UserImageProps> = (props) => {
 
       {!image && (
         <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
-          <p className='text-3xl pb-2'>{name[0]}</p>
+          <p className='text-xl select-none pb-1 lg:text-3xl lg:pb-2 text-white'>
+            {name[0]}
+          </p>
         </div>
       )}
 
-      <p className='text-white text-xl cursor-default'>{name}</p>
+      <p className='text-white text-xl font-Helvetica-Neue-Geo'>{name}</p>
     </div>
   )
 }

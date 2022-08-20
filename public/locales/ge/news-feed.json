@@ -13,5 +13,6 @@
   "delete": "წაშლა",
   "delete-quote": "ციტატის წაშლა",
   "delete-quote-question": "გინდათ წიტატის წაშლა",
-  "quote-fetch-failed": "ციტატები ვერ ჩაიტვირთა"
+  "quote-fetch-failed": "ციტატები ვერ ჩაიტვირთა",
+  "movie": "ფილმი"
 }

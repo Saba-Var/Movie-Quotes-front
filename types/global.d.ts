@@ -92,6 +92,12 @@ export type Quote = {
     _id: string
   }[]
   image?: string
+  movie: {
+    movieNameEn: string
+    movieNameGe: string
+    _id: string
+    image: string
+  }
 }
 
 export type Quotes = Quote[]
