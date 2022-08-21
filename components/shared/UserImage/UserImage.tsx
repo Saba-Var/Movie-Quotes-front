@@ -22,7 +22,7 @@ const UserImage: React.FC<UserImageProps> = (props) => {
         </div>
       )}
 
-      {!image && (
+      {!image && name && (
         <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
           <p className='text-xl select-none pb-1 lg:text-3xl lg:pb-2 text-white'>
             {name[0]}

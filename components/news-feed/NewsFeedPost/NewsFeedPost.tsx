@@ -10,26 +10,32 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
 
   return (
     <div className='rounded-xl bg-formModalBlue animate-scale-up py-7 px-9'>
-      <div className='animate-fade-in'>
-        <UserImage
-          image={quote.user.image!}
-          name={quote.user.name}
-          imageStyles={'lg:w-[52px] lg:h-[52px]'}
-        />
-      </div>
+      {quote.user.image && (
+        <div className='animate-fade-in'>
+          <UserImage
+            imageStyles={'lg:w-[52px] lg:h-[52px]'}
+            image={quote.user.image!}
+            name={quote.user.name}
+          />
+        </div>
+      )}
 
-      <div className='mt-[14px] mb-4 lg:mt-4 lg:mb-7 animate-fade-in'>
-        <p className='text-white text-base lg:text-xl font-Helvetica-Neue-Geo'>
-          {`“${locale === 'en' ? quote.quoteEn : quote.quoteGe}“. ${t(
-            'news-feed:movie'
-          )}-`}
-          <span className='text-lightGold'>
-            {locale === 'en'
-              ? quote.movie.movieNameEn
-              : quote.movie.movieNameGe}
-          </span>
-        </p>
-      </div>
+      {quote.quoteEn && (
+        <div className='mt-[14px] mb-4 lg:mt-4 lg:mb-7 animate-fade-in'>
+          <p className='text-white text-base lg:text-xl font-Helvetica-Neue-Geo'>
+            {`“${locale === 'en' ? quote.quoteEn : quote.quoteGe}“. ${t(
+              'news-feed:movie'
+            )}-`}
+            {quote.movie && (
+              <span className='text-lightGold'>
+                {locale === 'en'
+                  ? quote.movie.movieNameEn
+                  : quote.movie.movieNameGe}
+              </span>
+            )}
+          </p>
+        </div>
+      )}
 
       <div className='relative mb-[19px] lg:mb-6 h-56 sm:h-[300px] lg:h-[400px] xl:h-[500px]'>
         <Image

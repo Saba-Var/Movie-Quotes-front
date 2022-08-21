@@ -1,7 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { ErrorAlert, NewsFeedPost } from 'components'
 import { useAllQuotes } from './useAllQuotes'
-import Image from 'next/image'
 
 const AllQuotes = () => {
   const { hasMoreQuotes, page, quoteList, setPage, fetchError, setFetchError } =

@@ -4,6 +4,7 @@ import { Quotes } from 'types'
 import {
   useCommentQuote,
   useDislikeQuote,
+  useDeleteMovie,
   useDeleteQuote,
   useLikeQuote,
   useEditQuote,
@@ -28,6 +29,7 @@ export const useAllQuotes = () => {
   useCommentQuote(quoteList, setQuoteList)
   useDislikeQuote(quoteList, setQuoteList)
   useDeleteQuote(quoteList, setQuoteList)
+  useDeleteMovie(quoteList, setQuoteList)
   useEditQuote(quoteList, setQuoteList)
   useLikeQuote(quoteList, setQuoteList)
 

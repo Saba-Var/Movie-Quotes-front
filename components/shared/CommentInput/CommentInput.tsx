@@ -1,7 +1,6 @@
 import { useCommentInput } from './useCommentInput'
+import { SendIcon, ErrorAlert } from 'components'
 import { CommentInputProps } from './types.d'
-import { ErrorAlert } from '../ErrorAlert'
-import { SendIcon } from 'components'
 import Image from 'next/image'
 
 const CommentInput: React.FC<CommentInputProps> = (props) => {
