@@ -10,15 +10,13 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
 
   return (
     <div className='rounded-xl bg-formModalBlue animate-scale-up py-7 px-9'>
-      {quote.user.image && (
-        <div className='animate-fade-in'>
-          <UserImage
-            imageStyles={'lg:w-[52px] lg:h-[52px]'}
-            image={quote.user.image!}
-            name={quote.user.name}
-          />
-        </div>
-      )}
+      <div className='animate-fade-in'>
+        <UserImage
+          imageStyles={'lg:w-[52px] lg:h-[52px]'}
+          image={quote.user.image!}
+          name={quote.user.name}
+        />
+      </div>
 
       {quote.quoteEn && (
         <div className='mt-[14px] mb-4 lg:mt-4 lg:mb-7 animate-fade-in'>

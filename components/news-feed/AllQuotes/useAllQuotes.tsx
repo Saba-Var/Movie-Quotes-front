@@ -40,7 +40,6 @@ export const useAllQuotes = () => {
 
         if (response.status === 200) {
           const { data } = response
-
           if (data.paginationInfo) {
             const { paginationInfo } = data
             setHasMoreQuotes(paginationInfo.hasMoreQuotes)
