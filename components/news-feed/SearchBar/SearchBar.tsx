@@ -1,13 +1,21 @@
 import { useSearchBar } from './useSearchBar'
+import { SearchBarProps } from './types.d'
 import { SearchIcon } from 'components'
 
-const SearchBar = () => {
-  const { t, costumePlaceholder, setCustomPlaceholder, georgianLan } =
-    useSearchBar()
+const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const { inputValue, setInputValue } = props
+
+  const {
+    setCustomPlaceholder,
+    costumePlaceholder,
+    changeHandler,
+    georgianLan,
+    t,
+  } = useSearchBar(setInputValue, inputValue)
 
   return (
     <div className='relative hidden 1xl:block z-[999]  '>
-      {costumePlaceholder && (
+      {costumePlaceholder && inputValue === '' && (
         <p className='absolute animate-fade-in-delay text-xs 2xl:text-xl xl:text-base z-[-2] left-[30px] xl:left-7 text-inputGray top-1/2 -translate-y-1/2'>
           {`${t('news-feed:enter')}`} <span className='text-white'>@</span>{' '}
           {`${t('news-feed:search-movies')}`}, {`${t('news-feed:enter')}`}{' '}
@@ -16,7 +24,7 @@ const SearchBar = () => {
         </p>
       )}
 
-      <label>
+      <label onClick={() => setCustomPlaceholder(true)}>
         <div
           className={`${
             costumePlaceholder && '!left-0'
@@ -30,12 +38,14 @@ const SearchBar = () => {
         <input
           className={`${
             costumePlaceholder && 'animate-fold-out'
-          } text-lg 2xl:focus:w-[700px] pl-12 xl:focus:w-[500px] focus:pl-7 xl:pl-10 z-[99] focus:text-white text-transparent pt-1 focus:placeholder-transparent focus:w-[380px] lg:focus:w-[430px] xl:text-xl bg-transparent outline-none transition-transform focus:pb-[6px] focus:border-b focus:border-b-gray-600 w-[131px] text-white placeholder-inputGray h-full ${
+          } text-lg pl-12 xl:pl-10 z-[99] pt-1 xl:text-xl bg-transparent outline-none transition-transform w-[131px] text-white placeholder-inputGray h-full ${
             georgianLan && 'w-[80px] !pl-7 focus:!pl-7'
+          } ${
+            costumePlaceholder &&
+            '2xl:w-[700px] xl:w-[500px] xl:pl-7 pl-7 text-white placeholder-transparent w-[380px] lg:w-[430px] pb-[6px] border-b border-b-gray-600'
           }`}
-          onFocusCapture={() => setCustomPlaceholder(true)}
-          onBlur={() => setCustomPlaceholder(false)}
           placeholder={t('news-feed:search-by')}
+          onChange={(e) => changeHandler(e)}
           type='text'
         />
       </label>

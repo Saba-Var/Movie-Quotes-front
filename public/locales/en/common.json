@@ -22,5 +22,6 @@
   "dislike-failed": "Dislike Failed",
   "write-comment": "Write a comment",
   "comment-fail": "Comment failed",
-  "quote-fetch-failed": "Quote list fetch failed"
+  "quote-fetch-failed": "Quote list fetch failed",
+  "fetch-failed": "Fetch failed"
 }

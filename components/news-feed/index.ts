@@ -1,5 +1,6 @@
 export * from './ScrollPaginationWrapper'
 export * from './MovieMultiSelect'
+export * from './SearchedPosts'
 export * from './NewsFeedPost'
 export * from './SearchBar'
 export * from './AllQuotes'

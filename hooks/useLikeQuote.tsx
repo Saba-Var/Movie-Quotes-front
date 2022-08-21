@@ -6,11 +6,13 @@ const useLikeQuote = (quoteList: Quotes, setQuoteList: SetState<Quotes>) => {
   const { socket } = useSockets()
 
   return socket.on('SEND_NEW_LIKE', (likeId, quoteId) => {
-    const currentQuote = quoteList.find((quote) => quote._id === quoteId)
+    if (quoteList) {
+      const currentQuote = quoteList.find((quote) => quote._id === quoteId)
 
-    if (currentQuote && !currentQuote.likes.includes(likeId)) {
-      currentQuote.likes.push(likeId)
-      quoteSetter(currentQuote, setQuoteList)
+      if (currentQuote && !currentQuote.likes.includes(likeId)) {
+        currentQuote.likes.push(likeId)
+        quoteSetter(currentQuote, setQuoteList)
+      }
     }
   })
 }

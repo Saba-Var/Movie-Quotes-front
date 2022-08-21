@@ -2,7 +2,7 @@ import { ErrorAlert, NewsFeedPost, ScrollPaginationWrapper } from 'components'
 import { useAllQuotes } from './useAllQuotes'
 
 const AllQuotes = () => {
-  const { hasMoreQuotes, page, quoteList, setPage, fetchError, setFetchError } =
+  const { hasMoreQuotes, setFetchError, fetchError, quoteList, setPage, page } =
     useAllQuotes()
 
   return (

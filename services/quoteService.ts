@@ -46,3 +46,9 @@ export const getNewFeedQuotes = (
 ): Promise<AxiosResponse<NewsFeedQuotes>> => {
   return axios.get(`/all-quotes?page=${page}`)
 }
+
+export const getNewsFeedPost = (
+  searchValue: string
+): Promise<AxiosResponse<Quotes>> => {
+  return axios.get(`/news-feed-post?searchValue=${searchValue}`)
+}

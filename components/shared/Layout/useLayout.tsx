@@ -16,5 +16,10 @@ export const useLayout = () => {
     }
   }, [session])
 
-  return { setShowSideMenu, showSideMenu, setUserDataFail, userDataFail }
+  return {
+    setShowSideMenu,
+    setUserDataFail,
+    showSideMenu,
+    userDataFail,
+  }
 }

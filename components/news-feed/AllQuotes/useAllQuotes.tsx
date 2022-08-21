@@ -59,5 +59,13 @@ export const useAllQuotes = () => {
     fetchQuotes()
   }, [page])
 
-  return { setPage, page, hasMoreQuotes, quoteList, fetchError, setFetchError }
+  return {
+    hasMoreQuotes,
+    setFetchError,
+    setQuoteList,
+    fetchError,
+    quoteList,
+    setPage,
+    page,
+  }
 }

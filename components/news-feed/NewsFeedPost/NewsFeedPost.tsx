@@ -37,7 +37,7 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
 
       <div className='relative mb-[19px] lg:mb-6 h-56 sm:h-[300px] lg:h-[400px] xl:h-[500px]'>
         <Image
-          className='animate-fold-out rounded-[10px]'
+          className='animate-fade-in rounded-[10px]'
           loader={() => imageSrc}
           unoptimized={true}
           src={imageSrc}
