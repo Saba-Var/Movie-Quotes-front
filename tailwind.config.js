@@ -17,6 +17,8 @@ module.exports = {
         flying: 'flying 5s linear  infinite both',
         'bounce-out-top': 'bounce-out-top 1.5s ease both',
         'fade-in': 'fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'fade-in-delay':
+          'fade-in-delay 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         dropdown: 'dropdown 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'scale-up':
           'scale-up 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -127,6 +129,21 @@ module.exports = {
             opacity: '1',
           },
         },
+
+        'fade-in-delay': {
+          '0%': {
+            opacity: '0',
+          },
+
+          '50%': {
+            opacity: '0.2',
+          },
+
+          to: {
+            opacity: '1',
+          },
+        },
+
         dropdown: {
           '0%': {
             transform: 'scaleY(.3)',

@@ -1,3 +1,4 @@
+export * from './ScrollPaginationWrapper'
 export * from './MovieMultiSelect'
 export * from './NewsFeedPost'
 export * from './SearchBar'

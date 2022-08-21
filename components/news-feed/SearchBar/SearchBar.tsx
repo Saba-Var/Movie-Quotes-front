@@ -8,14 +8,15 @@ const SearchBar = () => {
   return (
     <div className='relative hidden 1xl:block z-[999]  '>
       {costumePlaceholder && (
-        <p className='absolute animate-fade-in text-xs 2xl:text-xl xl:text-base z-[-2] left-[30px] xl:left-7 text-white top-1/2 -translate-y-1/2'>
-          {`${t('news-feed:enter')}`} <span>@</span>{' '}
-          {`${t('news-feed:search-movies')}`}, {`${t('news-feed:enter')}`} #{' '}
+        <p className='absolute animate-fade-in-delay text-xs 2xl:text-xl xl:text-base z-[-2] left-[30px] xl:left-7 text-inputGray top-1/2 -translate-y-1/2'>
+          {`${t('news-feed:enter')}`} <span className='text-white'>@</span>{' '}
+          {`${t('news-feed:search-movies')}`}, {`${t('news-feed:enter')}`}{' '}
+          <span className='text-white'>#</span>{' '}
           {`${t('news-feed:search-quotes')}`}
         </p>
       )}
 
-      <label className=''>
+      <label>
         <div
           className={`${
             costumePlaceholder && '!left-0'
