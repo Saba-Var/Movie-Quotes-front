@@ -1,4 +1,5 @@
 export * from './MovieMultiSelect'
 export * from './NewsFeedPost'
+export * from './SearchBar'
 export * from './AllQuotes'
 export * from './NewQuote'

@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
         page='news-feed'
       />
 
-      <div className='px-9 pt-[86px]'>
+      <div className='px-0 sm:px-9 pt-[86px]'>
         <SideMenuWrapper
           setShowSideMenu={setShowSideMenu}
           showSideMenu={showSideMenu}

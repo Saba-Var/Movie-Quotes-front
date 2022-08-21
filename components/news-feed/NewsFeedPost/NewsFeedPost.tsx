@@ -20,7 +20,7 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
 
       {quote.quoteEn && (
         <div className='mt-[14px] mb-4 lg:mt-4 lg:mb-7 animate-fade-in'>
-          <p className='text-white text-base lg:text-xl font-Helvetica-Neue-Geo'>
+          <p className='text-white animate-fade-in text-base lg:text-xl font-Helvetica-Neue-Geo'>
             {`“${locale === 'en' ? quote.quoteEn : quote.quoteGe}“. ${t(
               'news-feed:movie'
             )}-`}

@@ -14,5 +14,9 @@
   "delete-quote": "Delete quote",
   "delete-quote-question": "Do you want to delete quote",
   "quote-fetch-failed": "Quote fetch failed",
-  "movie": "movie"
+  "movie": "movie",
+  "search-by": "Search by",
+  "enter": "Enter",
+  "search-movies": "to search movies",
+  "search-quotes": "to search quotes"
 }

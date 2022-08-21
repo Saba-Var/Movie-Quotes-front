@@ -34,13 +34,15 @@ const NewQuote = () => {
 
   return (
     <>
-      <div className={`lg:bg-backgroundGray rounded-lg !w-full`}>
+      <div
+        className={`1xl:bg-backgroundGray rounded-lg !w-full animate-scale-up`}
+      >
         <div
           onClick={() => setShowAddForm(true)}
-          className='!w-full flex gap-3 cursor-pointer pt-1 lg:py-3 pl-4 hover:scale-[1.03] active:scale-100 transition-transform'
+          className='!w-full items-center flex gap-3 cursor-pointer pt-[13px] py-3 pl-4 hover:scale-[1.03] active:scale-100 transition-transform'
         >
           <WriteIcon />
-          <p className='text-white select-none font-Helvetica-Neue-Geo text-xl'>
+          <p className='text-white select-none font-Helvetica-Neue-Geo text-xl 1xl:text-sm xl:!text-xl'>
             {t('news-feed:write-quote')}
           </p>
         </div>
