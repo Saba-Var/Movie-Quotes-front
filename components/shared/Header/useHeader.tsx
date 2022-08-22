@@ -1,14 +1,15 @@
 import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from 'react'
 import { deleteCookie } from 'cookies-next'
+import { useRouter } from 'next/router'
 import { HrefData } from './types.d'
 
 export const useHeader = () => {
   const router = useRouter()
 
   const [showSelector, setShowSelector] = useState(false)
+
   const [language, setLanguage] = useState('')
 
   const { t } = useTranslation()

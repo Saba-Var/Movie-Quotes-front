@@ -5,11 +5,17 @@ import { LayoutProps } from './types'
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
 
-  const { setShowSideMenu, showSideMenu, setUserDataFail, userDataFail } =
-    useLayout()
+  const {
+    setMobileSearchMode,
+    mobileSearchMode,
+    setShowSideMenu,
+    setUserDataFail,
+    showSideMenu,
+    userDataFail,
+  } = useLayout()
 
   return (
-    <div className={`bg-background ${showSideMenu && 'overflow-hidden'}`}>
+    <div className={`bg-background`}>
       {userDataFail && (
         <ErrorAlert
           styles='left-[50%] -translate-x-1/2'
@@ -19,6 +25,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
       )}
 
       <Header
+        setMobileSearchMode={setMobileSearchMode}
+        mobileSearchMode={mobileSearchMode}
         setShowSideMenu={setShowSideMenu}
         showSideMenu={showSideMenu}
         page='news-feed'
@@ -29,7 +37,13 @@ const Layout: React.FC<LayoutProps> = (props) => {
           setShowSideMenu={setShowSideMenu}
           showSideMenu={showSideMenu}
         />
-        <div className='1xl:pl-[300px] lg:!pl-[350px] h-fit'>{children}</div>
+        <div
+          className={`1xl:pl-[300px] lg:!pl-[350px] h-fit ${
+            mobileSearchMode && 'overflow-hidden'
+          }`}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )
