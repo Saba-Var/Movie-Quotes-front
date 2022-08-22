@@ -7,6 +7,7 @@ import {
   CommentInput,
   PencilIcon,
   TrashIcon,
+  UserImage,
   CloseIcon,
   QuoteLike,
   ChatIcon,
@@ -65,33 +66,9 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
 
         <div className='!overflow-y-scroll h-[80vh]'>
           <div className='px-8 flex flex-col my-7'>
-            <div className='flex items-center gap-4'>
-              {userData.image && (
-                <div className='w-10 h-10 relative lg:w-[60px] lg:h-[60px]'>
-                  <Image
-                    className='rounded-full select-none'
-                    loader={() =>
-                      `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
-                    }
-                    unoptimized={true}
-                    alt='quote image'
-                    src={`${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`}
-                    layout='fill'
-                    priority
-                  />
-                </div>
-              )}
-
-              {!userData.image && (
-                <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
-                  <p className='text-3xl pb-2'>{userData.name[0]}</p>
-                </div>
-              )}
-
-              <p className='text-white text-xl cursor-default'>
-                {userData.name}
-              </p>
-            </div>
+            {userData.image && (
+              <UserImage image={userData.image} name={userData.name} />
+            )}
 
             <div className='border cursor-default border-gray-600 mt-8 rounded relative'>
               <p className='text-inputGray p-2 overflow-y-auto pr-12 h-[86px] text-xl lg:text-2xl whitespace-pre-wrap break-words'>{`"${currentQuote?.quoteEn}"`}</p>

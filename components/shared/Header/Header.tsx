@@ -3,6 +3,7 @@ import { useHeader } from './useHeader'
 import Link from 'next/link'
 import {
   NotificationIcon,
+  MobileSearchBar,
   SelectorArrow,
   SearchIcon,
   MenuIcon,
@@ -12,6 +13,8 @@ import {
 const Header: React.FC<HeaderProps> = (props) => {
   const {
     setRegistrationModal,
+    setMobileSearchMode,
+    mobileSearchMode,
     setShowSideMenu,
     setShowLogIn,
     showSideMenu,
@@ -30,7 +33,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <div
-      className={`py-5 px-9 fixed w-screen z-[9998] ${
+      className={`py-5 px-9 fixed !w-screen z-[9998] ${
         page === 'news-feed'
           ? 'bg-backgroundGray !pt-8 1xl:!pt-6'
           : 'bg-background'
@@ -69,7 +72,19 @@ const Header: React.FC<HeaderProps> = (props) => {
         <div className='flex gap-4 items-center'>
           {page === 'news-feed' && (
             <>
-              {hrefData.toString().includes('news-feed') && <SearchIcon />}
+              {hrefData.toString().includes('news-feed') && (
+                <>
+                  <div onClick={() => setMobileSearchMode(true)}>
+                    <SearchIcon />
+                  </div>
+
+                  {mobileSearchMode && (
+                    <MobileSearchBar
+                      setMobileSearchMode={setMobileSearchMode}
+                    />
+                  )}
+                </>
+              )}
               <NotificationIcon />
             </>
           )}

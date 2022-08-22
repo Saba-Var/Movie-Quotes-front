@@ -1,4 +1,5 @@
 import { FilmGenres, Status, AllMovie } from 'types'
+import { DeletedMovieId } from './types.d'
 import { AxiosResponse } from 'axios'
 import axios from 'services'
 
@@ -20,6 +21,8 @@ export const changeMovie = (data: FormData): Promise<AxiosResponse<Status>> => {
   return axios.put('/change-movie', data)
 }
 
-export const deleteMovie = (id: string): Promise<AxiosResponse<Status>> => {
+export const deleteMovie = (
+  id: string
+): Promise<AxiosResponse<DeletedMovieId>> => {
   return axios.delete(`/delete-movie?id=${id}`)
 }

@@ -38,7 +38,7 @@ const Movies = () => {
 
       <div>
         <div className='flex justify-between items-center'>
-          <div className='1xl:flex-row 1xl:gap-3 flex flex-col animate-focus-in-text-expand'>
+          <div className='1xl:flex-row 1xl:gap-3 flex px-4 sm:px-0 flex-col animate-fade-in'>
             <p className='text-white cursor-default text-2xl font-Helvetica-Neue-Geo font-medium'>
               {t('movies:movies-list')}
             </p>

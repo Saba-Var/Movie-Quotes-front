@@ -85,12 +85,19 @@ export type Quote = {
   quoteEn: string
   quoteGe: string
   likes: string[]
+  user: { _id: string; name: string; image?: string }
   comments: {
     user: { _id: string; name: string; image?: string }
     commentText: string
     _id: string
   }[]
   image?: string
+  movie: {
+    movieNameEn: string
+    movieNameGe: string
+    _id: string
+    image: string
+  }
 }
 
 export type Quotes = Quote[]
@@ -106,5 +113,12 @@ export type CommentType = {
   user: {
     image?: string
     name: string
+  }
+}
+
+export type NewsFeedQuotes = {
+  quotes: Quotes
+  paginationInfo?: {
+    hasMoreQuotes: boolean
   }
 }

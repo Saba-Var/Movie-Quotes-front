@@ -2,6 +2,11 @@ export type SelectorArrowProps = {
   isSelected: boolean
 }
 
+export type BackArrowProps = {
+  clearStyles?: boolean
+  styles?: string
+}
+
 export type IconStyle = {
   styles?: string
 }

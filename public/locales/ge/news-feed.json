@@ -1,16 +1,23 @@
 {
-  "write-quote": "ციტატის დამატება",
+  "write-quote": "დაამატე ციტატა",
   "post": "დამატება",
   "choose-movie": "აირჩიეთ ფილმი",
   "duplicate-quote": "ეს ციტატა უკვე დამატებულია",
   "quote-add-error": "ციტატა ვერ დაემატა",
   "empty-movie-list": "თქვენი ფილმების სია ცარიელია",
-  "add-quote": "ციტატის დამატება",
+  "add-quote": "დაამატე ციტატა",
   "quotes": "ციტატები",
   "total": "სულ",
   "view-post": "პოსტის ნახვა",
   "edit": "შეცვლა",
   "delete": "წაშლა",
   "delete-quote": "ციტატის წაშლა",
-  "delete-quote-question": "გინდათ წიტატის წაშლა"
+  "delete-quote-question": "გინდათ წიტატის წაშლა",
+  "quote-fetch-failed": "ციტატები ვერ ჩაიტვირთა",
+  "movie": "ფილმი",
+  "search-by": "ძებნა ",
+  "enter": "ჩაწერე",
+  "search-movies": "და მოძებნე ფილმი",
+  "search-quotes": "და მოძებნე ციტატა",
+  "search": "ძებნა"
 }

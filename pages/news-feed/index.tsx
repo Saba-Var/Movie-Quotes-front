@@ -1,13 +1,35 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Layout, NewQuote } from 'components'
 import type { GetStaticProps } from 'next'
+import { useNewsFeed } from 'hooks'
+import {
+  SearchedPosts,
+  AllQuotes,
+  SearchBar,
+  NewQuote,
+  Layout,
+} from 'components'
 
 const NewsFeed = () => {
+  const { searchedPosts, inputValue, setInputValue, fetchError } = useNewsFeed()
+
   return (
-    <div className='lg:pl-5 2xl:pl-28'>
-      <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[990px] h-screen !block lg:pr-[5%] xl:pr-[17%] 2xl:!pr-[350px]'>
+    <div className='lg:pl-5 2xl:pl-[10%]'>
+      <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[1100px] h-screen !block lg:pr-[5%] 2xl:!pr-[150px]'>
         <div className='h-screen w-full pt-5'>
-          <NewQuote />
+          <div className='flex justify-between gap-2 xl:gap-5'>
+            <NewQuote />
+            <SearchBar setInputValue={setInputValue} inputValue={inputValue} />
+          </div>
+
+          {(inputValue.trim()[0] === '@' || inputValue.trim()[0] === '#') &&
+          inputValue.length > 1 ? (
+            <SearchedPosts
+              searchedPosts={searchedPosts}
+              fetchError={fetchError}
+            />
+          ) : (
+            <AllQuotes />
+          )}
         </div>
       </div>
     </div>

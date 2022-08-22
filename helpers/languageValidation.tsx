@@ -21,7 +21,8 @@ function languageValidation(data: languageValidationData) {
         if (
           !isValidLanguage &&
           !/[-!$%^&*()_+|~=`{}[\]:";'<>?,./]/.test(char) &&
-          !+char
+          !+char &&
+          char !== '0'
         ) {
           return createError({ path, message: errorMessage })
         }

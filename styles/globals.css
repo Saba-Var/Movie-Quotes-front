@@ -12,13 +12,13 @@
 
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('../public/assets/fonts/Helvetica-Neue.ttf');
+  src: url('/assets/fonts/Helvetica-Neue.ttf');
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Helvetica Neue Geo';
-  src: url('../public/assets/fonts/Helvetica-Neue-Geo.ttf');
+  src: url('/assets/fonts/Helvetica-Neue-Geo.ttf');
   font-style: normal;
 }
 

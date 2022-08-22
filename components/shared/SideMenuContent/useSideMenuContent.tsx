@@ -21,5 +21,11 @@ export const useSideMenuContent = (
     }, 500)
   }
 
-  return { closeHandler, page, userData, t, imageSrc }
+  return {
+    closeHandler,
+    userData,
+    imageSrc,
+    page,
+    t,
+  }
 }
