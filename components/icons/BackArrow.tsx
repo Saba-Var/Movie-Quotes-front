@@ -1,11 +1,10 @@
 import { BackArrowProps } from './types.d'
 
 const BackArrow: React.FC<BackArrowProps> = (props) => {
-  const { styles, clearStyles, onClick } = props
+  const { styles, clearStyles } = props
 
   return (
     <svg
-      onClick={() => onClick && onClick()}
       className={`${
         !clearStyles && 'absolute bottom-[15px] left-[103px]'
       } ${styles}`}

@@ -4,7 +4,6 @@ export type SelectorArrowProps = {
 
 export type BackArrowProps = {
   clearStyles?: boolean
-  onClick?: () => void
   styles?: string
 }
 

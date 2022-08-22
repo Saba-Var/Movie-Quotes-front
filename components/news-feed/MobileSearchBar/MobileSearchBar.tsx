@@ -25,11 +25,9 @@ const MobileSearchBar: React.FC<MobileSearchBarProps> = (props) => {
       )}
 
       <div className='flex px-6 gap-4 items-center py-[20px] border-b border-b-gray-600'>
-        <BackArrow
-          onClick={() => setMobileSearchMode(false)}
-          styles='block w-[20px] h-[22px]'
-          clearStyles={true}
-        />
+        <div onClick={() => setMobileSearchMode(false)}>
+          <BackArrow styles='block w-[20px] h-[22px]' clearStyles={true} />
+        </div>
 
         <p className='text-xl font-Helvetica-Neue-Geo text-white'>
           {t('news-feed:search')}
