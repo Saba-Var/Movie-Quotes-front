@@ -1,14 +1,29 @@
-import { BackArrow, SearchIcon, NewsFeedPost } from 'components'
+import { BackArrow, SearchIcon, NewsFeedPost, ErrorAlert } from 'components'
 import { useMobileSearchBar } from './useMobileSearchBar'
 import { MobileSearchBarProps } from './types.d'
 
 const MobileSearchBar: React.FC<MobileSearchBarProps> = (props) => {
   const { setMobileSearchMode } = props
 
-  const { t, changeHandler, searchedPosts, inputValue } = useMobileSearchBar()
+  const {
+    changeHandler,
+    searchedPosts,
+    setFetchError,
+    inputValue,
+    fetchError,
+    t,
+  } = useMobileSearchBar()
 
   return (
     <div className='bg-formModalBlue 1xl:hidden animate-scale-up fixed top-0 left-0 h-screen w-screen overflow-y-auto'>
+      {fetchError && (
+        <ErrorAlert
+          setShowAlert={setFetchError}
+          styles='left-1/2 !-translate-x-1/2 top-[15px]'
+          title='news-feed:quote-fetch-failed'
+        />
+      )}
+
       <div className='flex px-6 gap-4 items-center py-[20px] border-b border-b-gray-600'>
         <BackArrow
           onClick={() => setMobileSearchMode(false)}

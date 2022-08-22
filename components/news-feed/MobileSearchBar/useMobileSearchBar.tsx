@@ -14,6 +14,8 @@ import {
 export const useMobileSearchBar = () => {
   const [searchedPosts, setSearchedPosts] = useState<Quotes>([])
 
+  const [fetchError, setFetchError] = useState(false)
+
   const [inputValue, setInputValue] = useState('')
 
   const { t } = useTranslation()
@@ -40,15 +42,19 @@ export const useMobileSearchBar = () => {
 
           if (response.status === 200) {
             setSearchedPosts(response.data)
+
+            if (fetchError) {
+              setFetchError(false)
+            }
           }
         } catch (error) {
-          console.log(error)
+          setFetchError(true)
         }
       }
     }
 
     fetchPosts()
-  }, [inputValue, validInput])
+  }, [fetchError, inputValue, validInput])
 
   useCommentQuote(searchedPosts, setSearchedPosts)
   useDislikeQuote(searchedPosts, setSearchedPosts)
@@ -57,5 +63,12 @@ export const useMobileSearchBar = () => {
   useEditQuote(searchedPosts, setSearchedPosts)
   useLikeQuote(searchedPosts, setSearchedPosts)
 
-  return { t, changeHandler, searchedPosts, inputValue }
+  return {
+    setFetchError,
+    changeHandler,
+    searchedPosts,
+    fetchError,
+    inputValue,
+    t,
+  }
 }
