@@ -74,13 +74,17 @@ const Header: React.FC<HeaderProps> = (props) => {
             <>
               {hrefData.toString().includes('news-feed') && (
                 <>
-                  <div onClick={() => setMobileSearchMode(true)}>
+                  <div
+                    onClick={() =>
+                      setMobileSearchMode && setMobileSearchMode(true)
+                    }
+                  >
                     <SearchIcon />
                   </div>
 
                   {mobileSearchMode && (
                     <MobileSearchBar
-                      setMobileSearchMode={setMobileSearchMode}
+                      setMobileSearchMode={setMobileSearchMode!}
                     />
                   )}
                 </>
