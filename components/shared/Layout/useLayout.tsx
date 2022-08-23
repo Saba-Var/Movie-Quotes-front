@@ -1,14 +1,14 @@
 import { setCookie, getCookie } from 'cookies-next'
 import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
-import { useEffect, useState } from 'react'
 
 export const useLayout = () => {
-  const { data: session } = useSession()
-
+  const [showNotifications, setShowNotifications] = useState(false)
   const [mobileSearchMode, setMobileSearchMode] = useState(false)
 
+  const { data: session } = useSession()
   const { setShowSideMenu, showSideMenu, setUserDataFail, userDataFail } =
     useNewsFeed()
 
@@ -19,7 +19,9 @@ export const useLayout = () => {
   }, [session])
 
   return {
+    setShowNotifications,
     setMobileSearchMode,
+    showNotifications,
     mobileSearchMode,
     setShowSideMenu,
     setUserDataFail,
