@@ -122,3 +122,22 @@ export type NewsFeedQuotes = {
     hasMoreQuotes: boolean
   }
 }
+
+export type Notification = {
+  notificationType: 'like' | 'comment'
+  date: string
+  new: boolean
+  _id: string
+  user: {
+    image?: string
+    name: string
+    _id: string
+  }
+}
+
+export type NotificationPaginationData = {
+  notifications: Notification[]
+  paginationInfo: {
+    hasMoreNotifications: boolean
+  }
+}
