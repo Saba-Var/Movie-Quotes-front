@@ -1,7 +1,7 @@
 import { useViewQuote } from './useViewQuote'
 import { ViewQuoteProps } from './types.d'
 import { CommentType } from 'types'
-import { useNewsFeed } from 'hooks'
+import { useLayout } from 'hooks'
 import Image from 'next/image'
 import {
   CommentInput,
@@ -17,7 +17,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
   const { setViewQuoteModal, quoteId, setDeleteModal, setEditModal } = props
 
   const { currentQuote, t, quoteImageSrc } = useViewQuote(quoteId)
-  const { userData } = useNewsFeed()
+  const { userData } = useLayout()
 
   return (
     <>

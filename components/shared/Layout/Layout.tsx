@@ -1,6 +1,6 @@
 import { Header, SideMenuWrapper, ErrorAlert } from 'components'
-import { useLayout } from './useLayout'
 import { LayoutProps } from './types'
+import { useLayout } from 'hooks'
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props

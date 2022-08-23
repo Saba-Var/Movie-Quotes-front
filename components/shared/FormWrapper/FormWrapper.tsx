@@ -1,6 +1,6 @@
 import { CloseIcon, TrashIcon } from 'components'
 import { FormWrapperProps } from './types.d'
-import { useNewsFeed } from 'hooks'
+import { useLayout } from 'hooks'
 import Image from 'next/image'
 
 const FormWrapper: React.FC<FormWrapperProps> = (props) => {
@@ -17,7 +17,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
     modal,
   } = props
 
-  const { userData, imageSrc, t } = useNewsFeed()
+  const { userData, imageSrc, t } = useLayout()
 
   return (
     <div>

@@ -1,9 +1,9 @@
 import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
-import { useNewsFeed } from './useNewsFeed'
 import { getAllMovies } from 'services'
 import { useSockets } from 'hooks'
+import { useLayout } from 'hooks'
 import { AllMovie } from 'types'
 
 export const useMovies = () => {
@@ -12,8 +12,8 @@ export const useMovies = () => {
 
   const [movieList, setMovieList] = useState<AllMovie>([])
 
-  const { userData } = useNewsFeed()
   const locale = useRouter().locale
+  const { userData } = useLayout()
   const { socket } = useSockets()
   const { t } = useTranslation()
 
