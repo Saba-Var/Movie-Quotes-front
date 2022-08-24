@@ -32,5 +32,6 @@
   "min-ago": "წუთის წინ",
   "hour-ago": "საათის წინ",
   "day-ago": "დღის წინ",
-  "no-notifications": "თქვენ არ გაქვთ შეტყობინებები"
+  "no-notifications": "თქვენ არ გაქვთ შეტყობინებები",
+  "notification-fetch-fail": "შეტყობინებები ვერ ჩაიტვირთა"
 }

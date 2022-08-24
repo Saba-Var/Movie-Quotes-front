@@ -32,5 +32,6 @@
   "min-ago": "min ago",
   "hour-ago": "hour ago",
   "day-ago": "day ago",
-  "no-notifications": "You don't have notifications"
+  "no-notifications": "You don't have notifications",
+  "notification-fetch-fail": "Notification fetch failed"
 }

@@ -6,11 +6,20 @@ export const useNotifications = () => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  const { notificationsList, setPage, page, hasMoreNotifications } = useLayout()
+  const {
+    setNotificationFetchFail,
+    notificationFetchFail,
+    hasMoreNotifications,
+    notificationsList,
+    setPage,
+    page,
+  } = useLayout()
 
   const englishLan = locale === 'en'
 
   return {
+    setNotificationFetchFail,
+    notificationFetchFail,
     hasMoreNotifications,
     notificationsList,
     englishLan,

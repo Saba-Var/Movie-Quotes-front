@@ -1,9 +1,11 @@
-import { NotificationType, UserImage } from 'components'
+import { NotificationType, UserImage, ErrorAlert } from 'components'
 import { useNotifications } from './useNotifications'
 import { timeDifference } from 'helpers'
 
 const Notifications = () => {
   const {
+    setNotificationFetchFail,
+    notificationFetchFail,
     hasMoreNotifications,
     notificationsList,
     englishLan,
@@ -14,9 +16,17 @@ const Notifications = () => {
 
   return (
     <>
-      <div className='fixed animate-fade-in top-16 right-[33px] 1xl:right-[249px] 2xl:!right-[249px] 3xl:!right-[242px] md:right-[41px] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[50px] border-b-formModalBlue'></div>
+      <div className='fixed animate-fade-in top-16 right-[33px] 1xl:right-[249px] 3xl:!right-[242px] md:right-[41px] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[50px] border-b-formModalBlue'></div>
 
-      <div className='z-[99999] h-screen animate-scale-up 1xl:h-[73vh] 1xl:w-[47%] 1xl:top-24 1xl:right-9 1xl:rounded-xl right-0 top-[86px] fixed w-full overflow-y-auto bg-formModalBlue'>
+      {notificationFetchFail && (
+        <ErrorAlert
+          setShowAlert={setNotificationFetchFail}
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[50%]'
+          title='common:notification-fetch-fail'
+        />
+      )}
+
+      <div className='z-[99999] h-screen animate-scale-up 1xl:h-[72vh] 1xl:w-[47%] 1xl:top-24 1xl:right-9 1xl:rounded-xl right-0 top-[86px] fixed w-full overflow-y-auto bg-formModalBlue'>
         <div className='w-full px-9 py-5'>
           <div className='flex justify-between items-center'>
             <p

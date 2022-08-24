@@ -8,6 +8,7 @@ import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
 
 const useLayout = () => {
+  const [notificationFetchFail, setNotificationFetchFail] = useState(false)
   const [hasMoreNotifications, setHasMoreNotifications] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [mobileSearchMode, setMobileSearchMode] = useState(false)
@@ -68,7 +69,9 @@ const useLayout = () => {
             setNewNotificationCount(data.newNotificationCount)
           }
         }
-      } catch (error) {}
+      } catch (error) {
+        setNotificationFetchFail(true)
+      }
     }
 
     fetchNotifications()
@@ -77,6 +80,8 @@ const useLayout = () => {
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
   return {
+    setNotificationFetchFail,
+    notificationFetchFail,
     setShowNotifications,
     hasMoreNotifications,
     setNotificationsList,
