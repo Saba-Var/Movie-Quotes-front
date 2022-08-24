@@ -56,7 +56,11 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
         </div>
 
         <div className='flex items-center gap-3'>
-          <QuoteLike likes={quote.likes} quoteId={quote._id} />
+          <QuoteLike
+            receiverId={quote.user._id}
+            likes={quote.likes}
+            quoteId={quote._id}
+          />
         </div>
       </div>
 

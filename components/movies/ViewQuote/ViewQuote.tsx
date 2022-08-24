@@ -109,6 +109,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
               <div className='items-center flex gap-3'>
                 {currentQuote?.likes && currentQuote._id && (
                   <QuoteLike
+                    receiverId={currentQuote.user._id}
                     likes={currentQuote?.likes}
                     quoteId={currentQuote?._id}
                   />

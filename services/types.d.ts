@@ -7,3 +7,9 @@ export type CommentReqBody = {
   quoteId: string
   userId: string
 }
+
+export type AddNewNotificationData = {
+  receiverId: string
+  senderId: string
+  notificationType: 'like' | 'comment'
+}

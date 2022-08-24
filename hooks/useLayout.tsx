@@ -1,10 +1,10 @@
 import axios, { getUserDetails, getUserNotifications } from 'services'
+import { useNewsFeed, useSockets } from 'hooks'
 import { UserData, Notification } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
 
 const useLayout = () => {
@@ -27,8 +27,16 @@ const useLayout = () => {
 
   const { setShowSideMenu, showSideMenu } = useNewsFeed()
   const { data: session, status } = useSession()
+  const { socket } = useSockets()
   const { t } = useTranslation()
   const router = useRouter()
+
+  socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
+    if (userData._id === receiverId) {
+      setNewNotificationCount(newNotificationCount + 1)
+      setNotificationsList((prev) => [...prev, newNotification])
+    }
+  })
 
   useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {
