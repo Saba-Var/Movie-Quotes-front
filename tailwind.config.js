@@ -44,6 +44,7 @@ module.exports = {
         formModalBlue: '#11101a',
         purple: '#482474',
         darkPurple: '#24222F',
+        medRed: '#E33812',
       },
       screens: {
         '3xl': '1750px',

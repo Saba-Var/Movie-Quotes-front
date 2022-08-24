@@ -6,15 +6,13 @@ import { useRouter } from 'next/router'
 import { HrefData } from './types.d'
 
 export const useHeader = () => {
-  const router = useRouter()
-
   const [showSelector, setShowSelector] = useState(false)
 
   const [language, setLanguage] = useState('')
 
-  const { t } = useTranslation()
-
   const { data: session } = useSession()
+  const { t } = useTranslation()
+  const router = useRouter()
 
   let hrefData: HrefData = router.pathname
 

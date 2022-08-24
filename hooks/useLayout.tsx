@@ -1,23 +1,27 @@
-import { setCookie, getCookie } from 'cookies-next'
-import axios, { getUserDetails } from 'services'
+import axios, { getUserDetails, getUserNotifications } from 'services'
+import { UserData, Notification } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useNewsFeed } from 'hooks'
 import { getToken } from 'helpers'
-import { UserData } from 'types'
 
 const useLayout = () => {
+  const [hasMoreNotifications, setHasMoreNotifications] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [mobileSearchMode, setMobileSearchMode] = useState(false)
   const [userDataFail, setUserDataFail] = useState(false)
+
+  const [newNotificationCount, setNewNotificationCount] = useState(0)
+  const [page, setPage] = useState(1)
+
+  const [notificationsList, setNotificationsList] = useState<Notification[]>([])
 
   const [userData, setUserData] = useState<UserData>({
     email: '',
     name: '',
     _id: '',
-    notifications: [],
   })
 
   const { setShowSideMenu, showSideMenu } = useNewsFeed()
@@ -26,19 +30,9 @@ const useLayout = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!getCookie('token')) {
-      setCookie('token', getToken(session))
-    }
-  }, [session])
-
-  useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {
       router.push(`/${router.locale}/unauthorized`)
     } else {
-      if (session && !getCookie('token')) {
-        setCookie('token', session.accessToken)
-      }
-
       const fetchUserData = async () => {
         try {
           const token = getToken(session)
@@ -53,15 +47,42 @@ const useLayout = () => {
         }
       }
 
-      fetchUserData()
+      if (!userData._id) {
+        fetchUserData()
+      }
     }
-  }, [router, session, setUserDataFail, status])
+  }, [router, session, status, userData._id])
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        if (userData._id) {
+          const { status, data } = await getUserNotifications(
+            userData._id,
+            page
+          )
+          setHasMoreNotifications(data.paginationInfo.hasMoreNotifications)
+
+          if (status === 200 && data.notifications) {
+            setNotificationsList((prev) => [...prev, ...data.notifications])
+            setNewNotificationCount(data.newNotificationCount)
+          }
+        }
+      } catch (error) {}
+    }
+
+    fetchNotifications()
+  }, [page, userData._id])
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
   return {
     setShowNotifications,
+    hasMoreNotifications,
+    setNotificationsList,
+    newNotificationCount,
     setMobileSearchMode,
+    notificationsList,
     showNotifications,
     mobileSearchMode,
     setShowSideMenu,
@@ -70,6 +91,8 @@ const useLayout = () => {
     userDataFail,
     imageSrc,
     userData,
+    setPage,
+    page,
     t,
   }
 }

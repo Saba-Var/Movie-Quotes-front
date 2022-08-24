@@ -17,8 +17,8 @@ const AllQuotes = () => {
 
       <ScrollPaginationWrapper
         next={() => setPage(page + 1)}
+        length={page * 3}
         hasMore={hasMoreQuotes}
-        quoteList={quoteList}
       >
         <div className='flex flex-col gap-7 overflow-x-hidden mt-[5%]'>
           {quoteList &&

@@ -1,5 +1,6 @@
 export * from './DeleteDialogWrapper'
 export * from './GoogleAuthButton'
+export * from './NotificationType'
 export * from './ImageDragAndDrop'
 export * from './AuthFormWrapper'
 export * from './SideMenuContent'

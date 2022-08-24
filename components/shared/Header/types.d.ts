@@ -2,10 +2,12 @@ import { SetState } from 'types'
 
 export type HeaderProps = {
   setRegistrationModal?: SetState<boolean>
+  setRegistrationModal?: SetState<boolean>
   setShowNotifications?: SetState<boolean>
   setMobileSearchMode?: SetState<boolean>
   setShowSideMenu?: SetState<boolean>
   setShowLogIn?: SetState<boolean>
+  newNotificationCount: number
   showNotifications?: boolean
   mobileSearchMode?: boolean
   showSideMenu?: boolean

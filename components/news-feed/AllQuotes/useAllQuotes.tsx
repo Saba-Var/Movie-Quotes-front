@@ -1,5 +1,7 @@
+import { useSession } from 'next-auth/react'
 import { getNewFeedQuotes } from 'services'
 import { useEffect, useState } from 'react'
+import { getToken } from 'helpers'
 import { Quotes } from 'types'
 import {
   useCommentQuote,
@@ -10,6 +12,7 @@ import {
   useEditQuote,
   useSockets,
 } from 'hooks'
+import axios from 'axios'
 
 export const useAllQuotes = () => {
   const [hasMoreQuotes, setHasMoreQuotes] = useState(false)
@@ -17,8 +20,19 @@ export const useAllQuotes = () => {
 
   const [quoteList, setQuoteList] = useState<Quotes>([])
 
+  const { data: session } = useSession()
   const [page, setPage] = useState(1)
   const { socket } = useSockets()
+
+  useEffect(() => {
+    if (session && !localStorage.getItem('token')) {
+      const token = getToken(session!)
+
+      if (typeof token === 'string') {
+        localStorage.setItem('token', token)
+      }
+    }
+  }, [session])
 
   socket
     .off('SEND_NEW_QUOTE_NEWS_FEED')
@@ -36,18 +50,24 @@ export const useAllQuotes = () => {
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await getNewFeedQuotes(page)
+        if (getToken(session)) {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${getToken(
+            session!
+          )}`
 
-        if (response.status === 200) {
-          const { data } = response
-          if (data.paginationInfo) {
-            const { paginationInfo } = data
-            setHasMoreQuotes(paginationInfo.hasMoreQuotes)
+          const response = await getNewFeedQuotes(page)
 
-            if (page === 1) {
-              setQuoteList(data.quotes)
-            } else {
-              setQuoteList((prev) => [...prev, ...data.quotes])
+          if (response.status === 200) {
+            const { data } = response
+            if (data.paginationInfo) {
+              const { paginationInfo } = data
+              setHasMoreQuotes(paginationInfo.hasMoreQuotes)
+
+              if (page === 1) {
+                setQuoteList(data.quotes)
+              } else {
+                setQuoteList((prev) => [...prev, ...data.quotes])
+              }
             }
           }
         }
@@ -57,7 +77,7 @@ export const useAllQuotes = () => {
     }
 
     fetchQuotes()
-  }, [page])
+  }, [page, session])
 
   return {
     hasMoreQuotes,

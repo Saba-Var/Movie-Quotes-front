@@ -140,4 +140,5 @@ export type NotificationPaginationData = {
   paginationInfo: {
     hasMoreNotifications: boolean
   }
+  newNotificationCount: number
 }

@@ -7,6 +7,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
   const {
     setShowNotifications,
+    newNotificationCount,
     setMobileSearchMode,
     showNotifications,
     mobileSearchMode,
@@ -18,7 +19,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
   return (
     <>
-      <div className={`bg-background`}>
+      <div className='bg-background'>
         {userDataFail && (
           <ErrorAlert
             styles='left-[50%] -translate-x-1/2'
@@ -29,6 +30,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
         <Header
           setShowNotifications={setShowNotifications}
+          newNotificationCount={newNotificationCount}
           setMobileSearchMode={setMobileSearchMode}
           showNotifications={showNotifications}
           mobileSearchMode={mobileSearchMode}
@@ -37,14 +39,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
           page='news-feed'
         />
 
-        <div className='px-0 xl:px-9 pt-[86px] 2xl:!px-0'>
+        <div className={`px-0 xl:px-9 pt-[86px] 2xl:!px-0`}>
           <SideMenuWrapper
             setShowSideMenu={setShowSideMenu}
             showSideMenu={showSideMenu}
           />
           <div
             className={`1xl:pl-[280px] 2xl:!pl-[340px] lg:!pl-[350px] h-fit ${
-              mobileSearchMode && 'overflow-hidden'
+              mobileSearchMode && 'h-screen overflow-hidden'
             }`}
           >
             {children}

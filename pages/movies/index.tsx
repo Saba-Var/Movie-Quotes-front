@@ -23,7 +23,7 @@ const Movies = () => {
   } = useMovies()
 
   return (
-    <div className={`w-full min-h-screen !block pt-[25px] pb-14`}>
+    <div className={`w-full min-h-screen !block pt-[25px] pb-14 2xl:pr-9`}>
       {showAddMovieForm && (
         <AddMovieForm setShowAddMovieForm={setShowAddMovieForm} />
       )}
