@@ -13,6 +13,7 @@ import {
 
 const Header: React.FC<HeaderProps> = (props) => {
   const {
+    setNewNotificationCount,
     setRegistrationModal,
     newNotificationCount,
     setShowNotifications,
@@ -107,7 +108,9 @@ const Header: React.FC<HeaderProps> = (props) => {
                     className='z-[99999] bg-formModalBlue hidden 1xl:block animate-fade-in !opacity-30 fixed top-0 left-0 w-screen h-screen'
                   ></div>
 
-                  <Notifications />
+                  <Notifications
+                    setNewNotificationCount={setNewNotificationCount}
+                  />
                 </>
               )}
 

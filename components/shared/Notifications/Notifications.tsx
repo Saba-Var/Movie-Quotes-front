@@ -1,27 +1,41 @@
 import { NotificationType, UserImage, ErrorAlert } from 'components'
 import { useNotifications } from './useNotifications'
+import { NotificationsProps } from './types.d'
 import { timeDifference } from 'helpers'
 
-const Notifications = () => {
+const Notifications: React.FC<NotificationsProps> = (props) => {
+  const { setNewNotificationCount } = props
+
   const {
     setNotificationFetchFail,
     notificationFetchFail,
     hasMoreNotifications,
+    setMarkAsReadError,
     notificationsList,
+    markAsReadHandler,
+    markAsReadError,
     englishLan,
     setPage,
     page,
     t,
-  } = useNotifications()
+  } = useNotifications(setNewNotificationCount)
 
   return (
     <>
+      {markAsReadError && (
+        <ErrorAlert
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
+          setShowAlert={setMarkAsReadError}
+          title='common:mark-as-red-fail'
+        />
+      )}
+
       <div className='fixed animate-fade-in top-16 right-[33px] 1xl:right-[249px] 3xl:!right-[242px] md:right-[41px] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[50px] border-b-formModalBlue'></div>
 
       {notificationFetchFail && (
         <ErrorAlert
-          setShowAlert={setNotificationFetchFail}
           styles='left-1/2 !-translate-x-1/2 1xl:left-[50%]'
+          setShowAlert={setNotificationFetchFail}
           title='common:notification-fetch-fail'
         />
       )}
@@ -40,11 +54,12 @@ const Notifications = () => {
             </p>
 
             <p
+              onClick={markAsReadHandler}
               className={`text-white ${
                 englishLan
                   ? 'text-xs xl:text-base'
                   : 'text-sm 1xl:text-base xl:text-xl'
-              } hover:scale-105 animate-fade-in transition-transform break-all active:scale-100 cursor-pointer font-Helvetica-Neue-Geo underline`}
+              } hover:scale-105 animate-fade-in select-none transition-transform break-all active:scale-100 cursor-pointer font-Helvetica-Neue-Geo underline`}
             >
               {t('common:mark-read')}
             </p>
@@ -67,7 +82,7 @@ const Notifications = () => {
                   <div
                     className={`border border-gray-700 ${
                       englishLan ? 'p-4' : 'p-2'
-                    } rounded sm:p-4 h-[121px] 1xl:h-fit`}
+                    } rounded sm:p-4 h-[121px] 1xl:h-fit animate-scale-up`}
                     key={notification._id}
                   >
                     <div className='flex gap-3 xl:justify-between'>

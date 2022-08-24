@@ -6,6 +6,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const { children } = props
 
   const {
+    setNewNotificationCount,
     setShowNotifications,
     newNotificationCount,
     setMobileSearchMode,
@@ -29,6 +30,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
         )}
 
         <Header
+          setNewNotificationCount={setNewNotificationCount}
           setShowNotifications={setShowNotifications}
           newNotificationCount={newNotificationCount}
           setMobileSearchMode={setMobileSearchMode}

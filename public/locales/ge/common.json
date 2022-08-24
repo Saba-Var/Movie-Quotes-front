@@ -33,5 +33,6 @@
   "hour-ago": "საათის წინ",
   "day-ago": "დღის წინ",
   "no-notifications": "თქვენ არ გაქვთ შეტყობინებები",
-  "notification-fetch-fail": "შეტყობინებები ვერ ჩაიტვირთა"
+  "notification-fetch-fail": "შეტყობინებები ვერ ჩაიტვირთა",
+  "mark-as-red-fail": "წაკითხულად ვერ მოინიშნა"
 }

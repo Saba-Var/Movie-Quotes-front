@@ -81,6 +81,7 @@ const useLayout = () => {
 
   return {
     setNotificationFetchFail,
+    setNewNotificationCount,
     notificationFetchFail,
     setShowNotifications,
     hasMoreNotifications,

@@ -1,6 +1,7 @@
 import { SetState } from 'types'
 
 export type HeaderProps = {
+  setNewNotificationCount?: SetState<number>
   setRegistrationModal?: SetState<boolean>
   setRegistrationModal?: SetState<boolean>
   setShowNotifications?: SetState<boolean>
