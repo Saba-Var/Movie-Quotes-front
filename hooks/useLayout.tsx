@@ -31,16 +31,37 @@ const useLayout = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
+  // const uniqueList = notificationsList.map((el) => {
+  //   if (el._id !== newNotification._id) {
+  //     return el
+  //   }
+  // })
+  // uniqueList.unshift(newNotification)
+
   useEffect(() => {
-    socket
-      .off('SEND_NEW_NOTIFICATION')
-      .on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
-        if (userData._id === receiverId && newNotification) {
-          setNewNotificationCount(newNotificationCount + 1)
-          setNotificationsList((prev) => [newNotification, ...prev])
-        }
-      })
-  }, [newNotificationCount, socket, userData._id])
+    socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
+      if (userData._id === receiverId && newNotification) {
+        setNewNotificationCount(newNotificationCount + 1)
+        setNotificationsList((prev) => {
+          if (
+            prev.find(
+              (notification) => notification._id === newNotification._id
+            )
+          ) {
+            return prev
+          } else {
+            return [newNotification, ...prev]
+          }
+        })
+      }
+    })
+  }, [
+    newNotificationCount,
+    setNotificationsList,
+    notificationsList,
+    userData._id,
+    socket,
+  ])
 
   useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {

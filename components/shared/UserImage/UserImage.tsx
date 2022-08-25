@@ -25,7 +25,11 @@ const UserImage: React.FC<UserImageProps> = (props) => {
       )}
 
       {!image && name && (
-        <div className='bg-green w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full'>
+        <div
+          className={`bg-slate-600 w-10 h-10 lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full ${
+            newNotification && 'border-[2px] !border-green'
+          }`}
+        >
           <p className='text-xl select-none pb-1 lg:text-3xl lg:pb-2 text-white'>
             {name[0]}
           </p>

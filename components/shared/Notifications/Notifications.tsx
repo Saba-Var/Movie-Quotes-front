@@ -82,8 +82,8 @@ const Notifications: React.FC<NotificationsProps> = (props) => {
                   <div
                     className={`border border-gray-700 ${
                       englishLan ? 'p-4' : 'p-2'
-                    } rounded sm:p-4 h-[121px] 1xl:h-fit animate-scale-up`}
-                    key={notification._id}
+                    } rounded sm:p-4 h-[121px] 1xl:h-fit`}
+                    key={notification._id + Math.random().toString()}
                   >
                     <div className='flex gap-3 xl:justify-between'>
                       <div className='flex gap-3 xl:items-center'>
@@ -98,7 +98,7 @@ const Notifications: React.FC<NotificationsProps> = (props) => {
 
                           {notification.new && (
                             <div className='flex xl:hidden'>
-                              <p className={`text-green`}>{t('common:new')}</p>
+                              <p className='text-green'>{t('common:new')}</p>
                             </div>
                           )}
                         </div>
