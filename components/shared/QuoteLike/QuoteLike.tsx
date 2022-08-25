@@ -1,9 +1,9 @@
-import { HeartIcon, WhiteHeartIcon, CloseIcon } from 'components'
+import { HeartIcon, RedHeartIcon, CloseIcon } from 'components'
 import { useQuoteLike } from './useQuoteLike'
 import { QuoteLikeProps } from './types.d'
 
 const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
-  const { likes, quoteId } = props
+  const { likes, quoteId, receiverId } = props
 
   const {
     setDislikeError,
@@ -14,7 +14,7 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
     fetchError,
     userData,
     t,
-  } = useQuoteLike()
+  } = useQuoteLike(receiverId)
 
   return (
     <>
@@ -29,7 +29,7 @@ const QuoteLike: React.FC<QuoteLikeProps> = (props) => {
           }}
           className='cursor-pointer animate-scale-up hover:scale-110 active:scale-100 transition-transform'
         >
-          <WhiteHeartIcon />
+          <RedHeartIcon />
         </div>
       )}
 

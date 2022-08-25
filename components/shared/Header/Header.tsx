@@ -5,6 +5,7 @@ import {
   NotificationIcon,
   MobileSearchBar,
   SelectorArrow,
+  Notifications,
   SearchIcon,
   MenuIcon,
   Button,
@@ -12,8 +13,12 @@ import {
 
 const Header: React.FC<HeaderProps> = (props) => {
   const {
+    setNewNotificationCount,
     setRegistrationModal,
+    newNotificationCount,
+    setShowNotifications,
     setMobileSearchMode,
+    showNotifications,
     mobileSearchMode,
     setShowSideMenu,
     setShowLogIn,
@@ -63,7 +68,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 
         {page === 'news-feed' && (
           <div
-            onClick={() => setShowSideMenu && setShowSideMenu(!showSideMenu)}
+            onClick={() => {
+              showNotifications && setShowNotifications!(false)
+              setShowSideMenu && setShowSideMenu(!showSideMenu)
+            }}
           >
             <MenuIcon />
           </div>
@@ -75,9 +83,10 @@ const Header: React.FC<HeaderProps> = (props) => {
               {hrefData.toString().includes('news-feed') && (
                 <>
                   <div
-                    onClick={() =>
+                    onClick={() => {
+                      showNotifications && setShowNotifications!(false)
                       setMobileSearchMode && setMobileSearchMode(true)
-                    }
+                    }}
                   >
                     <SearchIcon />
                   </div>
@@ -89,7 +98,41 @@ const Header: React.FC<HeaderProps> = (props) => {
                   )}
                 </>
               )}
-              <NotificationIcon />
+
+              {showNotifications && (
+                <>
+                  <div
+                    onClick={() => {
+                      setShowNotifications!(false)
+                    }}
+                    className='z-[99999] bg-formModalBlue hidden 1xl:block animate-fade-in !opacity-30 fixed top-0 left-0 w-screen h-screen'
+                  ></div>
+
+                  <Notifications
+                    setNewNotificationCount={setNewNotificationCount}
+                  />
+                </>
+              )}
+
+              <div
+                onClick={() => {
+                  setShowNotifications!(!showNotifications)
+                }}
+              >
+                <div>
+                  <div className='relative cursor-pointer'>
+                    <NotificationIcon />
+
+                    {newNotificationCount > 0 && (
+                      <div className='bg-medRed flex justify-center items-center -top-[8px] left-[11px] absolute rounded-full h-[23px] w-[23px]'>
+                        <p className='text-white text-base select-none'>
+                          {newNotificationCount}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </>
           )}
 
@@ -155,7 +198,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           {page !== 'home' && (
             <Button
               onClick={() => logOutHandler()}
-              styles='hidden 1xl:block border border-white'
+              styles='hidden 1xl:block border border-white select-none'
               title={t('common:Log-out')}
               type='button'
             />

@@ -1,4 +1,4 @@
-import { useNewsFeed, useSockets } from 'hooks'
+import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { addQuote } from 'services'
 import { QuoteText } from 'types'
@@ -14,7 +14,7 @@ export const useNewQuote = () => {
   const [selectedMovieId, setSelectedMovieId] = useState('')
   const [file, setFile] = useState<File | null>(null)
 
-  const { userData } = useNewsFeed()
+  const { userData } = useLayout()
   const { socket } = useSockets()
   const { t } = useTranslation()
 

@@ -16,7 +16,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
       <div className='flex gap-5 1xl:gap-6 items-center mb-10 h-[60px]'>
         {!userData.image && (
           <p
-            className={`text-white animate-fold-out cursor-default h-[60px] w-[60px] bg-green rounded-full flex justify-center items-center text-3xl pb-1 ${
+            className={`text-white animate-fold-out cursor-default h-[60px] w-[60px] bg-slate-600 rounded-full flex justify-center items-center text-3xl pb-1 ${
               page.includes('profile') && 'border rounded-full border-orange'
             }`}
           >
@@ -28,10 +28,10 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
           <div
             className={`h-[60px] w-[60px] ${
               page.includes('profile') && 'border rounded-full border-orange'
-            }`}
+            } select-none`}
           >
             <Image
-              className='rounded-full animate-fold-out'
+              className='rounded-full animate-fold-out select-none'
               loader={() => imageSrc}
               unoptimized={true}
               height={'60px'}

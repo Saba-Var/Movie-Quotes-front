@@ -1,7 +1,7 @@
 import { useViewQuote } from './useViewQuote'
 import { ViewQuoteProps } from './types.d'
 import { CommentType } from 'types'
-import { useNewsFeed } from 'hooks'
+import { useLayout } from 'hooks'
 import Image from 'next/image'
 import {
   CommentInput,
@@ -17,7 +17,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
   const { setViewQuoteModal, quoteId, setDeleteModal, setEditModal } = props
 
   const { currentQuote, t, quoteImageSrc } = useViewQuote(quoteId)
-  const { userData } = useNewsFeed()
+  const { userData } = useLayout()
 
   return (
     <>
@@ -109,6 +109,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
               <div className='items-center flex gap-3'>
                 {currentQuote?.likes && currentQuote._id && (
                   <QuoteLike
+                    receiverId={currentQuote.user._id}
                     likes={currentQuote?.likes}
                     quoteId={currentQuote?._id}
                   />
@@ -163,7 +164,12 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
                 currentQuote && currentQuote?.comments.length > 0 && 'mt-4'
               }`}
             >
-              {currentQuote?._id && <CommentInput quoteId={currentQuote._id} />}
+              {currentQuote?._id && (
+                <CommentInput
+                  receiverId={currentQuote.user._id}
+                  quoteId={currentQuote._id}
+                />
+              )}
             </div>
           </div>
         </div>

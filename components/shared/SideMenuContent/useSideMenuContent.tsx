@@ -1,12 +1,12 @@
-import { useNewsFeed } from 'hooks'
 import { useRouter } from 'next/router'
+import { useLayout } from 'hooks'
 import { SetState } from 'types'
 
 export const useSideMenuContent = (
   setShowSideMenu: SetState<boolean>,
   setCloseMenu: SetState<boolean>
 ) => {
-  const { userData, t, imageSrc } = useNewsFeed()
+  const { userData, t, imageSrc } = useLayout()
   const router = useRouter()
 
   const page = router.asPath

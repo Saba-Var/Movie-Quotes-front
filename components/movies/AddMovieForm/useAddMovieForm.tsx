@@ -1,6 +1,6 @@
 import axios, { getMovieGenres, addNewMovie } from 'services'
 import { SelectedOptions, SetState } from 'types'
-import { useNewsFeed, useSockets } from 'hooks'
+import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -20,7 +20,7 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   ])
 
   const { data: session } = useSession()
-  const { userData } = useNewsFeed()
+  const { userData } = useLayout()
   const { socket } = useSockets()
   const { t } = useTranslation()
 

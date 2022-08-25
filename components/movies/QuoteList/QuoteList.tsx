@@ -137,6 +137,7 @@ const QuoteList: React.FC<QuoteListProps> = (props) => {
 
                           <div className='flex items-center gap-4'>
                             <QuoteLike
+                              receiverId={quote.user._id}
                               likes={quote.likes}
                               quoteId={quote._id}
                             />

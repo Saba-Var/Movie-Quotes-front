@@ -23,5 +23,16 @@
   "write-comment": "დაწერეთ კომენტარი",
   "comment-fail": "დაკომენტარება ვერ მოხდა",
   "quote-fetch-failed": "ციტატები ვერ ჩაიტვირთა",
-  "fetch-failed": "ვერ ჩაიტვირთა"
+  "fetch-failed": "ვერ ჩაიტვირთა",
+  "notifications": "შეტყობინებები",
+  "mark-read": "მონიშნე ყველა წაკითხულად",
+  "new": "ახალი",
+  "commented": "დაგიკომენტარათ ციტატაზე",
+  "reacted": "მოგიწონათ ციტატა",
+  "min-ago": "წუთის წინ",
+  "hour-ago": "საათის წინ",
+  "day-ago": "დღის წინ",
+  "no-notifications": "თქვენ არ გაქვთ შეტყობინებები",
+  "notification-fetch-fail": "შეტყობინებები ვერ ჩაიტვირთა",
+  "mark-as-red-fail": "წაკითხულად ვერ მოინიშნა"
 }

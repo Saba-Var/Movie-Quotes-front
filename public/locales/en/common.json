@@ -23,5 +23,16 @@
   "write-comment": "Write a comment",
   "comment-fail": "Comment failed",
   "quote-fetch-failed": "Quote list fetch failed",
-  "fetch-failed": "Fetch failed"
+  "fetch-failed": "Fetch failed",
+  "notifications": "Notifications",
+  "mark-read": "Mark all as read",
+  "new": "New",
+  "commented": "Commented to your quote",
+  "reacted": "Reacted to your quote",
+  "min-ago": "min ago",
+  "hour-ago": "hour ago",
+  "day-ago": "day ago",
+  "no-notifications": "You don't have notifications",
+  "notification-fetch-fail": "Notification fetch failed",
+  "mark-as-red-fail": "Mark as red failed"
 }

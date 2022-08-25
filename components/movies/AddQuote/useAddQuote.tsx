@@ -1,4 +1,4 @@
-import { useNewsFeed, useSockets } from 'hooks'
+import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { QuoteText, SetState } from 'types'
 import { useRouter } from 'next/router'
@@ -12,7 +12,7 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
 
   const [file, setFile] = useState<File | null>(null)
 
-  const { userData } = useNewsFeed()
+  const { userData } = useLayout()
   const { id } = useRouter().query
   const { socket } = useSockets()
   const { t } = useTranslation()
