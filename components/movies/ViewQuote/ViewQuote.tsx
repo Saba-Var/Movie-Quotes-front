@@ -164,7 +164,12 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
                 currentQuote && currentQuote?.comments.length > 0 && 'mt-4'
               }`}
             >
-              {currentQuote?._id && <CommentInput quoteId={currentQuote._id} />}
+              {currentQuote?._id && (
+                <CommentInput
+                  receiverId={currentQuote.user._id}
+                  quoteId={currentQuote._id}
+                />
+              )}
             </div>
           </div>
         </div>

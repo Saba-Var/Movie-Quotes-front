@@ -31,12 +31,16 @@ const useLayout = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
-  socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
-    if (userData._id === receiverId) {
-      setNewNotificationCount(newNotificationCount + 1)
-      setNotificationsList((prev) => [...prev, newNotification])
-    }
-  })
+  useEffect(() => {
+    socket
+      .off('SEND_NEW_NOTIFICATION')
+      .on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
+        if (userData._id === receiverId && newNotification) {
+          setNewNotificationCount(newNotificationCount + 1)
+          setNotificationsList((prev) => [newNotification, ...prev])
+        }
+      })
+  }, [newNotificationCount, socket, userData._id])
 
   useEffect(() => {
     if (!localStorage.getItem('token') && !session && status !== 'loading') {

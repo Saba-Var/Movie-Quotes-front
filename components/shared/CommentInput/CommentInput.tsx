@@ -4,7 +4,7 @@ import { CommentInputProps } from './types.d'
 import Image from 'next/image'
 
 const CommentInput: React.FC<CommentInputProps> = (props) => {
-  const { quoteId } = props
+  const { quoteId, receiverId } = props
 
   const {
     inputChangeHandler,
@@ -14,7 +14,7 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
     fetchError,
     userData,
     t,
-  } = useCommentInput(quoteId)
+  } = useCommentInput(quoteId, receiverId)
 
   const userImageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 

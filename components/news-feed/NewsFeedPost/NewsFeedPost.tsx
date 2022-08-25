@@ -87,7 +87,7 @@ const NewsFeedPost: React.FC<NewsFeedPostProps> = (props) => {
         })}
       </div>
 
-      <CommentInput quoteId={quote._id} />
+      <CommentInput receiverId={quote.user._id} quoteId={quote._id} />
     </div>
   )
 }
