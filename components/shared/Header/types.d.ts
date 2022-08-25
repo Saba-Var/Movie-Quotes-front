@@ -8,7 +8,7 @@ export type HeaderProps = {
   setMobileSearchMode?: SetState<boolean>
   setShowSideMenu?: SetState<boolean>
   setShowLogIn?: SetState<boolean>
-  newNotificationCount: number
+  newNotificationCount?: number
   showNotifications?: boolean
   mobileSearchMode?: boolean
   showSideMenu?: boolean
