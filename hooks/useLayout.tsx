@@ -31,13 +31,6 @@ const useLayout = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
-  // const uniqueList = notificationsList.map((el) => {
-  //   if (el._id !== newNotification._id) {
-  //     return el
-  //   }
-  // })
-  // uniqueList.unshift(newNotification)
-
   useEffect(() => {
     socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
       if (userData._id === receiverId && newNotification) {
