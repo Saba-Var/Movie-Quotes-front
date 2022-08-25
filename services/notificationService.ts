@@ -11,7 +11,7 @@ export const getUserNotifications = (
 }
 
 export const markAsRead = (id: string): Promise<AxiosResponse<Status>> => {
-  return axios.get(`/mark-as-read?id=${id}`)
+  return axios.put(`/mark-as-read?id=${id}`)
 }
 
 export const addNotification = (
