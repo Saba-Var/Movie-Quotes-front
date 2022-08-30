@@ -13,3 +13,10 @@ export const getUserDetails = (
 ): Promise<AxiosResponse<UserData>> => {
   return axios.get(`/user-details?accessToken=${accessToken}`)
 }
+
+export const changeUsername = (
+  username: string,
+  id: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.put('/change-username', { username, id })
+}

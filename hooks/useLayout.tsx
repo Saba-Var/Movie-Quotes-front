@@ -32,6 +32,16 @@ const useLayout = () => {
   const router = useRouter()
 
   useEffect(() => {
+    socket.on('SEND_NEW_USERNAME', (username) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+        updatedData.name = username
+        return updatedData
+      })
+    })
+  }, [socket, userData])
+
+  useEffect(() => {
     socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
       if (userData._id === receiverId && newNotification) {
         setNewNotificationCount(newNotificationCount + 1)
@@ -121,6 +131,7 @@ const useLayout = () => {
     setUserDataFail,
     showSideMenu,
     userDataFail,
+    setUserData,
     imageSrc,
     userData,
     setPage,

@@ -159,3 +159,11 @@ export const addQuoteSchema = Yup.object({
       })
     }),
 })
+
+export const usernameFormSchema = Yup.object({
+  username: Yup.string()
+    .required('name-required')
+    .min(3, 'name-min')
+    .max(20, 'max-char-20')
+    .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
+})

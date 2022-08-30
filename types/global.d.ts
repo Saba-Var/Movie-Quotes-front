@@ -142,3 +142,9 @@ export type NotificationPaginationData = {
   }
   newNotificationCount: number
 }
+
+export type FormProperties = {
+  setFieldError: (field: string, message: string) => void
+  setFieldValue: (field: string, value: string) => void
+  resetForm: () => void
+}
