@@ -6,6 +6,7 @@ import { useSockets } from 'hooks'
 import { useState } from 'react'
 
 export const useGoogleUserProfile = (userId: string) => {
+  const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
 
@@ -33,7 +34,7 @@ export const useGoogleUserProfile = (userId: string) => {
         }
       }
     } catch (error) {
-      console.log(error)
+      setImageFetchError(true)
     }
   }
 
@@ -60,9 +61,11 @@ export const useGoogleUserProfile = (userId: string) => {
 
   return {
     setDisableUsername,
+    setImageFetchError,
     setDuplicateError,
     uploadUserImage,
     disableUsername,
+    imageFetchError,
     duplicateError,
     submitHandler,
     setFile,

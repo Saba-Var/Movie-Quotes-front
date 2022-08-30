@@ -1,4 +1,4 @@
-import { AuthInputField, Button, PhotoUpload } from 'components'
+import { AuthInputField, Button, ErrorAlert, PhotoUpload } from 'components'
 import { useGoogleUserProfile } from './useGoogleUserProfile'
 import { GoogleUserProfileProps } from './types.d'
 import { usernameFormSchema } from 'schemas'
@@ -9,6 +9,8 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
 
   const {
     setDisableUsername,
+    setImageFetchError,
+    imageFetchError,
     uploadUserImage,
     disableUsername,
     duplicateError,
@@ -32,6 +34,14 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
           {(form) => {
             return (
               <Form className='relative'>
+                {imageFetchError && (
+                  <ErrorAlert
+                    setShowAlert={setImageFetchError}
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
+                    title='profile:user-image-error'
+                  />
+                )}
+
                 <div className='absolute right-1/2 translate-x-1/2 -top-[270px]'>
                   <PhotoUpload
                     userImageSrc={userData.image}

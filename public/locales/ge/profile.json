@@ -3,5 +3,6 @@
   "upload-new-photo": "ატვირთე ფოტო",
   "save-changes": "ცვლილებების შენახვა",
   "cancel": "გაუქმება",
-  "edit": "შეცვლა"
+  "edit": "შეცვლა",
+  "user-image-error": "სურათი ვერ აიტვირთა"
 }

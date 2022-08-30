@@ -3,5 +3,6 @@
   "upload-new-photo": "Upload new photo",
   "save-changes": "Save changes",
   "cancel": "Cancel",
-  "edit": "Edit"
+  "edit": "Edit",
+  "user-image-error": "User image could not be uploaded"
 }
