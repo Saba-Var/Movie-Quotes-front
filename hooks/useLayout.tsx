@@ -42,6 +42,16 @@ const useLayout = () => {
   }, [socket, userData])
 
   useEffect(() => {
+    socket.on('SEND_NEW_IMAGE', (image) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+        updatedData.image = image
+        return updatedData
+      })
+    })
+  }, [socket, userData])
+
+  useEffect(() => {
     socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
       if (userData._id === receiverId && newNotification) {
         setNewNotificationCount(newNotificationCount + 1)

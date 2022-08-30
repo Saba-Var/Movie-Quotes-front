@@ -1,5 +1,5 @@
+import { changeUsername, imageUpload } from 'services'
 import { useTranslation } from 'next-i18next'
-import { changeUsername } from 'services'
 import { useRouter } from 'next/router'
 import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
@@ -9,9 +9,33 @@ export const useGoogleUserProfile = (userId: string) => {
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
 
+  const [file, setFile] = useState<File | null>(null)
+
   const locale = useRouter().locale
   const { socket } = useSockets()
   const { t } = useTranslation()
+
+  const uploadUserImage = async () => {
+    try {
+      if (file) {
+        const formData = new FormData()
+        formData.append('image', file)
+        formData.append('id', userId)
+
+        const response = await imageUpload('user', formData)
+
+        if (response.status === 201) {
+          socket.emit('UPLOAD_USER_IMAGE', response.data)
+          if (disableUsername) {
+            setDisableUsername(true)
+          }
+          setFile(null)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const submitHandler = async (
     form: { username: string },
@@ -37,10 +61,13 @@ export const useGoogleUserProfile = (userId: string) => {
   return {
     setDisableUsername,
     setDuplicateError,
+    uploadUserImage,
     disableUsername,
     duplicateError,
     submitHandler,
+    setFile,
     locale,
+    file,
     t,
   }
 }
