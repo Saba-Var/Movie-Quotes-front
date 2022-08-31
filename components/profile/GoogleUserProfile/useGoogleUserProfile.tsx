@@ -1,6 +1,5 @@
 import { changeUsername, imageUpload } from 'services'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
@@ -12,7 +11,6 @@ export const useGoogleUserProfile = (userId: string) => {
 
   const [file, setFile] = useState<File | null>(null)
 
-  const locale = useRouter().locale
   const { socket } = useSockets()
   const { t } = useTranslation()
 
@@ -67,7 +65,6 @@ export const useGoogleUserProfile = (userId: string) => {
     duplicateError,
     submitHandler,
     setFile,
-    locale,
     file,
     t,
   }

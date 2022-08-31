@@ -5,9 +5,9 @@ import { Form, Formik } from 'formik'
 import {
   AuthInputField,
   PhotoUpload,
+  CancelSave,
   ErrorAlert,
   EditInput,
-  Button,
 } from 'components'
 
 const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
@@ -22,7 +22,6 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
     duplicateError,
     submitHandler,
     setFile,
-    locale,
     file,
     t,
   } = useGoogleUserProfile(userData._id)
@@ -91,28 +90,17 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                 </div>
 
                 {(!disableUsername || file) && (
-                  <div className='absolute items-center animate-fade-in flex bottom-[-170px] gap-8 right-[-13%] xl:right-[-14%] 2xl:right-[-16%] 3xl:right-[-23%]'>
-                    <div
-                      className='text-xl cursor-pointer active:scale-100 transition-transform hover:scale-[1.03]'
-                      onClick={() => {
-                        setDisableUsername(true)
-                        form.resetForm()
-                        form.setFieldValue('username', userData.name)
-                        if (file) {
-                          setFile(null)
-                        }
-                      }}
-                    >
-                      {t('profile:cancel')}
-                    </div>
-
-                    <Button
-                      title={t('profile:save-changes')}
-                      styles='bg-orange text-xl'
-                      onClick={uploadUserImage}
-                      type='submit'
-                    />
-                  </div>
+                  <CancelSave
+                    saveHandler={uploadUserImage}
+                    cancelHandler={() => {
+                      setDisableUsername(true)
+                      form.resetForm()
+                      form.setFieldValue('username', userData.name)
+                      if (file) {
+                        setFile(null)
+                      }
+                    }}
+                  />
                 )}
               </Form>
             )
