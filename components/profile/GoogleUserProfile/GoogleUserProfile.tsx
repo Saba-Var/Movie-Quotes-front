@@ -21,6 +21,8 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
     disableUsername,
     duplicateError,
     submitHandler,
+    setTypeError,
+    typeError,
     setFile,
     file,
     t,
@@ -50,7 +52,9 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                 <div className='absolute right-1/2 translate-x-1/2 -top-[270px]'>
                   <PhotoUpload
                     userImageSrc={userData.image}
+                    setTypeError={setTypeError}
                     userName={userData.name}
+                    typeError={typeError}
                     setFile={setFile}
                     file={file}
                   />

@@ -3,9 +3,14 @@ import { PhotoUploadProps } from './types.d'
 import Image from 'next/image'
 
 const PhotoUpload: React.FC<PhotoUploadProps> = (props) => {
-  const { userImageSrc, userName, file, setFile } = props
+  const { userImageSrc, userName, file, setFile, setTypeError, typeError } =
+    props
 
-  const { t, fileChangeHandler } = usePhotoUpload(setFile)
+  const { t, fileChangeHandler } = usePhotoUpload(
+    setFile,
+    setTypeError,
+    typeError
+  )
 
   return (
     <div>
@@ -58,6 +63,12 @@ const PhotoUpload: React.FC<PhotoUploadProps> = (props) => {
         </p>
         <input type='file' onChange={fileChangeHandler} />
       </label>
+
+      {typeError && (
+        <p className='text-red-500 text-base text-center'>
+          {t('common:upload-image')}
+        </p>
+      )}
     </div>
   )
 }

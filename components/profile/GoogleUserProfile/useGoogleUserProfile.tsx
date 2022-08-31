@@ -8,6 +8,7 @@ export const useGoogleUserProfile = (userId: string) => {
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
+  const [typeError, setTypeError] = useState(false)
 
   const [file, setFile] = useState<File | null>(null)
 
@@ -29,6 +30,9 @@ export const useGoogleUserProfile = (userId: string) => {
             setDisableUsername(true)
           }
           setFile(null)
+          if (typeError) {
+            setTypeError(false)
+          }
         }
       }
     } catch (error) {
@@ -64,6 +68,8 @@ export const useGoogleUserProfile = (userId: string) => {
     imageFetchError,
     duplicateError,
     submitHandler,
+    setTypeError,
+    typeError,
     setFile,
     file,
     t,
