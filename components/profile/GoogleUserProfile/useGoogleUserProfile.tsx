@@ -52,10 +52,8 @@ export const useGoogleUserProfile = (userId: string) => {
         setFieldValue('username', form.username)
       }
     } catch (error: any) {
-      if (error.response.status === 409) {
-        setFieldError('username', 'duplicate-username')
-        setDuplicateError(true)
-      }
+      setFieldError('username', 'duplicate-username')
+      setDuplicateError(true)
     }
   }
 

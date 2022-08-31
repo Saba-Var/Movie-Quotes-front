@@ -1,8 +1,14 @@
-import { AuthInputField, Button, ErrorAlert, PhotoUpload } from 'components'
 import { useGoogleUserProfile } from './useGoogleUserProfile'
 import { GoogleUserProfileProps } from './types.d'
 import { usernameFormSchema } from 'schemas'
 import { Form, Formik } from 'formik'
+import {
+  AuthInputField,
+  PhotoUpload,
+  ErrorAlert,
+  EditInput,
+  Button,
+} from 'components'
 
 const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
   const { userData } = props
@@ -62,15 +68,12 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                     />
 
                     {disableUsername && (
-                      <div
-                        onClick={() => setDisableUsername(false)}
-                        className={`cursor-pointer -right-12 lg:-right-16 top-9 absolute active:scale-100 transition-transform hover:scale-[1.02] animate-fade-in text-inputGray text-xl ${
-                          locale === 'ge' &&
-                          '-right-[60px] top-10 text-sm lg:text-base lg:-right-20 xl:top-9 xl:-right-24 xl:text-xl'
-                        }`}
-                      >
-                        {t('profile:edit')}
-                      </div>
+                      <EditInput
+                        clickHandler={() => {
+                          setDisableUsername(false)
+                        }}
+                        text={t('profile:edit')}
+                      />
                     )}
                   </div>
 

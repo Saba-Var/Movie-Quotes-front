@@ -8,7 +8,7 @@ const Profile = () => {
 
   return (
     <div className='mt-4'>
-      <p className='text-white pl-[20%] text-2xl font-Helvetica-Neue-Geo'>
+      <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo'>
         {t('profile:my-profile')}
       </p>
 
