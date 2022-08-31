@@ -1,3 +1,7 @@
+import { useSession } from 'next-auth/react'
+
 export const useProfileFormWrapper = () => {
-  return {}
+  const { data: session } = useSession()
+
+  return { session }
 }

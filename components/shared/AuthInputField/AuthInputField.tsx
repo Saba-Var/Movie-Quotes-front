@@ -4,7 +4,7 @@ import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
-  const { placeholder, disabled, profile } = props
+  const { placeholder, disabled, profile, styles } = props
 
   const {
     passwordShowHandler,
@@ -41,7 +41,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
             profile && '!w-full'
           } h-[38px] outline-none ${
             profile && disabled && 'placeholder:text-inputBlack'
-          }`}
+          } ${styles}`}
           placeholder={!profile ? t(`auth:${placeholder}`) : placeholder}
           disabled={disabled ? true : false}
           autoComplete='off'

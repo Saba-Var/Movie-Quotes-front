@@ -33,6 +33,7 @@ export type UserData = {
   email: string
   name: string
   _id: string
+  secondaryEmails?: { _id: string; email: string; verified: boolean }[]
 }
 
 export type FilmGenres = string[]

@@ -1,19 +1,28 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Layout, ProfileFormWrapper, GoogleUserProfile } from 'components'
 import type { GetStaticProps } from 'next'
 import { useProfile } from 'hooks'
+import {
+  ProfileFormWrapper,
+  GoogleUserProfile,
+  UserProfile,
+  Layout,
+} from 'components'
 
 const Profile = () => {
   const { t, session, userData } = useProfile()
 
   return (
-    <div className='mt-4'>
+    <div className='mt-4 h-full pb-24'>
       <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo'>
         {t('profile:my-profile')}
       </p>
 
       <ProfileFormWrapper>
-        <>{session && <GoogleUserProfile userData={userData} />}</>
+        {session ? (
+          <GoogleUserProfile userData={userData} />
+        ) : (
+          <UserProfile userData={userData} />
+        )}
       </ProfileFormWrapper>
     </div>
   )

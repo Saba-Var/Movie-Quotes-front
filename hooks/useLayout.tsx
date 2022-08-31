@@ -23,6 +23,7 @@ const useLayout = () => {
     email: '',
     name: '',
     _id: '',
+    secondaryEmails: [],
   })
 
   const { setShowSideMenu, showSideMenu } = useNewsFeed()

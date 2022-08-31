@@ -26,3 +26,8 @@ export type SearchIconProps = {
 export type CloseIconProps = {
   noStyle?: boolean
 }
+
+export type InfoIconProps = {
+  styles?: string
+  color?: string
+}

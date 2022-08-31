@@ -1,6 +1,6 @@
-import { useGoogleUserProfile } from './useGoogleUserProfile'
-import { GoogleUserProfileProps } from './types.d'
-import { usernameFormSchema } from 'schemas'
+import { useUserProfile } from './useUserProfile'
+import { UserProfileProps } from './types.d'
+import { userProfileSchema } from 'schemas'
 import { Form, Formik } from 'formik'
 import {
   AuthInputField,
@@ -8,9 +8,11 @@ import {
   CancelSave,
   ErrorAlert,
   EditInput,
+  CheckIcon,
+  Emails,
 } from 'components'
 
-const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
+const UserProfile: React.FC<UserProfileProps> = (props) => {
   const { userData } = props
 
   const {
@@ -26,15 +28,19 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
     setFile,
     file,
     t,
-  } = useGoogleUserProfile(userData._id)
+  } = useUserProfile(userData._id)
 
   return (
     <div className='text-white'>
       {userData.name && (
         <Formik
+          validationSchema={userProfileSchema}
           validateOnChange={duplicateError ? false : true}
-          initialValues={{ username: userData.name }}
-          validationSchema={usernameFormSchema}
+          initialValues={{
+            username: userData.name,
+            confirmPassword: '',
+            password: '',
+          }}
           onSubmit={submitHandler}
           validateOnBlur={false}
         >
@@ -60,41 +66,37 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                   />
                 </div>
 
-                <div>
-                  <div className='h-[94px] relative mx-auto max-w-[480px] mb-12'>
-                    <AuthInputField
-                      placeholder={userData.name}
-                      disabled={disableUsername}
-                      name='username'
-                      profile='yes'
-                      type='text'
-                    />
-
-                    {disableUsername && (
-                      <EditInput
-                        clickHandler={() => {
-                          setDisableUsername(false)
-                        }}
-                        text={t('profile:edit')}
+                <div className='flex justify-center'>
+                  <div className='flex flex-col items-start'>
+                    <div className='h-[94px] relative w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] mb-12'>
+                      <AuthInputField
+                        placeholder={userData.name}
+                        disabled={disableUsername}
+                        name='username'
+                        profile='yes'
+                        type='text'
                       />
-                    )}
-                  </div>
 
-                  <div className='h-[1px] bg-gray-700 mx-auto max-w-[480px] mb-12'></div>
+                      {disableUsername && (
+                        <EditInput
+                          clickHandler={() => {
+                            setDisableUsername(false)
+                          }}
+                          text={t('profile:edit')}
+                        />
+                      )}
+                    </div>
 
-                  <div className='h-[94px] mx-auto max-w-[480px]'>
-                    <AuthInputField
-                      placeholder={userData.email}
-                      disabled={true}
-                      profile='yes'
-                      name='email'
-                      type='text'
+                    <Emails
+                      secondaryEmails={userData.secondaryEmails}
+                      primaryEmail={userData.email}
                     />
                   </div>
                 </div>
 
                 {(!disableUsername || file) && (
                   <CancelSave
+                    styles='!right-0'
                     saveHandler={uploadUserImage}
                     cancelHandler={() => {
                       setDisableUsername(true)
@@ -115,4 +117,4 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
   )
 }
 
-export default GoogleUserProfile
+export default UserProfile

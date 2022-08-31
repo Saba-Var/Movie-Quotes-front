@@ -4,5 +4,9 @@
   "save-changes": "ცვლილებების შენახვა",
   "cancel": "გაუქმება",
   "edit": "შეცვლა",
-  "user-image-error": "სურათი ვერ აიტვირთა"
+  "user-image-error": "სურათი ვერ აიტვირთა",
+  "tooltip-info": "გააქტიურეთ ახალი ელ-ფოსტა",
+  "remove": "წაშლა",
+  "not-verified": "გასააქტურებელი",
+  "make-primary": "დაყენება"
 }

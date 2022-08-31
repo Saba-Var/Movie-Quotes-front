@@ -45,6 +45,7 @@ module.exports = {
         purple: '#482474',
         darkPurple: '#24222F',
         medRed: '#E33812',
+        darkYellow: '#EC9524',
       },
       screens: {
         '3xl': '1750px',

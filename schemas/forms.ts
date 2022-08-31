@@ -167,3 +167,21 @@ export const usernameFormSchema = Yup.object({
     .max(20, 'max-char-20')
     .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
 })
+
+export const userProfileSchema = Yup.object({
+  username: Yup.string()
+    .optional()
+    .min(3, 'name-min')
+    .max(20, 'max-char-20')
+    .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
+
+  password: Yup.string()
+    .optional()
+    .min(8, 'password-min')
+    .max(15, 'max-char')
+    .matches(/^[a-z0-9]+$/g, 'lower-required'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'password-match')
+    .optional(),
+})

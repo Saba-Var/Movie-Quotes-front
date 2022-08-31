@@ -4,5 +4,9 @@
   "save-changes": "Save changes",
   "cancel": "Cancel",
   "edit": "Edit",
-  "user-image-error": "User image could not be uploaded"
+  "user-image-error": "User image could not be uploaded",
+  "tooltip-info": "Please verify new email address",
+  "remove": "Remove",
+  "not-verified": "Not verified",
+  "make-primary": "Make primary"
 }
