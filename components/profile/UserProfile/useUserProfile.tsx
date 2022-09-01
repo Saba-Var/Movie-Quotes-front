@@ -17,6 +17,7 @@ export const useUserProfile = (
   const [imageFetchError, setImageFetchError] = useState(false)
   const [saveChangesFail, setFailChangesFail] = useState(false)
   const [duplicateError, setDuplicateError] = useState(false)
+  const [addEmailModal, setAddEmailModal] = useState(false)
   const [emailChange, setEmailChange] = useState(false)
   const [typeError, setTypeError] = useState(false)
 
@@ -163,15 +164,17 @@ export const useUserProfile = (
     setDuplicateError,
     setPasswordLength,
     userPrimaryEmail,
+    setAddEmailModal,
     deleteEmailList,
     saveChangesFail,
     disableUsername,
     imageFetchError,
     disablePassword,
     passwordLength,
+    setEmailChange,
     duplicateError,
     submitHandler,
-    setEmailChange,
+    addEmailModal,
     setTypeError,
     clickHandler,
     emailChange,

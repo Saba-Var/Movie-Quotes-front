@@ -14,6 +14,7 @@ import {
   EditInput,
   Passwords,
   Emails,
+  AddEmail,
 } from 'components'
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
@@ -28,6 +29,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     setDeleteEmailList,
     setDisablePassword,
     setFailChangesFail,
+    setAddEmailModal,
     userPrimaryEmail,
     saveChangesFail,
     imageFetchError,
@@ -36,6 +38,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     duplicateError,
     passwordLength,
     setEmailChange,
+    addEmailModal,
     submitHandler,
     setTypeError,
     clickHandler,
@@ -48,6 +51,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 
   return (
     <div className='text-white'>
+      {addEmailModal && (
+        <AddEmail userId={userData._id} setAddEmailModal={setAddEmailModal} />
+      )}
+
       {userData.name && (
         <Formik
           validationSchema={
@@ -126,6 +133,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       userSecondaryEmails={userSecondaryEmails}
                       setUserPrimaryEmail={setUserPrimaryEmail}
                       setDeleteEmailList={setDeleteEmailList}
+                      setAddEmailModal={setAddEmailModal}
                       userPrimaryEmail={userPrimaryEmail}
                       setEmailChange={setEmailChange}
                       primaryEmail={userData.email}

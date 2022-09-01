@@ -9,9 +9,8 @@ const Emails: React.FC<EmailsProps> = (props) => {
     userSecondaryEmails,
     setDeleteEmailList,
     userPrimaryEmail,
-    secondaryEmails,
+    setAddEmailModal,
     setEmailChange,
-    primaryEmail,
   } = props
 
   const { t } = useEmails()
@@ -49,7 +48,10 @@ const Emails: React.FC<EmailsProps> = (props) => {
           )
         })}
 
-      <div className='flex items-center mt-6 xl:mt-12 h-[48px] gap-2 cursor-pointer hover:scale-[1.02] rounded-[4px] w-fit p-4 border border-white active:scale-100 transition-transform'>
+      <div
+        className='flex items-center mt-6 xl:mt-12 h-[48px] gap-2 cursor-pointer hover:scale-[1.02] rounded-[4px] w-fit p-4 border border-white active:scale-100 transition-transform'
+        onClick={() => setAddEmailModal(true)}
+      >
         <AddIcon />
         <p className='text-white font-Helvetica-Neue-Geo text-base xl:text-xl'>
           {t('profile:add-email')}

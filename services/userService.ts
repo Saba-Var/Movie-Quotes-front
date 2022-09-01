@@ -36,3 +36,10 @@ export const deleteEmail = (
 ): Promise<AxiosResponse<Status>> => {
   return axios.delete(`/delete-secondary-email?id=${id}&email=${email}`)
 }
+
+export const addSecondaryEmail = (
+  email: string,
+  id: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.post('/secondary-email', { email, id })
+}

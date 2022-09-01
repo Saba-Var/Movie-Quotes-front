@@ -26,18 +26,18 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
 
         {userData.image && (
           <div
-            className={`h-[60px] w-[60px] ${
+            className={`h-[52px] w-[60px] ${
               page.includes('profile') && 'border rounded-full border-orange'
-            } select-none`}
+            } select-none relative`}
           >
             <Image
               className='rounded-full animate-fold-out select-none'
               loader={() => imageSrc}
               unoptimized={true}
-              height={'60px'}
-              width={'60px'}
               src={imageSrc}
+              layout='fill'
               alt='user'
+              priority
             />
           </div>
         )}

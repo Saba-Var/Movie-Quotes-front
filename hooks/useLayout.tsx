@@ -57,15 +57,26 @@ const useLayout = () => {
     })
   })
 
-  socket.on('SEND_DELETED_EMAIL_IDS', (deletedEmail) => {
-    setUserData((prev) => {
+  const emailSetter = (newEmail: string, emailObject?: boolean) => {
+    return setUserData((prev) => {
       const updatedData = Object.create(prev)
       updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
-        (email: { email: string }) => email.email !== deletedEmail
+        (email: { email: string }) => email.email !== newEmail
       )
 
+      if (emailObject) {
+        updatedData.secondaryEmails.unshift(emailObject)
+      }
       return updatedData
     })
+  }
+
+  socket.on('SEND_DELETED_EMAIL_IDS', (deletedEmail) => {
+    emailSetter(deletedEmail)
+  })
+
+  socket.on('SEND_SECONDARY_EMAIL', (newSecondaryEmail) => {
+    emailSetter(newSecondaryEmail.email, newSecondaryEmail)
   })
 
   useEffect(() => {

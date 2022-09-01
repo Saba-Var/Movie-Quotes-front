@@ -5,6 +5,7 @@ export type EmailsProps = {
   setDeleteEmailList: SetState<string[]>
   setUserPrimaryEmail: SetState<string>
   userSecondaryEmails: SecondaryEmails
+  setAddEmailModal: SetState<boolean>
   secondaryEmails?: SecondaryEmails
   setEmailChange: SetState<boolean>
   userPrimaryEmail: string
