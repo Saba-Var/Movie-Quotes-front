@@ -29,11 +29,11 @@ export type LogInData = {
 }
 
 export type UserData = {
+  secondaryEmails?: { _id: string; email: string; verified: boolean }[]
   image?: string
   email: string
   name: string
   _id: string
-  secondaryEmails?: { _id: string; email: string; verified: boolean }[]
 }
 
 export type FilmGenres = string[]

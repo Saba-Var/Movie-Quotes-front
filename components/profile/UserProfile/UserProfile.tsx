@@ -1,14 +1,18 @@
 import { useUserProfile } from './useUserProfile'
 import { UserProfileProps } from './types.d'
-import { userProfileSchema } from 'schemas'
 import { Form, Formik } from 'formik'
+import {
+  usernameFormSchema,
+  passwordFormSchema,
+  userProfileSchema,
+} from 'schemas'
 import {
   AuthInputField,
   PhotoUpload,
   CancelSave,
   ErrorAlert,
   EditInput,
-  CheckIcon,
+  Passwords,
   Emails,
 } from 'components'
 
@@ -18,12 +22,15 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
   const {
     setDisableUsername,
     setImageFetchError,
+    setDisablePassword,
     imageFetchError,
-    uploadUserImage,
     disableUsername,
+    disablePassword,
     duplicateError,
+    passwordLength,
     submitHandler,
     setTypeError,
+    clickHandler,
     typeError,
     setFile,
     file,
@@ -34,7 +41,13 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     <div className='text-white'>
       {userData.name && (
         <Formik
-          validationSchema={userProfileSchema}
+          validationSchema={
+            !disableUsername && !disablePassword
+              ? userProfileSchema
+              : disableUsername && !disablePassword
+              ? passwordFormSchema
+              : usernameFormSchema
+          }
           validateOnChange={duplicateError ? false : true}
           initialValues={{
             username: userData.name,
@@ -42,6 +55,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
             password: '',
           }}
           onSubmit={submitHandler}
+          validateOnMount={false}
           validateOnBlur={false}
         >
           {(form) => {
@@ -70,6 +84,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                   <div className='flex flex-col items-start'>
                     <div className='h-[94px] relative w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] mb-12'>
                       <AuthInputField
+                        noValidate={disableUsername}
                         placeholder={userData.name}
                         disabled={disableUsername}
                         name='username'
@@ -81,6 +96,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                         <EditInput
                           clickHandler={() => {
                             setDisableUsername(false)
+                            form.resetForm()
                           }}
                           text={t('profile:edit')}
                         />
@@ -91,17 +107,27 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       secondaryEmails={userData.secondaryEmails}
                       primaryEmail={userData.email}
                     />
+
+                    <Passwords
+                      setDisablePassword={setDisablePassword}
+                      lowerCaseError={form.errors.password}
+                      newPassword={form.values.password}
+                      disablePassword={disablePassword}
+                      passwordLength={passwordLength}
+                    />
                   </div>
                 </div>
 
-                {(!disableUsername || file) && (
+                {(!disableUsername || file || !disablePassword) && (
                   <CancelSave
                     styles='!right-0'
-                    saveHandler={uploadUserImage}
+                    saveHandler={clickHandler}
                     cancelHandler={() => {
                       setDisableUsername(true)
+                      setDisablePassword(true)
                       form.resetForm()
                       form.setFieldValue('username', userData.name)
+
                       if (file) {
                         setFile(null)
                       }

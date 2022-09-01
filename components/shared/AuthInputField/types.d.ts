@@ -1,4 +1,5 @@
 export type AuthInputFieldProps = {
+  noValidate?: boolean
   placeholder: string
   disabled?: boolean
   profile?: string

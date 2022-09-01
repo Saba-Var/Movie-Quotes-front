@@ -53,7 +53,7 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
               {t('profile:make-primary')}
             </p>
           ) : (
-            <p className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'>
+            <p className='text-base 2xl:text-xl cursor-default font-Helvetica-Neue-Geo'>
               {t('profile:not-verified')}
             </p>
           )}

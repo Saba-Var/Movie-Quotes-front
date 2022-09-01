@@ -170,18 +170,34 @@ export const usernameFormSchema = Yup.object({
 
 export const userProfileSchema = Yup.object({
   username: Yup.string()
-    .optional()
+    .required('name-required')
     .min(3, 'name-min')
     .max(20, 'max-char-20')
     .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
 
   password: Yup.string()
-    .optional()
-    .min(8, 'password-min')
+    .trim()
+    .matches(/^[a-z0-9]+$/g, 'lower-required')
+    .required('password-required')
     .max(15, 'max-char')
-    .matches(/^[a-z0-9]+$/g, 'lower-required'),
+    .min(8, 'password-min')
+    .max(15, 'max-char'),
 
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'password-match')
-    .optional(),
+    .required('confirmPassword-required'),
+})
+
+export const passwordFormSchema = Yup.object({
+  password: Yup.string()
+    .trim()
+    .matches(/^[a-z0-9]+$/g, 'lower-required')
+    .required('password-required')
+    .max(15, 'max-char')
+    .min(8, 'password-min')
+    .max(15, 'max-char'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'password-match')
+    .required('confirmPassword-required'),
 })

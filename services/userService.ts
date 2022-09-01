@@ -3,9 +3,10 @@ import { AxiosResponse } from 'axios'
 import axios from 'services'
 
 export const changePassword = (
-  password: string
+  password: string,
+  id: string
 ): Promise<AxiosResponse<Status>> => {
-  return axios.post('/change-password', { password })
+  return axios.put(`/change-password?id=${id}`, { password })
 }
 
 export const getUserDetails = (

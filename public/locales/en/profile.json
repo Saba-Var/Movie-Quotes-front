@@ -8,5 +8,9 @@
   "tooltip-info": "Please verify new email address",
   "remove": "Remove",
   "not-verified": "Not verified",
-  "make-primary": "Make primary"
+  "make-primary": "Make primary",
+  "add-email": "Add new email",
+  "password-contain": "Passwords should contain",
+  "password-min": "8 or more characters",
+  "password-max": "max 15 lowercase character"
 }

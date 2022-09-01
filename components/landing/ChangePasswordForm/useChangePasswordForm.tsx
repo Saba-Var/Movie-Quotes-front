@@ -33,10 +33,12 @@ export const useChangePasswordForm = () => {
     try {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      const { status } = await changePassword(password)
+      if (typeof router.query.id === 'string') {
+        const { status } = await changePassword(password, router.query.id)
 
-      if (status === 200) {
-        setChangedSuccessfully(true)
+        if (status === 200) {
+          setChangedSuccessfully(true)
+        }
       }
     } catch (error: any) {
       if (error.response.status === 404) {

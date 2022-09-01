@@ -8,5 +8,9 @@
   "tooltip-info": "გააქტიურეთ ახალი ელ-ფოსტა",
   "remove": "წაშლა",
   "not-verified": "გასააქტურებელი",
-  "make-primary": "დაყენება"
+  "make-primary": "დაყენება",
+  "add-email": "ელ-ფოსტის დამატება",
+  "password-contain": "პაროლი უნდა შეიცავდეს",
+  "password-min": "8 ან მეტ სიმბოლოს",
+  "password-max": "მაქს. 15 დაბალი რეგისტრის სიმბოლოს"
 }

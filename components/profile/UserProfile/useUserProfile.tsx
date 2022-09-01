@@ -1,21 +1,27 @@
+import { changeUsername, imageUpload, changePassword } from 'services'
 import { useTranslation } from 'next-i18next'
-import { changeUsername, imageUpload } from 'services'
+import { useEffect, useState } from 'react'
 import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
-import { useState } from 'react'
 
 export const useUserProfile = (userId: string) => {
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
+  const [disablePassword, setDisablePassword] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
   const [typeError, setTypeError] = useState(false)
 
+  const [passwordLength, setPasswordLength] = useState(0)
   const [file, setFile] = useState<File | null>(null)
+
+  useEffect(() => {
+    setPasswordLength(+localStorage.getItem('passwordLength')!)
+  }, [passwordLength])
 
   const { socket } = useSockets()
   const { t } = useTranslation()
 
-  const uploadUserImage = async () => {
+  const clickHandler = async () => {
     try {
       if (file) {
         const formData = new FormData()
@@ -41,34 +47,55 @@ export const useUserProfile = (userId: string) => {
   }
 
   const submitHandler = async (
-    form: { username: string },
+    form: { username: string; password?: string },
     { setFieldError, resetForm, setFieldValue }: FormProperties
   ) => {
     try {
-      const response = await changeUsername(form.username, userId)
+      if (!disableUsername) {
+        const response = await changeUsername(form.username, userId)
 
-      if (response.status === 200) {
-        socket.emit('CHANGE_USERNAME', form.username)
-        setDisableUsername(true)
-        resetForm()
-        setFieldValue('username', form.username)
+        if (response.status === 200) {
+          socket.emit('CHANGE_USERNAME', form.username)
+          setFieldValue('username', form.username)
+          setDisableUsername(true)
+        }
       }
+
+      if (!disablePassword) {
+        const response = await changePassword(form.password!, userId)
+
+        if (response.status === 200) {
+          setDisablePassword(true)
+          localStorage.setItem('passwordLength', form.password?.length + '')
+          setPasswordLength(form.password?.length!)
+          setFieldValue('confirmPassword', '')
+          setFieldValue('password', '')
+        }
+      }
+
+      resetForm()
     } catch (error: any) {
-      setFieldError('username', 'duplicate-username')
-      setDuplicateError(true)
+      if (error.response.data.message.includes('username')) {
+        setFieldError('username', 'duplicate-username')
+        setDuplicateError(true)
+      }
     }
   }
 
   return {
     setDisableUsername,
     setImageFetchError,
+    setDisablePassword,
     setDuplicateError,
-    uploadUserImage,
+    setPasswordLength,
     disableUsername,
     imageFetchError,
+    disablePassword,
+    passwordLength,
     duplicateError,
     submitHandler,
     setTypeError,
+    clickHandler,
     typeError,
     setFile,
     file,
