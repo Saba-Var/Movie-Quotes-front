@@ -1,18 +1,38 @@
-import { changeUsername, imageUpload, changePassword } from 'services'
+import { FormProperties, SecondaryEmails, SetState, UserData } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
-import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
+import {
+  changePrimaryEmail,
+  changeUsername,
+  changePassword,
+  imageUpload,
+} from 'services'
 
-export const useUserProfile = (userId: string) => {
+export const useUserProfile = (
+  userData: UserData,
+  secondaryEmails: SecondaryEmails,
+  setUserData: SetState<UserData>
+) => {
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [disablePassword, setDisablePassword] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
+  const [emailChange, setEmailChange] = useState(false)
   const [typeError, setTypeError] = useState(false)
 
   const [passwordLength, setPasswordLength] = useState(0)
   const [file, setFile] = useState<File | null>(null)
+
+  const [userSecondaryEmails, setUserSecondaryEmails] =
+    useState<SecondaryEmails>([])
+
+  const [userPrimaryEmail, setUserPrimaryEmail] = useState('')
+
+  useEffect(() => {
+    setUserSecondaryEmails(secondaryEmails)
+    setUserPrimaryEmail(userData.email)
+  }, [userData.email, secondaryEmails])
 
   useEffect(() => {
     setPasswordLength(+localStorage.getItem('passwordLength')!)
@@ -22,11 +42,11 @@ export const useUserProfile = (userId: string) => {
   const { t } = useTranslation()
 
   const clickHandler = async () => {
-    try {
-      if (file) {
+    const imageUploadHandler = async () => {
+      try {
         const formData = new FormData()
-        formData.append('image', file)
-        formData.append('id', userId)
+        formData.append('image', file!)
+        formData.append('id', userData._id)
 
         const response = await imageUpload('user', formData)
 
@@ -40,9 +60,40 @@ export const useUserProfile = (userId: string) => {
             setTypeError(false)
           }
         }
+      } catch (error) {
+        setImageFetchError(true)
       }
-    } catch (error) {
-      setImageFetchError(true)
+    }
+
+    const primaryEmailChange = async () => {
+      try {
+        const response = await changePrimaryEmail(
+          userPrimaryEmail,
+          userData._id
+        )
+
+        if (response.status === 200) {
+          localStorage.setItem('token', response.data.token)
+
+          socket.emit(
+            'CHANGE_PRIMARY_EMAIL',
+            userPrimaryEmail,
+            response.data.newSecondaryEmail
+          )
+
+          setEmailChange(false)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (userData.email !== userPrimaryEmail) {
+      primaryEmailChange()
+    }
+
+    if (file) {
+      imageUploadHandler()
     }
   }
 
@@ -52,7 +103,7 @@ export const useUserProfile = (userId: string) => {
   ) => {
     try {
       if (!disableUsername) {
-        const response = await changeUsername(form.username, userId)
+        const response = await changeUsername(form.username, userData._id)
 
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
@@ -62,7 +113,7 @@ export const useUserProfile = (userId: string) => {
       }
 
       if (!disablePassword) {
-        const response = await changePassword(form.password!, userId)
+        const response = await changePassword(form.password!, userData._id)
 
         if (response.status === 200) {
           setDisablePassword(true)
@@ -83,19 +134,25 @@ export const useUserProfile = (userId: string) => {
   }
 
   return {
+    setUserSecondaryEmails,
+    setUserPrimaryEmail,
+    userSecondaryEmails,
     setDisableUsername,
     setImageFetchError,
     setDisablePassword,
     setDuplicateError,
     setPasswordLength,
+    userPrimaryEmail,
     disableUsername,
     imageFetchError,
     disablePassword,
     passwordLength,
     duplicateError,
     submitHandler,
+    setEmailChange,
     setTypeError,
     clickHandler,
+    emailChange,
     typeError,
     setFile,
     file,

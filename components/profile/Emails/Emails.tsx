@@ -3,7 +3,15 @@ import { EmailsProps } from './types.d'
 import { useEmails } from './useEmails'
 
 const Emails: React.FC<EmailsProps> = (props) => {
-  const { primaryEmail, secondaryEmails } = props
+  const {
+    setUserSecondaryEmails,
+    setUserPrimaryEmail,
+    userSecondaryEmails,
+    userPrimaryEmail,
+    secondaryEmails,
+    setEmailChange,
+    primaryEmail,
+  } = props
 
   const { t } = useEmails()
 
@@ -14,7 +22,7 @@ const Emails: React.FC<EmailsProps> = (props) => {
 
         <AuthInputField
           styles='border border-green !bg-green placeholder:!text-white !bg-opacity-20'
-          placeholder={primaryEmail}
+          placeholder={userPrimaryEmail}
           disabled={true}
           profile='yes'
           name='email'
@@ -23,10 +31,19 @@ const Emails: React.FC<EmailsProps> = (props) => {
         <CheckIcon styles='absolute right-4 bottom-3' />
       </div>
 
-      {secondaryEmails &&
-        secondaryEmails?.length > 0 &&
-        secondaryEmails.map((email) => {
-          return <SecondaryEmails email={email} key={email._id} />
+      {userSecondaryEmails &&
+        userSecondaryEmails?.length > 0 &&
+        userSecondaryEmails.map((email) => {
+          return (
+            <SecondaryEmails
+              setUserSecondaryEmails={setUserSecondaryEmails}
+              setUserPrimaryEmail={setUserPrimaryEmail}
+              userPrimaryEmail={userPrimaryEmail}
+              setEmailChange={setEmailChange}
+              key={email._id}
+              email={email}
+            />
+          )
         })}
 
       <div className='flex items-center mt-6 xl:mt-12 h-[48px] gap-2 cursor-pointer hover:scale-[1.02] rounded-[4px] w-fit p-4 border border-white active:scale-100 transition-transform'>

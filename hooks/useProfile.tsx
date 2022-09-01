@@ -4,10 +4,10 @@ import { useLayout } from 'hooks'
 
 const useProfile = () => {
   const { data: session } = useSession()
-  const { userData } = useLayout()
+  const { userData, setUserData } = useLayout()
   const { t } = useTranslation()
 
-  return { t, session, userData }
+  return { t, session, userData, setUserData }
 }
 
 export default useProfile

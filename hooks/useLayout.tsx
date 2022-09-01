@@ -42,6 +42,21 @@ const useLayout = () => {
     })
   }, [socket, userData])
 
+  socket.on('SEND_NEW_PRIMARY_EMAIL', (userPrimaryEmail, newSecondaryEmail) => {
+    setUserData((prev) => {
+      const updatedData = Object.create(prev)
+      updatedData.email = userPrimaryEmail
+      updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
+        (email: { email: string }) =>
+          email.email !== userPrimaryEmail &&
+          email.email !== newSecondaryEmail.email
+      )
+
+      updatedData.secondaryEmails.push(newSecondaryEmail)
+      return updatedData
+    })
+  })
+
   useEffect(() => {
     socket.on('SEND_NEW_IMAGE', (image) => {
       setUserData((prev) => {

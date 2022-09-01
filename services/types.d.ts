@@ -13,3 +13,12 @@ export type AddNewNotificationData = {
   senderId: string
   notificationType: 'like' | 'comment'
 }
+
+export type changePrimaryEmailRes = {
+  token: string
+  newSecondaryEmail: {
+    verified: boolean
+    email: string
+    _id: string
+  }
+}

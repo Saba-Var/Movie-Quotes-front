@@ -17,25 +17,31 @@ import {
 } from 'components'
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
-  const { userData } = props
+  const { userData, setUserData } = props
 
   const {
+    setUserSecondaryEmails,
+    userSecondaryEmails,
+    setUserPrimaryEmail,
     setDisableUsername,
     setImageFetchError,
     setDisablePassword,
+    userPrimaryEmail,
     imageFetchError,
     disableUsername,
     disablePassword,
     duplicateError,
     passwordLength,
+    setEmailChange,
     submitHandler,
     setTypeError,
     clickHandler,
+    emailChange,
     typeError,
     setFile,
     file,
     t,
-  } = useUserProfile(userData._id)
+  } = useUserProfile(userData, userData.secondaryEmails!, setUserData)
 
   return (
     <div className='text-white'>
@@ -104,7 +110,12 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                     </div>
 
                     <Emails
+                      setUserSecondaryEmails={setUserSecondaryEmails}
                       secondaryEmails={userData.secondaryEmails}
+                      userSecondaryEmails={userSecondaryEmails}
+                      setUserPrimaryEmail={setUserPrimaryEmail}
+                      userPrimaryEmail={userPrimaryEmail}
+                      setEmailChange={setEmailChange}
                       primaryEmail={userData.email}
                     />
 
@@ -118,7 +129,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                   </div>
                 </div>
 
-                {(!disableUsername || file || !disablePassword) && (
+                {(!disableUsername ||
+                  file ||
+                  !disablePassword ||
+                  emailChange) && (
                   <CancelSave
                     styles='!right-0'
                     saveHandler={clickHandler}
@@ -128,9 +142,12 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       form.resetForm()
                       form.setFieldValue('username', userData.name)
 
+                      setUserSecondaryEmails(userData.secondaryEmails!)
+                      setUserPrimaryEmail(userData.email)
                       if (file) {
                         setFile(null)
                       }
+                      setEmailChange(false)
                     }}
                   />
                 )}

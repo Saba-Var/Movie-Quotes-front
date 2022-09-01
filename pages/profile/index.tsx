@@ -9,7 +9,7 @@ import {
 } from 'components'
 
 const Profile = () => {
-  const { t, session, userData } = useProfile()
+  const { t, session, userData, setUserData } = useProfile()
 
   return (
     <div className='mt-4 h-full pb-24'>
@@ -21,7 +21,7 @@ const Profile = () => {
         {session ? (
           <GoogleUserProfile userData={userData} />
         ) : (
-          <UserProfile userData={userData} />
+          <UserProfile setUserData={setUserData} userData={userData} />
         )}
       </ProfileFormWrapper>
     </div>

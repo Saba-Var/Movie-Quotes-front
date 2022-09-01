@@ -28,8 +28,14 @@ export type LogInData = {
   email: string
 }
 
+export type SecondaryEmails = {
+  _id: string
+  email: string
+  verified: boolean
+}[]
+
 export type UserData = {
-  secondaryEmails?: { _id: string; email: string; verified: boolean }[]
+  secondaryEmails?: SecondaryEmails
   image?: string
   email: string
   name: string

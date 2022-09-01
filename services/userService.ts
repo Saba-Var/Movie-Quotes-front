@@ -1,3 +1,4 @@
+import { changePrimaryEmailRes } from './types.d'
 import { Status, UserData } from 'types'
 import { AxiosResponse } from 'axios'
 import axios from 'services'
@@ -20,4 +21,11 @@ export const changeUsername = (
   id: string
 ): Promise<AxiosResponse<Status>> => {
   return axios.put('/change-username', { username, id })
+}
+
+export const changePrimaryEmail = (
+  email: string,
+  id: string
+): Promise<AxiosResponse<changePrimaryEmailRes>> => {
+  return axios.put('/change-primary-email', { email, id })
 }

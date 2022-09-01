@@ -3,7 +3,13 @@ import { SecondaryEmailsProps } from './types.d'
 import { InfoIcon } from 'components'
 
 const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
-  const { email } = props
+  const {
+    email,
+    setUserPrimaryEmail,
+    setEmailChange,
+    userPrimaryEmail,
+    setUserSecondaryEmails,
+  } = props
 
   const { t, tooltip, setTooltip } = useSecondaryEmails()
 
@@ -49,7 +55,13 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
 
         <div className='flex gap-2 xl:gap-6 pt-7 lg:pt-8'>
           {email.verified ? (
-            <p className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'>
+            <p
+              onClick={() => {
+                setEmailChange(true)
+                setUserPrimaryEmail(email.email)
+              }}
+              className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'
+            >
               {t('profile:make-primary')}
             </p>
           ) : (
