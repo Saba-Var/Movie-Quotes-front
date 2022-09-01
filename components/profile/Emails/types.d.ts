@@ -2,6 +2,7 @@ import { SecondaryEmails, SetState } from 'types'
 
 export type EmailsProps = {
   setUserSecondaryEmails: SetState<SecondaryEmails>
+  setDeleteEmailList: SetState<string[]>
   setUserPrimaryEmail: SetState<string>
   userSecondaryEmails: SecondaryEmails
   secondaryEmails?: SecondaryEmails

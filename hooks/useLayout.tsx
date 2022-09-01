@@ -57,6 +57,17 @@ const useLayout = () => {
     })
   })
 
+  socket.on('SEND_DELETED_EMAIL_IDS', (deletedEmail) => {
+    setUserData((prev) => {
+      const updatedData = Object.create(prev)
+      updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
+        (email: { email: string }) => email.email !== deletedEmail
+      )
+
+      return updatedData
+    })
+  })
+
   useEffect(() => {
     socket.on('SEND_NEW_IMAGE', (image) => {
       setUserData((prev) => {

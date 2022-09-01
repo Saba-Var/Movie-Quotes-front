@@ -17,7 +17,7 @@ import {
 } from 'components'
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
-  const { userData, setUserData } = props
+  const { userData } = props
 
   const {
     setUserSecondaryEmails,
@@ -25,8 +25,11 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     setUserPrimaryEmail,
     setDisableUsername,
     setImageFetchError,
+    setDeleteEmailList,
     setDisablePassword,
+    setFailChangesFail,
     userPrimaryEmail,
+    saveChangesFail,
     imageFetchError,
     disableUsername,
     disablePassword,
@@ -41,7 +44,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     setFile,
     file,
     t,
-  } = useUserProfile(userData, userData.secondaryEmails!, setUserData)
+  } = useUserProfile(userData, userData.secondaryEmails!)
 
   return (
     <div className='text-white'>
@@ -72,6 +75,14 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
                     setShowAlert={setImageFetchError}
                     title='profile:user-image-error'
+                  />
+                )}
+
+                {saveChangesFail && (
+                  <ErrorAlert
+                    styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
+                    setShowAlert={setFailChangesFail}
+                    title='profile:save-failed'
                   />
                 )}
 
@@ -114,6 +125,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       secondaryEmails={userData.secondaryEmails}
                       userSecondaryEmails={userSecondaryEmails}
                       setUserPrimaryEmail={setUserPrimaryEmail}
+                      setDeleteEmailList={setDeleteEmailList}
                       userPrimaryEmail={userPrimaryEmail}
                       setEmailChange={setEmailChange}
                       primaryEmail={userData.email}
@@ -147,6 +159,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       if (file) {
                         setFile(null)
                       }
+                      setDeleteEmailList([])
                       setEmailChange(false)
                     }}
                   />

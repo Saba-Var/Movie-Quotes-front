@@ -29,3 +29,10 @@ export const changePrimaryEmail = (
 ): Promise<AxiosResponse<changePrimaryEmailRes>> => {
   return axios.put('/change-primary-email', { email, id })
 }
+
+export const deleteEmail = (
+  email: string,
+  id: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.delete(`/delete-secondary-email?id=${id}&email=${email}`)
+}

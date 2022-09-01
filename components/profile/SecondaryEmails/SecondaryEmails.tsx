@@ -4,11 +4,12 @@ import { InfoIcon } from 'components'
 
 const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
   const {
-    email,
-    setUserPrimaryEmail,
-    setEmailChange,
-    userPrimaryEmail,
     setUserSecondaryEmails,
+    userSecondaryEmails,
+    setUserPrimaryEmail,
+    setDeleteEmailList,
+    setEmailChange,
+    email,
   } = props
 
   const { t, tooltip, setTooltip } = useSecondaryEmails()
@@ -72,7 +73,16 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
 
           <div className='w-[1px] bg-gray-600'></div>
 
-          <p className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'>
+          <p
+            onClick={() => {
+              setEmailChange(true)
+              setDeleteEmailList((prev) => [...prev, email.email])
+              setUserSecondaryEmails(
+                userSecondaryEmails.filter((el) => el._id !== email._id)
+              )
+            }}
+            className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'
+          >
             {t('profile:remove')}
           </p>
         </div>

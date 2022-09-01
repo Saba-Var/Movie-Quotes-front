@@ -7,6 +7,7 @@ const Emails: React.FC<EmailsProps> = (props) => {
     setUserSecondaryEmails,
     setUserPrimaryEmail,
     userSecondaryEmails,
+    setDeleteEmailList,
     userPrimaryEmail,
     secondaryEmails,
     setEmailChange,
@@ -38,6 +39,8 @@ const Emails: React.FC<EmailsProps> = (props) => {
             <SecondaryEmails
               setUserSecondaryEmails={setUserSecondaryEmails}
               setUserPrimaryEmail={setUserPrimaryEmail}
+              userSecondaryEmails={userSecondaryEmails}
+              setDeleteEmailList={setDeleteEmailList}
               userPrimaryEmail={userPrimaryEmail}
               setEmailChange={setEmailChange}
               key={email._id}

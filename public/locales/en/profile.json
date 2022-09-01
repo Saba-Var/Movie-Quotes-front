@@ -12,5 +12,6 @@
   "add-email": "Add new email",
   "password-contain": "Passwords should contain",
   "password-min": "8 or more characters",
-  "password-max": "max 15 lowercase character"
+  "password-max": "max 15 lowercase character",
+  "save-failed": "Save changes failed"
 }
