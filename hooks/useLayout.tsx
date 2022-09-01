@@ -1,4 +1,3 @@
-import axios, { getUserDetails, getUserNotifications } from 'services'
 import { useNewsFeed, useSockets } from 'hooks'
 import { UserData, Notification } from 'types'
 import { useTranslation } from 'next-i18next'
@@ -6,6 +5,11 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getToken } from 'helpers'
+import axios, {
+  secondaryEmailActivation,
+  getUserNotifications,
+  getUserDetails,
+} from 'services'
 
 const useLayout = () => {
   const [notificationFetchFail, setNotificationFetchFail] = useState(false)
@@ -37,6 +41,30 @@ const useLayout = () => {
       setUserData((prev) => {
         const updatedData = Object.create(prev)
         updatedData.name = username
+        return updatedData
+      })
+    })
+  }, [socket, userData])
+
+  useEffect(() => {
+    socket.on('SEND_VERIFIED_SECONDARY_EMAIL', (verifiedEmail) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+
+        updatedData.secondaryEmails = updatedData.secondaryEmails.map(
+          (email: { email: string; _id: string }) => {
+            if (email.email === verifiedEmail) {
+              return {
+                email: verifiedEmail,
+                verified: true,
+                _id: email._id,
+              }
+            } else {
+              return email
+            }
+          }
+        )
+
         return updatedData
       })
     })
@@ -160,6 +188,29 @@ const useLayout = () => {
 
     fetchNotifications()
   }, [page, userData._id])
+
+  useEffect(() => {
+    const secondaryEmailVerification = async () => {
+      try {
+        if (typeof router.query.secondaryEmailVerificationToken === 'string') {
+          const response = await secondaryEmailActivation(
+            router.query.secondaryEmailVerificationToken,
+            userData._id
+          )
+
+          if (response.status === 200) {
+            socket.emit('VERIFY_SECONDARY_EMAIL', router.query.email)
+          }
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (router.query.secondaryEmailVerificationToken && userData._id) {
+      secondaryEmailVerification()
+    }
+  }, [router.query.secondaryEmailVerificationToken, userData._id])
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 

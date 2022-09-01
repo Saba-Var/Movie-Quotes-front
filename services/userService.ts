@@ -43,3 +43,12 @@ export const addSecondaryEmail = (
 ): Promise<AxiosResponse<Status>> => {
   return axios.post('/secondary-email', { email, id })
 }
+
+export const secondaryEmailActivation = (
+  secondaryEmailVerificationToken: string,
+  id: string
+): Promise<AxiosResponse<Status>> => {
+  return axios.put(
+    `/verify-secondary-email?id=${id}&secondaryEmailVerificationToken=${secondaryEmailVerificationToken}`
+  )
+}
