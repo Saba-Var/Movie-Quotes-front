@@ -1,4 +1,5 @@
 export * from './ProfileFormWrapper'
+export * from './VerificationAlert'
 export * from './GoogleUserProfile'
 export * from './SecondaryEmails'
 export * from './UserProfile'

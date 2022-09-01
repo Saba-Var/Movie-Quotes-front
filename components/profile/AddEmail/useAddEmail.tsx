@@ -8,6 +8,7 @@ export const useAddEmail = (
   userId: string,
   setAddEmailModal: SetState<boolean>
 ) => {
+  const [verificationAlert, setVerificationAlert] = useState(false)
   const [fetchError, setFetchError] = useState(false)
 
   const { socket } = useSockets()
@@ -22,6 +23,7 @@ export const useAddEmail = (
 
       if (response.status === 201) {
         socket.emit('ADD_SECONDARY_EMAIL', response.data)
+        setVerificationAlert(true)
         setAddEmailModal(false)
       }
     } catch (error) {
@@ -30,5 +32,11 @@ export const useAddEmail = (
     }
   }
 
-  return { t, submitHandler, fetchError }
+  return {
+    setVerificationAlert,
+    verificationAlert,
+    submitHandler,
+    fetchError,
+    t,
+  }
 }

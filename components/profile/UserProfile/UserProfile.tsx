@@ -51,9 +51,11 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 
   return (
     <div className='text-white'>
-      {addEmailModal && (
-        <AddEmail userId={userData._id} setAddEmailModal={setAddEmailModal} />
-      )}
+      <AddEmail
+        setAddEmailModal={setAddEmailModal}
+        addEmailModal={addEmailModal}
+        userId={userData._id}
+      />
 
       {userData.name && (
         <Formik

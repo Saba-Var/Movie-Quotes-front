@@ -15,5 +15,7 @@
   "password-max": "max 15 lowercase character",
   "save-failed": "Save changes failed",
   "add": "Add",
-  "enter-new-email": "Enter new email"
+  "enter-new-email": "Enter new email",
+  "simple-alert": "A simple alert—check it out!",
+  "check-email": "Please check email to verify new address"
 }
