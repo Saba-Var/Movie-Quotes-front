@@ -17,5 +17,6 @@
   "add": "Add",
   "enter-new-email": "Enter new email",
   "simple-alert": "A simple alert—check it out!",
-  "check-email": "Please check email to verify new address"
+  "check-email": "Please check email to verify new address",
+  "email-activation-fail": "Email activation failed"
 }

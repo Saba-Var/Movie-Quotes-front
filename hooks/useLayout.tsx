@@ -14,6 +14,7 @@ import axios, {
 const useLayout = () => {
   const [notificationFetchFail, setNotificationFetchFail] = useState(false)
   const [hasMoreNotifications, setHasMoreNotifications] = useState(false)
+  const [secondaryEmailError, setSecondaryEmailError] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [mobileSearchMode, setMobileSearchMode] = useState(false)
   const [userDataFail, setUserDataFail] = useState(false)
@@ -203,26 +204,33 @@ const useLayout = () => {
           }
         }
       } catch (error) {
-        console.log(error)
+        setSecondaryEmailError(true)
       }
     }
 
     if (router.query.secondaryEmailVerificationToken && userData._id) {
       secondaryEmailVerification()
     }
-  }, [router.query.secondaryEmailVerificationToken, userData._id])
+  }, [
+    router.query.secondaryEmailVerificationToken,
+    router.query.email,
+    userData._id,
+    socket,
+  ])
 
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
   return {
     setNotificationFetchFail,
     setNewNotificationCount,
+    setSecondaryEmailError,
     notificationFetchFail,
     setShowNotifications,
     hasMoreNotifications,
     setNotificationsList,
     newNotificationCount,
     setMobileSearchMode,
+    secondaryEmailError,
     notificationsList,
     showNotifications,
     mobileSearchMode,

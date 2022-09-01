@@ -4,10 +4,18 @@ import { useLayout } from 'hooks'
 
 const useProfile = () => {
   const { data: session } = useSession()
-  const { userData, setUserData } = useLayout()
   const { t } = useTranslation()
+  const { userData, setUserData, setSecondaryEmailError, secondaryEmailError } =
+    useLayout()
 
-  return { t, session, userData, setUserData }
+  return {
+    setSecondaryEmailError,
+    secondaryEmailError,
+    setUserData,
+    userData,
+    session,
+    t,
+  }
 }
 
 export default useProfile

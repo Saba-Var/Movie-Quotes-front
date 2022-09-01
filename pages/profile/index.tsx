@@ -5,17 +5,33 @@ import {
   ProfileFormWrapper,
   GoogleUserProfile,
   UserProfile,
+  ErrorAlert,
   Layout,
 } from 'components'
 
 const Profile = () => {
-  const { t, session, userData, setUserData } = useProfile()
+  const {
+    setSecondaryEmailError,
+    secondaryEmailError,
+    setUserData,
+    userData,
+    session,
+    t,
+  } = useProfile()
 
   return (
     <div className='mt-4 h-full pb-24'>
       <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo'>
         {t('profile:my-profile')}
       </p>
+
+      {secondaryEmailError && (
+        <ErrorAlert
+          styles='left-1/2 !-translate-x-1/2 1xl:left-[63%] xl:!left-[48%]'
+          setShowAlert={setSecondaryEmailError}
+          title='profile:email-activation-fail'
+        />
+      )}
 
       <ProfileFormWrapper>
         {session ? (
