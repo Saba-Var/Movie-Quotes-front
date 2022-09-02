@@ -28,7 +28,14 @@ export type LogInData = {
   email: string
 }
 
+export type SecondaryEmails = {
+  _id: string
+  email: string
+  verified: boolean
+}[]
+
 export type UserData = {
+  secondaryEmails?: SecondaryEmails
   image?: string
   email: string
   name: string
@@ -141,4 +148,10 @@ export type NotificationPaginationData = {
     hasMoreNotifications: boolean
   }
   newNotificationCount: number
+}
+
+export type FormProperties = {
+  setFieldError: (field: string, message: string) => void
+  setFieldValue: (field: string, value: string) => void
+  resetForm: () => void
 }

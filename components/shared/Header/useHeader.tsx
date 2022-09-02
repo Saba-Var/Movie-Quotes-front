@@ -22,6 +22,7 @@ export const useHeader = () => {
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
       deleteCookie('token')
+      localStorage.removeItem('passwordLength')
       router.push(callBackUri)
     }
 

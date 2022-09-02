@@ -1,4 +1,5 @@
 export * from './news-feed'
+export * from './profile'
 export * from './landing'
 export * from './shared'
 export * from './movies'

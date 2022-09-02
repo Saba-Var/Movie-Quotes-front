@@ -159,3 +159,45 @@ export const addQuoteSchema = Yup.object({
       })
     }),
 })
+
+export const usernameFormSchema = Yup.object({
+  username: Yup.string()
+    .required('name-required')
+    .min(3, 'name-min')
+    .max(20, 'max-char-20')
+    .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
+})
+
+export const userProfileSchema = Yup.object({
+  username: Yup.string()
+    .required('name-required')
+    .min(3, 'name-min')
+    .max(20, 'max-char-20')
+    .matches(/^[a-z0-9\s]+$/g, 'lower-required'),
+
+  password: Yup.string()
+    .trim()
+    .matches(/^[a-z0-9]+$/g, 'lower-required')
+    .required('password-required')
+    .max(15, 'max-char')
+    .min(8, 'password-min')
+    .max(15, 'max-char'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'password-match')
+    .required('confirmPassword-required'),
+})
+
+export const passwordFormSchema = Yup.object({
+  password: Yup.string()
+    .trim()
+    .matches(/^[a-z0-9]+$/g, 'lower-required')
+    .required('password-required')
+    .max(15, 'max-char')
+    .min(8, 'password-min')
+    .max(15, 'max-char'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'password-match')
+    .required('confirmPassword-required'),
+})

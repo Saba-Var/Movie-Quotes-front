@@ -1,0 +1,22 @@
+{
+  "my-profile": "My profile",
+  "upload-new-photo": "Upload new photo",
+  "save-changes": "Save changes",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "user-image-error": "User image could not be uploaded",
+  "tooltip-info": "Please verify new email address",
+  "remove": "Remove",
+  "not-verified": "Not verified",
+  "make-primary": "Make primary",
+  "add-email": "Add new email",
+  "password-contain": "Passwords should contain",
+  "password-min": "8 or more characters",
+  "password-max": "max 15 lowercase character",
+  "save-failed": "Save changes failed",
+  "add": "Add",
+  "enter-new-email": "Enter new email",
+  "simple-alert": "A simple alert—check it out!",
+  "check-email": "Please check email to verify new address",
+  "email-activation-fail": "Email activation failed"
+}

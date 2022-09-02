@@ -1,4 +1,3 @@
-import axios, { getUserDetails, getUserNotifications } from 'services'
 import { useNewsFeed, useSockets } from 'hooks'
 import { UserData, Notification } from 'types'
 import { useTranslation } from 'next-i18next'
@@ -6,10 +5,16 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getToken } from 'helpers'
+import axios, {
+  secondaryEmailActivation,
+  getUserNotifications,
+  getUserDetails,
+} from 'services'
 
 const useLayout = () => {
   const [notificationFetchFail, setNotificationFetchFail] = useState(false)
   const [hasMoreNotifications, setHasMoreNotifications] = useState(false)
+  const [secondaryEmailError, setSecondaryEmailError] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [mobileSearchMode, setMobileSearchMode] = useState(false)
   const [userDataFail, setUserDataFail] = useState(false)
@@ -23,6 +28,7 @@ const useLayout = () => {
     email: '',
     name: '',
     _id: '',
+    secondaryEmails: [],
   })
 
   const { setShowSideMenu, showSideMenu } = useNewsFeed()
@@ -30,6 +36,87 @@ const useLayout = () => {
   const { socket } = useSockets()
   const { t } = useTranslation()
   const router = useRouter()
+
+  useEffect(() => {
+    socket.on('SEND_NEW_USERNAME', (username) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+        updatedData.name = username
+        return updatedData
+      })
+    })
+  }, [socket, userData])
+
+  useEffect(() => {
+    socket.on('SEND_VERIFIED_SECONDARY_EMAIL', (verifiedEmail) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+
+        updatedData.secondaryEmails = updatedData.secondaryEmails.map(
+          (email: { email: string; _id: string }) => {
+            if (email.email === verifiedEmail) {
+              return {
+                email: verifiedEmail,
+                verified: true,
+                _id: email._id,
+              }
+            } else {
+              return email
+            }
+          }
+        )
+
+        return updatedData
+      })
+    })
+  }, [socket, userData])
+
+  socket.on('SEND_NEW_PRIMARY_EMAIL', (userPrimaryEmail, newSecondaryEmail) => {
+    setUserData((prev) => {
+      const updatedData = Object.create(prev)
+      updatedData.email = userPrimaryEmail
+      updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
+        (email: { email: string }) =>
+          email.email !== userPrimaryEmail &&
+          email.email !== newSecondaryEmail.email
+      )
+
+      updatedData.secondaryEmails.push(newSecondaryEmail)
+      return updatedData
+    })
+  })
+
+  const emailSetter = (newEmail: string, emailObject?: boolean) => {
+    return setUserData((prev) => {
+      const updatedData = Object.create(prev)
+      updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
+        (email: { email: string }) => email.email !== newEmail
+      )
+
+      if (emailObject) {
+        updatedData.secondaryEmails.unshift(emailObject)
+      }
+      return updatedData
+    })
+  }
+
+  socket.on('SEND_DELETED_EMAIL_IDS', (deletedEmail) => {
+    emailSetter(deletedEmail)
+  })
+
+  socket.on('SEND_SECONDARY_EMAIL', (newSecondaryEmail) => {
+    emailSetter(newSecondaryEmail.email, newSecondaryEmail)
+  })
+
+  useEffect(() => {
+    socket.on('SEND_NEW_IMAGE', (image) => {
+      setUserData((prev) => {
+        const updatedData = Object.create(prev)
+        updatedData.image = image
+        return updatedData
+      })
+    })
+  }, [socket, userData])
 
   useEffect(() => {
     socket.on('SEND_NEW_NOTIFICATION', (newNotification, receiverId) => {
@@ -103,17 +190,47 @@ const useLayout = () => {
     fetchNotifications()
   }, [page, userData._id])
 
+  useEffect(() => {
+    const secondaryEmailVerification = async () => {
+      try {
+        if (typeof router.query.secondaryEmailVerificationToken === 'string') {
+          const response = await secondaryEmailActivation(
+            router.query.secondaryEmailVerificationToken,
+            userData._id
+          )
+
+          if (response.status === 200) {
+            socket.emit('VERIFY_SECONDARY_EMAIL', router.query.email)
+          }
+        }
+      } catch (error) {
+        setSecondaryEmailError(true)
+      }
+    }
+
+    if (router.query.secondaryEmailVerificationToken && userData._id) {
+      secondaryEmailVerification()
+    }
+  }, [
+    router.query.secondaryEmailVerificationToken,
+    router.query.email,
+    userData._id,
+    socket,
+  ])
+
   const imageSrc = `${process.env.NEXT_PUBLIC_API_BASE_URI}/${userData.image}`
 
   return {
     setNotificationFetchFail,
     setNewNotificationCount,
+    setSecondaryEmailError,
     notificationFetchFail,
     setShowNotifications,
     hasMoreNotifications,
     setNotificationsList,
     newNotificationCount,
     setMobileSearchMode,
+    secondaryEmailError,
     notificationsList,
     showNotifications,
     mobileSearchMode,
@@ -121,6 +238,7 @@ const useLayout = () => {
     setUserDataFail,
     showSideMenu,
     userDataFail,
+    setUserData,
     imageSrc,
     userData,
     setPage,
