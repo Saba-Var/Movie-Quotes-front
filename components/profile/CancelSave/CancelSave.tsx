@@ -1,6 +1,6 @@
 import { useCancelSave } from './useCancelSave'
 import { CancelSaveProps } from './types.d'
-import { Button } from 'components/shared'
+import { Button } from 'components'
 
 const CancelSave: React.FC<CancelSaveProps> = (props) => {
   const { saveHandler, cancelHandler, styles } = props
