@@ -1,7 +1,9 @@
 import { activateUserAccount } from 'services'
 import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
+import { getToken } from 'helpers'
 
 export const useLanding = () => {
   const [showRegistrationModal, setRegistrationModal] = useState(false)
@@ -14,12 +16,19 @@ export const useLanding = () => {
 
   const [disappear, setDisappear] = useState(false)
 
-  const { query } = useRouter()
+  const { data: session } = useSession()
+  const router = useRouter()
 
   useEffect(() => {
+    const loggedUserToken = getToken(session)
+
+    if (loggedUserToken !== '') {
+      router.push(`/${router.locale}/news-feed`)
+    }
+
     const activateAccount = async () => {
       try {
-        const { token } = query
+        const { token } = router.query
 
         if (typeof token === 'string') {
           const { status } = await activateUserAccount({
@@ -37,8 +46,10 @@ export const useLanding = () => {
       }
     }
 
-    activateAccount()
-  }, [query])
+    if (router.query.token) {
+      activateAccount()
+    }
+  }, [router.query])
 
   return {
     showRegistrationModal,
