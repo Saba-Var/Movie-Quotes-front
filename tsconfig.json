@@ -17,11 +17,6 @@
     "baseUrl": ".",
     "typeRoots": ["./types/globals"]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "components/profile/ProfileFormWrapper"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
