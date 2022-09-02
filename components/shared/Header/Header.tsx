@@ -123,13 +123,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                   <div className='relative cursor-pointer'>
                     <NotificationIcon />
 
-                    {newNotificationCount && newNotificationCount > 0 && (
-                      <div className='bg-medRed flex justify-center items-center -top-[8px] left-[11px] absolute rounded-full h-[23px] w-[23px]'>
-                        <p className='text-white text-base select-none'>
-                          {newNotificationCount}
-                        </p>
-                      </div>
-                    )}
+                    {typeof newNotificationCount === 'number' &&
+                      newNotificationCount > 0 && (
+                        <div className='bg-medRed flex justify-center items-center -top-[8px] left-[11px] absolute rounded-full h-[23px] w-[23px]'>
+                          <p className='text-white text-base select-none'>
+                            {newNotificationCount}
+                          </p>
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>

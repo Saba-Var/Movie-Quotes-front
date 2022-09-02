@@ -31,9 +31,9 @@ const Notifications: React.FC<NotificationsProps> = (props) => {
       )}
 
       <div
-        className={`fixed animate-fade-in top-16 right-[33px] 1xl:right-[249px] ${
-          !englishLan && '1xl:right-[299px] 3xl:!right-[290px]'
-        } 3xl:!right-[242px] md:right-[41px] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[50px] border-b-formModalBlue`}
+        className={`fixed animate-fade-in top-16 right-[33px] 1xl:right-[250px] 3xl:!right-[242px] md:right-[41px] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[50px] border-b-formModalBlue ${
+          !englishLan && '1xl:right-[252px] 3xl:!right-[290px]'
+        }`}
       ></div>
 
       {notificationFetchFail && (
