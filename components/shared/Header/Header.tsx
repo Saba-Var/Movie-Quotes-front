@@ -142,7 +142,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               onClick={() => setShowSelector(!showSelector)}
             >
               <p className='text-base text-white cursor-pointer select-none'>
-                {language}
+                {language === 'Eng' ? 'Eng' : 'ქარ'}
               </p>
               <SelectorArrow isSelected={showSelector} />
             </div>
@@ -158,7 +158,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     onClick={() => languageChangeHandler(t('common:Eng'))}
                     className='text-base text-white hover:scale-110 transition-transform'
                   >
-                    {t('common:English')}
+                    English
                   </a>
                 </Link>
 
@@ -167,7 +167,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     onClick={() => languageChangeHandler(t('common:Geo'))}
                     className='text-base text-white hover:scale-110 transition-transform'
                   >
-                    {t('common:Georgian')}
+                    ქართული
                   </a>
                 </Link>
               </div>
