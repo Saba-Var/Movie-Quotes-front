@@ -5,7 +5,7 @@ import { SetState } from 'types'
 const userImageUpload = async (
   socket: Socket,
   file: File,
-  setFile: SetState<null | File>,
+  setFile: SetState<File | null>,
   userId: string,
   disableInput: boolean,
   setDisableInput: SetState<boolean>,

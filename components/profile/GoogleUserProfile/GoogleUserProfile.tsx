@@ -40,7 +40,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
         >
           {(form) => {
             return (
-              <Form className='relative pt-10 1xl:pt-44'>
+              <Form className='relative pt-10 1xl:!pt-18'>
                 {imageFetchError && (
                   <ErrorAlert
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
@@ -61,11 +61,11 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                 </div>
 
                 <div>
-                  <div className='h-[94px] relative mx-auto max-w-[480px] mb-12'>
+                  <div className='h-[94px] mt-10 1xl:mt-0 relative mx-auto max-w-[480px] 1xl:mb-12'>
                     <AuthInputField
                       styles='profileInputStyles'
                       placeholder={userData.name}
-                      disabled={disableUsername}
+                      disabled={true}
                       name='username'
                       profile='yes'
                       type='text'
@@ -73,9 +73,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
 
                     {disableUsername && (
                       <EditInput
-                        clickHandler={() => {
-                          setDisableUsername(false)
-                        }}
+                        clickHandler={() => setDisableUsername(false)}
                         text={t('profile:edit')}
                         styles='!right-0'
                       />

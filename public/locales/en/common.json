@@ -10,7 +10,7 @@
   "required-field": "This field is required",
   "enter-georgian": "Enter Georgian characters",
   "enter-english": "Enter English characters",
-  "upload-image": "Upload image",
+  "upload-image": "Upload only image",
   "drag-drop-image": "Drag & drop your image here or",
   "choose-file": "Choose file",
   "budget-min": "You can't Enter less than 0",

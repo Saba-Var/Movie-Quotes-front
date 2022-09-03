@@ -242,6 +242,7 @@ const useLayout = () => {
     imageSrc,
     userData,
     setPage,
+    router,
     page,
     t,
   }
