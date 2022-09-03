@@ -1,6 +1,6 @@
 import { activateUserAccount } from 'services'
-import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 import { getToken } from 'helpers'
@@ -8,12 +8,10 @@ import { getToken } from 'helpers'
 export const useLanding = () => {
   const [showRegistrationModal, setRegistrationModal] = useState(false)
   const [showActivatedModal, setShowActivatedModal] = useState(false)
-  const [emailForm, setEmailForm] = useState(false)
-
   const [showPopupModal, setShowPopupModal] = useState(false)
   const [activationFail, setActivationFail] = useState(false)
   const [showLogIn, setShowLogIn] = useState(false)
-
+  const [emailForm, setEmailForm] = useState(false)
   const [disappear, setDisappear] = useState(false)
 
   const { data: session } = useSession()
@@ -32,7 +30,7 @@ export const useLanding = () => {
 
         if (typeof token === 'string') {
           const { status } = await activateUserAccount({
-            token: token,
+            token,
           })
 
           if (status === 200) {
@@ -49,7 +47,7 @@ export const useLanding = () => {
     if (router.query.token) {
       activateAccount()
     }
-  }, [router.query])
+  }, [router, router.query, session])
 
   return {
     showRegistrationModal,

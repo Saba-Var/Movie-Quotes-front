@@ -1,12 +1,12 @@
 import { FormProperties, SecondaryEmails, UserData } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import { userImageUpload } from 'helpers'
 import { useSockets } from 'hooks'
 import {
   changePrimaryEmail,
   changeUsername,
   changePassword,
-  imageUpload,
   deleteEmail,
 } from 'services'
 
@@ -47,29 +47,6 @@ export const useUserProfile = (
   const { t } = useTranslation()
 
   const clickHandler = async () => {
-    const imageUploadHandler = async () => {
-      try {
-        const formData = new FormData()
-        formData.append('image', file!)
-        formData.append('id', userData._id)
-
-        const response = await imageUpload('user', formData)
-
-        if (response.status === 201) {
-          socket.emit('UPLOAD_USER_IMAGE', response.data)
-          if (disableUsername) {
-            setDisableUsername(true)
-          }
-          setFile(null)
-          if (typeError) {
-            setTypeError(false)
-          }
-        }
-      } catch (error) {
-        setImageFetchError(true)
-      }
-    }
-
     const primaryEmailChange = async () => {
       try {
         const response = await changePrimaryEmail(
@@ -104,7 +81,17 @@ export const useUserProfile = (
     }
 
     if (file) {
-      imageUploadHandler()
+      userImageUpload(
+        socket,
+        file,
+        setFile,
+        userData._id,
+        disableUsername,
+        setDisableUsername,
+        typeError,
+        setTypeError,
+        setImageFetchError
+      )
     }
 
     if (deleteEmailList.length > 0) {

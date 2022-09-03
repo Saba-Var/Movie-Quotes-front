@@ -1,5 +1,6 @@
-import { changeUsername, imageUpload } from 'services'
 import { useTranslation } from 'next-i18next'
+import { userImageUpload } from 'helpers'
+import { changeUsername } from 'services'
 import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
@@ -16,27 +17,18 @@ export const useGoogleUserProfile = (userId: string) => {
   const { t } = useTranslation()
 
   const uploadUserImage = async () => {
-    try {
-      if (file) {
-        const formData = new FormData()
-        formData.append('image', file)
-        formData.append('id', userId)
-
-        const response = await imageUpload('user', formData)
-
-        if (response.status === 201) {
-          socket.emit('UPLOAD_USER_IMAGE', response.data)
-          if (disableUsername) {
-            setDisableUsername(true)
-          }
-          setFile(null)
-          if (typeError) {
-            setTypeError(false)
-          }
-        }
-      }
-    } catch (error) {
-      setImageFetchError(true)
+    if (file) {
+      userImageUpload(
+        socket,
+        file,
+        setFile,
+        userId,
+        disableUsername,
+        setDisableUsername,
+        typeError,
+        setTypeError,
+        setImageFetchError
+      )
     }
   }
 
