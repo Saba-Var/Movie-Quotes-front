@@ -21,7 +21,7 @@ const Profile = () => {
 
   return (
     <div className='mt-4 h-full pb-24'>
-      <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo'>
+      <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo hidden 1xl:block'>
         {t('profile:my-profile')}
       </p>
 

@@ -7,9 +7,9 @@ const ProfileFormWrapper: React.FC<ProfileFormWrapperProps> = (props) => {
 
   return (
     <div
-      className={`bg-formModalBlue pt-48 mt-32 rounded-xl hidden ${
+      className={`bg-backgroundGray mt-14 !w-full 1xl:bg-formModalBlue 1xl:pt-48 1xl:mt-32 1xl:rounded-xl ${
         session && 'px-[10%]'
-      } 2xl:mx-[10%] 1xl:block w-[94%] 2xl:w-[998px] pb-20`}
+      } 2xl:mx-[10%] 1xl:block !1xl:w-[94%] 2xl:!w-[998px] pb-20`}
     >
       {children}
     </div>

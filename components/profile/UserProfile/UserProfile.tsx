@@ -112,6 +112,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       <AuthInputField
                         noValidate={disableUsername}
                         placeholder={userData.name}
+                        styles='profileInputStyles'
                         disabled={disableUsername}
                         name='username'
                         profile='yes'

@@ -40,7 +40,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
         >
           {(form) => {
             return (
-              <Form className='relative'>
+              <Form className='relative pt-10 1xl:pt-44'>
                 {imageFetchError && (
                   <ErrorAlert
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
@@ -49,7 +49,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                   />
                 )}
 
-                <div className='absolute right-1/2 translate-x-1/2 -top-[270px]'>
+                <div className='1xl:absolute flex mx-auto w-fit right-1/2 1xl:translate-x-1/2  1xl:-top-[270px]'>
                   <PhotoUpload
                     userImageSrc={userData.image}
                     setTypeError={setTypeError}
@@ -63,6 +63,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                 <div>
                   <div className='h-[94px] relative mx-auto max-w-[480px] mb-12'>
                     <AuthInputField
+                      styles='profileInputStyles'
                       placeholder={userData.name}
                       disabled={disableUsername}
                       name='username'
@@ -76,15 +77,17 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                           setDisableUsername(false)
                         }}
                         text={t('profile:edit')}
+                        styles='!right-0'
                       />
                     )}
                   </div>
 
-                  <div className='h-[1px] bg-gray-700 mx-auto max-w-[480px] mb-12'></div>
+                  <div className='h-[1px] hidden 1xl:block bg-gray-700 mx-auto max-w-[480px] mb-12'></div>
 
                   <div className='h-[94px] mx-auto max-w-[480px]'>
                     <AuthInputField
                       placeholder={userData.email}
+                      styles='profileInputStyles'
                       disabled={true}
                       profile='yes'
                       name='email'
@@ -93,19 +96,21 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                   </div>
                 </div>
 
-                {(!disableUsername || file) && (
-                  <CancelSave
-                    saveHandler={uploadUserImage}
-                    cancelHandler={() => {
-                      setDisableUsername(true)
-                      form.resetForm()
-                      form.setFieldValue('username', userData.name)
-                      if (file) {
-                        setFile(null)
-                      }
-                    }}
-                  />
-                )}
+                <div className='hidden 1xl:block'>
+                  {(!disableUsername || file) && (
+                    <CancelSave
+                      saveHandler={uploadUserImage}
+                      cancelHandler={() => {
+                        setDisableUsername(true)
+                        form.resetForm()
+                        form.setFieldValue('username', userData.name)
+                        if (file) {
+                          setFile(null)
+                        }
+                      }}
+                    />
+                  )}
+                </div>
               </Form>
             )
           }}

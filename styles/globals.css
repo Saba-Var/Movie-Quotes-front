@@ -8,6 +8,10 @@
   body {
     @apply bg-background;
   }
+
+  .profileInputStyles {
+    @apply !bg-transparent !rounded-none 1xl:!rounded 1xl:!bg-inputGray pb-4 1xl:pb-0 !pl-0 1xl:!pl-3 pr-7 !text-white 1xl:!text-inputBlack !text-lg 1xl:!text-base !border-b 1xl:!border 1xl:!border-transparent !border-b-gray-600;
+  }
 }
 
 @font-face {
