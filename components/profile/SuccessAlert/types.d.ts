@@ -1,7 +1,7 @@
 import { SetState } from 'types'
 
-export type VerificationAlertProps = {
-  setVerificationAlert: SetState<boolean>
+export type SuccessAlertProps = {
+  setSuccessAlert: SetState<boolean>
   instructions?: string
   headerText: string
 }

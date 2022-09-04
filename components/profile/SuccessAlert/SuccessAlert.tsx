@@ -1,8 +1,8 @@
-import { VerificationAlertProps } from './types.d'
+import { SuccessAlertProps } from './types'
 import { CheckIcon, CloseIcon } from 'components/icons'
 
-const VerificationAlert: React.FC<VerificationAlertProps> = (props) => {
-  const { headerText, setVerificationAlert, instructions } = props
+const SuccessAlert: React.FC<SuccessAlertProps> = (props) => {
+  const { headerText, setSuccessAlert, instructions } = props
 
   return (
     <div className='p-4 z-[99999] animate-scale-up rounded fixed bg-lightGreen right-[1%] top-[15%] xl:right-[18%] xl:top-[12%]'>
@@ -15,7 +15,7 @@ const VerificationAlert: React.FC<VerificationAlertProps> = (props) => {
         </div>
 
         <div
-          onClick={() => setVerificationAlert(false)}
+          onClick={() => setSuccessAlert(false)}
           className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
         >
           <CloseIcon fill='#69746f' styles='w-[18px] h-[18px]' noStyle={true} />
@@ -29,4 +29,4 @@ const VerificationAlert: React.FC<VerificationAlertProps> = (props) => {
   )
 }
 
-export default VerificationAlert
+export default SuccessAlert

@@ -1,4 +1,4 @@
-import { AuthInputField, Button, VerificationAlert } from 'components'
+import { AuthInputField, Button, SuccessAlert } from 'components'
 import { useAddEmail } from './useAddEmail'
 import { AddEmailProps } from './types.d'
 import { emailFormSchema } from 'schemas'
@@ -7,21 +7,16 @@ import { Form, Formik } from 'formik'
 const AddEmail: React.FC<AddEmailProps> = (props) => {
   const { userId, setAddEmailModal, addEmailModal } = props
 
-  const {
-    setVerificationAlert,
-    verificationAlert,
-    submitHandler,
-    fetchError,
-    t,
-  } = useAddEmail(userId, setAddEmailModal)
+  const { setSuccessAlert, successAlert, submitHandler, fetchError, t } =
+    useAddEmail(userId, setAddEmailModal)
 
   return (
     <>
-      {verificationAlert && (
-        <VerificationAlert
-          setVerificationAlert={setVerificationAlert}
+      {successAlert && (
+        <SuccessAlert
           instructions={t('profile:check-email')}
           headerText={t('profile:simple-alert')}
+          setSuccessAlert={setSuccessAlert}
         />
       )}
 
