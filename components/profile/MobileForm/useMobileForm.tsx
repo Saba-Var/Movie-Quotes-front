@@ -1,6 +1,8 @@
 import { FormProperties, SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
+import { useSession } from 'next-auth/react'
 import { changeUsername } from 'services'
+import { useRouter } from 'next/router'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
 
@@ -14,8 +16,14 @@ export const useMobileForm = (
   const [duplicateUsernameError, setDuplicateUsernameError] = useState('')
   const [saveChangesModal, setSaveChangesModal] = useState(false)
 
+  const { data: session } = useSession()
+  const { back } = useRouter()
   const { socket } = useSockets()
   const { t } = useTranslation()
+
+  const navigateBack = () => {
+    back()
+  }
 
   const submitHandler = async (
     form: { username: string },
@@ -64,6 +72,8 @@ export const useMobileForm = (
     setSaveChangesModal,
     saveChangesModal,
     submitHandler,
+    navigateBack,
+    session,
     t,
   }
 }

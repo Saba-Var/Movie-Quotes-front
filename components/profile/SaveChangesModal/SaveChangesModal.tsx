@@ -28,7 +28,7 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
     <div>
       <div className='bg-background overflow-hidden top-0 bg-opacity-70 fixed w-screen h-screen'></div>
 
-      <div className='fixed z-[9999] w-full animate-scale-up'>
+      <div className='fixed z-[9999] top-20 pt-14 bg-background w-full animate-scale-up'>
         <div className='w-[90%] bg-gradient-to-br border border-background from-darkBlack to-darkGray mx-auto rounded-xl h-52'>
           <p className='text-center pt-[68px] pb-11 border-b border-b-gray-700 font-Helvetica-Neue-Geo text-lg'>
             {t('profile:make-changes')}

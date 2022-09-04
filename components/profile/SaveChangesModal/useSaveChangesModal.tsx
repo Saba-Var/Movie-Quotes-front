@@ -1,7 +1,7 @@
+import { SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { imageUpload } from 'services'
 import { useSockets } from 'hooks'
-import { SetState, UpdatedList } from 'types'
 
 export const useSaveChangesModal = (
   setFile: SetState<File | null> | undefined,

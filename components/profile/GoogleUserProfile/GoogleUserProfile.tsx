@@ -85,8 +85,8 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                   {!disableUsername && (
                     <div className='1xl:hidden'>
                       <MobileForm
-                        setUpdateList={setUpdatedList}
                         setFieldValue={form.setFieldValue}
+                        setUpdateList={setUpdatedList}
                         closeForm={setDisableUsername}
                         userId={userData._id}
                         setFile={setFile}

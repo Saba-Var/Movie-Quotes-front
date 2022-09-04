@@ -1,4 +1,4 @@
-import { FormProperties, SecondaryEmails, UserData } from 'types'
+import { FormProperties, SecondaryEmails, UpdatedList, UserData } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { userImageUpload } from 'helpers'
@@ -31,6 +31,7 @@ export const useUserProfile = (
   const [file, setFile] = useState<File | null>(null)
 
   const [deleteEmailList, setDeleteEmailList] = useState<string[]>([])
+  const [updatedList, setUpdatedList] = useState<UpdatedList>([])
   const [userSecondaryEmails, setUserSecondaryEmails] =
     useState<SecondaryEmails>([])
 
@@ -90,7 +91,8 @@ export const useUserProfile = (
         setDisableUsername,
         typeError,
         setTypeError,
-        setImageFetchError
+        setImageFetchError,
+        setUpdatedList
       )
     }
 
@@ -114,8 +116,16 @@ export const useUserProfile = (
         const response = await changeUsername(form.username, userData._id)
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
-          setFieldValue('username', form.username)
+
+          setUpdatedList((prev) => [
+            { id: new Date().toISOString(), type: 'username-updated' },
+            ...prev,
+          ])
+
           setDisableUsername(true)
+          resetForm()
+
+          setFieldValue('username', form.username)
         }
       }
 
@@ -127,10 +137,9 @@ export const useUserProfile = (
           setPasswordLength(form.password?.length!)
           setFieldValue('confirmPassword', '')
           setFieldValue('password', '')
+          resetForm()
         }
       }
-
-      resetForm()
     } catch (error: any) {
       if (error.response.data.message.includes('username')) {
         setFieldError('username', 'duplicate-username')
@@ -158,12 +167,14 @@ export const useUserProfile = (
     imageFetchError,
     disablePassword,
     passwordLength,
+    setUpdatedList,
     setEmailChange,
     duplicateError,
     submitHandler,
     addEmailModal,
     setTypeError,
     clickHandler,
+    updatedList,
     emailChange,
     typeError,
     setFile,

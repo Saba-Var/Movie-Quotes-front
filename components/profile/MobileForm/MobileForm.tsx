@@ -1,4 +1,9 @@
-import { SaveChangesModal, AuthInputField, CancelSave } from 'components'
+import {
+  SaveChangesModal,
+  AuthInputField,
+  CancelSave,
+  BackArrow,
+} from 'components'
 import { useMobileForm } from './useMobileForm'
 import { MobileFormProps } from './types.d'
 import { Form, Formik } from 'formik'
@@ -24,11 +29,23 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
     setSaveChangesModal,
     saveChangesModal,
     submitHandler,
+    navigateBack,
+    session,
     t,
   } = useMobileForm(type, userId, closeForm, setFieldValue, setUpdateList)
 
   return (
-    <div className='fixed w-full bg-background h-screen z-[9] right-0'>
+    <div
+      className={`fixed w-full bg-background h-screen z-[9] right-0 ${
+        !session && 'top-[86px] pt-14'
+      }`}
+    >
+      {!session && (
+        <div onClick={navigateBack}>
+          <BackArrow styles={'w-[18px] h-[18px] !top-[19px] !left-8'} />
+        </div>
+      )}
+
       <Formik
         validateOnBlur={duplicateUsernameError ? false : true}
         validateOnChange={duplicateUsernameError ? false : true}
