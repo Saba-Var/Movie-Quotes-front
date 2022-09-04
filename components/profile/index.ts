@@ -1,6 +1,7 @@
 export * from './ProfileFormWrapper'
 export * from './VerificationAlert'
 export * from './GoogleUserProfile'
+export * from './SaveChangesModal'
 export * from './SecondaryEmails'
 export * from './UserProfile'
 export * from './PhotoUpload'

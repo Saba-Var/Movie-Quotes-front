@@ -13,7 +13,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
 
   return (
     <div>
-      <div className='flex gap-5 1xl:gap-6 items-center mb-10 h-[60px]'>
+      <div className='flex gap-5 1xl:gap-6 items-center mb-10 h-[60px] w-fit'>
         {!userData.image && (
           <p
             className={`text-white animate-fold-out cursor-default h-[60px] w-[60px] bg-slate-600 rounded-full flex justify-center items-center text-3xl pb-1 ${
@@ -26,7 +26,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
 
         {userData.image && (
           <div
-            className={`h-[52px] w-[60px] ${
+            className={`!h-[60px] !w-[60px] ${
               page.includes('profile') && 'border rounded-full border-orange'
             } select-none relative`}
           >
@@ -43,7 +43,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
         )}
 
         <div className='flex flex-col'>
-          <div className='text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl animate-focus-in-text-expand'>
+          <div className='text-white  cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl animate-focus-in-text-expand'>
             {userData.name}
           </div>
           <div

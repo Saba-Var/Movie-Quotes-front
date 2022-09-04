@@ -3,6 +3,7 @@ import { GoogleUserProfileProps } from './types.d'
 import { usernameFormSchema } from 'schemas'
 import { Form, Formik } from 'formik'
 import {
+  SaveChangesModal,
   AuthInputField,
   PhotoUpload,
   CancelSave,
@@ -31,6 +32,19 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
 
   return (
     <div className='text-white'>
+      {file && (
+        <div className='fixed 1xl:hidden w-full bg-background h-screen z-[9] right-0'>
+          <SaveChangesModal
+            setImageFetchError={setImageFetchError}
+            setTypeError={setTypeError}
+            userId={userData._id}
+            typeError={typeError}
+            setFile={setFile}
+            file={file}
+          />
+        </div>
+      )}
+
       {userData.name && (
         <Formik
           validateOnChange={duplicateError ? false : true}
@@ -48,7 +62,9 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                       setFieldValue={form.setFieldValue}
                       closeForm={setDisableUsername}
                       userId={userData._id}
+                      setFile={setFile}
                       type='username'
+                      file={file}
                     />
                   </div>
                 )}

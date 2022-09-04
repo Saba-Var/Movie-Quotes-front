@@ -39,7 +39,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] ${
             !profile && 'border'
           } ${isError && '!border-errorRed'} ${
-            isValid && !noValidate && '!border-green'
+            isValid && !noValidate && !disabled && '!border-green'
           } ${profile && '!w-full'} h-[38px] outline-none ${
             profile && disabled && '1xl:placeholder:text-inputBlack'
           } ${styles}`}
@@ -60,7 +60,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           />
         )}
 
-        {isValid && !noValidate && (
+        {isValid && !noValidate && !disabled && (
           <ValidIcon
             styles={`absolute ${
               isPasswordField && 'right-7'
