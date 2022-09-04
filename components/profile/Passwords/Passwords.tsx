@@ -18,7 +18,7 @@ const Passwords: React.FC<PasswordsProps> = (props) => {
 
   return (
     <div className='flex flex-col mb-4  w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] relative'>
-      <div className='h-[1px] bg-gray-700 w-full mb-12 mt-12'></div>
+      <div className='h-[1px] hidden 1xl:block bg-gray-700 w-full mb-12 mt-12'></div>
 
       <div className='h-[94px] relative'>
         <div className='flex flex-col gap-1 animate-fade-in'>

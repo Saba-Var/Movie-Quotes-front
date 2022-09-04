@@ -12,6 +12,7 @@ import {
   SuccessAlert,
   PhotoUpload,
   CancelSave,
+  RightArrow,
   MobileForm,
   ErrorAlert,
   EditInput,
@@ -171,9 +172,9 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       />
                     </div>
 
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center mt-4'>
                       <div className='flex flex-col items-start'>
-                        <div className='h-[94px] relative w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] mb-12'>
+                        <div className='h-[94px] relative w-[85vw] 1xl:w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] 1xl:mb-12'>
                           <AuthInputField
                             styles='profileInputStyles'
                             placeholder={userData.name}
@@ -195,26 +196,55 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           )}
                         </div>
 
-                        <Emails
-                          setUserSecondaryEmails={setUserSecondaryEmails}
-                          secondaryEmails={userData.secondaryEmails}
-                          userSecondaryEmails={userSecondaryEmails}
-                          setUserPrimaryEmail={setUserPrimaryEmail}
-                          setDeleteEmailList={setDeleteEmailList}
-                          setAddEmailModal={setAddEmailModal}
-                          userPrimaryEmail={userPrimaryEmail}
-                          setEmailChange={setEmailChange}
-                          setUpdatedList={setUpdatedList}
-                          primaryEmail={userData.email}
-                        />
+                        <div className='hidden 1xl:block'>
+                          <Emails
+                            setUserSecondaryEmails={setUserSecondaryEmails}
+                            secondaryEmails={userData.secondaryEmails}
+                            userSecondaryEmails={userSecondaryEmails}
+                            setUserPrimaryEmail={setUserPrimaryEmail}
+                            setDeleteEmailList={setDeleteEmailList}
+                            setAddEmailModal={setAddEmailModal}
+                            userPrimaryEmail={userPrimaryEmail}
+                            setEmailChange={setEmailChange}
+                            primaryEmail={userData.email}
+                          />
+                        </div>
 
-                        <Passwords
-                          setDisablePassword={setDisablePassword}
-                          lowerCaseError={form.errors.password}
-                          newPassword={form.values.password}
-                          disablePassword={disablePassword}
-                          passwordLength={passwordLength}
-                        />
+                        <div className='flex 1xl:hidden flex-col gap-1 w-[85vw] relative'>
+                          <div className='flex flex-col gap-2 relative'>
+                            <label className='text-white text-base font-Helvetica-Neue-Geo font-thin'>
+                              {t(`auth:password`)}
+                            </label>
+                            <input
+                              className={`bg-transparent pb-4 text-inputGray border-b !border-b-gray-700 text-base font-Helvetica-Neue-Geo font-medium rounded w-full h-[38px]`}
+                              defaultValue={'#'.repeat(passwordLength)}
+                              type={'password'}
+                              disabled={true}
+                            />
+                          </div>
+
+                          <div
+                            className={`cursor-pointer right-0 top-9 absolute active:scale-100 transition-transform hover:scale-[1.02] animate-fade-in text-inputGray text-base`}
+                          >
+                            {t('profile:edit')}
+                          </div>
+                        </div>
+
+                        <div className='hidden 1xl:block'>
+                          <Passwords
+                            setDisablePassword={setDisablePassword}
+                            lowerCaseError={form.errors.password}
+                            newPassword={form.values.password}
+                            disablePassword={disablePassword}
+                            passwordLength={passwordLength}
+                          />
+                        </div>
+
+                        <div className='flex justify-between w-full items-center 1xl:hidden mt-8'>
+                          <p>{t('profile:EMAIL')}</p>
+
+                          <RightArrow />
+                        </div>
                       </div>
                     </div>
 

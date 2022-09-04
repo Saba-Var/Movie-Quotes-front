@@ -25,5 +25,6 @@
   "username-updated": "Username changed successfully",
   "password-updated": "New password updated successfully",
   "primary-email-updated": "Primary email changed successfully",
-  "image-updated": "Image changed successfully"
+  "image-updated": "Image changed successfully",
+  "EMAIL": "EMAIL"
 }
