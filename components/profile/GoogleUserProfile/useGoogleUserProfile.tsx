@@ -6,6 +6,8 @@ import { useSockets } from 'hooks'
 import { useState } from 'react'
 
 export const useGoogleUserProfile = (userId: string) => {
+  const [usernameUpdateAlert, setUsernameUpdateAlert] = useState(false)
+  const [imageUpdateAlert, setImageUpdateAlert] = useState(false)
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
@@ -27,7 +29,8 @@ export const useGoogleUserProfile = (userId: string) => {
         setDisableUsername,
         typeError,
         setTypeError,
-        setImageFetchError
+        setImageFetchError,
+        setImageUpdateAlert
       )
     }
   }
@@ -41,6 +44,7 @@ export const useGoogleUserProfile = (userId: string) => {
 
       if (response.status === 200) {
         socket.emit('CHANGE_USERNAME', form.username)
+        setUsernameUpdateAlert(true)
         setDisableUsername(true)
         resetForm()
         setFieldValue('username', form.username)
@@ -52,9 +56,13 @@ export const useGoogleUserProfile = (userId: string) => {
   }
 
   return {
+    setUsernameUpdateAlert,
+    setImageUpdateAlert,
+    usernameUpdateAlert,
     setDisableUsername,
     setImageFetchError,
     setDuplicateError,
+    imageUpdateAlert,
     uploadUserImage,
     disableUsername,
     imageFetchError,

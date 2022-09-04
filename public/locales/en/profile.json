@@ -21,5 +21,9 @@
   "email-activation-fail": "Email activation failed",
   "enter-new-username": "Enter new username",
   "confirm": "Confirm",
-  "make-changes": "Are you sure to make changes ?"
+  "make-changes": "Are you sure to make changes ?",
+  "username-updated": "Username changed successfully",
+  "password-updated": "New password updated successfully",
+  "primary-email-updated": "Primary email changed successfully",
+  "image-updated": "Image changed successfully"
 }

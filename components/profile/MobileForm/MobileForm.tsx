@@ -9,7 +9,15 @@ import {
 } from 'schemas'
 
 const MobileForm: React.FC<MobileFormProps> = (props) => {
-  const { closeForm, type, userId, setFieldValue, file, setFile } = props
+  const {
+    setUpdateAlert,
+    setFieldValue,
+    closeForm,
+    setFile,
+    userId,
+    file,
+    type,
+  } = props
 
   const {
     duplicateUsernameError,
@@ -17,7 +25,7 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
     saveChangesModal,
     submitHandler,
     t,
-  } = useMobileForm(type, userId, closeForm, setFieldValue)
+  } = useMobileForm(type, userId, closeForm, setFieldValue, setUpdateAlert)
 
   return (
     <div className='fixed w-full bg-background h-screen z-[9] right-0'>

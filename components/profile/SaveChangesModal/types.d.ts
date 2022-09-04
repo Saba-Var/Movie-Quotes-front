@@ -1,6 +1,7 @@
 import { SetState } from 'types'
 
 export type SaveChangesModalProps = {
+  setImageUpdateAlert?: SetState<boolean>
   setImageFetchError?: SetState<boolean>
   setFile?: SetState<File | null>
   setTypeError?: SetState<boolean>

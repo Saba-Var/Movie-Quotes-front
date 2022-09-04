@@ -8,7 +8,8 @@ export const useMobileForm = (
   type: 'username' | 'password' | 'email',
   userId: string,
   closeForm: SetState<boolean>,
-  setFieldValue: (field: string, value: string) => void
+  setFieldValue: (field: string, value: string) => void,
+  setUpdateAlert: SetState<boolean>
 ) => {
   const [duplicateUsernameError, setDuplicateUsernameError] = useState('')
   const [saveChangesModal, setSaveChangesModal] = useState(false)
@@ -27,6 +28,7 @@ export const useMobileForm = (
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
           setFieldValue('username', form.username)
+          setUpdateAlert(true)
           closeForm(true)
         }
       } catch (error: any) {

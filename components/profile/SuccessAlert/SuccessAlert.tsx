@@ -1,11 +1,11 @@
+import { CheckIcon, CloseIcon } from 'components'
 import { SuccessAlertProps } from './types'
-import { CheckIcon, CloseIcon } from 'components/icons'
 
 const SuccessAlert: React.FC<SuccessAlertProps> = (props) => {
   const { headerText, setSuccessAlert, instructions } = props
 
   return (
-    <div className='p-4 z-[99999] animate-scale-up rounded fixed bg-lightGreen right-[1%] top-[15%] xl:right-[18%] xl:top-[12%]'>
+    <div className='p-4 mx-auto 1xl:mx-0 animate-scale-up w-[90%] sm:w-[60%] 1xl:w-[40%] xl:!w-[30%] 2xl:!w-[24%] rounded bg-lightGreen'>
       <div className='flex justify-between items-center'>
         <div className='flex gap-2 items-center'>
           <CheckIcon styles='w-[24px] h-[24px]' />
@@ -18,7 +18,7 @@ const SuccessAlert: React.FC<SuccessAlertProps> = (props) => {
           onClick={() => setSuccessAlert(false)}
           className='cursor-pointer hover:scale-110 active:scale-100 transition-transform'
         >
-          <CloseIcon fill='#69746f' styles='w-[18px] h-[18px]' noStyle={true} />
+          <CloseIcon styles='w-[18px] h-[18px]' fill='#69746f' noStyle={true} />
         </div>
       </div>
 

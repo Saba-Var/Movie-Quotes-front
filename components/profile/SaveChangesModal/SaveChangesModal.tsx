@@ -4,13 +4,14 @@ import { Button } from 'components'
 
 const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
   const {
-    closeModal,
-    setFile,
-    file,
-    userId,
-    setTypeError,
-    typeError,
+    setImageUpdateAlert,
     setImageFetchError,
+    setTypeError,
+    closeModal,
+    typeError,
+    setFile,
+    userId,
+    file,
   } = props
 
   const { t, userImageUploadHandler } = useSaveChangesModal(
@@ -19,7 +20,8 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
     userId,
     typeError,
     setTypeError,
-    setImageFetchError
+    setImageFetchError,
+    setImageUpdateAlert
   )
 
   return (

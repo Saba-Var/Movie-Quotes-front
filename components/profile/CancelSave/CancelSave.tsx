@@ -3,7 +3,7 @@ import { CancelSaveProps } from './types.d'
 import { Button } from 'components'
 
 const CancelSave: React.FC<CancelSaveProps> = (props) => {
-  const { saveHandler, cancelHandler, styles, mobile } = props
+  const { saveHandler, cancelHandler, styles, mobile, disableSubmit } = props
 
   const { t } = useCancelSave()
 
@@ -22,12 +22,21 @@ const CancelSave: React.FC<CancelSaveProps> = (props) => {
         {t('profile:cancel')}
       </div>
 
-      <Button
-        title={t(`profile:${mobile ? 'add' : 'save-changes'}`)}
-        styles='bg-orange text-xl'
-        onClick={saveHandler}
-        type='submit'
-      />
+      {disableSubmit ? (
+        <div
+          className='text-white animate-fade-in relative px-6 py-2 active:scale-100 transition-transform hover:scale-[1.03] rounded-md bg-orange text-xl'
+          onClick={saveHandler}
+        >
+          {t(`profile:${mobile ? 'add' : 'save-changes'}`)}
+        </div>
+      ) : (
+        <Button
+          title={t(`profile:${mobile ? 'add' : 'save-changes'}`)}
+          styles='bg-orange text-xl'
+          onClick={saveHandler}
+          type='submit'
+        />
+      )}
     </div>
   )
 }

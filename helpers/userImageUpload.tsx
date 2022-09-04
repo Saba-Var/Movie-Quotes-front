@@ -11,7 +11,8 @@ const userImageUpload = async (
   setDisableInput: SetState<boolean>,
   typeError: boolean,
   setTypeError: SetState<boolean>,
-  setImageFetchError: SetState<boolean>
+  setImageFetchError: SetState<boolean>,
+  setImageUpdateAlert?: SetState<boolean>
 ) => {
   try {
     const formData = new FormData()
@@ -22,6 +23,9 @@ const userImageUpload = async (
 
     if (response.status === 201) {
       socket.emit('UPLOAD_USER_IMAGE', response.data)
+
+      setImageUpdateAlert && setImageUpdateAlert(true)
+
       if (disableInput) {
         setDisableInput(true)
       }

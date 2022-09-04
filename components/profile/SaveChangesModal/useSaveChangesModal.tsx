@@ -9,7 +9,8 @@ export const useSaveChangesModal = (
   userId: string | undefined,
   typeError: boolean | undefined,
   setTypeError: SetState<boolean> | undefined,
-  setImageFetchError: SetState<boolean> | undefined
+  setImageFetchError: SetState<boolean> | undefined,
+  setImageUpdateAlert: SetState<boolean> | undefined
 ) => {
   const { socket } = useSockets()
   const { t } = useTranslation()
@@ -24,6 +25,8 @@ export const useSaveChangesModal = (
 
       if (response.status === 201) {
         socket.emit('UPLOAD_USER_IMAGE', response.data)
+
+        setImageUpdateAlert && setImageUpdateAlert(true)
 
         setFile && setFile(null)
 
