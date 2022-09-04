@@ -18,5 +18,8 @@
   "enter-new-email": "Enter new email",
   "simple-alert": "A simple alert—check it out!",
   "check-email": "Please check email to verify new address",
-  "email-activation-fail": "Email activation failed"
+  "email-activation-fail": "Email activation failed",
+  "enter-new-username": "Enter new username",
+  "confirm": "Confirm",
+  "make-changes": "Are you sure to make changes ?"
 }

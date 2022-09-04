@@ -45,7 +45,7 @@ const useLayout = () => {
         return updatedData
       })
     })
-  }, [socket, userData])
+  }, [socket, userData.name])
 
   useEffect(() => {
     socket.on('SEND_VERIFIED_SECONDARY_EMAIL', (verifiedEmail) => {

@@ -4,7 +4,8 @@ import { AuthInputFieldProps } from './types.d'
 import { ErrorMessage } from 'formik'
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
-  const { placeholder, disabled, profile, styles, noValidate } = props
+  const { placeholder, noValidate, error, valid, disabled, profile, styles } =
+    props
 
   const {
     passwordShowHandler,
@@ -55,7 +56,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
             } right-3 bottom-[11px] ${
               profile &&
               '!right-0 1xl:!right-3 bottom-[17px] 1xl:!bottom-[11px]'
-            }`}
+            } ${error}`}
           />
         )}
 
@@ -66,7 +67,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
             } right-3 bottom-[9px] ${
               profile &&
               '!right-0 1xl:!right-3 !bottom-[16px] 1xl:!bottom-[9px]'
-            }`}
+            } ${valid}`}
           />
         )}
 
