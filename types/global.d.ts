@@ -157,6 +157,10 @@ export type FormProperties = {
 }
 
 export type UpdatedList = {
-  type: 'image-updated' | 'username-updated'
+  type:
+    | 'image-updated'
+    | 'username-updated'
+    | 'email-updated'
+    | 'password-updated'
   id: string
 }[]

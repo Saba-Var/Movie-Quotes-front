@@ -1,4 +1,4 @@
-import { FormProperties, SetState } from 'types'
+import { FormProperties, SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { addSecondaryEmail } from 'services'
 import { useSockets } from 'hooks'
@@ -6,9 +6,9 @@ import { useState } from 'react'
 
 export const useAddEmail = (
   userId: string,
-  setAddEmailModal: SetState<boolean>
+  setAddEmailModal: SetState<boolean>,
+  setUpdatedList: SetState<UpdatedList>
 ) => {
-  const [successAlert, setSuccessAlert] = useState(false)
   const [fetchError, setFetchError] = useState(false)
 
   const { socket } = useSockets()
@@ -23,7 +23,12 @@ export const useAddEmail = (
 
       if (response.status === 201) {
         socket.emit('ADD_SECONDARY_EMAIL', response.data)
-        setSuccessAlert(true)
+
+        setUpdatedList((prev) => [
+          { id: new Date().toISOString(), type: 'email-updated' },
+          ...prev,
+        ])
+
         setAddEmailModal(false)
       }
     } catch (error) {
@@ -33,9 +38,7 @@ export const useAddEmail = (
   }
 
   return {
-    setSuccessAlert,
     submitHandler,
-    successAlert,
     fetchError,
     t,
   }

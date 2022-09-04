@@ -76,24 +76,33 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
             <div className='1xl:hidden h-screen w-full opacity-60 left-0 fixed bg-background top-24'></div>
 
             {updatedList.map((item) => {
-              return (
-                <SuccessAlert
-                  headerText={t(
-                    `profile:${
-                      item.type === 'image-updated' ? 'image' : 'username'
-                    }-updated`
-                  )}
-                  setUpdatedList={setUpdatedList}
-                  key={item.id}
-                  id={item.id}
-                />
-              )
+              if (item.type === 'email-updated') {
+                return (
+                  <SuccessAlert
+                    instructions={t(`profile:update-email`)}
+                    headerText={t(`profile:update-alert`)}
+                    setUpdatedList={setUpdatedList}
+                    key={item.id}
+                    id={item.id}
+                  />
+                )
+              } else {
+                return (
+                  <SuccessAlert
+                    headerText={t(`profile:${item.type}`)}
+                    setUpdatedList={setUpdatedList}
+                    key={item.id}
+                    id={item.id}
+                  />
+                )
+              }
             })}
           </div>
         )}
 
         <AddEmail
           setAddEmailModal={setAddEmailModal}
+          setUpdatedList={setUpdatedList}
           addEmailModal={addEmailModal}
           userId={userData._id}
         />
@@ -195,6 +204,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           setAddEmailModal={setAddEmailModal}
                           userPrimaryEmail={userPrimaryEmail}
                           setEmailChange={setEmailChange}
+                          setUpdatedList={setUpdatedList}
                           primaryEmail={userData.email}
                         />
 
