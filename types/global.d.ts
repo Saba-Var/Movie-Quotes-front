@@ -155,3 +155,8 @@ export type FormProperties = {
   setFieldValue: (field: string, value: string) => void
   resetForm: () => void
 }
+
+export type UpdatedList = {
+  type: 'image-updated' | 'username-updated'
+  id: string
+}[]

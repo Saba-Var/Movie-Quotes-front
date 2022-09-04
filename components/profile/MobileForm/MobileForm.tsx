@@ -10,7 +10,7 @@ import {
 
 const MobileForm: React.FC<MobileFormProps> = (props) => {
   const {
-    setUpdateAlert,
+    setUpdateList,
     setFieldValue,
     closeForm,
     setFile,
@@ -25,7 +25,7 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
     saveChangesModal,
     submitHandler,
     t,
-  } = useMobileForm(type, userId, closeForm, setFieldValue, setUpdateAlert)
+  } = useMobileForm(type, userId, closeForm, setFieldValue, setUpdateList)
 
   return (
     <div className='fixed w-full bg-background h-screen z-[9] right-0'>

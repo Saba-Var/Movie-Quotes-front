@@ -1,13 +1,13 @@
+import { FormProperties, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { userImageUpload } from 'helpers'
 import { changeUsername } from 'services'
-import { FormProperties } from 'types'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
 
 export const useGoogleUserProfile = (userId: string) => {
-  const [usernameUpdateAlert, setUsernameUpdateAlert] = useState(false)
-  const [imageUpdateAlert, setImageUpdateAlert] = useState(false)
+  const [updatedList, setUpdatedList] = useState<UpdatedList>([])
+
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
@@ -30,7 +30,7 @@ export const useGoogleUserProfile = (userId: string) => {
         typeError,
         setTypeError,
         setImageFetchError,
-        setImageUpdateAlert
+        setUpdatedList
       )
     }
   }
@@ -44,7 +44,12 @@ export const useGoogleUserProfile = (userId: string) => {
 
       if (response.status === 200) {
         socket.emit('CHANGE_USERNAME', form.username)
-        setUsernameUpdateAlert(true)
+
+        setUpdatedList((prev) => [
+          { id: new Date().toISOString(), type: 'username-updated' },
+          ...prev,
+        ])
+
         setDisableUsername(true)
         resetForm()
         setFieldValue('username', form.username)
@@ -56,19 +61,17 @@ export const useGoogleUserProfile = (userId: string) => {
   }
 
   return {
-    setUsernameUpdateAlert,
-    setImageUpdateAlert,
-    usernameUpdateAlert,
     setDisableUsername,
     setImageFetchError,
     setDuplicateError,
-    imageUpdateAlert,
     uploadUserImage,
     disableUsername,
     imageFetchError,
     duplicateError,
+    setUpdatedList,
     submitHandler,
     setTypeError,
+    updatedList,
     typeError,
     setFile,
     file,

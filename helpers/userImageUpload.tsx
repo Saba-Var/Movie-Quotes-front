@@ -1,6 +1,6 @@
+import { SetState, UpdatedList } from 'types'
 import { Socket } from 'socket.io-client'
 import { imageUpload } from 'services'
-import { SetState } from 'types'
 
 const userImageUpload = async (
   socket: Socket,
@@ -12,7 +12,7 @@ const userImageUpload = async (
   typeError: boolean,
   setTypeError: SetState<boolean>,
   setImageFetchError: SetState<boolean>,
-  setImageUpdateAlert?: SetState<boolean>
+  setUpdatedList?: SetState<UpdatedList>
 ) => {
   try {
     const formData = new FormData()
@@ -24,7 +24,12 @@ const userImageUpload = async (
     if (response.status === 201) {
       socket.emit('UPLOAD_USER_IMAGE', response.data)
 
-      setImageUpdateAlert && setImageUpdateAlert(true)
+      if (setUpdatedList) {
+        setUpdatedList((prev) => [
+          { id: new Date().toISOString(), type: 'image-updated' },
+          ...prev,
+        ])
+      }
 
       if (disableInput) {
         setDisableInput(true)

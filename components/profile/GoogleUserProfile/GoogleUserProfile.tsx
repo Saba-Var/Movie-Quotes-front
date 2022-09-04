@@ -17,18 +17,16 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
   const { userData } = props
 
   const {
-    setUsernameUpdateAlert,
-    setImageUpdateAlert,
-    usernameUpdateAlert,
     setDisableUsername,
     setImageFetchError,
-    imageUpdateAlert,
     imageFetchError,
     uploadUserImage,
     disableUsername,
     duplicateError,
+    setUpdatedList,
     submitHandler,
     setTypeError,
+    updatedList,
     typeError,
     setFile,
     file,
@@ -41,8 +39,8 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
         {file && (
           <div className='fixed 1xl:hidden w-full bg-background h-screen z-[9] right-0'>
             <SaveChangesModal
-              setImageUpdateAlert={setImageUpdateAlert}
               setImageFetchError={setImageFetchError}
+              setUpdatedList={setUpdatedList}
               setTypeError={setTypeError}
               userId={userData._id}
               typeError={typeError}
@@ -52,23 +50,24 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
           </div>
         )}
 
-        {(usernameUpdateAlert || imageUpdateAlert) && (
-          <div className='fixed 1xl:top-32 xl:!top-44 1xl:pr-[3%] 1xl:!items-end flex gap-4 flex-col w-full right-0 z-[99999]'>
+        {updatedList.length > 0 && (
+          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[99999]'>
             <div className='1xl:hidden h-screen w-full opacity-60 left-0 fixed bg-background top-24'></div>
 
-            {imageUpdateAlert && (
-              <SuccessAlert
-                headerText={t('profile:image-updated')}
-                setSuccessAlert={setImageUpdateAlert}
-              />
-            )}
-
-            {usernameUpdateAlert && (
-              <SuccessAlert
-                headerText={t('profile:username-updated')}
-                setSuccessAlert={setUsernameUpdateAlert}
-              />
-            )}
+            {updatedList.map((item) => {
+              return (
+                <SuccessAlert
+                  headerText={t(
+                    `profile:${
+                      item.type === 'image-updated' ? 'image' : 'username'
+                    }-updated`
+                  )}
+                  setUpdatedList={setUpdatedList}
+                  key={item.id}
+                  id={item.id}
+                />
+              )
+            })}
           </div>
         )}
 
@@ -86,7 +85,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                   {!disableUsername && (
                     <div className='1xl:hidden'>
                       <MobileForm
-                        setUpdateAlert={setUsernameUpdateAlert}
+                        setUpdateList={setUpdatedList}
                         setFieldValue={form.setFieldValue}
                         closeForm={setDisableUsername}
                         userId={userData._id}

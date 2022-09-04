@@ -4,8 +4,8 @@ import { Button } from 'components'
 
 const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
   const {
-    setImageUpdateAlert,
     setImageFetchError,
+    setUpdatedList,
     setTypeError,
     closeModal,
     typeError,
@@ -21,7 +21,7 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
     typeError,
     setTypeError,
     setImageFetchError,
-    setImageUpdateAlert
+    setUpdatedList
   )
 
   return (

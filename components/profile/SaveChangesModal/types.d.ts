@@ -1,7 +1,7 @@
-import { SetState } from 'types'
+import { SetState, UpdatedList } from 'types'
 
 export type SaveChangesModalProps = {
-  setImageUpdateAlert?: SetState<boolean>
+  setUpdatedList?: SetState<UpdatedList>
   setImageFetchError?: SetState<boolean>
   setFile?: SetState<File | null>
   setTypeError?: SetState<boolean>

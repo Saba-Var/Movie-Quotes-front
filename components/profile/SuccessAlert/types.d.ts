@@ -1,7 +1,8 @@
-import { SetState } from 'types'
+import { SetState, UpdatedList } from 'types'
 
 export type SuccessAlertProps = {
-  setSuccessAlert: SetState<boolean>
+  setUpdatedList: SetState<UpdatedList>
   instructions?: string
   headerText: string
+  id: string
 }

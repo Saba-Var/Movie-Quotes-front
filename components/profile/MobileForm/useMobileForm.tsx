@@ -1,4 +1,4 @@
-import { FormProperties, SetState } from 'types'
+import { FormProperties, SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { changeUsername } from 'services'
 import { useSockets } from 'hooks'
@@ -9,7 +9,7 @@ export const useMobileForm = (
   userId: string,
   closeForm: SetState<boolean>,
   setFieldValue: (field: string, value: string) => void,
-  setUpdateAlert: SetState<boolean>
+  setUpdatedList: SetState<UpdatedList>
 ) => {
   const [duplicateUsernameError, setDuplicateUsernameError] = useState('')
   const [saveChangesModal, setSaveChangesModal] = useState(false)
@@ -28,7 +28,12 @@ export const useMobileForm = (
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
           setFieldValue('username', form.username)
-          setUpdateAlert(true)
+
+          setUpdatedList((prev) => [
+            { id: new Date().toISOString(), type: 'username-updated' },
+            ...prev,
+          ])
+
           closeForm(true)
         }
       } catch (error: any) {
