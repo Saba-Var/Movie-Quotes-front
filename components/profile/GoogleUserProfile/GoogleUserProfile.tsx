@@ -10,7 +10,7 @@ import {
   ErrorAlert,
   MobileForm,
   EditInput,
-  SuccessAlert,
+  AlertList,
 } from 'components'
 
 const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
@@ -51,24 +51,10 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
         )}
 
         {updatedList.length > 0 && (
-          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[9]'>
-            <div className='1xl:hidden h-screen w-full opacity-60 left-0 fixed bg-background top-24'></div>
-
-            {updatedList.map((item) => {
-              return (
-                <SuccessAlert
-                  headerText={t(
-                    `profile:${
-                      item.type === 'image-updated' ? 'image' : 'username'
-                    }-updated`
-                  )}
-                  setUpdatedList={setUpdatedList}
-                  key={item.id}
-                  id={item.id}
-                />
-              )
-            })}
-          </div>
+          <AlertList
+            setUpdatedList={setUpdatedList}
+            updatedList={updatedList}
+          />
         )}
 
         {userData.name && (
