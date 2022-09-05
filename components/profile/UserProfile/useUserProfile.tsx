@@ -1,7 +1,7 @@
 import { FormProperties, SecondaryEmails, UpdatedList, UserData } from 'types'
+import { userImageUpload, updateAlertList } from 'helpers'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
-import { userImageUpload } from 'helpers'
 import { useSockets } from 'hooks'
 import {
   changePrimaryEmail,
@@ -62,6 +62,7 @@ export const useUserProfile = (
             userPrimaryEmail,
             response.data.newSecondaryEmail
           )
+          updateAlertList(setUpdatedList, 'primary-email-updated')
           setEmailChange(false)
         }
       } catch (error) {
@@ -116,15 +117,9 @@ export const useUserProfile = (
         const response = await changeUsername(form.username, userData._id)
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
-
-          setUpdatedList((prev) => [
-            { id: new Date().toISOString(), type: 'username-updated' },
-            ...prev,
-          ])
-
+          updateAlertList(setUpdatedList, 'username-updated')
           setDisableUsername(true)
           resetForm()
-
           setFieldValue('username', form.username)
         }
       }
@@ -138,6 +133,7 @@ export const useUserProfile = (
           setFieldValue('confirmPassword', '')
           setFieldValue('password', '')
           resetForm()
+          updateAlertList(setUpdatedList, 'password-updated')
         }
       }
     } catch (error: any) {

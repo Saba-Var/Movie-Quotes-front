@@ -1,6 +1,6 @@
+import { userImageUpload, updateAlertList } from 'helpers'
 import { FormProperties, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
-import { userImageUpload } from 'helpers'
 import { changeUsername } from 'services'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
@@ -44,12 +44,7 @@ export const useGoogleUserProfile = (userId: string) => {
 
       if (response.status === 200) {
         socket.emit('CHANGE_USERNAME', form.username)
-
-        setUpdatedList((prev) => [
-          { id: new Date().toISOString(), type: 'username-updated' },
-          ...prev,
-        ])
-
+        updateAlertList(setUpdatedList, 'username-updated')
         setDisableUsername(true)
         resetForm()
         setFieldValue('username', form.username)

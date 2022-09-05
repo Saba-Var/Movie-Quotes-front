@@ -1,6 +1,7 @@
 import { FormProperties, SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { addSecondaryEmail } from 'services'
+import { updateAlertList } from 'helpers'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
 
@@ -23,12 +24,7 @@ export const useAddEmail = (
 
       if (response.status === 201) {
         socket.emit('ADD_SECONDARY_EMAIL', response.data)
-
-        setUpdatedList((prev) => [
-          { id: new Date().toISOString(), type: 'email-updated' },
-          ...prev,
-        ])
-
+        updateAlertList(setUpdatedList, 'email-updated')
         setAddEmailModal(false)
       }
     } catch (error) {

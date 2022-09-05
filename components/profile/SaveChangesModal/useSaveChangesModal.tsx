@@ -1,5 +1,6 @@
 import { SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
+import { updateAlertList } from 'helpers'
 import { imageUpload } from 'services'
 import { useSockets } from 'hooks'
 
@@ -27,10 +28,7 @@ export const useSaveChangesModal = (
         socket.emit('UPLOAD_USER_IMAGE', response.data)
 
         if (setUpdatedList) {
-          setUpdatedList((prev) => [
-            { id: new Date().toISOString(), type: 'image-updated' },
-            ...prev,
-          ])
+          updateAlertList(setUpdatedList, 'image-updated')
         }
 
         setFile && setFile(null)

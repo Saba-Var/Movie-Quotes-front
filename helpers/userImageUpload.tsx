@@ -1,5 +1,6 @@
 import { SetState, UpdatedList } from 'types'
 import { Socket } from 'socket.io-client'
+import { updateAlertList } from 'helpers'
 import { imageUpload } from 'services'
 
 const userImageUpload = async (
@@ -25,10 +26,7 @@ const userImageUpload = async (
       socket.emit('UPLOAD_USER_IMAGE', response.data)
 
       if (setUpdatedList) {
-        setUpdatedList((prev) => [
-          { id: new Date().toISOString(), type: 'image-updated' },
-          ...prev,
-        ])
+        updateAlertList(setUpdatedList, 'image-updated')
       }
 
       if (disableInput) {

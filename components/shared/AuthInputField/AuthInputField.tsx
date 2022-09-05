@@ -37,7 +37,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
           {...field}
           {...props}
           className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-[360px] ${
-            !profile && 'border'
+            !profile && '!border'
           } ${isError && '!border-errorRed'} ${
             isValid && !noValidate && !disabled && '!border-green'
           } ${profile && '!w-full'} h-[38px] outline-none ${

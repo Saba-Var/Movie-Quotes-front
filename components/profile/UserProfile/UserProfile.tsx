@@ -196,19 +196,17 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           )}
                         </div>
 
-                        <div className='hidden 1xl:block'>
-                          <Emails
-                            setUserSecondaryEmails={setUserSecondaryEmails}
-                            secondaryEmails={userData.secondaryEmails}
-                            userSecondaryEmails={userSecondaryEmails}
-                            setUserPrimaryEmail={setUserPrimaryEmail}
-                            setDeleteEmailList={setDeleteEmailList}
-                            setAddEmailModal={setAddEmailModal}
-                            userPrimaryEmail={userPrimaryEmail}
-                            setEmailChange={setEmailChange}
-                            primaryEmail={userData.email}
-                          />
-                        </div>
+                        <Emails
+                          setUserSecondaryEmails={setUserSecondaryEmails}
+                          secondaryEmails={userData.secondaryEmails}
+                          userSecondaryEmails={userSecondaryEmails}
+                          setUserPrimaryEmail={setUserPrimaryEmail}
+                          setDeleteEmailList={setDeleteEmailList}
+                          setAddEmailModal={setAddEmailModal}
+                          userPrimaryEmail={userPrimaryEmail}
+                          setEmailChange={setEmailChange}
+                          primaryEmail={userData.email}
+                        />
 
                         <div className='flex 1xl:hidden flex-col gap-1 w-[85vw] relative'>
                           <div className='flex flex-col gap-2 relative'>

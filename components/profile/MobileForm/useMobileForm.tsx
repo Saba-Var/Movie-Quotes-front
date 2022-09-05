@@ -2,6 +2,7 @@ import { FormProperties, SetState, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { changeUsername } from 'services'
+import { updateAlertList } from 'helpers'
 import { useRouter } from 'next/router'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
@@ -36,12 +37,7 @@ export const useMobileForm = (
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
           setFieldValue('username', form.username)
-
-          setUpdatedList((prev) => [
-            { id: new Date().toISOString(), type: 'username-updated' },
-            ...prev,
-          ])
-
+          updateAlertList(setUpdatedList, 'username-updated')
           closeForm(true)
         }
       } catch (error: any) {

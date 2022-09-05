@@ -92,6 +92,9 @@ const Passwords: React.FC<PasswordsProps> = (props) => {
           <div className='h-[94px]'>
             <AuthInputField
               placeholder={t('auth:password-reqs')}
+              styles='profileInputStyles'
+              error='1xl:!right-8'
+              valid='1xl:!right-8'
               type='password'
               name='password'
               profile='yes'
@@ -101,7 +104,10 @@ const Passwords: React.FC<PasswordsProps> = (props) => {
           <div className='h-[94px]'>
             <AuthInputField
               placeholder={t('auth:confirmPassword')}
+              styles='profileInputStyles'
               name='confirmPassword'
+              error='1xl:!right-8'
+              valid='1xl:!right-8'
               type='password'
               profile='yes'
             />

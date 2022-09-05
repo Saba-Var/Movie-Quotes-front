@@ -156,11 +156,14 @@ export type FormProperties = {
   resetForm: () => void
 }
 
+export type AlertListTypes =
+  | 'image-updated'
+  | 'username-updated'
+  | 'email-updated'
+  | 'password-updated'
+  | 'primary-email-updated'
+
 export type UpdatedList = {
-  type:
-    | 'image-updated'
-    | 'username-updated'
-    | 'email-updated'
-    | 'password-updated'
+  type: AlertListTypes
   id: string
 }[]
