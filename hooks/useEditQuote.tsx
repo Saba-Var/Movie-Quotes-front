@@ -4,7 +4,7 @@ import { useSockets } from 'hooks'
 const useEditQuote = (quoteList: Quotes, setQuoteList: SetState<Quotes>) => {
   const { socket } = useSockets()
 
-  return socket.off('SEND_EDITED_QUOTE').on('SEND_EDITED_QUOTE', (data) => {
+  return socket.on('SEND_EDITED_QUOTE', (data) => {
     const existingQuote = quoteList.find((quote) => quote._id === data._id)
 
     if (existingQuote) {

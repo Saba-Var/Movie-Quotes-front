@@ -7,7 +7,7 @@ const useLikeQuote = (quoteList: Quotes, setQuoteList: SetState<Quotes>) => {
   const { socket } = useSockets()
 
   return useEffect(() => {
-    socket.off('SEND_NEW_LIKE').on('SEND_NEW_LIKE', (likeId, quoteId) => {
+    socket.on('SEND_NEW_LIKE', (likeId, quoteId) => {
       if (quoteList) {
         const currentQuote = quoteList.find((quote) => quote._id === quoteId)
 
