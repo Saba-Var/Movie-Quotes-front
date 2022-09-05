@@ -3,16 +3,20 @@ import { changePrimaryEmail } from 'services'
 import { SetState, UpdatedList } from 'types'
 import { updateAlertList } from 'helpers'
 import { useSockets } from 'hooks'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
-export const useEmailsMobile = (setUpdatedList: SetState<UpdatedList>) => {
+export const useEmailsMobile = (
+  setUpdatedList: SetState<UpdatedList>,
+  userEmail: string,
+  setUserPrimaryEmail: SetState<string>
+) => {
   const [changePrimaryModal, setChangePrimaryModal] = useState(false)
   const [saveChangesFail, setFailChangesFail] = useState(false)
 
   const [emailId, setEmailId] = useState<string | null>('')
 
-  const { t } = useTranslation()
   const { socket } = useSockets()
+  const { t } = useTranslation()
 
   const primaryEmailChange = async (
     userPrimaryEmail: string,
@@ -33,14 +37,18 @@ export const useEmailsMobile = (setUpdatedList: SetState<UpdatedList>) => {
         setChangePrimaryModal(false)
       }
     } catch (error) {
+      setUserPrimaryEmail(userEmail)
       setFailChangesFail(true)
+      setChangePrimaryModal(false)
     }
   }
 
   return {
     setChangePrimaryModal,
     changePrimaryModal,
+    setFailChangesFail,
     primaryEmailChange,
+    saveChangesFail,
     setEmailId,
     emailId,
     t,

@@ -5,6 +5,7 @@ import {
   AddIcon,
   SaveChangesModal,
   AlertList,
+  ErrorAlert,
 } from 'components'
 import { useEmailsMobile } from './useEmailsMobile'
 import { EmailsMobileProps } from './types.d'
@@ -27,14 +28,24 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     setChangePrimaryModal,
     primaryEmailChange,
     changePrimaryModal,
+    setFailChangesFail,
+    saveChangesFail,
     setEmailId,
     t,
-  } = useEmailsMobile(setUpdatedList)
+  } = useEmailsMobile(setUpdatedList, userEmail, setUserPrimaryEmail)
 
   return (
     <div className='fixed 1xl:hidden bg-background w-full h-full z-[9] pt-16 top-[85px]'>
       <div onClick={() => {}}>
         <BackArrow styles={'w-[18px] h-[18px] !top-[19px] !left-8'} />
+
+        {saveChangesFail && (
+          <ErrorAlert
+            styles='left-1/2 !-translate-x-1/2 !top-[12%] !z-[99999999999999]'
+            setShowAlert={setFailChangesFail}
+            title='profile:save-failed'
+          />
+        )}
       </div>
 
       {updatedList.length > 0 && (
