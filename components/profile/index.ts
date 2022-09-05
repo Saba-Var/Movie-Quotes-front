@@ -1,3 +1,4 @@
+export * from './PasswordRequirements'
 export * from './ProfileFormWrapper'
 export * from './GoogleUserProfile'
 export * from './SaveChangesModal'

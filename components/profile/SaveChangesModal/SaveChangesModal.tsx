@@ -40,9 +40,9 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
               onClick={() => {
                 if (setFile) {
                   setFile(null)
-                } else {
-                  closeModal && closeModal(false)
                 }
+
+                closeModal && closeModal(false)
               }}
             >
               {t('profile:cancel')}

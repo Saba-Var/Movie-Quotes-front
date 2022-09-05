@@ -1,12 +1,13 @@
+import { useMobileForm } from './useMobileForm'
+import { MobileFormProps } from './types.d'
+import { Form, Formik } from 'formik'
 import {
+  PasswordRequirements,
   SaveChangesModal,
   AuthInputField,
   CancelSave,
   BackArrow,
 } from 'components'
-import { useMobileForm } from './useMobileForm'
-import { MobileFormProps } from './types.d'
-import { Form, Formik } from 'formik'
 import {
   usernameFormSchema,
   passwordFormSchema,
@@ -64,7 +65,7 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
           email: '',
         }}
       >
-        {() => {
+        {(form) => {
           return (
             <Form>
               {saveChangesModal && (
@@ -79,9 +80,13 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
               <div
                 className={`relative animate-scale-up w-full bg-backgroundGray py-14 ${
                   saveChangesModal && 'opacity-0'
-                }`}
+                } ${type === 'password' && 'py-5 pt-9'}`}
               >
-                <div className='max-w-[80%] h-[94px] mx-auto'>
+                <div
+                  className={`max-w-[80%] h-[94px] mx-auto ${
+                    type === 'password' && '!h-fit'
+                  }`}
+                >
                   {type === 'username' && (
                     <AuthInputField
                       placeholder={t('profile:enter-new-username')}
@@ -93,6 +98,42 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
                       type='text'
                     />
                   )}
+
+                  {type === 'password' && (
+                    <div>
+                      <PasswordRequirements
+                        lowerCaseError={form.errors.password}
+                        newPassword={form.values.password}
+                        mobileVersion={true}
+                      />
+
+                      <div className='flex flex-col mt-5'>
+                        <div className='h-[94px]'>
+                          <AuthInputField
+                            placeholder={t('profile:enter-new-username')}
+                            valid='!bottom-[9px] !right-3'
+                            error='!bottom-3 !right-3'
+                            styles='!border'
+                            name='password'
+                            profile='yes'
+                            type='text'
+                          />
+                        </div>
+
+                        <div className='h-[94px]'>
+                          <AuthInputField
+                            placeholder={t('profile:enter-new-username')}
+                            valid='!bottom-[9px] !right-3'
+                            error='!bottom-3 !right-3'
+                            name='confirmPassword'
+                            styles='!border'
+                            profile='yes'
+                            type='text'
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className='justify-between'></div>
@@ -102,6 +143,7 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
                     cancelHandler={() => closeForm(true)}
                     saveHandler={() => {}}
                     mobile={true}
+                    styles={`${type === 'password' && '!-bottom-[10vh]'}`}
                   />
                 )}
               </div>

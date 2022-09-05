@@ -55,6 +55,10 @@ export const useMobileForm = (
           setFieldError('username', 'duplicate-username')
         }
       }
+
+      if (type === 'password') {
+        setSaveChangesModal(true)
+      }
     }
 
     if (type === 'username' && saveChangesModal) {

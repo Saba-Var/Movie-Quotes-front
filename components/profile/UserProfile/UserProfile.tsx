@@ -144,6 +144,20 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                     </div>
                   )}
 
+                  {!disablePassword && (
+                    <div className='1xl:hidden'>
+                      <MobileForm
+                        setFieldValue={form.setFieldValue}
+                        setUpdateList={setUpdatedList}
+                        closeForm={setDisablePassword}
+                        userId={userData._id}
+                        setFile={setFile}
+                        type='password'
+                        file={file}
+                      />
+                    </div>
+                  )}
+
                   <Form className='relative pt-10 1xl:!pt-0'>
                     {imageFetchError && (
                       <ErrorAlert
@@ -222,6 +236,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           </div>
 
                           <div
+                            onClick={() => setDisablePassword(false)}
                             className={`cursor-pointer right-0 top-9 absolute active:scale-100 transition-transform hover:scale-[1.02] animate-fade-in text-inputGray text-base`}
                           >
                             {t('profile:edit')}
@@ -240,7 +255,6 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 
                         <div className='flex justify-between w-full items-center 1xl:hidden mt-8'>
                           <p>{t('profile:EMAIL')}</p>
-
                           <RightArrow />
                         </div>
                       </div>

@@ -56,6 +56,8 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
             } right-3 bottom-[11px] ${
               profile &&
               '!right-0 1xl:!right-3 bottom-[17px] 1xl:!bottom-[11px]'
+            } ${
+              profile && isPasswordField && '!right-8 1xl:!right-[32px]'
             } ${error}`}
           />
         )}
@@ -67,6 +69,8 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (props) => {
             } right-3 bottom-[9px] ${
               profile &&
               '!right-0 1xl:!right-3 !bottom-[16px] 1xl:!bottom-[9px]'
+            } ${
+              profile && isPasswordField && '!right-8 1xl:!right-[32px]'
             } ${valid}`}
           />
         )}
