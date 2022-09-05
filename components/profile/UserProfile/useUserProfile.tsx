@@ -80,6 +80,8 @@ export const useUserProfile = (
 
     if (userData.email !== userPrimaryEmail) {
       primaryEmailChange()
+    } else {
+      setEmailChange(false)
     }
 
     if (file) {

@@ -61,6 +61,10 @@ export const useMobileForm = (
       if (type === 'password') {
         setSaveChangesModal(true)
       }
+
+      if (type === 'email') {
+        setSaveChangesModal(true)
+      }
     }
 
     const passwordChangeHandler = async () => {

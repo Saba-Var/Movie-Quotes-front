@@ -73,7 +73,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
         )}
 
         {updatedList.length > 0 && (
-          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[99999]'>
+          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[9]'>
             <div className='1xl:hidden h-screen w-full opacity-60 left-0 fixed bg-background top-24'></div>
 
             {updatedList.map((item) => {
@@ -210,17 +210,19 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           )}
                         </div>
 
-                        <Emails
-                          setUserSecondaryEmails={setUserSecondaryEmails}
-                          secondaryEmails={userData.secondaryEmails}
-                          userSecondaryEmails={userSecondaryEmails}
-                          setUserPrimaryEmail={setUserPrimaryEmail}
-                          setDeleteEmailList={setDeleteEmailList}
-                          setAddEmailModal={setAddEmailModal}
-                          userPrimaryEmail={userPrimaryEmail}
-                          setEmailChange={setEmailChange}
-                          primaryEmail={userData.email}
-                        />
+                        <div className='hidden 1xl:block'>
+                          <Emails
+                            setUserSecondaryEmails={setUserSecondaryEmails}
+                            secondaryEmails={userData.secondaryEmails}
+                            userSecondaryEmails={userSecondaryEmails}
+                            setUserPrimaryEmail={setUserPrimaryEmail}
+                            setDeleteEmailList={setDeleteEmailList}
+                            setAddEmailModal={setAddEmailModal}
+                            userPrimaryEmail={userPrimaryEmail}
+                            setEmailChange={setEmailChange}
+                            primaryEmail={userData.email}
+                          />
+                        </div>
 
                         <div className='flex 1xl:hidden flex-col gap-1 w-[85vw] relative'>
                           <div className='flex flex-col gap-2 relative'>
@@ -237,7 +239,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 
                           <div
                             onClick={() => setDisablePassword(false)}
-                            className={`cursor-pointer right-0 top-9 absolute active:scale-100 transition-transform hover:scale-[1.02] animate-fade-in text-inputGray text-base`}
+                            className={`cursor-pointer right-0 top-9 absolute active:scale-100 transition-transform hover:scale-[1.02] text-inputGray text-base`}
                           >
                             {t('profile:edit')}
                           </div>

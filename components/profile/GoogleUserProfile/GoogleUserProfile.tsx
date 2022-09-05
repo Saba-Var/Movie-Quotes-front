@@ -51,7 +51,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
         )}
 
         {updatedList.length > 0 && (
-          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[99999]'>
+          <div className='fixed 1xl:top-32 max-h-[65vh] overflow-y-auto xl:!top-44 xl:pr-[3%] 1xl:!items-end  flex gap-4 flex-col w-full 1xl:!w-fit right-0 z-[9]'>
             <div className='1xl:hidden h-screen w-full opacity-60 left-0 fixed bg-background top-24'></div>
 
             {updatedList.map((item) => {
@@ -105,7 +105,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                       />
                     )}
 
-                    <div className='1xl:absolute flex mx-auto w-fit right-1/2 1xl:translate-x-1/2 1xl:!-top-[270px]'>
+                    <div className='1xl:absolute flex mx-auto w-fit right-1/2 1xl:translate-x-1/2 1xl:!-top-[285px]'>
                       <PhotoUpload
                         userImageSrc={userData.image}
                         setTypeError={setTypeError}

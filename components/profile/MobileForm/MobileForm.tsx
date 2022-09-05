@@ -22,8 +22,8 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
     closeForm,
     setFile,
     userId,
-    file,
     type,
+    file,
   } = props
 
   const {
