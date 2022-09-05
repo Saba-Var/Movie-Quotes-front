@@ -9,10 +9,12 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
     passwordErrorAlert,
     setUpdatedList,
     setTypeError,
+    saveHandler,
     closeModal,
     typeError,
     setFile,
     userId,
+    styles,
     file,
   } = props
 
@@ -30,7 +32,9 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
     <div>
       <div className='bg-background overflow-hidden top-0 bg-opacity-70 fixed w-screen h-screen'></div>
 
-      <div className='fixed z-[9999] top-20 pt-14 bg-background w-full animate-scale-up'>
+      <div
+        className={`fixed z-[9999] top-20 pt-14 bg-background w-full animate-scale-up ${styles}`}
+      >
         {passwordErrorAlert && (
           <ErrorAlert
             styles='left-1/2 !-translate-x-1/2 1xl:left-[62%] z-[999999999999999]'
@@ -70,6 +74,8 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
                 if (file) {
                   userImageUploadHandler()
                 }
+
+                saveHandler && saveHandler()
               }}
             />
           </div>

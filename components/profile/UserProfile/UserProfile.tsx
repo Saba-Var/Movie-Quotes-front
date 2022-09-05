@@ -150,6 +150,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       setDeleteEmailList={setDeleteEmailList}
                       userPrimaryEmail={userPrimaryEmail}
                       setEmailChange={setEmailChange}
+                      setUpdatedList={setUpdatedList}
+                      userEmail={userData.email}
+                      updatedList={updatedList}
+                      userId={userData._id}
                     />
                   )}
 

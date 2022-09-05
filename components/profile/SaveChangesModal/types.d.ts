@@ -8,7 +8,9 @@ export type SaveChangesModalProps = {
   setTypeError?: SetState<boolean>
   closeModal?: SetState<boolean>
   passwordErrorAlert?: boolean
+  saveHandler?: () => void
   typeError?: boolean
   file?: File | null
+  styles?: string
   userId?: string
 }

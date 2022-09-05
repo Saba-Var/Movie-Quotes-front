@@ -5,7 +5,6 @@ import {
   PasswordRequirements,
   SaveChangesModal,
   AuthInputField,
-  ErrorAlert,
   CancelSave,
   BackArrow,
 } from 'components'

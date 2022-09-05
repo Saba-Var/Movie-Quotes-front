@@ -1,4 +1,11 @@
-import { BackArrow, CheckIcon, InfoIcon, AddIcon } from 'components'
+import {
+  BackArrow,
+  CheckIcon,
+  InfoIcon,
+  AddIcon,
+  SaveChangesModal,
+  AlertList,
+} from 'components'
 import { useEmailsMobile } from './useEmailsMobile'
 import { EmailsMobileProps } from './types.d'
 
@@ -10,15 +17,43 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     setDeleteEmailList,
     userPrimaryEmail,
     setEmailChange,
+    setUpdatedList,
+    updatedList,
+    userEmail,
+    userId,
   } = props
 
-  const { t } = useEmailsMobile()
+  const {
+    setChangePrimaryModal,
+    primaryEmailChange,
+    changePrimaryModal,
+    setEmailId,
+    t,
+  } = useEmailsMobile(setUpdatedList)
 
   return (
     <div className='fixed 1xl:hidden bg-background w-full h-full z-[9] pt-16 top-[85px]'>
       <div onClick={() => {}}>
         <BackArrow styles={'w-[18px] h-[18px] !top-[19px] !left-8'} />
       </div>
+
+      {updatedList.length > 0 && (
+        <AlertList setUpdatedList={setUpdatedList} updatedList={updatedList} />
+      )}
+
+      {changePrimaryModal && (
+        <SaveChangesModal
+          closeModal={() => {
+            setUserPrimaryEmail(userEmail)
+            setChangePrimaryModal(false)
+          }}
+          styles='h-screen'
+          userId={userId}
+          saveHandler={() => {
+            primaryEmailChange(userPrimaryEmail, userId)
+          }}
+        />
+      )}
 
       <div className='bg-backgroundGray py-9 pb-28 flex gap-8 overflow-y-auto flex-col h-full w-full animate-scale-up px-8'>
         <div className='flex flex-col gap-5 pb-6 border-b border-b-gray-700'>
@@ -63,7 +98,14 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
                           </p>
                         </div>
                       ) : (
-                        <div className='border border-white p-2 px-3 rounded font-Helvetica-Neue-Geo text-base'>
+                        <div
+                          onClick={() => {
+                            setEmailId(email._id)
+                            setUserPrimaryEmail(email.email)
+                            setChangePrimaryModal(true)
+                          }}
+                          className='border border-white p-2 px-3 rounded font-Helvetica-Neue-Geo text-base'
+                        >
                           {t('profile:make-this-primary')}
                         </div>
                       )}
