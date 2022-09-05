@@ -175,7 +175,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       />
                     )}
 
-                    <div className='1xl:absolute flex mx-auto w-fit right-1/2 1xl:translate-x-1/2 1xl:!-top-[275px]'>
+                    <div className='1xl:absolute flex mx-auto w-fit right-1/2 1xl:translate-x-1/2 1xl:!-top-[300px]'>
                       <PhotoUpload
                         userImageSrc={userData.image}
                         setTypeError={setTypeError}

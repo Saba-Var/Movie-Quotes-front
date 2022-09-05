@@ -26,5 +26,6 @@
   "password-updated": "New password updated successfully",
   "primary-email-updated": "Primary email changed successfully",
   "image-updated": "Image changed successfully",
-  "EMAIL": "EMAIL"
+  "EMAIL": "EMAIL",
+  "password-update-failed": "Password update failed"
 }

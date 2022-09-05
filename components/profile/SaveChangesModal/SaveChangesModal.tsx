@@ -1,10 +1,12 @@
 import { useSaveChangesModal } from './useSaveChangesModal'
 import { SaveChangesModalProps } from './types.d'
-import { Button } from 'components'
+import { Button, ErrorAlert } from 'components'
 
 const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
   const {
+    setPasswordErrorAlert,
     setImageFetchError,
+    passwordErrorAlert,
     setUpdatedList,
     setTypeError,
     closeModal,
@@ -29,6 +31,14 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
       <div className='bg-background overflow-hidden top-0 bg-opacity-70 fixed w-screen h-screen'></div>
 
       <div className='fixed z-[9999] top-20 pt-14 bg-background w-full animate-scale-up'>
+        {passwordErrorAlert && (
+          <ErrorAlert
+            styles='left-1/2 !-translate-x-1/2 1xl:left-[62%] z-[999999999999999]'
+            title='profile:password-update-failed'
+            setShowAlert={setPasswordErrorAlert!}
+          />
+        )}
+
         <div className='w-[90%] bg-gradient-to-br border border-background from-darkBlack to-darkGray mx-auto rounded-xl h-52'>
           <p className='text-center pt-[68px] pb-11 border-b border-b-gray-700 font-Helvetica-Neue-Geo text-lg'>
             {t('profile:make-changes')}
@@ -40,6 +50,10 @@ const SaveChangesModal: React.FC<SaveChangesModalProps> = (props) => {
               onClick={() => {
                 if (setFile) {
                   setFile(null)
+                }
+
+                if (passwordErrorAlert) {
+                  setPasswordErrorAlert && setPasswordErrorAlert(false)
                 }
 
                 closeModal && closeModal(false)

@@ -1,7 +1,7 @@
 import { FormProperties, SetState, UpdatedList } from 'types'
+import { changePassword, changeUsername } from 'services'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
-import { changeUsername } from 'services'
 import { updateAlertList } from 'helpers'
 import { useRouter } from 'next/router'
 import { useSockets } from 'hooks'
@@ -15,6 +15,8 @@ export const useMobileForm = (
   setUpdatedList: SetState<UpdatedList>
 ) => {
   const [duplicateUsernameError, setDuplicateUsernameError] = useState('')
+
+  const [passwordErrorAlert, setPasswordErrorAlert] = useState(false)
   const [saveChangesModal, setSaveChangesModal] = useState(false)
 
   const { data: session } = useSession()
@@ -27,7 +29,7 @@ export const useMobileForm = (
   }
 
   const submitHandler = async (
-    form: { username: string },
+    form: { username: string; password: string },
     { setFieldError }: FormProperties
   ) => {
     const changeUsernameHandler = async () => {
@@ -61,15 +63,37 @@ export const useMobileForm = (
       }
     }
 
-    if (type === 'username' && saveChangesModal) {
-      changeUsernameHandler()
+    const passwordChangeHandler = async () => {
+      try {
+        const response = await changePassword(form.password!, userId)
+
+        if (response.status === 200) {
+          localStorage.setItem('passwordLength', form.password.length + '')
+          setFieldValue('confirmPassword', '')
+          setFieldValue('password', '')
+          updateAlertList(setUpdatedList, 'password-updated')
+          closeForm(true)
+        }
+      } catch (error) {
+        setPasswordErrorAlert(true)
+      }
+    }
+
+    if (saveChangesModal) {
+      if (type === 'username') {
+        changeUsernameHandler()
+      } else if (type === 'password') {
+        passwordChangeHandler()
+      }
     }
   }
 
   return {
     setDuplicateUsernameError,
     duplicateUsernameError,
+    setPasswordErrorAlert,
     setSaveChangesModal,
+    passwordErrorAlert,
     saveChangesModal,
     submitHandler,
     navigateBack,

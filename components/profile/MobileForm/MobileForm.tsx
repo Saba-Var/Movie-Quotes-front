@@ -5,6 +5,7 @@ import {
   PasswordRequirements,
   SaveChangesModal,
   AuthInputField,
+  ErrorAlert,
   CancelSave,
   BackArrow,
 } from 'components'
@@ -27,7 +28,9 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
 
   const {
     duplicateUsernameError,
+    setPasswordErrorAlert,
     setSaveChangesModal,
+    passwordErrorAlert,
     saveChangesModal,
     submitHandler,
     navigateBack,
@@ -70,6 +73,8 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
             <Form>
               {saveChangesModal && (
                 <SaveChangesModal
+                  setPasswordErrorAlert={setPasswordErrorAlert}
+                  passwordErrorAlert={passwordErrorAlert}
                   closeModal={setSaveChangesModal}
                   setFile={setFile}
                   userId={userId}
@@ -111,8 +116,8 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
                         <div className='h-[94px]'>
                           <AuthInputField
                             placeholder={t('profile:enter-new-username')}
-                            valid='!bottom-[9px] !right-3'
-                            error='!bottom-3 !right-3'
+                            valid='!bottom-[16%] !right-3'
+                            error='!bottom-[16%] !right-3'
                             styles='!border'
                             name='password'
                             profile='yes'
@@ -123,8 +128,8 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
                         <div className='h-[94px]'>
                           <AuthInputField
                             placeholder={t('profile:enter-new-username')}
-                            valid='!bottom-[9px] !right-3'
-                            error='!bottom-3 !right-3'
+                            valid='!bottom-[16%] !right-3'
+                            error='!bottom-[16%] !right-3'
                             name='confirmPassword'
                             styles='!border'
                             profile='yes'

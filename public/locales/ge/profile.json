@@ -26,5 +26,6 @@
   "password-updated": "პაროლი წარმატებით შეიცვალა",
   "primary-email-updated": "მთავარი ელ-ფოსტა წარმატებით შეიცვალა",
   "image-updated": "სურათი წარმატებით შეიცვალა",
-  "EMAIL": "ელ-ფოსტა"
+  "EMAIL": "ელ-ფოსტა",
+  "password-update-failed": "პაროლი ვერ შეიცვალა"
 }
