@@ -33,6 +33,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     setDeleteEmailList,
     setDisablePassword,
     setFailChangesFail,
+    formCancelHandler,
     setAddEmailModal,
     userPrimaryEmail,
     saveChangesFail,
@@ -101,12 +102,14 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
           </div>
         )}
 
-        <AddEmail
-          setAddEmailModal={setAddEmailModal}
-          setUpdatedList={setUpdatedList}
-          addEmailModal={addEmailModal}
-          userId={userData._id}
-        />
+        <div className='hidden 1xl:block'>
+          <AddEmail
+            setAddEmailModal={setAddEmailModal}
+            setUpdatedList={setUpdatedList}
+            addEmailModal={addEmailModal}
+            userId={userData._id}
+          />
+        </div>
 
         {userData.name && (
           <Formik
@@ -202,7 +205,6 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                             <EditInput
                               clickHandler={() => {
                                 setDisableUsername(false)
-                                form.resetForm()
                               }}
                               text={t('profile:edit')}
                               styles='!right-0'
@@ -270,18 +272,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                         styles='!right-0'
                         saveHandler={clickHandler}
                         cancelHandler={() => {
-                          setDisableUsername(true)
-                          setDisablePassword(true)
-                          form.resetForm()
-                          form.setFieldValue('username', userData.name)
-
-                          setUserSecondaryEmails(userData.secondaryEmails!)
-                          setUserPrimaryEmail(userData.email)
-                          if (file) {
-                            setFile(null)
-                          }
-                          setDeleteEmailList([])
-                          setEmailChange(false)
+                          formCancelHandler(form.resetForm, form.setFieldValue)
                         }}
                       />
                     )}

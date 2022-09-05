@@ -146,6 +146,24 @@ export const useUserProfile = (
     }
   }
 
+  const formCancelHandler = (
+    resetForm: () => void,
+    setFieldValue: (value: string, newValue: string) => void
+  ) => {
+    setDisableUsername(true)
+    setDisablePassword(true)
+    resetForm()
+    setFieldValue('username', userData.name)
+
+    setUserSecondaryEmails(userData.secondaryEmails!)
+    setUserPrimaryEmail(userData.email)
+    if (file) {
+      setFile(null)
+    }
+    setDeleteEmailList([])
+    setEmailChange(false)
+  }
+
   return {
     setUserSecondaryEmails,
     userSecondaryEmails,
@@ -155,6 +173,7 @@ export const useUserProfile = (
     setDisableUsername,
     setImageFetchError,
     setDisablePassword,
+    formCancelHandler,
     setDuplicateError,
     setPasswordLength,
     userPrimaryEmail,
