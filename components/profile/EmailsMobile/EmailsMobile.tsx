@@ -27,8 +27,11 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
   const {
     primaryEmailChangeHandler,
     setChangePrimaryModal,
+    setDeleteEmailModal,
     changePrimaryModal,
     setFailChangesFail,
+    deleteEmailHandler,
+    deleteEmailModal,
     saveChangesFail,
     setEmailId,
     t,
@@ -37,7 +40,9 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     userEmail,
     setUserPrimaryEmail,
     userPrimaryEmail,
-    userId
+    userId,
+    setUserSecondaryEmails,
+    userSecondaryEmails
   )
 
   return (
@@ -58,9 +63,22 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
         <AlertList setUpdatedList={setUpdatedList} updatedList={updatedList} />
       )}
 
+      {deleteEmailModal && (
+        <SaveChangesModal
+          closeModal={() => {
+            setEmailId(null)
+            setDeleteEmailModal(false)
+          }}
+          styles='h-screen'
+          userId={userId}
+          saveHandler={deleteEmailHandler}
+        />
+      )}
+
       {changePrimaryModal && (
         <SaveChangesModal
           closeModal={() => {
+            setEmailId(null)
             setUserPrimaryEmail(userEmail)
             setChangePrimaryModal(false)
           }}
@@ -125,7 +143,13 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
                         </div>
                       )}
 
-                      <div className='text-lg text-inputGray'>
+                      <div
+                        onClick={() => {
+                          setEmailId(email._id)
+                          setDeleteEmailModal(true)
+                        }}
+                        className='text-lg text-inputGray'
+                      >
                         {t('profile:remove')}
                       </div>
                     </div>
