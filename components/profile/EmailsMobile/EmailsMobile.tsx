@@ -1,14 +1,14 @@
+import { useEmailsMobile } from './useEmailsMobile'
+import { EmailsMobileProps } from './types.d'
 import {
+  SaveChangesModal,
+  ErrorAlert,
   BackArrow,
+  AlertList,
   CheckIcon,
   InfoIcon,
   AddIcon,
-  SaveChangesModal,
-  AlertList,
-  ErrorAlert,
 } from 'components'
-import { useEmailsMobile } from './useEmailsMobile'
-import { EmailsMobileProps } from './types.d'
 
 const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
   const {
@@ -25,14 +25,20 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
   } = props
 
   const {
+    primaryEmailChangeHandler,
     setChangePrimaryModal,
-    primaryEmailChange,
     changePrimaryModal,
     setFailChangesFail,
     saveChangesFail,
     setEmailId,
     t,
-  } = useEmailsMobile(setUpdatedList, userEmail, setUserPrimaryEmail)
+  } = useEmailsMobile(
+    setUpdatedList,
+    userEmail,
+    setUserPrimaryEmail,
+    userPrimaryEmail,
+    userId
+  )
 
   return (
     <div className='fixed 1xl:hidden bg-background w-full h-full z-[9] pt-16 top-[85px]'>
@@ -60,9 +66,7 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
           }}
           styles='h-screen'
           userId={userId}
-          saveHandler={() => {
-            primaryEmailChange(userPrimaryEmail, userId)
-          }}
+          saveHandler={() => primaryEmailChangeHandler()}
         />
       )}
 

@@ -1,14 +1,13 @@
 import { FormProperties, SecondaryEmails, UpdatedList, UserData } from 'types'
-import { userImageUpload, updateAlertList } from 'helpers'
+import { changeUsername, changePassword, deleteEmail } from 'services'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { useSockets } from 'hooks'
 import {
-  changePrimaryEmail,
-  changeUsername,
-  changePassword,
-  deleteEmail,
-} from 'services'
+  changeUserPrimaryEmail,
+  userImageUpload,
+  updateAlertList,
+} from 'helpers'
 
 export const useUserProfile = (
   userData: UserData,
@@ -49,28 +48,6 @@ export const useUserProfile = (
   const { t } = useTranslation()
 
   const clickHandler = async () => {
-    const primaryEmailChange = async () => {
-      try {
-        const response = await changePrimaryEmail(
-          userPrimaryEmail,
-          userData._id
-        )
-
-        if (response.status === 200) {
-          localStorage.setItem('token', response.data.token)
-          socket.emit(
-            'CHANGE_PRIMARY_EMAIL',
-            userPrimaryEmail,
-            response.data.newSecondaryEmail
-          )
-          updateAlertList(setUpdatedList, 'primary-email-updated')
-          setEmailChange(false)
-        }
-      } catch (error) {
-        setFailChangesFail(true)
-      }
-    }
-
     const deleteSecondaryEmail = async (email: string) => {
       try {
         await deleteEmail(email, userData._id!)
@@ -80,7 +57,14 @@ export const useUserProfile = (
     }
 
     if (userData.email !== userPrimaryEmail) {
-      primaryEmailChange()
+      changeUserPrimaryEmail(
+        userPrimaryEmail,
+        userData._id,
+        socket,
+        setUpdatedList,
+        setFailChangesFail,
+        setEmailChange
+      )
     } else {
       setEmailChange(false)
     }

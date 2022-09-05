@@ -1,3 +1,4 @@
+export { default as changeUserPrimaryEmail } from './changeUserPrimaryEmail'
 export { default as languageValidation } from './languageValidation'
 export { default as userImageUpload } from './userImageUpload'
 export { default as updateAlertList } from './updateAlertList'
