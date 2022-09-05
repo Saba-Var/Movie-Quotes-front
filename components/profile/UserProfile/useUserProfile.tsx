@@ -14,6 +14,7 @@ export const useUserProfile = (
   userData: UserData,
   secondaryEmails: SecondaryEmails
 ) => {
+  const [emailsMobileModal, setEmailsMobileModal] = useState(false)
   const [imageFetchError, setImageFetchError] = useState(false)
   const [saveChangesFail, setFailChangesFail] = useState(false)
   const [duplicateError, setDuplicateError] = useState(false)
@@ -166,6 +167,7 @@ export const useUserProfile = (
 
   return {
     setUserSecondaryEmails,
+    setEmailsMobileModal,
     userSecondaryEmails,
     setUserPrimaryEmail,
     setFailChangesFail,
@@ -176,6 +178,7 @@ export const useUserProfile = (
     formCancelHandler,
     setDuplicateError,
     setPasswordLength,
+    emailsMobileModal,
     userPrimaryEmail,
     setAddEmailModal,
     deleteEmailList,

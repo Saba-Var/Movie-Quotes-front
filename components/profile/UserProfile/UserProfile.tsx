@@ -9,6 +9,7 @@ import {
 import {
   SaveChangesModal,
   AuthInputField,
+  EmailsMobile,
   PhotoUpload,
   CancelSave,
   RightArrow,
@@ -26,6 +27,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 
   const {
     setUserSecondaryEmails,
+    setEmailsMobileModal,
     userSecondaryEmails,
     setUserPrimaryEmail,
     setDisableUsername,
@@ -34,6 +36,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     setDisablePassword,
     setFailChangesFail,
     formCancelHandler,
+    emailsMobileModal,
     setAddEmailModal,
     userPrimaryEmail,
     saveChangesFail,
@@ -139,6 +142,17 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                     </div>
                   )}
 
+                  {emailsMobileModal && (
+                    <EmailsMobile
+                      setUserSecondaryEmails={setUserSecondaryEmails}
+                      userSecondaryEmails={userSecondaryEmails}
+                      setUserPrimaryEmail={setUserPrimaryEmail}
+                      setDeleteEmailList={setDeleteEmailList}
+                      userPrimaryEmail={userPrimaryEmail}
+                      setEmailChange={setEmailChange}
+                    />
+                  )}
+
                   <Form className='relative pt-10 1xl:!pt-0'>
                     {imageFetchError && (
                       <ErrorAlert
@@ -233,7 +247,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                           />
                         </div>
 
-                        <div className='flex justify-between w-full items-center 1xl:hidden mt-8'>
+                        <div
+                          onClick={() => setEmailsMobileModal(true)}
+                          className='flex justify-between w-full items-center 1xl:hidden mt-8'
+                        >
                           <p>{t('profile:EMAIL')}</p>
                           <RightArrow />
                         </div>

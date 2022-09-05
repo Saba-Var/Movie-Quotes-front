@@ -27,5 +27,9 @@
   "primary-email-updated": "მთავარი ელ-ფოსტა წარმატებით შეიცვალა",
   "image-updated": "სურათი წარმატებით შეიცვალა",
   "EMAIL": "ელ-ფოსტა",
-  "password-update-failed": "პაროლი ვერ შეიცვალა"
+  "password-update-failed": "პაროლი ვერ შეიცვალა",
+  "PRIMARY-EMAIL": "მთავარი ელ-ფოსტა",
+  "CHANGE-PRIMARY-EMAIL": "შეცვალე მთავარი ელ-ფოსტა",
+  "make-this-primary": "მთავრად დაყენება",
+  "ADD-NEW-EMAIL": "დაამატე ახალი ელ-ფოსტა"
 }
