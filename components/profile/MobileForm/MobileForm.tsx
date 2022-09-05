@@ -31,11 +31,12 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
     setSaveChangesModal,
     passwordErrorAlert,
     saveChangesModal,
+    saveChangesError,
     submitHandler,
     navigateBack,
     session,
     t,
-  } = useMobileForm(type, userId, closeForm, setFieldValue, setUpdateList)
+  } = useMobileForm(type, userId, closeForm, setUpdateList, setFieldValue)
 
   return (
     <div
@@ -50,8 +51,12 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
       )}
 
       <Formik
-        validateOnBlur={duplicateUsernameError ? false : true}
-        validateOnChange={duplicateUsernameError ? false : true}
+        validateOnBlur={
+          duplicateUsernameError || saveChangesError ? false : true
+        }
+        validateOnChange={
+          duplicateUsernameError || saveChangesError ? false : true
+        }
         onSubmit={submitHandler}
         validationSchema={
           type === 'username'
@@ -103,6 +108,18 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
                     />
                   )}
 
+                  {type === 'email' && (
+                    <AuthInputField
+                      placeholder={t('profile:enter-new-email')}
+                      valid='!bottom-[7px] !right-3'
+                      error='!bottom-3 !right-3'
+                      styles='!border'
+                      name='email'
+                      profile='yes'
+                      type='text'
+                    />
+                  )}
+
                   {type === 'password' && (
                     <div>
                       <PasswordRequirements
@@ -144,10 +161,10 @@ const MobileForm: React.FC<MobileFormProps> = (props) => {
 
                 {!saveChangesModal && (
                   <CancelSave
+                    styles={`${type === 'password' && '!-bottom-[10vh]'}`}
                     cancelHandler={() => closeForm(true)}
                     saveHandler={() => {}}
                     mobile={true}
-                    styles={`${type === 'password' && '!-bottom-[10vh]'}`}
                   />
                 )}
               </div>

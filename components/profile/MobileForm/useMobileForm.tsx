@@ -1,5 +1,5 @@
 import { FormProperties, SetState, UpdatedList } from 'types'
-import { changePassword, changeUsername } from 'services'
+import { addSecondaryEmail, changePassword, changeUsername } from 'services'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
 import { updateAlertList } from 'helpers'
@@ -11,12 +11,13 @@ export const useMobileForm = (
   type: 'username' | 'password' | 'email',
   userId: string,
   closeForm: SetState<boolean>,
-  setFieldValue: (field: string, value: string) => void,
-  setUpdatedList: SetState<UpdatedList>
+  setUpdatedList: SetState<UpdatedList>,
+  setFieldValue?: (field: string, value: string) => void
 ) => {
   const [duplicateUsernameError, setDuplicateUsernameError] = useState('')
 
   const [passwordErrorAlert, setPasswordErrorAlert] = useState(false)
+  const [saveChangesError, setSaveChangesError] = useState(false)
   const [saveChangesModal, setSaveChangesModal] = useState(false)
 
   const { data: session } = useSession()
@@ -29,7 +30,7 @@ export const useMobileForm = (
   }
 
   const submitHandler = async (
-    form: { username: string; password: string },
+    form: { username: string; password: string; email: string },
     { setFieldError }: FormProperties
   ) => {
     const changeUsernameHandler = async () => {
@@ -38,13 +39,48 @@ export const useMobileForm = (
 
         if (response.status === 200) {
           socket.emit('CHANGE_USERNAME', form.username)
-          setFieldValue('username', form.username)
+          setFieldValue && setFieldValue('username', form.username)
           updateAlertList(setUpdatedList, 'username-updated')
           closeForm(true)
         }
       } catch (error: any) {
+        setSaveChangesError(true)
         setFieldError('username', 'duplicate-username')
         setDuplicateUsernameError(form.username)
+        setSaveChangesModal(false)
+      }
+    }
+
+    const passwordChangeHandler = async () => {
+      try {
+        const response = await changePassword(form.password!, userId)
+
+        if (response.status === 200) {
+          if (setFieldValue) {
+            setFieldValue('confirmPassword', '')
+            setFieldValue('password', '')
+          }
+          updateAlertList(setUpdatedList, 'password-updated')
+          closeForm(true)
+        }
+      } catch (error) {
+        setSaveChangesError(true)
+        setPasswordErrorAlert(true)
+      }
+    }
+
+    const addEmailHandler = async () => {
+      try {
+        const response = await addSecondaryEmail(form.email, userId!)
+
+        if (response.status === 201) {
+          socket.emit('ADD_SECONDARY_EMAIL', response.data)
+          updateAlertList(setUpdatedList, 'email-updated')
+          closeForm(true)
+        }
+      } catch (error) {
+        setSaveChangesError(true)
+        setFieldError('email', 'email-is-added')
         setSaveChangesModal(false)
       }
     }
@@ -67,27 +103,13 @@ export const useMobileForm = (
       }
     }
 
-    const passwordChangeHandler = async () => {
-      try {
-        const response = await changePassword(form.password!, userId)
-
-        if (response.status === 200) {
-          localStorage.setItem('passwordLength', form.password.length + '')
-          setFieldValue('confirmPassword', '')
-          setFieldValue('password', '')
-          updateAlertList(setUpdatedList, 'password-updated')
-          closeForm(true)
-        }
-      } catch (error) {
-        setPasswordErrorAlert(true)
-      }
-    }
-
     if (saveChangesModal) {
       if (type === 'username') {
         changeUsernameHandler()
       } else if (type === 'password') {
         passwordChangeHandler()
+      } else {
+        addEmailHandler()
       }
     }
   }
@@ -98,6 +120,7 @@ export const useMobileForm = (
     setPasswordErrorAlert,
     setSaveChangesModal,
     passwordErrorAlert,
+    saveChangesError,
     saveChangesModal,
     submitHandler,
     navigateBack,

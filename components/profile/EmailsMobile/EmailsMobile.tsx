@@ -2,6 +2,7 @@ import { useEmailsMobile } from './useEmailsMobile'
 import { EmailsMobileProps } from './types.d'
 import {
   SaveChangesModal,
+  MobileForm,
   ErrorAlert,
   BackArrow,
   AlertList,
@@ -13,11 +14,10 @@ import {
 const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
   const {
     setUserSecondaryEmails,
+    setEmailsMobileModal,
     userSecondaryEmails,
     setUserPrimaryEmail,
-    setDeleteEmailList,
     userPrimaryEmail,
-    setEmailChange,
     setUpdatedList,
     updatedList,
     userEmail,
@@ -26,11 +26,13 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
 
   const {
     primaryEmailChangeHandler,
+    setDisableAddEmailModal,
     setChangePrimaryModal,
     setDeleteEmailModal,
     changePrimaryModal,
     setFailChangesFail,
     deleteEmailHandler,
+    disableEmailModal,
     deleteEmailModal,
     saveChangesFail,
     setEmailId,
@@ -88,8 +90,26 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
         />
       )}
 
+      {!disableEmailModal && (
+        <div className='1xl:hidden'>
+          <MobileForm
+            closeForm={setDisableAddEmailModal}
+            setUpdateList={setUpdatedList}
+            userId={userId}
+            type='email'
+          />
+        </div>
+      )}
+
       <div className='bg-backgroundGray py-9 pb-28 flex gap-8 overflow-y-auto flex-col h-full w-full animate-scale-up px-8'>
         <div className='flex flex-col gap-5 pb-6 border-b border-b-gray-700'>
+          <p
+            onClick={() => setEmailsMobileModal(false)}
+            className='font-Helvetica-Neue-Geo text-xl underline'
+          >
+            {t('profile:close')}
+          </p>
+
           <p className='font-Helvetica-Neue-Geo text-sm'>
             {t('profile:PRIMARY-EMAIL')}
           </p>
@@ -163,7 +183,12 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
           {t('profile:ADD-NEW-EMAIL')}
         </p>
 
-        <div className='text-xl border py-1 border-white rounded flex justify-center items-center gap-2 text-white'>
+        <div
+          onClick={() => {
+            setDisableAddEmailModal(false)
+          }}
+          className='text-xl border py-1 border-white rounded flex justify-center items-center gap-2 text-white'
+        >
           <AddIcon />
           <p>{t('profile:add')}</p>
         </div>

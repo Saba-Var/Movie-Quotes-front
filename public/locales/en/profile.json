@@ -31,5 +31,6 @@
   "PRIMARY-EMAIL": "PRIMARY EMAIL",
   "CHANGE-PRIMARY-EMAIL": "CHANGE PRIMARY EMAIL",
   "make-this-primary": "Make this primary",
-  "ADD-NEW-EMAIL": "ADD NEW EMAIL"
+  "ADD-NEW-EMAIL": "ADD NEW EMAIL",
+  "close": "Close"
 }

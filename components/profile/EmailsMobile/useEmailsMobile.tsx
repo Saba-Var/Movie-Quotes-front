@@ -1,7 +1,7 @@
-import { changeUserPrimaryEmail, updateAlertList } from 'helpers'
 import { SecondaryEmails, SetState, UpdatedList } from 'types'
-import { changePrimaryEmail, deleteEmail } from 'services'
+import { changeUserPrimaryEmail } from 'helpers'
 import { useTranslation } from 'next-i18next'
+import { deleteEmail } from 'services'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
 
@@ -14,6 +14,7 @@ export const useEmailsMobile = (
   setUserSecondaryEmails: SetState<SecondaryEmails>,
   userSecondaryEmails: SecondaryEmails
 ) => {
+  const [disableEmailModal, setDisableAddEmailModal] = useState(true)
   const [changePrimaryModal, setChangePrimaryModal] = useState(false)
   const [deleteEmailModal, setDeleteEmailModal] = useState(false)
   const [saveChangesFail, setFailChangesFail] = useState(false)
@@ -60,11 +61,13 @@ export const useEmailsMobile = (
 
   return {
     primaryEmailChangeHandler,
+    setDisableAddEmailModal,
     setChangePrimaryModal,
     setDeleteEmailModal,
     changePrimaryModal,
     setFailChangesFail,
     deleteEmailHandler,
+    disableEmailModal,
     deleteEmailModal,
     saveChangesFail,
     setEmailId,

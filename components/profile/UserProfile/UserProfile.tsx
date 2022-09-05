@@ -44,7 +44,6 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     disableUsername,
     disablePassword,
     duplicateError,
-    passwordLength,
     setEmailChange,
     setUpdatedList,
     addEmailModal,
@@ -145,11 +144,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                   {emailsMobileModal && (
                     <EmailsMobile
                       setUserSecondaryEmails={setUserSecondaryEmails}
+                      setEmailsMobileModal={setEmailsMobileModal}
                       userSecondaryEmails={userSecondaryEmails}
                       setUserPrimaryEmail={setUserPrimaryEmail}
-                      setDeleteEmailList={setDeleteEmailList}
                       userPrimaryEmail={userPrimaryEmail}
-                      setEmailChange={setEmailChange}
                       setUpdatedList={setUpdatedList}
                       userEmail={userData.email}
                       updatedList={updatedList}
@@ -227,7 +225,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                             </label>
                             <input
                               className={`bg-transparent pb-4 text-inputGray border-b !border-b-gray-700 text-base font-Helvetica-Neue-Geo font-medium rounded w-full h-[38px]`}
-                              defaultValue={'#'.repeat(passwordLength)}
+                              defaultValue={'#'.repeat(10)}
                               type={'password'}
                               disabled={true}
                             />
@@ -247,7 +245,6 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                             lowerCaseError={form.errors.password}
                             newPassword={form.values.password}
                             disablePassword={disablePassword}
-                            passwordLength={passwordLength}
                           />
                         </div>
 

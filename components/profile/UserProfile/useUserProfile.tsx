@@ -26,8 +26,6 @@ export const useUserProfile = (
 
   const [userPrimaryEmail, setUserPrimaryEmail] = useState('')
 
-  const [passwordLength, setPasswordLength] = useState(0)
-
   const [file, setFile] = useState<File | null>(null)
 
   const [deleteEmailList, setDeleteEmailList] = useState<string[]>([])
@@ -39,10 +37,6 @@ export const useUserProfile = (
     setUserSecondaryEmails(secondaryEmails)
     setUserPrimaryEmail(userData.email)
   }, [userData.email, secondaryEmails])
-
-  useEffect(() => {
-    setPasswordLength(+localStorage.getItem('passwordLength')!)
-  }, [passwordLength])
 
   const { socket } = useSockets()
   const { t } = useTranslation()
@@ -115,8 +109,6 @@ export const useUserProfile = (
         const response = await changePassword(form.password!, userData._id)
         if (response.status === 200) {
           setDisablePassword(true)
-          localStorage.setItem('passwordLength', form.password?.length + '')
-          setPasswordLength(form.password?.length!)
           setFieldValue('confirmPassword', '')
           setFieldValue('password', '')
           resetForm()
@@ -161,7 +153,6 @@ export const useUserProfile = (
     setDisablePassword,
     formCancelHandler,
     setDuplicateError,
-    setPasswordLength,
     emailsMobileModal,
     userPrimaryEmail,
     setAddEmailModal,
@@ -170,7 +161,6 @@ export const useUserProfile = (
     disableUsername,
     imageFetchError,
     disablePassword,
-    passwordLength,
     setUpdatedList,
     setEmailChange,
     duplicateError,

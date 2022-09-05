@@ -3,13 +3,8 @@ import { usePasswords } from './usePasswords'
 import { PasswordsProps } from './types.d'
 
 const Passwords: React.FC<PasswordsProps> = (props) => {
-  const {
-    setDisablePassword,
-    disablePassword,
-    lowerCaseError,
-    passwordLength,
-    newPassword,
-  } = props
+  const { setDisablePassword, disablePassword, lowerCaseError, newPassword } =
+    props
 
   const { t } = usePasswords()
 
@@ -25,7 +20,7 @@ const Passwords: React.FC<PasswordsProps> = (props) => {
             </label>
             <input
               className={`bg-inputGray pl-3 pr-7 text-inputBlack text-base font-Helvetica-Neue-Geo font-medium rounded w-full border h-[38px]`}
-              defaultValue={'#'.repeat(passwordLength)}
+              defaultValue={'#'.repeat(10)}
               type={'password'}
               disabled={true}
             />

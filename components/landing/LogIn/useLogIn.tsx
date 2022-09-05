@@ -22,7 +22,6 @@ export const useLogIn = () => {
       if (response.status === 200) {
         const token = response.data.token
         localStorage.setItem('token', token)
-        localStorage.setItem('passwordLength', data.password.length + '')
         setCookie('token', token)
         Router.push(`/${locale}/news-feed`)
       }

@@ -31,5 +31,6 @@
   "PRIMARY-EMAIL": "მთავარი ელ-ფოსტა",
   "CHANGE-PRIMARY-EMAIL": "შეცვალე მთავარი ელ-ფოსტა",
   "make-this-primary": "მთავრად დაყენება",
-  "ADD-NEW-EMAIL": "დაამატე ახალი ელ-ფოსტა"
+  "ADD-NEW-EMAIL": "დაამატე ახალი ელ-ფოსტა",
+  "close": "დახურვა"
 }
