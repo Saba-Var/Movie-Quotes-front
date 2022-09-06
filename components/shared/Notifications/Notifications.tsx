@@ -26,7 +26,7 @@ const Notifications: React.FC<NotificationsProps> = (props) => {
         <ErrorAlert
           styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
           setShowAlert={setMarkAsReadError}
-          title='common:mark-as-red-fail'
+          title='common:mark-as-read-fail'
         />
       )}
 
