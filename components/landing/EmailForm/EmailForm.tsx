@@ -45,7 +45,6 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
                       <ErrorAlert
                         setShowAlert={setNotFound}
                         title='auth:user-not-found'
-                        animate={true}
                       />
                     )}
 
@@ -53,7 +52,6 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
                       <ErrorAlert
                         setShowAlert={setFetchFailed}
                         title='auth:email-not-sent'
-                        animate={true}
                       />
                     )}
 

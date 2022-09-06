@@ -31,7 +31,6 @@ const LogIn: React.FC<LogInProps> = (props) => {
             styles='!top-0 md:!top-[-10%]'
             title='auth:user-not-found'
             setShowAlert={setNotFound}
-            animate={true}
           />
         )}
 
@@ -40,7 +39,6 @@ const LogIn: React.FC<LogInProps> = (props) => {
             styles='!top-0 md:!top-[-10%]'
             setShowAlert={setNotVerified}
             title='auth:not-verified'
-            animate={true}
           />
         )}
 
@@ -49,7 +47,6 @@ const LogIn: React.FC<LogInProps> = (props) => {
             styles='!top-0 md:!top-[-10%]'
             setShowAlert={setAuthError}
             title='auth:log-in-failed'
-            animate={true}
           />
         )}
 

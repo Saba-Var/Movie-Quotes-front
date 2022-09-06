@@ -73,7 +73,6 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
           styles='left-[35%] 1xl:left-[44%] 2xl:!left-[45%]'
           title='common:upload-only-image'
           setShowAlert={setTypeError}
-          animate={true}
         />
       )}
 

@@ -1,29 +1,15 @@
 import { useTranslation } from 'next-i18next'
 import { SetShowAlert } from './types.d'
-import { useState } from 'react'
 
-export const useErrorAlert = (
-  setShowAlert: SetShowAlert,
-  animate: boolean | undefined
-) => {
-  const [exit, setExit] = useState(false)
+export const useErrorAlert = (setShowAlert: SetShowAlert) => {
   const { t } = useTranslation()
 
   const clickHandler = () => {
-    setExit(true)
-
-    if (animate) {
-      setTimeout(() => {
-        setShowAlert(false)
-      }, 1600)
-    } else {
-      setShowAlert(false)
-    }
+    setShowAlert(false)
   }
 
   return {
     clickHandler,
-    exit,
     t,
   }
 }

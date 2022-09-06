@@ -47,7 +47,7 @@ const MobileSearchBar: React.FC<MobileSearchBarProps> = (props) => {
         {inputValue.trim()[0] !== '@' &&
           inputValue.trim()[0] !== '#' &&
           inputValue.length > 0 && (
-            <p className='animate-fade-in-delay text-xs text-orange pt-2'>
+            <p className='text-xs text-orange pt-2'>
               {`${t('news-feed:enter')}`} <span>@</span>{' '}
               {`${t('news-feed:search-movies')}`}, {`${t('news-feed:enter')}`}{' '}
               <span>#</span> {`${t('news-feed:search-quotes')}`}
