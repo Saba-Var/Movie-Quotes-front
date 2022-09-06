@@ -3,16 +3,14 @@ import { useErrorAlert } from './useErrorAlert'
 import { ErrorAlertProps } from './types.d'
 
 const ErrorAlert: React.FC<ErrorAlertProps> = (props) => {
-  const { title, styles, setShowAlert, animate } = props
+  const { title, styles, setShowAlert } = props
 
-  const { exit, clickHandler, t } = useErrorAlert(setShowAlert, animate)
+  const { clickHandler, t } = useErrorAlert(setShowAlert)
 
   return (
     <div
-      className={`px-1 md:text-2xl z-[999999] ${
-        animate && 'animate-bounce-in-top'
-      }  bg-red-100 border border-rose-600 text-red-700 md:px-4 py-1 md:py-3 rounded fixed 
-       ${exit && animate && 'animate-bounce-out-top'} top-[4%] ${styles}`}
+      className={`px-1 md:text-2xl z-[999999] bg-red-100 border border-rose-600 text-red-700 md:px-4 py-1 md:py-3 rounded fixed 
+      top-[4%] ${styles}`}
     >
       <div className='flex items-center justify-between'>
         <div className='text-center flex items-center flex-wrap text-sm '>

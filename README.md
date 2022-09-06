@@ -2,7 +2,7 @@
 
 Movie Quotes is a social network where you can find any quote in millions of movie lines
 
-<p> Production url: <a href="<p> Production url: https://movie-quotes.sabavar.redberryinternship.ge" target="_blank">movie-quotes.sabavar.redberryinternship.ge</a></p>
+<p>Production url: <a href="https://movie-quotes.sabavar.redberryinternship.ge" target="_blank">movie-quotes.sabavar.redberryinternship.ge</a></p>
 
 #
 
@@ -44,7 +44,7 @@ Movie Quotes is a social network where you can find any quote in millions of mov
 
 - <p><a href="https://www.npmjs.com/package/react-infinite-scroll-component" target="_blank">react-infinite-scroll-component @6.1.0</a> - A component to make all your infinite scrolling woes go away<p/>
 
-- <p><a href="https://react-select.com/home" target="_blank">react-select @5.4.0</a> - Select Input control for ReactJS with multiselect, autocomplete, async and creatable support.<p/>
+- <p><a href="https://react-select.com/home" target="_blank">react-select @5.4.0</a> - Select Input control for ReactJS<p/>
 
 - <p><a href="https://www.npmjs.com/package/react-drag-drop-files" target="_blank">react-drag-drop-files @2.3.7</a> - ReactJs drag and drop files library<p/>
 

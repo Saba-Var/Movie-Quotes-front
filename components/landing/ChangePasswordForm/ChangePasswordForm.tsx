@@ -52,7 +52,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
                           <ErrorAlert
                             setShowAlert={setUserNotFound}
                             title='auth:user-not-found'
-                            animate={true}
                           />
                         )}
 
@@ -60,7 +59,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
                           <ErrorAlert
                             title='auth:password-not-change'
                             setShowAlert={setNotUpdate}
-                            animate={true}
                           />
                         )}
 
