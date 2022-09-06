@@ -48,7 +48,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
       <ErrorMessage name={field.name}>
         {(errorMessage) => {
           return (
-            <div className='text-errorRed text-sm animate-fade-in'>
+            <div className='text-errorRed text-sm'>
               {t(`common:${errorMessage}`)}.
             </div>
           )

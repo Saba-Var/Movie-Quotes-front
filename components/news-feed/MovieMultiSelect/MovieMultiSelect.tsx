@@ -109,7 +109,7 @@ const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
       </div>
 
       {movieIdError && (
-        <p className='text-errorRed font-medium text-sm animate-fade-in'>
+        <p className='text-errorRed font-medium text-sm'>
           {t('common:required-field')}
         </p>
       )}
