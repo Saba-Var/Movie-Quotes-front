@@ -24,7 +24,6 @@
     "react-drag-drop-files": "^2.3.7",
     "react-infinite-scroll-component": "^6.1.0",
     "react-select": "^5.4.0",
-    "react-tooltip": "^4.2.21",
     "socket.io-client": "^4.5.1",
     "yup": "^0.32.11"
   },
