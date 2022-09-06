@@ -1,16 +1,19 @@
 import { useTranslation } from 'next-i18next'
 import { verifyEmail } from 'services'
 import { useState } from 'react'
+import { FormProperties } from 'types'
 
 export const useEmailForm = () => {
-  const { t } = useTranslation()
-
-  const [notFound, setNotFound] = useState(false)
-
   const [fetchFailed, setFetchFailed] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
+  const [notFound, setNotFound] = useState(false)
 
-  const submitHandler = async (formData: { email: string }) => {
+  const { t } = useTranslation()
+
+  const submitHandler = async (
+    formData: { email: string },
+    { setFieldError }: FormProperties
+  ) => {
     try {
       const { status } = await verifyEmail(formData.email)
 
@@ -19,6 +22,7 @@ export const useEmailForm = () => {
       }
     } catch (error: any) {
       if (error.response.status === 404) {
+        setFieldError('email', 'user-not-found')
         setNotFound(true)
       } else {
         setFetchFailed(true)
@@ -31,7 +35,6 @@ export const useEmailForm = () => {
     submitHandler,
     setEmailSent,
     fetchFailed,
-    setNotFound,
     emailSent,
     notFound,
     t,

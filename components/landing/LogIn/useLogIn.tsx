@@ -30,7 +30,7 @@ export const useLogIn = () => {
     } catch (error: any) {
       const status = error.response.status
 
-      if (status === 404) {
+      if (status === 404 || status === 401) {
         setNotFound(true)
         setFieldError('email', 'user-not-found')
         setFieldError('password', 'user-not-found')

@@ -11,15 +11,8 @@ import {
 } from 'components'
 
 const EmailForm: React.FC<EmailFormProps> = (props) => {
-  const {
-    setFetchFailed,
-    submitHandler,
-    setNotFound,
-    fetchFailed,
-    emailSent,
-    notFound,
-    t,
-  } = useEmailForm()
+  const { setFetchFailed, submitHandler, fetchFailed, emailSent, notFound, t } =
+    useEmailForm()
 
   const { setModal, setShowLogIn } = props
 
@@ -32,22 +25,17 @@ const EmailForm: React.FC<EmailFormProps> = (props) => {
           top='top-[20%]'
         >
           <Formik
-            onSubmit={(data) => submitHandler(data)}
+            validateOnChange={notFound ? false : true}
+            validateOnBlur={notFound ? false : true}
             validationSchema={emailFormSchema}
             initialValues={{ email: '' }}
+            onSubmit={submitHandler}
             validateOnMount={false}
           >
             {() => {
               return (
                 <div>
                   <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
-                    {notFound && (
-                      <ErrorAlert
-                        setShowAlert={setNotFound}
-                        title='auth:user-not-found'
-                      />
-                    )}
-
                     {fetchFailed && (
                       <ErrorAlert
                         setShowAlert={setFetchFailed}
