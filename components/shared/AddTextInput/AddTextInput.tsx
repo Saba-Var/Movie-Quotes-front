@@ -24,7 +24,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
 
         {isError && (
           <ErrorIcon
-            styles={`absolute right-16 bottom-[16px] ${
+            styles={`absolute right-16 bottom-[14px] ${
               name === 'budget' && 'right-6'
             }`}
           />
@@ -32,7 +32,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
 
         {isValid && (
           <ValidIcon
-            styles={`absolute right-16 bottom-[15px] ${
+            styles={`absolute right-16 bottom-[12px] ${
               name === 'budget' && 'right-6'
             }`}
           />

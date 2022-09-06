@@ -34,5 +34,6 @@
   "day-ago": "day ago",
   "no-notifications": "You don't have notifications",
   "notification-fetch-fail": "Notification fetch failed",
-  "mark-as-red-fail": "Mark as red failed"
+  "mark-as-red-fail": "Mark as red failed",
+  "movie-exists": "Movie is already added"
 }

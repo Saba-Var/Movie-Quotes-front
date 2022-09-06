@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { verifyEmail } from 'services'
-import { useState } from 'react'
 import { FormProperties } from 'types'
+import { useState } from 'react'
 
 export const useEmailForm = () => {
   const [fetchFailed, setFetchFailed] = useState(false)
