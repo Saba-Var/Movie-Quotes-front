@@ -97,40 +97,8 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 ├─── .github
 ├─── readme
 ├─── components
-│     ├── icons
-│     │    ├── component-file.tsx
-│     │    ├── index.ts
-│     │    └── types.d.ts
-│     ├── landing
-│     │    ├── component-folder
-│     │    │    ├── component-file.tsx
-│     │    │    ├── index.ts
-│     │    │    ├── types.d.ts [#OPTIONAL]
-│     │    │    └── costum-hook.tsx [#OPTIONAL]
-│     │    └── index.ts
-│     ├── movies
-│     │    ├── component-folder
-│     │    │    ├── component-file.tsx
-│     │    │    ├── index.ts
-│     │    │    ├── types.d.ts [#OPTIONAL]
-│     │    │    └── costum-hook.tsx [#OPTIONAL]
-│     │    └── index.ts
-│     ├── news-feed
-│     │    ├── component-folder
-│     │    │    ├── component-file.tsx
-│     │    │    ├── index.ts
-│     │    │    ├── types.d.ts [#OPTIONAL]
-│     │    │    └── costum-hook.tsx [#OPTIONAL]
-│     │    └── index.ts
-│     ├── profile
-│     │    ├── component-folder
-│     │    │    ├── component-file.tsx
-│     │    │    ├── index.ts
-│     │    │    ├── types.d.ts [#OPTIONAL]
-│     │    │    └── costum-hook.tsx [#OPTIONAL]
-│     │    └── index.ts
-│     ├── shared
-│     │    ├── component-folder
+│     ├── component-group-folder
+│     │    ├── individual-component-folder
 │     │    │    ├── component-file.tsx
 │     │    │    ├── index.ts
 │     │    │    ├── types.d.ts [#OPTIONAL]
