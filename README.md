@@ -97,6 +97,7 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 
 ```bash
 ├─── .github
+│     └── workflows
 ├─── readme
 ├─── components
 │     ├── component-group-folder
