@@ -13,7 +13,6 @@ import {
 
 const NewQuote = () => {
   const {
-    setDuplicateQuotes,
     setSelectedMovieId,
     setEmptyFIleError,
     setMovieIdError,
@@ -57,6 +56,8 @@ const NewQuote = () => {
           disableOverflow={true}
         >
           <Formik
+            validateOnChange={duplicateQuotes ? false : true}
+            validateOnBlur={duplicateQuotes ? false : true}
             validationSchema={addQuoteSchema}
             validateOnMount={false}
             onSubmit={submitHandler}
@@ -69,14 +70,6 @@ const NewQuote = () => {
               return (
                 <Form>
                   <div className='flex flex-col gap-8 mt-9'>
-                    {duplicateQuotes && (
-                      <ErrorAlert
-                        styles='left-1/2 !-translate-x-1/2 1xl:left-[53%] lg:!left-[730px] xl:!left-[800px] 2xl:!left-[980px]'
-                        setShowAlert={setDuplicateQuotes}
-                        title='news-feed:duplicate-quote'
-                      />
-                    )}
-
                     {fetchError && (
                       <ErrorAlert
                         styles='left-1/2 !-translate-x-1/2 1xl:left-[53%] lg:!left-[730px] xl:!left-[800px] 2xl:!left-[980px]'
