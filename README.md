@@ -118,15 +118,9 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 │     └── index.ts
 ├─── pages
 │     ├── api
-│     │    └── auth
-│     │         └── [...nextauth].tsx
-│     ├── movies
-│     │    ├── [id].tsx
-│     │    └── index.tsx
-│     ├── news-feed
-│     │    └── index.tsx
-│     ├── profile
-│     │    └── index.tsx
+│     ├── page-folder
+│     │    ├── index.tsx
+│     │    └── [id].tsx [#OPTIONAL]
 │     ├── _app.tsx
 │     ├── 404.tsx
 │     ├── index.tsx
