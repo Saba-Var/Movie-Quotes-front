@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
 import { useNewsFeed } from 'hooks'
+import Head from 'next/head'
 import {
   SearchedPosts,
   AllQuotes,
@@ -14,6 +15,15 @@ const NewsFeed = () => {
 
   return (
     <div className='lg:pl-5 2xl:pl-[10%]'>
+      <Head>
+        <title>News Feed</title>
+        <meta
+          content='initial-scale=1.0, width=device-width'
+          name='viewport'
+          key='News Feed'
+        />
+      </Head>
+
       <div className='w-full 1xl:w-[550px] lg:!w-[650px] xl:!w-[800px] 2xl:!w-[1100px] h-screen !block lg:pr-[5%] 2xl:!pr-[150px]'>
         <div className='h-screen w-full pt-5'>
           <div className='flex justify-between gap-2 xl:gap-5'>

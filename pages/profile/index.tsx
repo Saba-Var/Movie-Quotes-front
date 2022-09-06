@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
 import { useProfile } from 'hooks'
+import Head from 'next/head'
 import {
   ProfileFormWrapper,
   GoogleUserProfile,
@@ -21,6 +22,15 @@ const Profile = () => {
 
   return (
     <div className='1xl:mt-4 1xl:h-full 1xl:pb-24'>
+      <Head>
+        <title>Profile</title>
+        <meta
+          content='initial-scale=1.0, width=device-width'
+          name='viewport'
+          key='Profile'
+        />
+      </Head>
+
       <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo hidden 1xl:block'>
         {t('profile:my-profile')}
       </p>
