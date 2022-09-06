@@ -12,36 +12,12 @@ import {
 
 const LogIn: React.FC<LogInProps> = (props) => {
   const { setShowLogIn, setEmailForm, setRegistrationModal } = props
-  const {
-    setNotVerified,
-    submitHandler,
-    setAuthError,
-    setNotFound,
-    notVerified,
-    authError,
-    notFound,
-    t,
-  } = useLogIn()
+  const { submitHandler, setAuthError, authError, t, notFound, notVerified } =
+    useLogIn()
 
   return (
     <FormModalWrapper styles='md:!h-[600px]' setCloseModal={setShowLogIn}>
       <div className='flex animate-focus-in-text-expand flex-col gap-3 justify-center items-center'>
-        {notFound && (
-          <ErrorAlert
-            styles='!top-0 md:!top-[-10%]'
-            title='auth:user-not-found'
-            setShowAlert={setNotFound}
-          />
-        )}
-
-        {notVerified && (
-          <ErrorAlert
-            styles='!top-0 md:!top-[-10%]'
-            setShowAlert={setNotVerified}
-            title='auth:not-verified'
-          />
-        )}
-
         {authError && (
           <ErrorAlert
             styles='!top-0 md:!top-[-10%]'
@@ -58,10 +34,12 @@ const LogIn: React.FC<LogInProps> = (props) => {
         </p>
 
         <Formik
+          validateOnChange={notFound || notVerified ? false : true}
+          validateOnBlur={notFound || notVerified ? false : true}
           initialValues={{ email: '', password: '' }}
           validationSchema={logInFormSchema}
+          onSubmit={submitHandler}
           validateOnMount={false}
-          onSubmit={(data) => submitHandler(data)}
         >
           {() => {
             return (
