@@ -11,6 +11,8 @@ module.exports = {
           'slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-from-left':
           'slide-from-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        'slide-left':
+          'slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'slide-in':
           'slide-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
         'bounce-in-top': 'bounce-in-top   1.2s ease-in both',
@@ -90,6 +92,16 @@ module.exports = {
         'slide-from-left': {
           '0%': {
             transform: 'translateX(-1000px)',
+            opacity: '0',
+          },
+          to: {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
+        'slide-left': {
+          '0%': {
+            transform: 'translateX(500px)',
             opacity: '0',
           },
           to: {

@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetStaticProps } from 'next'
 import { useLanding } from 'hooks'
+import Head from 'next/head'
 import {
   ChangePasswordForm,
   RegistrationModal,
@@ -30,6 +31,15 @@ const Home = () => {
 
   return (
     <div className='overflow-x-hidden'>
+      <Head>
+        <title>Home</title>
+        <meta
+          content='initial-scale=1.0, width=device-width'
+          name='viewport'
+          key='Home'
+        />
+      </Head>
+
       {showRegistrationModal && (
         <RegistrationModal
           setRegistrationModal={setRegistrationModal}

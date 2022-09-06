@@ -9,6 +9,7 @@ import {
   AddButton,
   Layout,
 } from 'components'
+import Head from 'next/head'
 
 const Movies = () => {
   const {
@@ -24,6 +25,15 @@ const Movies = () => {
 
   return (
     <div className={`w-full min-h-screen !block pt-[25px] pb-14 2xl:pr-9`}>
+      <Head>
+        <title>Movies</title>
+        <meta
+          content='initial-scale=1.0, width=device-width'
+          name='viewport'
+          key='Movies'
+        />
+      </Head>
+
       {showAddMovieForm && (
         <AddMovieForm setShowAddMovieForm={setShowAddMovieForm} />
       )}
