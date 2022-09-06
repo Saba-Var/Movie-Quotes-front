@@ -17,8 +17,8 @@ const Emails: React.FC<EmailsProps> = (props) => {
 
   return (
     <div>
-      <div className='flex flex-col mb-4  w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] relative'>
-        <div className='h-[1px] bg-gray-700 w-full mb-12'></div>
+      <div className='flex flex-col mb-4 w-[300px] lg:!w-[350px] xl:!w-[400px] 2xl:!w-[480px] relative'>
+        <div className='h-[1px] hidden 1xl:block bg-gray-700 w-full mb-12'></div>
 
         <AuthInputField
           styles='border border-green !bg-green placeholder:!text-white !bg-opacity-20'

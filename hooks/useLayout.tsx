@@ -45,7 +45,7 @@ const useLayout = () => {
         return updatedData
       })
     })
-  }, [socket, userData])
+  }, [socket, userData.name])
 
   useEffect(() => {
     socket.on('SEND_VERIFIED_SECONDARY_EMAIL', (verifiedEmail) => {
@@ -175,11 +175,17 @@ const useLayout = () => {
             userData._id,
             page
           )
-          setHasMoreNotifications(data.paginationInfo.hasMoreNotifications)
 
-          if (status === 200 && data.notifications) {
-            setNotificationsList((prev) => [...prev, ...data.notifications])
-            setNewNotificationCount(data.newNotificationCount)
+          if (data.paginationInfo) {
+            setHasMoreNotifications(data.paginationInfo.hasMoreNotifications)
+
+            if (status === 200 && data.notifications) {
+              setNotificationsList((prev) => [...prev, ...data.notifications])
+              setNewNotificationCount(data.newNotificationCount)
+            }
+          } else {
+            setNotificationsList([])
+            setNewNotificationCount(0)
           }
         }
       } catch (error) {
@@ -242,6 +248,7 @@ const useLayout = () => {
     imageSrc,
     userData,
     setPage,
+    router,
     page,
     t,
   }

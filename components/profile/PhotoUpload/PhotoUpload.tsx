@@ -57,18 +57,20 @@ const PhotoUpload: React.FC<PhotoUploadProps> = (props) => {
         )}
       </div>
 
-      <label className='cursor-pointer'>
-        <p className='text-center text-xl animate-fade-in font-Helvetica-Neue-Geo hover:scale-105 active:scale-100 transition-transform mt-4'>
-          {t('profile:upload-new-photo')}
-        </p>
-        <input type='file' onChange={fileChangeHandler} />
-      </label>
+      <div className='h-[55px]'>
+        <label className='cursor-pointer'>
+          <p className='text-center text-xl animate-fade-in font-Helvetica-Neue-Geo hover:scale-105 active:scale-100 transition-transform mt-4'>
+            {t('profile:upload-new-photo')}
+          </p>
+          <input type='file' onChange={fileChangeHandler} />
+        </label>
 
-      {typeError && (
-        <p className='text-red-500 text-base text-center'>
-          {t('common:upload-image')}
-        </p>
-      )}
+        {typeError && (
+          <p className='text-red-500 text-base text-center'>
+            {t('common:upload-image')}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

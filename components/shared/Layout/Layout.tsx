@@ -16,6 +16,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     setUserDataFail,
     showSideMenu,
     userDataFail,
+    router,
   } = useLayout()
 
   return (
@@ -41,11 +42,17 @@ const Layout: React.FC<LayoutProps> = (props) => {
           page='news-feed'
         />
 
-        <div className={`px-0 xl:px-9 pt-[86px] 2xl:!px-0`}>
+        <div
+          className={`px-0 ${
+            router.pathname.includes('profile') &&
+            'bg-backgroundGray 1xl:bg-background h-screen'
+          } xl:px-9 pt-[86px] 2xl:!px-0`}
+        >
           <SideMenuWrapper
             setShowSideMenu={setShowSideMenu}
             showSideMenu={showSideMenu}
           />
+
           <div
             className={`1xl:pl-[280px] 2xl:!pl-[340px] lg:!pl-[350px] h-fit ${
               mobileSearchMode && 'h-screen overflow-hidden'

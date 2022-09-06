@@ -4,6 +4,8 @@ export type AuthInputFieldProps = {
   disabled?: boolean
   profile?: string
   styles?: string
+  error?: string
+  valid?: string
   type: string
   name: string
 }

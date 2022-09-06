@@ -24,7 +24,7 @@ const Popup: React.FC<PopupProps> = (props) => {
   return (
     <div>
       <div
-        className={`fixed top-0 left-0 h-screen w-screen z-[9999] bg-darkGray`}
+        className={`fixed top-0 left-0 h-screen w-screen z-[9999] bg-black bg-opacity-60`}
         onClick={popupCloseHandler}
       ></div>
       <div

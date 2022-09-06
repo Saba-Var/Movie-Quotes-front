@@ -22,7 +22,6 @@ export const useHeader = () => {
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
       deleteCookie('token')
-      localStorage.removeItem('passwordLength')
       if (session) {
         signOut({ callbackUrl: callBackUri })
       } else {

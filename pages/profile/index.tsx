@@ -20,8 +20,8 @@ const Profile = () => {
   } = useProfile()
 
   return (
-    <div className='mt-4 h-full pb-24'>
-      <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo'>
+    <div className='1xl:mt-4 1xl:h-full 1xl:pb-24'>
+      <p className='text-white pl-[15%] text-2xl font-Helvetica-Neue-Geo hidden 1xl:block'>
         {t('profile:my-profile')}
       </p>
 

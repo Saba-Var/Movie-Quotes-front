@@ -1,10 +1,13 @@
-import { changeUsername, imageUpload } from 'services'
+import { userImageUpload, updateAlertList } from 'helpers'
+import { FormProperties, UpdatedList } from 'types'
 import { useTranslation } from 'next-i18next'
-import { FormProperties } from 'types'
+import { changeUsername } from 'services'
 import { useSockets } from 'hooks'
 import { useState } from 'react'
 
 export const useGoogleUserProfile = (userId: string) => {
+  const [updatedList, setUpdatedList] = useState<UpdatedList>([])
+
   const [imageFetchError, setImageFetchError] = useState(false)
   const [disableUsername, setDisableUsername] = useState(true)
   const [duplicateError, setDuplicateError] = useState(false)
@@ -16,27 +19,19 @@ export const useGoogleUserProfile = (userId: string) => {
   const { t } = useTranslation()
 
   const uploadUserImage = async () => {
-    try {
-      if (file) {
-        const formData = new FormData()
-        formData.append('image', file)
-        formData.append('id', userId)
-
-        const response = await imageUpload('user', formData)
-
-        if (response.status === 201) {
-          socket.emit('UPLOAD_USER_IMAGE', response.data)
-          if (disableUsername) {
-            setDisableUsername(true)
-          }
-          setFile(null)
-          if (typeError) {
-            setTypeError(false)
-          }
-        }
-      }
-    } catch (error) {
-      setImageFetchError(true)
+    if (file) {
+      userImageUpload(
+        socket,
+        file,
+        setFile,
+        userId,
+        disableUsername,
+        setDisableUsername,
+        typeError,
+        setTypeError,
+        setImageFetchError,
+        setUpdatedList
+      )
     }
   }
 
@@ -49,6 +44,7 @@ export const useGoogleUserProfile = (userId: string) => {
 
       if (response.status === 200) {
         socket.emit('CHANGE_USERNAME', form.username)
+        updateAlertList(setUpdatedList, 'username-updated')
         setDisableUsername(true)
         resetForm()
         setFieldValue('username', form.username)
@@ -67,8 +63,10 @@ export const useGoogleUserProfile = (userId: string) => {
     disableUsername,
     imageFetchError,
     duplicateError,
+    setUpdatedList,
     submitHandler,
     setTypeError,
+    updatedList,
     typeError,
     setFile,
     file,

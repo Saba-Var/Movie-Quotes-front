@@ -17,10 +17,11 @@ const SideMenuWrapper: React.FC<SideMenuWrapperProps> = (props) => {
               showSideMenu && 'z-[999] fixed top-0 w-screen h-screen'
             }`}
           ></div>
+
           <div
             className={`w-[240px] ${
               showSideMenu &&
-              'z-[9999] animate-slide-from-left fixed left-0 top-18 bg-background h-screen w-[85vw]'
+              'z-[9999] animate-slide-from-left fixed left-0 top-18 bg-background h-screen !w-[85vw]'
             } ${closeMenu && 'animate-slide-in-right'}`}
           >
             <div className='pt-9 pl-11'>

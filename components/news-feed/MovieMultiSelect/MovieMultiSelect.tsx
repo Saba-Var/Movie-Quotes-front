@@ -30,7 +30,7 @@ const MovieMultiSelect: React.FC<MovieMultiSelectProps> = (props) => {
           ></div>
 
           <div
-            className={`bg-black absolute h-[258px] bottom-[-268px] left-1/2 -translate-x-1/2 w-[80vw] 1xl:w-[38vw] lg:!w-[48vw] 3xl:!w-[45vw] z-[999] ${
+            className={`bg-black absolute h-[258px] bottom-[-268px] left-1/2 -translate-x-1/2 w-[83vw] sm:w-[90vw] 1xl:w-[48vw] lg:!w-[44vw] xl:!w-[46vw] 2xl:!w-[50vw] 3xl:!w-[45vw] z-[999] ${
               movieList.length <= 1 && '!h-[86px] !-bottom-24'
             } ${movieList.length === 2 && '!h-[172px] !bottom-[-184px]'} ${
               movieList.length > 3 && 'overflow-y-scroll'
