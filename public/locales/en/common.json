@@ -35,5 +35,6 @@
   "no-notifications": "You don't have notifications",
   "notification-fetch-fail": "Notification fetch failed",
   "mark-as-red-fail": "Mark as red failed",
-  "movie-exists": "Movie is already added"
+  "movie-exists": "Movie is already added",
+  "duplicate-quote": "This quote is already exists"
 }

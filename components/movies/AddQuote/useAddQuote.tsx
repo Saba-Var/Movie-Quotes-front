@@ -1,6 +1,6 @@
 import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
-import { QuoteText, SetState } from 'types'
+import { FormProperties, QuoteText, SetState } from 'types'
 import { useRouter } from 'next/router'
 import { addQuote } from 'services'
 import { useState } from 'react'
@@ -17,7 +17,10 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
   const { socket } = useSockets()
   const { t } = useTranslation()
 
-  const submitHandler = async (data: QuoteText) => {
+  const submitHandler = async (
+    data: QuoteText,
+    { setFieldError }: FormProperties
+  ) => {
     try {
       if (file) {
         const formData = new FormData()
@@ -39,6 +42,8 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
       }
     } catch (error: any) {
       if (error.response.status === 409) {
+        setFieldError('quoteEn', 'duplicate-quote')
+        setFieldError('quoteGe', 'duplicate-quote')
         setDuplicateQuotes(true)
       } else {
         setFetchError(true)
@@ -47,7 +52,6 @@ export const useAddQuote = (setAddQuoteModal: SetState<boolean>) => {
   }
 
   return {
-    setDuplicateQuotes,
     setEmptyFIleError,
     duplicateQuotes,
     emptyFileError,

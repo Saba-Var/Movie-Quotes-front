@@ -15,7 +15,6 @@ const AddQuote: React.FC<AddQuoteProps> = (props) => {
   const { setAddQuoteModal } = props
 
   const {
-    setDuplicateQuotes,
     setEmptyFIleError,
     duplicateQuotes,
     emptyFileError,
@@ -34,6 +33,8 @@ const AddQuote: React.FC<AddQuoteProps> = (props) => {
       styles='1xl:top-28'
     >
       <Formik
+        validateOnChange={duplicateQuotes ? false : true}
+        validateOnBlur={duplicateQuotes ? false : true}
         validationSchema={addQuoteSchema}
         onSubmit={submitHandler}
         initialValues={{
@@ -50,14 +51,6 @@ const AddQuote: React.FC<AddQuoteProps> = (props) => {
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
                     title='news-feed:quote-add-error'
                     setShowAlert={setFetchError}
-                  />
-                )}
-
-                {duplicateQuotes && (
-                  <ErrorAlert
-                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
-                    title='news-feed:duplicate-quote'
-                    setShowAlert={setDuplicateQuotes}
                   />
                 )}
 
