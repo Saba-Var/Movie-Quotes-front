@@ -1,7 +1,7 @@
 <h1>Movie Quotes</h1>
 
 Movie Quotes is a social network where you can find any quote in millions of movie lines
-Production url: movie-quotes.sabavar.redberryinternship.ge
+Production url: https://movie-quotes.sabavar.redberryinternship.ge/en
 
 #
 
