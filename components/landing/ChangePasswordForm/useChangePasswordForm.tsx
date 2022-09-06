@@ -2,6 +2,8 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { changePassword } from 'services'
 import { useRouter } from 'next/router'
+import { FormProperties } from 'types'
+import { FormData } from './types.d'
 import axios from 'services'
 
 export const useChangePasswordForm = () => {
@@ -29,12 +31,15 @@ export const useChangePasswordForm = () => {
     }
   }, [router.query])
 
-  const submitHandler = async (password: string) => {
+  const submitHandler = async (
+    data: FormData,
+    { setFieldError }: FormProperties
+  ) => {
     try {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       if (typeof router.query.id === 'string') {
-        const { status } = await changePassword(password, router.query.id)
+        const { status } = await changePassword(data.password, router.query.id)
 
         if (status === 200) {
           setChangedSuccessfully(true)
@@ -42,6 +47,7 @@ export const useChangePasswordForm = () => {
       }
     } catch (error: any) {
       if (error.response.status === 404) {
+        setFieldError('password', 'user-not-found')
         setUserNotFound(true)
       } else {
         setNotUpdate(true)
@@ -52,7 +58,6 @@ export const useChangePasswordForm = () => {
   return {
     setChangedSuccessfully,
     changedSuccessfully,
-    setUserNotFound,
     submitHandler,
     userNotFound,
     setNotUpdate,
