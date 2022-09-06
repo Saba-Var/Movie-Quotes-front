@@ -16,7 +16,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
   const {
     setChangedSuccessfully,
     changedSuccessfully,
-    setUserNotFound,
     submitHandler,
     setNotUpdate,
     userNotFound,
@@ -39,22 +38,17 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = (props) => {
               top='top-[17%]'
             >
               <Formik
-                onSubmit={(data) => submitHandler(data.password)}
-                validationSchema={passwordChangeFormSchema}
                 initialValues={{ password: '', confirmPassword: '' }}
+                validateOnChange={userNotFound ? false : true}
+                validateOnBlur={userNotFound ? false : true}
+                validationSchema={passwordChangeFormSchema}
+                onSubmit={submitHandler}
                 validateOnMount={false}
               >
                 {() => {
                   return (
                     <div>
                       <Form className='mt-3 md:mt-6 flex flex-col justify-center items-center animate-fade-in'>
-                        {userNotFound && (
-                          <ErrorAlert
-                            setShowAlert={setUserNotFound}
-                            title='auth:user-not-found'
-                          />
-                        )}
-
                         {notUpdate && (
                           <ErrorAlert
                             title='auth:password-not-change'

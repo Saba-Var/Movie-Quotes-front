@@ -1,7 +1,7 @@
 import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { addQuote } from 'services'
-import { QuoteText } from 'types'
+import { FormProperties, QuoteText } from 'types'
 import { useState } from 'react'
 
 export const useNewQuote = () => {
@@ -31,7 +31,10 @@ export const useNewQuote = () => {
     clearErrors()
   }
 
-  const submitHandler = async (data: QuoteText) => {
+  const submitHandler = async (
+    data: QuoteText,
+    { setFieldError }: FormProperties
+  ) => {
     if (!emptyFileError && selectedMovieId) {
       try {
         const formData = new FormData()
@@ -51,6 +54,8 @@ export const useNewQuote = () => {
         }
       } catch (error: any) {
         if (error.response.status === 409) {
+          setFieldError('quoteEn', 'duplicate-quote')
+          setFieldError('quoteGe', 'duplicate-quote')
           setDuplicateQuotes(true)
         } else {
           setFetchError(true)
@@ -60,7 +65,6 @@ export const useNewQuote = () => {
   }
 
   return {
-    setDuplicateQuotes,
     setSelectedMovieId,
     setEmptyFIleError,
     duplicateQuotes,

@@ -1,5 +1,5 @@
+import { FormProperties, SelectedOptions, SetState } from 'types'
 import axios, { getMovieGenres, addNewMovie } from 'services'
-import { SelectedOptions, SetState } from 'types'
 import { useLayout, useSockets } from 'hooks'
 import { useTranslation } from 'next-i18next'
 import { useSession } from 'next-auth/react'
@@ -55,7 +55,10 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
     fetchFilmGenres()
   }, [])
 
-  const submitHandler = async (data: MovieFormData) => {
+  const submitHandler = async (
+    data: MovieFormData,
+    { setFieldError }: FormProperties
+  ) => {
     try {
       if (!emptyFileError && !genreNotSelected) {
         const {
@@ -105,6 +108,8 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
       }
     } catch (error: any) {
       if (error.response.status === 409) {
+        setFieldError('movieNameEn', 'movie-exists')
+        setFieldError('movieNameGe', 'movie-exists')
         setExistingMovieErr(true)
       } else {
         setFilmAddErr(true)
@@ -113,7 +118,6 @@ export const useAddMovieForm = (setShowAddMovieForm: SetState<boolean>) => {
   }
 
   return {
-    setExistingMovieErr,
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,

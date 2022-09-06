@@ -12,17 +12,23 @@ import {
 const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
   const { setRegistrationModal, setShowPopupModal } = props
 
-  const { t, initialValues, submitHandler, errorAlert, setErrorAlert } =
-    useRegistrationForm(setRegistrationModal, setShowPopupModal)
+  const {
+    initialValues,
+    duplicateUser,
+    submitHandler,
+    setErrorAlert,
+    errorAlert,
+    t,
+  } = useRegistrationForm(setRegistrationModal, setShowPopupModal)
 
   return (
     <Formik
       validationSchema={registrationFormValidationSchema}
+      validateOnChange={duplicateUser ? false : true}
+      validateOnBlur={duplicateUser ? false : true}
       initialValues={initialValues}
+      onSubmit={submitHandler}
       validateOnMount={false}
-      onSubmit={(data) => {
-        submitHandler(data)
-      }}
     >
       {() => {
         return (

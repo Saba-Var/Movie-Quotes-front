@@ -12,7 +12,6 @@ import {
 const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
   const { setShowAddMovieForm } = props
   const {
-    setExistingMovieErr,
     setGenresFetchError,
     setGenreNotSelected,
     setSelectedOptions,
@@ -37,6 +36,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
       title={t('movies:add-movie')}
     >
       <Formik
+        validateOnChange={existingMovieErr ? false : true}
+        validateOnBlur={existingMovieErr ? false : true}
         validationSchema={addMovieFormSchema}
         initialValues={{
           movieDescriptionEn: '',
@@ -47,8 +48,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
           directorGe: '',
           budget: '',
         }}
-        validateOnMount={false}
         onSubmit={submitHandler}
+        validateOnMount={false}
       >
         {() => {
           return (
@@ -59,14 +60,6 @@ const AddMovieForm: React.FC<AddMovieFormProps> = (props) => {
                     setShowAlert={setGenresFetchError}
                     styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
                     title='movies:genres-fetch-fail'
-                  />
-                )}
-
-                {existingMovieErr && (
-                  <ErrorAlert
-                    setShowAlert={setExistingMovieErr}
-                    styles='left-1/2 !-translate-x-1/2 1xl:left-[53%]'
-                    title='movies:movie-exists'
                   />
                 )}
 
