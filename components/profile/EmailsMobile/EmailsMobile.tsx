@@ -48,9 +48,11 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
   )
 
   return (
-    <div className='fixed 1xl:hidden bg-background w-full h-full z-[9] pt-16 top-[85px]'>
-      <div onClick={() => {}}>
-        <BackArrow styles={'w-[18px] h-[18px] !top-[19px] !left-8'} />
+    <div className='fixed 1xl:hidden bg-background w-full h-full z-[9] pt-16 top-[80px]'>
+      <div>
+        <div onClick={() => setEmailsMobileModal(false)}>
+          <BackArrow styles={'w-[18px] h-[18px] !top-[25px] !left-8'} />
+        </div>
 
         {saveChangesFail && (
           <ErrorAlert
@@ -101,15 +103,8 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
         </div>
       )}
 
-      <div className='bg-backgroundGray py-9 pb-28 flex gap-8 overflow-y-auto flex-col h-full w-full animate-scale-up px-8'>
+      <div className='bg-backgroundGray animate-slide-left py-9 pb-28 flex gap-8 overflow-y-auto flex-col h-full w-full px-8'>
         <div className='flex flex-col gap-5 pb-6 border-b border-b-gray-700'>
-          <p
-            onClick={() => setEmailsMobileModal(false)}
-            className='font-Helvetica-Neue-Geo text-xl underline'
-          >
-            {t('profile:close')}
-          </p>
-
           <p className='font-Helvetica-Neue-Geo text-sm'>
             {t('profile:PRIMARY-EMAIL')}
           </p>
