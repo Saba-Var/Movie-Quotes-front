@@ -43,13 +43,15 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
         )}
 
         <div className='flex flex-col'>
-          <div className='text-white  cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl animate-focus-in-text-expand'>
+          <div
+            className={`text-white cursor-default font-Helvetica-Neue-Geo font-medium text-xl 1xl:text-2xl animate-focus-in-text-expand ${
+              userData.name.length >= 16 && '1xl:text-xl'
+            }`}
+          >
             {userData.name}
           </div>
           <div
-            onClick={() => {
-              closeHandler('profile')
-            }}
+            onClick={() => closeHandler('profile')}
             className='text-inputGray animate-focus-in-text-expand text-sm cursor-pointer hover:scale-105 transition-transform'
           >
             {t('side-menu:edit-profile')}
@@ -59,9 +61,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
 
       <div className='pl-3 flex flex-col gap-10 animate-focus-in-text-expand'>
         <div
-          onClick={() => {
-            closeHandler('news-feed')
-          }}
+          onClick={() => closeHandler('news-feed')}
           className='cursor-pointer flex gap-12 hover:scale-105 transition-transform'
         >
           <HomeIcon isSelected={page.includes('news-feed')} />
@@ -71,9 +71,7 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
         </div>
 
         <div
-          onClick={() => {
-            closeHandler('movies')
-          }}
+          onClick={() => closeHandler('movies')}
           className='cursor-pointer flex gap-12 hover:scale-105 transition-transform'
         >
           <CameraIcon isSelected={page.includes('movies')} />

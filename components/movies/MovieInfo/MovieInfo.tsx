@@ -77,8 +77,8 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
       )}
 
       <div className='h-fit xl:h-[382px] 3xl:h-[440px] flex flex-col gap-5'>
-        <div className='flex justify-between items-center'>
-          <p className='text-lightGold animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
+        <div className='flex justify-between items-start'>
+          <p className='text-lightGold !w-full 1xl:!w-[70%] break-words animate-fade-in cursor-default font-Helvetica-Neue-Geo font-medium text-2xl'>
             {locale === 'en' ? movieNameEn : movieNameGe}
           </p>
           <div className='hidden xl:block animate-scale-up'>
@@ -102,9 +102,9 @@ const MovieInfo: React.FC<MovieDetailsProps> = (props) => {
           })}
         </div>
 
-        <div className='animate-fade-in flex items-center cursor-default gap-[10px]'>
+        <div className='animate-fade-in flex items-start cursor-default gap-[10px]'>
           <p className='text-inputGray text-lg'>{t('movies:director')}:</p>
-          <p className='text-white text-lg font-medium font-Helvetica-Neue-Geo'>
+          <p className='text-white text-lg !w-full 1xl:!w-[70%] break-words font-medium font-Helvetica-Neue-Geo'>
             {locale === 'en' ? directorEn : directorGe}
           </p>
         </div>
