@@ -52,7 +52,7 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
 
       <form className='w-full relative' onSubmit={onSubmitHandler}>
         <input
-          className='w-full px-4 py-[10px] pr-12 placeholder-inputGray text-white text-base lg:text-xl bg-darkPurple h-10 rounded-[10px] xl:h-[52px] bg-opacity-60 outline-none'
+          className='w-full px-4 py-[10px] pr-12 placeholder-medGray text-white text-base lg:text-xl bg-darkPurple h-10 rounded-[10px] xl:h-[52px] bg-opacity-60 outline-none'
           placeholder={t('common:write-comment')}
           onChange={inputChangeHandler}
           value={commentText}

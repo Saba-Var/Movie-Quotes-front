@@ -41,7 +41,7 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
           placeholder: (styles: {}) => {
             return {
               ...styles,
-              color: '#CED4DA',
+              color: '#6C757D',
             }
           },
 
