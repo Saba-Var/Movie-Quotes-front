@@ -82,7 +82,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                     </div>
                   )}
 
-                  <Form className={`relative pt-10 1xl:!pt-18`}>
+                  <Form className={`relative pt-10 1xl:!pt-0`}>
                     {imageFetchError && (
                       <ErrorAlert
                         styles='left-1/2 !-translate-x-1/2 1xl:left-[62%]'
@@ -103,7 +103,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                     </div>
 
                     <div>
-                      <div className='h-[94px] mt-10 1xl:mt-0 relative mx-auto max-w-[480px] 1xl:mb-12'>
+                      <div className='h-[94px] mt-10 1xl:mt-0 relative mx-auto max-w-[480px] 1xl:mb-7'>
                         <AuthInputField
                           styles='profileInputStyles'
                           placeholder={userData.name}
@@ -122,7 +122,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                         )}
                       </div>
 
-                      <div className='h-[1px] hidden 1xl:block bg-gray-700 mx-auto max-w-[480px] mb-12'></div>
+                      <div className='h-[1px] hidden 1xl:block bg-gray-700 mx-auto max-w-[480px] mb-7'></div>
 
                       <div className='h-[94px] mx-auto max-w-[480px]'>
                         <AuthInputField
@@ -139,6 +139,7 @@ const GoogleUserProfile: React.FC<GoogleUserProfileProps> = (props) => {
                     <div className='hidden 1xl:block'>
                       {(!disableUsername || file) && (
                         <CancelSave
+                          styles='1xl:bottom-[-35%] 3xl:!bottom-[-75%]'
                           disableSubmit={disableUsername}
                           saveHandler={uploadUserImage}
                           cancelHandler={() => {

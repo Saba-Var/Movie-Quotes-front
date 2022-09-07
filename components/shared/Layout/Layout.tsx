@@ -16,12 +16,13 @@ const Layout: React.FC<LayoutProps> = (props) => {
     setUserDataFail,
     showSideMenu,
     userDataFail,
+    profilePage,
     router,
   } = useLayout()
 
   return (
     <>
-      <div className='bg-background'>
+      <div className={`bg-background ${profilePage && 'overflow-y-auto'}`}>
         {userDataFail && (
           <ErrorAlert
             styles='left-[50%] -translate-x-1/2'
