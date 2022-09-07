@@ -21,7 +21,7 @@ export const useMovies = () => {
     setMovieList((prev) => [data, ...prev])
   })
 
-  socket.off('SEND_UPDATED_MOVIE').on('SEND_UPDATED_MOVIE', (data) => {
+  socket.on('SEND_UPDATED_MOVIE', (data) => {
     setMovieList((prev) => {
       return prev.map((movie) => (movie._id === data._id ? data : movie))
     })
