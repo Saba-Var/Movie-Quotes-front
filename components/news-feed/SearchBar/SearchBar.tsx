@@ -38,7 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         <input
           className={`${
             costumePlaceholder && 'animate-fold-out'
-          } text-lg pl-12 xl:pl-10 z-[99] pt-1 xl:text-xl bg-transparent outline-none transition-transform w-[131px] text-white placeholder-inputGray h-full ${
+          } text-lg pl-12 xl:pl-10 z-[99] pt-1 xl:text-xl bg-transparent outline-none transition-transform w-[131px] text-white placeholder-medGray h-full ${
             georgianLan && 'w-[80px] !pl-7 focus:!pl-7'
           } ${
             costumePlaceholder &&

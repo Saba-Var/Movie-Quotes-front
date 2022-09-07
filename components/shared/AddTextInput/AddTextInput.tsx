@@ -14,7 +14,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
         <input
           {...field}
           {...props}
-          className={`!bg-transparent placeholder-white border-gray-500 pl-3 ${
+          className={`!bg-transparent placeholder-medGray border-gray-500 pl-3 ${
             name === 'budget' ? 'pr-12' : 'pr-[88px]'
           } !outline-none text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
