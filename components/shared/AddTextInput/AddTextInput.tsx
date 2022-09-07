@@ -14,7 +14,7 @@ const AddTextInput: React.FC<AddTextInputProps> = (props) => {
         <input
           {...field}
           {...props}
-          className={`!bg-transparent placeholder-white border-gray-500 pl-3 pr-7 !outline-none text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
+          className={`!bg-transparent placeholder-inputGray border-gray-500 pl-3 pr-7 !outline-none text-white text-base 2xl:text-xl font-Helvetica-Neue-Geo font-medium rounded border ${
             isError && 'border-errorRed'
           } ${isValid && '!border-green'} h-10 2xl:h-[45px] outline-none `}
           autoComplete='off'

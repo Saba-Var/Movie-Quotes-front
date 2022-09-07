@@ -38,7 +38,12 @@ const GenresMultiSelect: React.FC<GenresMultiSelectProps> = (props) => {
         styles={{
           multiValueLabel: (styles: {}) => whiteTextStyle(styles),
 
-          placeholder: (styles: {}) => whiteTextStyle(styles),
+          placeholder: (styles: {}) => {
+            return {
+              ...styles,
+              color: '#CED4DA',
+            }
+          },
 
           input: (styles: {}) => whiteTextStyle(styles),
 
