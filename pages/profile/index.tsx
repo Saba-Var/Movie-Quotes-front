@@ -21,7 +21,7 @@ const Profile = () => {
   } = useProfile()
 
   return (
-    <div className='1xl:mt-4 1xl:h-full 1xl:pb-24'>
+    <div className='1xl:mt-4 1xl:h-full 1xl:pb'>
       <Head>
         <title>Profile</title>
         <meta

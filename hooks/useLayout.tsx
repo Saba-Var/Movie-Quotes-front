@@ -37,6 +37,8 @@ const useLayout = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
+  const profilePage = router.pathname.includes('profile') && session
+
   useEffect(() => {
     socket.on('SEND_NEW_USERNAME', (username) => {
       setUserData((prev) => {
@@ -244,6 +246,7 @@ const useLayout = () => {
     setUserDataFail,
     showSideMenu,
     userDataFail,
+    profilePage,
     setUserData,
     imageSrc,
     userData,
