@@ -14,7 +14,7 @@ const ImageDragAndDrop: React.FC<ImageDragAndDropProps> = (props) => {
     <div className='flex flex-col relative h-[74px]'>
       <div className='hidden 1xl:block'>
         <FileUploader
-          types={['JPG', 'PNG', 'GIF', 'JPEG']}
+          types={['JPG', 'PNG', 'GIF', 'JPEG', 'WEBP']}
           onTypeError={() => setTypeError(true)}
           handleChange={handleChange}
           hoverTitle=' '
