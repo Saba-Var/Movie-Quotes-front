@@ -78,9 +78,13 @@ export const useMobileForm = (
           updateAlertList(setUpdatedList, 'email-updated')
           closeForm(true)
         }
-      } catch (error) {
+      } catch (error: any) {
+        if (error.response.data.message.includes('taken')) {
+          setFieldError('email', 'email-is-taken')
+        } else {
+          setFieldError('email', 'email-is-added')
+        }
         setSaveChangesError(true)
-        setFieldError('email', 'email-is-added')
         setSaveChangesModal(false)
       }
     }
