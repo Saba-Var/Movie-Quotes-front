@@ -27,8 +27,12 @@ export const useAddEmail = (
         updateAlertList(setUpdatedList, 'email-updated')
         setAddEmailModal(false)
       }
-    } catch (error) {
-      setFieldError('email', 'email-is-added')
+    } catch (error: any) {
+      if (error.response.data.message.includes('taken')) {
+        setFieldError('email', 'email-is-taken')
+      } else {
+        setFieldError('email', 'email-is-added')
+      }
       setFetchError(true)
     }
   }
