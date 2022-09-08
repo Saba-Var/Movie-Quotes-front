@@ -250,6 +250,7 @@ const useLayout = () => {
     setUserData,
     imageSrc,
     userData,
+    session,
     setPage,
     router,
     page,

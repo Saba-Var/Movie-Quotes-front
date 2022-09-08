@@ -17,6 +17,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     showSideMenu,
     userDataFail,
     profilePage,
+    session,
     router,
   } = useLayout()
 
@@ -57,6 +58,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
           <div
             className={`1xl:pl-[280px] 2xl:!pl-[340px] lg:!pl-[350px] h-fit ${
               mobileSearchMode && 'h-screen overflow-hidden'
+            } ${
+              router.pathname.includes('profile') && !session && '1xl:!pb-28'
             }`}
           >
             {children}
