@@ -147,8 +147,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       setEmailsMobileModal={setEmailsMobileModal}
                       userSecondaryEmails={userSecondaryEmails}
                       setUserPrimaryEmail={setUserPrimaryEmail}
+                      setDeleteEmailList={setDeleteEmailList}
                       userPrimaryEmail={userPrimaryEmail}
                       setUpdatedList={setUpdatedList}
+                      setEmailChange={setEmailChange}
                       userEmail={userData.email}
                       updatedList={updatedList}
                       userId={userData._id}
@@ -262,13 +264,18 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
                       file ||
                       !disablePassword ||
                       emailChange) && (
-                      <CancelSave
-                        styles='!right-0'
-                        saveHandler={clickHandler}
-                        cancelHandler={() => {
-                          formCancelHandler(form.resetForm, form.setFieldValue)
-                        }}
-                      />
+                      <div className='hidden 1xl:block'>
+                        <CancelSave
+                          styles='!right-0'
+                          saveHandler={clickHandler}
+                          cancelHandler={() => {
+                            formCancelHandler(
+                              form.resetForm,
+                              form.setFieldValue
+                            )
+                          }}
+                        />
+                      </div>
                     )}
                   </Form>
                 </>

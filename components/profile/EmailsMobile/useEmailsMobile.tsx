@@ -1,5 +1,5 @@
+import { changeUserPrimaryEmail, updateAlertList } from 'helpers'
 import { SecondaryEmails, SetState, UpdatedList } from 'types'
-import { changeUserPrimaryEmail } from 'helpers'
 import { useTranslation } from 'next-i18next'
 import { deleteEmail } from 'services'
 import { useSockets } from 'hooks'
@@ -12,7 +12,8 @@ export const useEmailsMobile = (
   userPrimaryEmail: string,
   userId: string,
   setUserSecondaryEmails: SetState<SecondaryEmails>,
-  userSecondaryEmails: SecondaryEmails
+  userSecondaryEmails: SecondaryEmails,
+  setEmailChange: SetState<boolean>
 ) => {
   const [disableEmailModal, setDisableAddEmailModal] = useState(true)
   const [changePrimaryModal, setChangePrimaryModal] = useState(false)
@@ -25,16 +26,36 @@ export const useEmailsMobile = (
   const { t } = useTranslation()
 
   const primaryEmailChangeHandler = async () => {
-    changeUserPrimaryEmail(
-      userPrimaryEmail,
-      userId,
-      socket,
-      setUpdatedList,
-      setFailChangesFail,
-      setChangePrimaryModal,
-      setUserPrimaryEmail,
-      userEmail
-    )
+    const newEmail = userSecondaryEmails.find((email) => email._id === emailId)
+
+    if (newEmail) {
+      if (newEmail.email !== userEmail) {
+        changeUserPrimaryEmail(
+          newEmail.email,
+          userId,
+          socket,
+          setUpdatedList,
+          setFailChangesFail,
+          setChangePrimaryModal,
+          setUserPrimaryEmail,
+          userEmail
+        )
+      } else {
+        setUserSecondaryEmails((prev) => [
+          {
+            email: userPrimaryEmail,
+            verified: true,
+            _id: new Date().toISOString(),
+          },
+          ...prev.filter((el) => el.email !== userEmail),
+        ])
+        setUserPrimaryEmail(userEmail)
+        updateAlertList(setUpdatedList, 'primary-email-updated')
+        setChangePrimaryModal(false)
+      }
+    }
+
+    setEmailChange(false)
   }
 
   const deleteEmailHandler = async () => {

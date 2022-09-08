@@ -79,6 +79,7 @@ const useLayout = () => {
       updatedData.email = userPrimaryEmail
       updatedData.secondaryEmails = updatedData.secondaryEmails.filter(
         (email: { email: string }) =>
+          email.email &&
           email.email !== userPrimaryEmail &&
           email.email !== newSecondaryEmail.email
       )

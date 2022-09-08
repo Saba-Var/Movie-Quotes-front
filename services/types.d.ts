@@ -17,6 +17,7 @@ export type AddNewNotificationData = {
 export type changePrimaryEmailRes = {
   token: string
   newSecondaryEmail: {
+    notDeletable?: boolean
     verified: boolean
     email: string
     _id: string
