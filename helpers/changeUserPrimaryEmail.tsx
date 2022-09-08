@@ -1,7 +1,7 @@
-import { updateAlertList } from 'helpers'
 import { changePrimaryEmail } from 'services'
-import { Socket } from 'socket.io-client'
 import { SetState, UpdatedList } from 'types'
+import { Socket } from 'socket.io-client'
+import { updateAlertList } from 'helpers'
 
 const changeUserPrimaryEmail = async (
   userPrimaryEmail: string,

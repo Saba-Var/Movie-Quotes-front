@@ -17,8 +17,10 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     setEmailsMobileModal,
     userSecondaryEmails,
     setUserPrimaryEmail,
+    setDeleteEmailList,
     userPrimaryEmail,
     setUpdatedList,
+    setEmailChange,
     updatedList,
     userEmail,
     userId,
@@ -44,7 +46,8 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     userPrimaryEmail,
     userId,
     setUserSecondaryEmails,
-    userSecondaryEmails
+    userSecondaryEmails,
+    setEmailChange
   )
 
   return (
@@ -149,7 +152,6 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
                         <div
                           onClick={() => {
                             setEmailId(email._id)
-                            setUserPrimaryEmail(email.email)
                             setChangePrimaryModal(true)
                           }}
                           className='border border-white p-2 px-3 rounded font-Helvetica-Neue-Geo text-base'

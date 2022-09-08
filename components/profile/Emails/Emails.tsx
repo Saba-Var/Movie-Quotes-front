@@ -11,6 +11,7 @@ const Emails: React.FC<EmailsProps> = (props) => {
     userPrimaryEmail,
     setAddEmailModal,
     setEmailChange,
+    primaryEmail,
   } = props
 
   const { t } = useEmails()
@@ -41,7 +42,9 @@ const Emails: React.FC<EmailsProps> = (props) => {
               userSecondaryEmails={userSecondaryEmails}
               setDeleteEmailList={setDeleteEmailList}
               userPrimaryEmail={userPrimaryEmail}
+              notDeletable={email.notDeletable}
               setEmailChange={setEmailChange}
+              primaryEmail={primaryEmail}
               key={email._id}
               email={email}
             />

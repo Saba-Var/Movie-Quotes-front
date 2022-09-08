@@ -8,7 +8,9 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
     userSecondaryEmails,
     setUserPrimaryEmail,
     setDeleteEmailList,
+    userPrimaryEmail,
     setEmailChange,
+    primaryEmail,
     email,
   } = props
 
@@ -51,6 +53,21 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
             <p
               onClick={() => {
                 setEmailChange(true)
+                setUserSecondaryEmails((prev) => {
+                  return [
+                    ...prev.filter(
+                      (secondaryEmails) => secondaryEmails.email !== email.email
+                    ),
+
+                    {
+                      _id: new Date().toISOString(),
+                      email: userPrimaryEmail,
+                      verified: true,
+                      notDeletable:
+                        primaryEmail === userPrimaryEmail ? true : false,
+                    },
+                  ]
+                })
                 setUserPrimaryEmail(email.email)
               }}
               className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'
@@ -63,17 +80,25 @@ const SecondaryEmails: React.FC<SecondaryEmailsProps> = (props) => {
             </p>
           )}
 
-          <div className='w-[1px] bg-gray-600'></div>
+          <div
+            className={`w-[1px] bg-gray-600 ${
+              email.notDeletable && '!opacity-0'
+            }`}
+          ></div>
 
           <p
             onClick={() => {
-              setEmailChange(true)
-              setDeleteEmailList((prev) => [...prev, email.email])
-              setUserSecondaryEmails(
-                userSecondaryEmails.filter((el) => el._id !== email._id)
-              )
+              if (!email.notDeletable) {
+                setEmailChange(true)
+                setDeleteEmailList((prev) => [...prev, email.email])
+                setUserSecondaryEmails(
+                  userSecondaryEmails.filter((el) => el._id !== email._id)
+                )
+              }
             }}
-            className='text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo'
+            className={`text-base 2xl:text-xl cursor-pointer transition-transform hover:scale-105 active:scale-100 font-Helvetica-Neue-Geo ${
+              email.notDeletable && '!opacity-0 !cursor-default'
+            }`}
           >
             {t('profile:remove')}
           </p>

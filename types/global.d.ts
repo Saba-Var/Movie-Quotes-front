@@ -29,9 +29,10 @@ export type LogInData = {
 }
 
 export type SecondaryEmails = {
-  _id: string
-  email: string
+  notDeletable?: boolean
   verified: boolean
+  email: string
+  _id: string
 }[]
 
 export type UserData = {
