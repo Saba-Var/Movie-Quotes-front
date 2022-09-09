@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useLayout } from 'hooks'
 import { SetState } from 'types'
@@ -7,6 +8,7 @@ export const useSideMenuContent = (
   setCloseMenu: SetState<boolean>
 ) => {
   const { userData, t, imageSrc } = useLayout()
+  const { data: session } = useSession()
   const router = useRouter()
 
   const page = router.asPath
@@ -25,6 +27,8 @@ export const useSideMenuContent = (
     closeHandler,
     userData,
     imageSrc,
+    session,
+    router,
     page,
     t,
   }
