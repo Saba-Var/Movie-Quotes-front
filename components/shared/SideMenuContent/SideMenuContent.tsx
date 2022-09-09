@@ -1,15 +1,14 @@
 import { useSideMenuContent } from './useSideMenuContent'
-import { HomeIcon, CameraIcon } from 'components'
+import { HomeIcon, CameraIcon, BackArrow } from 'components'
 import { SideMenuProps } from './types'
+import { logOutHandler } from 'helpers'
 import Image from 'next/image'
 
 const SideMenuContent: React.FC<SideMenuProps> = (props) => {
   const { setCloseMenu, setShowSideMenu } = props
 
-  const { closeHandler, page, imageSrc, t, userData } = useSideMenuContent(
-    setShowSideMenu,
-    setCloseMenu
-  )
+  const { closeHandler, page, imageSrc, t, userData, router, session } =
+    useSideMenuContent(setShowSideMenu, setCloseMenu)
 
   return (
     <div>
@@ -77,6 +76,16 @@ const SideMenuContent: React.FC<SideMenuProps> = (props) => {
           <CameraIcon isSelected={page.includes('movies')} />
           <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl'>
             {t('side-menu:movies-list')}
+          </p>
+        </div>
+
+        <div
+          className='cursor-pointer 1xl:hidden items-center flex gap-12 hover:scale-105 transition-transform'
+          onClick={() => logOutHandler(session, router)}
+        >
+          <BackArrow clearStyles={true} styles='!w-6 !h-6' />
+          <p className='text-white font-Helvetica-Neue-Geo font-medium text-xl'>
+            {t('common:Log-out')}
           </p>
         </div>
       </div>

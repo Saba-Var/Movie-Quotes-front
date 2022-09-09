@@ -1,4 +1,5 @@
 import { HeaderProps } from './types.d'
+import { logOutHandler } from 'helpers'
 import { useHeader } from './useHeader'
 import Link from 'next/link'
 import {
@@ -29,10 +30,11 @@ const Header: React.FC<HeaderProps> = (props) => {
   const {
     languageChangeHandler,
     setShowSelector,
-    logOutHandler,
     showSelector,
     language,
     hrefData,
+    session,
+    router,
     t,
   } = useHeader()
 
@@ -198,8 +200,8 @@ const Header: React.FC<HeaderProps> = (props) => {
 
           {page !== 'home' && (
             <Button
-              onClick={() => logOutHandler()}
               styles='hidden 1xl:block border border-white select-none'
+              onClick={() => logOutHandler(session, router)}
               title={t('common:Log-out')}
               type='button'
             />
