@@ -69,7 +69,7 @@ const FormWrapper: React.FC<FormWrapperProps> = (props) => {
             <div className='h-[50px] flex gap-4 items-center mb-4 animate-fade-in'>
               {!userData.image && (
                 <p
-                  className={`text-white animate-fold-out cursor-default h-[50px] w-[50px] bg-green rounded-full flex justify-center items-center text-3xl pb-1 `}
+                  className={`text-white animate-fold-out cursor-default h-[50px] w-[50px] bg-slate-600 rounded-full flex justify-center items-center text-3xl pb-1 `}
                 >
                   {userData.name && String(userData.name[0]).toUpperCase()}
                 </p>

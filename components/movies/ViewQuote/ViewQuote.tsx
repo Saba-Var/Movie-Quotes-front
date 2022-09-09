@@ -139,7 +139,7 @@ const ViewQuote: React.FC<ViewQuoteProps> = (props) => {
                       )}
 
                       {!comment.user.image && (
-                        <div className='bg-green w-10 h-10 lg:w-[52px] lg:h-[52px] flex justify-center items-center rounded-full'>
+                        <div className='bg-slate-600 w-10 h-10 lg:w-[52px] lg:h-[52px] flex justify-center items-center rounded-full'>
                           <p className='text-3xl pb-2'>{userData.name[0]}</p>
                         </div>
                       )}

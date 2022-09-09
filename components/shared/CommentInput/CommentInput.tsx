@@ -43,7 +43,7 @@ const CommentInput: React.FC<CommentInputProps> = (props) => {
       )}
 
       {!userData.image && (
-        <div className='bg-green w-12 h-10 lg:w-[70px] lg:h-[60px] flex justify-center items-center rounded-full'>
+        <div className='bg-slate-600 w-12 h-10 lg:w-[70px] lg:h-[60px] flex justify-center items-center rounded-full'>
           <p className='text-xl select-none pb-1 lg:text-3xl lg:pb-2 text-white'>
             {userData.name[0]}
           </p>
