@@ -17,7 +17,6 @@ const EmailsMobile: React.FC<EmailsMobileProps> = (props) => {
     setEmailsMobileModal,
     userSecondaryEmails,
     setUserPrimaryEmail,
-    setDeleteEmailList,
     userPrimaryEmail,
     setUpdatedList,
     setEmailChange,
