@@ -28,7 +28,7 @@ export const activateUserAccount = (
 }
 
 export const verifyEmail = (email: string): Promise<AxiosResponse<Status>> => {
-  return axios.get(`/verify-email?email=${email}`)
+  return axios.get(`/verify-email?email=${email}&type=password`)
 }
 
 export const authorization = (
