@@ -105,11 +105,11 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 │     │    │    └── costum-hook.tsx [#OPTIONAL]
 │     │    └── index.ts
 │     └── index.ts
-├─── context 
+├─── context
 │     ├── socket.context.tsx
 │     ├── types.d.ts
 │     └── index.ts
-├─── helpers 
+├─── helpers
 │     ├── helper-file.ts
 │     ├── types.d.ts
 │     └── index.ts
@@ -125,7 +125,7 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 │     ├── 404.tsx
 │     ├── index.tsx
 │     └── index.unauthorized.tsx
-├─── public 
+├─── public
 │     ├── assets
 │     │    ├── fonts
 │     │    └── images
@@ -134,19 +134,19 @@ Runs the app in the development mode. Open http://localhost:3000 to view it in y
 │     │    └── ge
 │     ├── favicon.ico
 │     └── index.tsx
-├─── readme 
+├─── readme
 │     └── assets
-├─── schemas 
+├─── schemas
 │     ├── form.ts
 │     └── index.ts
-├─── services 
+├─── services
 │     ├── service-file.ts
 │     ├── axios.ts
 │     ├── types.d.ts
 │     └── index.ts
-├─── styles 
+├─── styles
 │     └── global.css
-├─── types 
+├─── types
 │     ├── global.d.ts
 │     └── index.ts
 │- .env
