@@ -53,7 +53,7 @@ Movie Quotes is a social network where you can find any quote in millions of mov
 1\. First of all you need to clone repository from github:
 
 ```sh
-git clone https://github.com/Saba-Var/movie-quotes-front-Var-saba.git
+git clone https://github.com/Saba-Var/Movie-Quotes-front.git
 ```
 
 2\. Navigate to the repository
